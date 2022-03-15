@@ -1,6 +1,13 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from "vue-router";
-import loginsign from "./components/loginsign.vue";
+export default {
+  data() {
+    return {
+      name: "Vue.js",
+    };
+  },
+  methods: {},
+};
 </script>
 
 <template>
