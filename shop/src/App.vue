@@ -1,18 +1,24 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
+<script>
+import { RouterView } from "vue-router";
+import Nav from "./Nav.vue";
+export default {
+  components: {
+    Nav,
+  },
+};
 </script>
 
 <template>
-  <header>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/about">About</RouterLink>
-
+  <div id="home">
+    <div class="nav">
+      <Navi />
+    </div>
     <div class="container">
       <RouterView />
     </div>
-  </header>
+  </div>
 </template>
 
 <style>
-/* @import '@/assets/base.css'; */
+@import "@/assets/base.css";
 </style>
