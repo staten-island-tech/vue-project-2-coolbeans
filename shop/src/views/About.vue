@@ -1,7 +1,17 @@
+<script>
+export default {
+  components: {},
+};
+</script>
+
 <template>
   <div class="about">
-    <h1>About</h1>
+    <h1 class="abouttext">About</h1>
   </div>
 </template>
 
-<style></style>
+<style scoped>
+.abouttext {
+  font-size: 5rem;
+}
+</style>

@@ -1,6 +1,6 @@
 <script>
 import { RouterView } from "vue-router";
-import Nav from "./Nav.vue";
+import Nav from "./components/Navi.vue";
 export default {
   components: {
     Nav,
@@ -11,7 +11,7 @@ export default {
 <template>
   <div id="home">
     <div class="nav">
-      <Navi />
+      <Nav />
     </div>
     <div class="container">
       <RouterView />
@@ -21,4 +21,8 @@ export default {
 
 <style>
 @import "@/assets/base.css";
+
+.test {
+  font-size: 10rem;
+}
 </style>
