@@ -1,6 +1,6 @@
 <script>
 import { RouterView } from "vue-router";
-import Nav from "./components/Navi.vue";
+import Nav from "./components/Nav.vue";
 export default {
   components: {
     Nav,
