@@ -18,14 +18,14 @@ export default {
         </li>
       </ul>
     </nav>
-    <Button>Sign In</Button>
+    <Button class="Sign-in">Sign In</Button>
   </div>
 </template>
 
 <style scoped>
 .views {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 3rem 1%;
   align-items: baseline;
   background-color: var(--gray-black);
@@ -35,6 +35,7 @@ export default {
   padding: 1rem;
   color: var(--dark-white);
   text-decoration: none;
+  margin-right: auto;
 }
 .link {
   list-style-type: none;
@@ -48,5 +49,9 @@ export default {
   color: var(--dark-white);
   text-decoration: none;
   display: inline;
+}
+
+.Sign-in {
+  font-size: 2rem;
 }
 </style>

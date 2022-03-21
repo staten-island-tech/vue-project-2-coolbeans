@@ -21,8 +21,4 @@ export default {
 
 <style>
 @import "@/assets/base.css";
-
-.test {
-  font-size: 10rem;
-}
 </style>
