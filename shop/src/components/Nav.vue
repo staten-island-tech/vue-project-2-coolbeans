@@ -1,24 +1,32 @@
 <script>
 import { RouterLink } from "vue-router";
 import Button from "./Button.vue";
+import Form from "./Form.vue";
 export default {
   components: {
     Button,
+    From,
+  },
+  data: {
+    isHidden: true,
+  },
+  methods: {
+    dropForm() {},
   },
 };
 </script>
 
 <template>
   <div class="views">
-    <RouterLink to="/" class="logo">Home</RouterLink>
+    <RouterLink to="/" class="logo">HOME</RouterLink>
     <nav>
       <ul class="links">
         <li class="link">
-          <RouterLink to="/about" class="page">About</RouterLink>
+          <RouterLink to="/about" class="page">ABOUT</RouterLink>
         </li>
       </ul>
     </nav>
-    <Button class="Sign-in">Sign In</Button>
+    <Button class="Sign-in" @button-click="dropForm">SIGN IN</Button>
   </div>
 </template>
 
