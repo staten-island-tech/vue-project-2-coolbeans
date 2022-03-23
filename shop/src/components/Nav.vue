@@ -5,14 +5,23 @@ import Form from "./Form.vue";
 export default {
   components: {
     Button,
-    From,
+    Form,
   },
-  data: {
-    isHidden: true,
+  data() {
+    return {
+      isHidden: false,
+    };
   },
-  methods: {
-    dropForm() {},
+  computed: {
+    dropForm: function () {
+      if (this.isHidden === false) {
+        this.isHidden = true;
+      } else {
+        this.isHiddent = false;
+      }
+    },
   },
+  methods: {},
 };
 </script>
 
@@ -27,6 +36,7 @@ export default {
       </ul>
     </nav>
     <Button class="Sign-in" @button-click="dropForm">SIGN IN</Button>
+    <Form v-if="isHidden" />
   </div>
 </template>
 
