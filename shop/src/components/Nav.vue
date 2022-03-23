@@ -1,26 +1,17 @@
 <script>
 import { RouterLink } from "vue-router";
 import Button from "./Button.vue";
-import Form from "./Form.vue";
+import Form from "./Modal.vue";
 export default {
   components: {
     Button,
     Form,
   },
   data() {
-    return {
-      isHidden: false,
-    };
+    return {};
   },
-  computed: {
-    dropForm: function () {
-      if (this.isHidden === false) {
-        this.isHidden = true;
-      } else {
-        this.isHiddent = false;
-      }
-    },
-  },
+  computed: {},
+  watch: {},
   methods: {},
 };
 </script>
@@ -35,8 +26,9 @@ export default {
         </li>
       </ul>
     </nav>
-    <Button class="Sign-in" @button-click="dropForm">SIGN IN</Button>
-    <Form v-if="isHidden" />
+    <div class="button">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -58,7 +50,6 @@ export default {
 .link {
   list-style-type: none;
 }
-
 .page {
   font-size: 2rem;
   padding: 1rem;
@@ -67,9 +58,5 @@ export default {
   color: var(--dark-white);
   text-decoration: none;
   display: inline;
-}
-
-.Sign-in {
-  font-size: 2rem;
 }
 </style>

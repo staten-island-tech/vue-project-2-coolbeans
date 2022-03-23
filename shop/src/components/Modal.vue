@@ -1,7 +1,11 @@
 <template>
   <form class="form">
     <div class="container">
-      <div class="signin">SIGN IN</div>
+      <slot name="header"> </slot>
+
+      <slot name="body"> </slot>
+
+      <slot name="footer"> </slot>
     </div>
   </form>
 </template>
@@ -14,5 +18,6 @@ export default {};
 .form {
   width: 81.029rem;
   height: 68.4rem;
+  background-color: var(--gray-black);
 }
 </style>
