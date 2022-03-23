@@ -1,31 +1,39 @@
 <script>
 import { RouterLink } from "vue-router";
 import Button from "./Button.vue";
+import Form from "./Form.vue";
 export default {
   components: {
     Button,
+    From,
+  },
+  data: {
+    isHidden: true,
+  },
+  methods: {
+    dropForm() {},
   },
 };
 </script>
 
 <template>
   <div class="views">
-    <RouterLink to="/" class="logo">Home</RouterLink>
+    <RouterLink to="/" class="logo">HOME</RouterLink>
     <nav>
       <ul class="links">
         <li class="link">
-          <RouterLink to="/about" class="page">About</RouterLink>
+          <RouterLink to="/about" class="page">ABOUT</RouterLink>
         </li>
       </ul>
     </nav>
-    <Button>Sign In</Button>
+    <Button class="Sign-in" @button-click="dropForm">SIGN IN</Button>
   </div>
 </template>
 
 <style scoped>
 .views {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 3rem 1%;
   align-items: baseline;
   background-color: var(--gray-black);
@@ -35,6 +43,7 @@ export default {
   padding: 1rem;
   color: var(--dark-white);
   text-decoration: none;
+  margin-right: auto;
 }
 .link {
   list-style-type: none;
@@ -48,5 +57,9 @@ export default {
   color: var(--dark-white);
   text-decoration: none;
   display: inline;
+}
+
+.Sign-in {
+  font-size: 2rem;
 }
 </style>
