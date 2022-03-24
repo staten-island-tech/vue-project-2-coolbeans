@@ -18,8 +18,6 @@ export default {
     dropForm: function () {
       if (this.isHidden === false) {
         this.isHidden = true;
-      } else if (this.isHidden === true) {
-        this.isHidden = false;
       }
     },
   },
@@ -48,10 +46,10 @@ export default {
 .signin {
   font-size: 2rem;
 }
-.form-container {
+/* .form-container {
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 999999;
-}
+} */
 </style>
