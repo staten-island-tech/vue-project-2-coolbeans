@@ -1,24 +1,6 @@
-<script>
-export default {
-  data() {
-    return { show: false };
-  },
-  methods: {
-    closeModal() {
-      this.show = false;
-      document.querySelector("body").classList.remove("overflow-hidden");
-    },
-    openModal() {
-      this.show = true;
-      document.querySelector("body").classList.add("overflow-hidden");
-    },
-  },
-};
-</script>
-
 <template>
   <transition name="fade">
-    <div class="modal" v-if="show">
+    <div class="modal" v-show="isHidden">
       <div class="modal-backdrop" @click="closeModal()" />
 
       <div class="modal-dialog">
@@ -35,7 +17,7 @@ export default {
         </div>
 
         <div class="modal-body">
-          <slot name="body" />
+          <slot name="modal-text-body" />
         </div>
 
         <div class="modal-footer">
@@ -45,6 +27,20 @@ export default {
     </div>
   </transition>
 </template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+  methods: {},
+  computed: {
+    isHidden() {
+      return this.$store.state.isHidden;
+    },
+  },
+};
+</script>
 
 <style scoped>
 .modal {
@@ -70,7 +66,7 @@ export default {
 .modal-dialog {
   background-color: #ffffff;
   position: relative;
-  width: 600px;
+  width: 60rem;
   margin: 50px auto;
   display: flex;
   flex-direction: column;
