@@ -51,8 +51,8 @@
 
           <template v-slot:footer>
             <div>
-              <button @click="$refs.modalName.closeModal()">Cancel</button>
-              <button @click="$refs.modalName.closeModal()">Save</button>
+              <button @click="closeModal">Cancel</button>
+              <button @click="closeModal">Save</button>
             </div>
           </template>
         </modal>
@@ -81,6 +81,9 @@ export default {
     openModal: function () {
       this.$store.dispatch("openModal");
     },
+    closeModal: function () {
+      this.$store.dispatch("closeModal");
+    },
   },
 };
 </script>
@@ -90,13 +93,5 @@ export default {
 
 .signin {
   font-size: 2rem;
-}
-
-p {
-  font-size: 10rem;
-  overflow: hidden;
-}
-.model-text-body {
-  overflow: hidden;
 }
 </style>

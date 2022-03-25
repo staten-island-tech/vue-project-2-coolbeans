@@ -1,12 +1,12 @@
 <template>
   <transition name="fade">
     <div class="modal" v-show="isHidden">
-      <div class="modal-backdrop" @click="closeModal()" />
+      <div class="modal-backdrop" @click="closeModal" />
 
       <div class="modal-dialog">
         <div class="modal-header">
           <slot name="header" />
-          <button type="button" class="modal__close" @click="closeModal()">
+          <button type="button" class="modal__close" @click="closeModal">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
               <path
                 fill="currentColor"
@@ -33,7 +33,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    closeModal: function () {
+      this.$store.dispatch("closeModal");
+    },
+  },
   computed: {
     isHidden() {
       return this.$store.state.isHidden;
@@ -67,6 +71,7 @@ export default {
   background-color: #ffffff;
   position: relative;
   width: 60rem;
+  height: 60rem;
   margin: 50px auto;
   display: flex;
   flex-direction: column;
