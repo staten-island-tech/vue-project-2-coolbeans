@@ -6,14 +6,12 @@
       <div class="modal-dialog">
         <div class="modal-header">
           <slot name="header" />
-          <button type="button" class="modal__close" @click="closeModal">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512">
-              <path
-                fill="currentColor"
-                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
-              ></path>
-            </svg>
-          </button>
+
+          <Closeicon
+            class="modal__close"
+            id="test"
+            @click="closeModal"
+          ></Closeicon>
         </div>
 
         <div class="modal-body">
@@ -29,10 +27,17 @@
 </template>
 
 <script>
+import Closeicon from "./icons/IconClose.vue";
+import Button from "./Button.vue";
 export default {
+  components: {
+    Closeicon,
+    Button,
+  },
   data() {
     return {};
   },
+
   methods: {
     closeModal: function () {
       this.$store.dispatch("closeModal");
@@ -71,11 +76,10 @@ export default {
   background-color: #ffffff;
   position: relative;
   width: 60rem;
-  height: 60rem;
-  margin: 50px auto;
   display: flex;
   flex-direction: column;
-  border-radius: 5px;
+  border-radius: 0.5rem;
+  margin: 25vh auto;
   z-index: 2;
   @media screen and (max-width: 992px) {
     width: 90%;
@@ -83,26 +87,26 @@ export default {
 }
 
 .modal-close {
-  width: 30px;
-  height: 30px;
+  width: 3rem;
+  height: 3rem;
 }
 
 .modal-header {
-  padding: 20px 20px 10px;
+  padding: 2rem 2rem 1rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 }
 
 .modal-body {
-  padding: 10px 20px 10px;
+  padding: 1rem 2rem 1rem;
   overflow: auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 .modal-footer {
-  padding: 10px 20px 20px;
+  padding: 1rem 2rem 2rem;
 }
 
 .fade-enter-active,
@@ -112,5 +116,10 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.modal__close {
+  width: 1rem;
+  cursor: pointer;
 }
 </style>

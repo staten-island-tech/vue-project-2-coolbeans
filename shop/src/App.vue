@@ -11,7 +11,7 @@
       <div class="form-container">
         <modal ref="modalName">
           <template v-slot:header>
-            <h1>Modal title</h1>
+            <h3>SIGN IN</h3>
           </template>
 
           <template v-slot:modal-text-body>
