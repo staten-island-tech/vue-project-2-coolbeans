@@ -1,3 +1,21 @@
+<template>
+  <div class="views">
+    <span class="logo">
+      <slot name="logo" />
+    </span>
+    <nav>
+      <ul class="links">
+        <li class="pages">
+          <slot name="page" />
+        </li>
+      </ul>
+    </nav>
+    <div class="button">
+      <slot name="clickly" />
+    </div>
+  </div>
+</template>
+
 <script>
 import { RouterLink } from "vue-router";
 import Button from "./Button.vue";
@@ -16,22 +34,6 @@ export default {
 };
 </script>
 
-<template>
-  <div class="views">
-    <RouterLink to="/" class="logo">HOME</RouterLink>
-    <nav>
-      <ul class="links">
-        <li class="link">
-          <RouterLink to="/about" class="page">ABOUT</RouterLink>
-        </li>
-      </ul>
-    </nav>
-    <div class="button">
-      <slot></slot>
-    </div>
-  </div>
-</template>
-
 <style scoped>
 .views {
   display: flex;
@@ -41,16 +43,14 @@ export default {
   background-color: var(--gray-black);
 }
 .logo {
-  font-size: 4rem;
+  font-size: var(--h1);
   padding: 1rem;
   color: var(--dark-white);
   text-decoration: none;
   margin-right: auto;
 }
-.link {
-  list-style-type: none;
-}
-.page {
+
+.pages {
   font-size: 2rem;
   padding: 1rem;
   margin: auto;
@@ -58,5 +58,6 @@ export default {
   color: var(--dark-white);
   text-decoration: none;
   display: inline;
+  list-style-type: none;
 }
 </style>

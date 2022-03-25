@@ -7,11 +7,7 @@
         <div class="modal-header">
           <slot name="header" />
 
-          <Closeicon
-            class="modal__close"
-            id="test"
-            @click="closeModal"
-          ></Closeicon>
+          <iconClose class="modal__close" @click="closeModal"></iconClose>
         </div>
 
         <div class="modal-body">
@@ -27,11 +23,11 @@
 </template>
 
 <script>
-import Closeicon from "./icons/IconClose.vue";
+import iconClose from "./icons/IconClose.vue";
 import Button from "./Button.vue";
 export default {
   components: {
-    Closeicon,
+    iconClose,
     Button,
   },
   data() {
