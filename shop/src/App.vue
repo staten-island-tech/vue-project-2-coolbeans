@@ -10,28 +10,16 @@
         >
         <template v-slot:clicky>
           <Button class="signin" @button-click="openModal" type="button"
-            >SIGN IN
+            >LOGIN
           </Button></template
         >
       </Nav>
     </div>
     <div class="container">
       <div class="form-container">
-        <modal>
-          <template v-slot:header>
-            <h3>SIGN IN</h3>
-          </template>
-
-          <template v-slot:modal-text-body>
-            <p>
-              gbpernobnroibnweoirnboiwnrrbnmlkersnbolknerbnerbnoenroibneoirnboenrbonerobnernblkernlkbn
-            </p>
-          </template>
-
-          <template v-slot:footer>
-            <div></div>
-          </template>
-        </modal>
+        <Modal>
+          <template v-slot:form> <logIn /> </template>
+        </Modal>
       </div>
       <RouterView></RouterView>
     </div>
@@ -43,11 +31,13 @@ import { RouterView, RouterLink } from "vue-router";
 import Nav from "./components/Nav.vue";
 import Button from "./components/Button.vue";
 import Modal from "./components/Modal.vue";
+import logIn from "./components/Login.vue";
 export default {
   components: {
     Nav,
     Button,
     Modal,
+    logIn,
   },
 
   data() {
@@ -78,6 +68,7 @@ export default {
 
 .signin {
   font-size: 2rem;
+  border-radius: 5rem;
 }
 /* modal css*/
 </style>

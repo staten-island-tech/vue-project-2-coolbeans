@@ -5,20 +5,16 @@
       <div class="modal-dialog">
         <div class="container">
           <div class="side-image">
-            <img src="../assets/img/woods.jpg" alt="wood" class="image" />
+            <img
+              src="../assets/img/woods.jpg"
+              alt="wood"
+              class="nature-image"
+            />
+            <h4 class="typewriter">LET'S GO ON AN ADVENTURE</h4>
           </div>
           <div class="form-container">
-            <div class="modal-header">
-              <slot name="header" />
-              <iconClose class="modal__close" @click="closeModal"></iconClose>
-            </div>
-
-            <div class="modal-body">
-              <slot name="modal-text-body" />
-            </div>
-
-            <div class="modal-footer">
-              <slot name="footer" />
+            <div class="modal-form">
+              <slot name="form" />
             </div>
           </div>
         </div>
@@ -28,11 +24,10 @@
 </template>
 
 <script>
-import iconClose from "./icons/IconClose.vue";
 import Button from "./Button.vue";
+
 export default {
   components: {
-    iconClose,
     Button,
   },
   data() {
@@ -77,38 +72,16 @@ export default {
 .modal-dialog {
   background-color: #ffffff;
   position: relative;
-  width: 75rem;
+  width: 100rem;
   margin: 5rem auto;
   display: flex;
   flex-direction: column;
   border-radius: 1rem;
   z-index: 2;
+  box-shadow: 5px 6px 10px 3px rgba(0, 0, 0, 0.79);
   @media screen and (max-width: 992px) {
     width: 90%;
   }
-}
-
-.modal-close {
-  width: 3rem;
-  height: 3rem;
-}
-
-.modal-header {
-  padding: 2rem 2rem 1rem;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-
-.modal-body {
-  padding: 1rem 2rem 1rem;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-.modal-footer {
-  padding: 1rem 2rem 2rem;
 }
 
 .fade-enter-active,
@@ -120,12 +93,7 @@ export default {
   opacity: 0;
 }
 
-.modal__close {
-  width: 1rem;
-  cursor: pointer;
-}
-
-.image {
+.nature-image {
   width: 100%;
   height: 100%;
   object-position: 50% 50%;
@@ -135,11 +103,19 @@ export default {
 }
 
 .side-image {
-  width: 35rem;
+  width: 60rem;
   height: 60rem;
 }
 .container {
   display: flex;
   flex-direction: row;
+}
+.typewriter {
+  position: absolute;
+  bottom: 30rem;
+  left: 15rem;
+  color: white;
+  margin: 0;
+  width: 10rem;
 }
 </style>

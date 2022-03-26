@@ -10,10 +10,9 @@ export default {};
 
 <style scoped>
 .button {
-  padding: 0.9rem;
   background-color: rgba(0, 136, 169, 1);
+  padding: 0.9rem;
   border: none;
-  border-radius: 5rem;
   cursor: pointer;
   transition: all 0.3s ease 0s;
 }
