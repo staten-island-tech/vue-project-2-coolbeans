@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit" class="form">
-    <h3 class="logtext">LOGIN</h3>
+    <h3 class="logtext">SIGN UP</h3>
     <iconClose class="modal__close" @click="closeModal"></iconClose>
     <div class="container">
       <div class="econtainer">
@@ -23,7 +23,7 @@
           required
         />
       </div>
-      <div class="login"><Button class="button">LOGIN</Button></div>
+      <div class="login"><Button class="button">SIGN UP</Button></div>
     </div>
   </form>
 </template>
@@ -56,6 +56,8 @@ export default {
 <style scoped>
 .form {
   width: 40rem;
+  background-color: #fff;
+  border-radius: 2rem;
 }
 
 .modal__close {

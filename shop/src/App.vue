@@ -19,6 +19,7 @@
       <div class="form-container">
         <Modal>
           <template v-slot:form> <logIn /> </template>
+          <template v-slot:form2> <signUp /></template>
         </Modal>
       </div>
       <RouterView></RouterView>
@@ -32,12 +33,14 @@ import Nav from "./components/Nav.vue";
 import Button from "./components/Button.vue";
 import Modal from "./components/Modal.vue";
 import logIn from "./components/Login.vue";
+import signUp from "./components/Signup.vue";
 export default {
   components: {
     Nav,
     Button,
     Modal,
     logIn,
+    signUp,
   },
 
   data() {
@@ -49,6 +52,9 @@ export default {
     },
     closeModal: function () {
       this.$store.dispatch("closeModal");
+    },
+    openSign: function () {
+      this.$store.commit("openSign");
     },
   },
 };

@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     isHidden: false,
+    isSignup: false,
   },
   mutations: {
     openModal(state) {
@@ -12,6 +13,13 @@ export default createStore({
     closeModal(state) {
       state.isHidden = false;
     },
+    openSign(state) {
+      state.isSignup = true;
+      console.log(state.isSignup);
+    },
+    closeSign(state) {
+      state.isSignup = false;
+    },
   },
   actions: {
     openModal({ commit }) {
@@ -19,6 +27,12 @@ export default createStore({
     },
     closeModal({ commit }) {
       commit("closeModal");
+    },
+    openSign({ commit }) {
+      commit("openSign");
+    },
+    openSign({ commit }) {
+      commit("closeSign");
     },
   },
   getters: {},

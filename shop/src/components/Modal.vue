@@ -10,11 +10,23 @@
               alt="wood"
               class="nature-image"
             />
-            <h4 class="typewriter">LET'S GO ON AN ADVENTURE</h4>
+            <div class="typing">
+              <h4 class="typewriter">LET'S GO ON AN</h4>
+              <h4 class="typewriter2">ADVENTURE</h4>
+              <div class="askthem">
+                <h5 class="bringthem">If you're new, then please join us</h5>
+                <Button class="changeform" @button-click="openSign"
+                  >Sign Up</Button
+                >
+              </div>
+            </div>
           </div>
           <div class="form-container">
             <div class="modal-form">
-              <slot name="form" />
+              <div class="from1">
+                <slot name="form" />
+              </div>
+              <div class="from2" v-show="isSignup"><slot name="form2" /></div>
             </div>
           </div>
         </div>
@@ -38,10 +50,16 @@ export default {
     closeModal: function () {
       this.$store.dispatch("closeModal");
     },
+    openSign: function () {
+      this.$store.dispatch("openSign");
+    },
   },
   computed: {
     isHidden() {
       return this.$store.state.isHidden;
+    },
+    isSignup() {
+      return this.$store.state.isSignup;
     },
   },
 };
@@ -100,6 +118,8 @@ export default {
   object-fit: cover;
   border-radius: 1rem 0 0 1rem;
   display: block;
+  position: relative;
+  z-index: 3;
 }
 
 .side-image {
@@ -110,12 +130,126 @@ export default {
   display: flex;
   flex-direction: row;
 }
+
+.typing {
+  position: relative;
+  z-index: 3;
+  width: 60rem;
+  bottom: 40rem;
+}
+
 .typewriter {
-  position: absolute;
-  bottom: 30rem;
-  left: 15rem;
-  color: white;
-  margin: 0;
+  width: fit-content;
+  font-size: 7rem;
+  position: relative;
+  z-index: 4;
+  color: #ffffff;
+  /* animation */
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing 5s steps(40, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    border-right: none;
+  }
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+.typewriter2 {
+  width: 44rem;
+  font-size: 7rem;
+  color: #ffffff;
+  opacity: 0;
+  /* animation */
+  overflow: hidden;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  animation: typing2 2.5s steps(40, end), blink-caret2 0.75s step-end infinite,
+    comeforward forwards;
+  animation-delay: 2.5s;
+}
+@keyframes comeforward {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes typing2 {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+@keyframes blink-caret2 {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
+.askthem {
+  opacity: 0;
+  animation: bringup 2s forwards;
+}
+
+@keyframes bringup {
+  from {
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.bringthem {
+  color: #ffffff;
+  padding-bottom: 1rem;
+}
+
+.changeform {
   width: 10rem;
+  position: relative;
+  left: 25rem;
+  border-radius: 2rem;
+}
+
+.form1 {
+  position: relative;
+  z-index: 4;
+}
+.from2 {
+  position: relative;
+  z-index: 5;
+  bottom: 28.8rem;
 }
 </style>
