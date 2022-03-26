@@ -11,13 +11,12 @@
       </ul>
     </nav>
     <div class="button">
-      <slot name="clickly" />
+      <slot name="clicky" />
     </div>
   </div>
 </template>
 
 <script>
-import { RouterLink } from "vue-router";
 import Button from "./Button.vue";
 import Form from "./Modal.vue";
 export default {
@@ -38,26 +37,22 @@ export default {
 .views {
   display: flex;
   justify-content: flex-end;
-  padding: 3rem 1%;
+  padding: 1rem 1%;
   align-items: baseline;
   background-color: var(--gray-black);
 }
 .logo {
-  font-size: var(--h1);
+  font-size: 6rem;
   padding: 1rem;
-  color: var(--dark-white);
-  text-decoration: none;
   margin-right: auto;
+  padding-top: 0;
 }
 
 .pages {
-  font-size: 2rem;
+  font-size: 3rem;
   padding: 1rem;
   margin: auto;
   margin-right: 0;
-  color: var(--dark-white);
-  text-decoration: none;
-  display: inline;
   list-style-type: none;
 }
 </style>

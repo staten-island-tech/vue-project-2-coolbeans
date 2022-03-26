@@ -2,20 +2,25 @@
   <transition name="fade">
     <div class="modal" v-show="isHidden">
       <div class="modal-backdrop" @click="closeModal" />
-
       <div class="modal-dialog">
-        <div class="modal-header">
-          <slot name="header" />
+        <div class="container">
+          <div class="side-image">
+            <img src="../assets/img/woods.jpg" alt="wood" class="image" />
+          </div>
+          <div class="form-container">
+            <div class="modal-header">
+              <slot name="header" />
+              <iconClose class="modal__close" @click="closeModal"></iconClose>
+            </div>
 
-          <iconClose class="modal__close" @click="closeModal"></iconClose>
-        </div>
+            <div class="modal-body">
+              <slot name="modal-text-body" />
+            </div>
 
-        <div class="modal-body">
-          <slot name="modal-text-body" />
-        </div>
-
-        <div class="modal-footer">
-          <slot name="footer" />
+            <div class="modal-footer">
+              <slot name="footer" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -68,14 +73,15 @@ export default {
   left: 0;
   z-index: 1;
 }
+
 .modal-dialog {
   background-color: #ffffff;
   position: relative;
-  width: 60rem;
+  width: 75rem;
+  margin: 5rem auto;
   display: flex;
   flex-direction: column;
-  border-radius: 0.5rem;
-  margin: 25vh auto;
+  border-radius: 1rem;
   z-index: 2;
   @media screen and (max-width: 992px) {
     width: 90%;
@@ -117,5 +123,23 @@ export default {
 .modal__close {
   width: 1rem;
   cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-position: 50% 50%;
+  object-fit: cover;
+  border-radius: 1rem 0 0 1rem;
+  display: block;
+}
+
+.side-image {
+  width: 35rem;
+  height: 60rem;
+}
+.container {
+  display: flex;
+  flex-direction: row;
 }
 </style>

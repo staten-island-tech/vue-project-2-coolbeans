@@ -3,14 +3,16 @@
     <div class="nav">
       <Nav>
         <template v-slot:logo>
-          <router-link to="/">HOME</router-link>
+          <router-link to="/" class="logo">HOME</router-link>
         </template>
         <template v-slot:page>
           <RouterLink to="/about" class="page">ABOUT</RouterLink></template
         >
-        <Button class="signin" @button-click="openModal" type="button"
-          >SIGN IN
-        </Button>
+        <template v-slot:clicky>
+          <Button class="signin" @button-click="openModal" type="button"
+            >SIGN IN
+          </Button></template
+        >
       </Nav>
     </div>
     <div class="container">
@@ -63,9 +65,19 @@ export default {
 </script>
 
 <style>
-@import "@/assets/base.css";
+.logo {
+  color: var(--dark-white);
+  text-decoration: none;
+}
+.page {
+  display: inline;
+  color: var(--dark-white);
+  text-decoration: none;
+}
+/* nav css */
 
 .signin {
   font-size: 2rem;
 }
+/* modal css*/
 </style>
