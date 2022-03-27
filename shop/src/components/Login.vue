@@ -23,6 +23,7 @@
           required
         />
       </div>
+      <div class="error" v-if="error">{{ error }}</div>
       <div class="login"><Button class="button">LOGIN</Button></div>
     </div>
   </form>
@@ -32,14 +33,29 @@
 import Button from "./Button.vue";
 import iconClose from "./icons/IconClose.vue";
 import { ref } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 export default {
   setup() {
     const email = ref("");
     const password = ref("");
-    const handleSubmit = () => {
-      console.log(email.value, password.value);
+    const error = ref(null);
+
+    const store = useStore();
+    const router = useRouter();
+    const handleSubmit = async () => {
+      try {
+        await store.dispatch("login", {
+          email: email.value,
+          password: password.value,
+        });
+        router.push("/");
+        store.dispatch("closeModal");
+      } catch (err) {
+        error.value = err.message;
+      }
     };
-    return { handleSubmit, email, password };
+    return { handleSubmit, email, password, error };
   },
   components: {
     Button,

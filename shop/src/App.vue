@@ -8,11 +8,6 @@
         <template v-slot:page>
           <RouterLink to="/about" class="page">ABOUT</RouterLink></template
         >
-        <template v-slot:clicky>
-          <Button class="signin" @button-click="openModal" type="button"
-            >LOGIN
-          </Button></template
-        >
       </Nav>
     </div>
     <div class="container">
@@ -34,6 +29,7 @@ import Button from "./components/Button.vue";
 import Modal from "./components/Modal.vue";
 import logIn from "./components/Login.vue";
 import signUp from "./components/Signup.vue";
+
 export default {
   components: {
     Nav,

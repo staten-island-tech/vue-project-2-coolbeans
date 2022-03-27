@@ -5,8 +5,29 @@
 </template>
 
 <script>
+import { ref } from "vue";
+import { useStore } from "vuex";
 export default {
-  setup() {},
+  setup() {
+    const blogs = [
+      {
+        title: "why tea is better than coffe.",
+        id: 1,
+      },
+      {
+        title: "why running is fun.",
+        id: 2,
+      },
+      {
+        title: "why is school hard?",
+        id: 3,
+      },
+    ];
+
+    const store = useStore();
+
+    return { blogs };
+  },
   components: {},
 };
 </script>
