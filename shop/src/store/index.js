@@ -1,4 +1,4 @@
-import { createStore } from "vuex";
+import { createStore, storeKey } from "vuex";
 
 //firebase import
 import { auth } from "../firebase/config";
@@ -6,17 +6,23 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
+
 export default createStore({
   state: {
     user: null,
     isHidden: false,
     isSignup: false,
+    authIsReady: false,
   },
   mutations: {
     setUser(state, payload) {
       state.user = payload;
       console.log("user state change:", state.user);
+    },
+    setAuthIsReady(state, payload) {
+      state.authIsReady = payload;
     },
     openModal(state) {
       state.isHidden = true;
@@ -76,4 +82,9 @@ export default createStore({
   },
   getters: {},
   modules: {},
+});
+const unsub = onAuthStateChanged(auth, (user) => {
+  store.commit("setAuthIsReady", true);
+  store.commit("setUser", user);
+  unsub();
 });

@@ -3,6 +3,7 @@
     <span class="logo">
       <slot name="logo" />
     </span>
+
     <nav>
       <ul class="links">
         <li class="pages">
@@ -10,6 +11,7 @@
         </li>
       </ul>
     </nav>
+
     <div class="button">
       <Button
         class="signin"
@@ -45,7 +47,11 @@ export default {
     const handleClick = () => {
       store.dispatch("logout");
     };
-    return { handleClick, user: computed(() => store.state.user) };
+    return {
+      handleClick,
+      user: computed(() => store.state.user),
+      authIsReady: computed(() => store.state.authIsReady),
+    };
   },
   data() {
     return {};
