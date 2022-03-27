@@ -14,19 +14,28 @@
               <h4 class="typewriter">LET'S GO ON AN</h4>
               <h4 class="typewriter2">ADVENTURE</h4>
               <div class="askthem">
-                <h5 class="bringthem">If you're new, then please join us</h5>
-                <Button class="changeform" @button-click="openSign"
+                <h5 class="bringthem" v-if="this.signButton">
+                  If you're new, then please join us
+                </h5>
+                <h5 class="bringthem" v-else>Welcome Back</h5>
+                <Button
+                  class="changeform"
+                  @button-click="signOpen"
+                  v-if="this.signButton"
                   >Sign Up</Button
+                >
+                <Button class="changeform" @button-click="closeSign" v-else
+                  >Login</Button
                 >
               </div>
             </div>
           </div>
           <div class="form-container">
             <div class="modal-form">
-              <div class="from1">
+              <div class="from1" v-if="isSignup"><slot name="form2" /></div>
+              <div class="from1" v-else>
                 <slot name="form" />
               </div>
-              <div class="from2" v-show="isSignup"><slot name="form2" /></div>
             </div>
           </div>
         </div>
@@ -43,15 +52,30 @@ export default {
     Button,
   },
   data() {
-    return {};
+    return {
+      signButton: true,
+    };
   },
 
   methods: {
     closeModal: function () {
       this.$store.dispatch("closeModal");
     },
-    openSign: function () {
-      this.$store.dispatch("openSign");
+    signOpen: function () {
+      this.$store.dispatch("signOpen");
+      if (this.isSignup === false) {
+        this.signButton = true;
+      } else {
+        this.signButton = false;
+      }
+    },
+    closeSign: function () {
+      this.$store.dispatch("closeSign");
+      if (this.isSignup === false) {
+        this.signButton = true;
+      } else {
+        this.signButton = false;
+      }
     },
   },
   computed: {
@@ -246,10 +270,5 @@ export default {
 .form1 {
   position: relative;
   z-index: 4;
-}
-.from2 {
-  position: relative;
-  z-index: 5;
-  bottom: 28.8rem;
 }
 </style>

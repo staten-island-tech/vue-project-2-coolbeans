@@ -8,14 +8,12 @@ export default createStore({
   mutations: {
     openModal(state) {
       state.isHidden = true;
-      console.log(state.isHidden);
     },
     closeModal(state) {
       state.isHidden = false;
     },
-    openSign(state) {
+    signOpen(state) {
       state.isSignup = true;
-      console.log(state.isSignup);
     },
     closeSign(state) {
       state.isSignup = false;
@@ -28,10 +26,10 @@ export default createStore({
     closeModal({ commit }) {
       commit("closeModal");
     },
-    openSign({ commit }) {
-      commit("openSign");
+    signOpen({ commit }) {
+      commit("signOpen");
     },
-    openSign({ commit }) {
+    closeSign({ commit }) {
       commit("closeSign");
     },
   },

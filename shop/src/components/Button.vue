@@ -15,6 +15,7 @@ export default {};
   border: none;
   cursor: pointer;
   transition: all 0.3s ease 0s;
+  font-size: 2rem;
 }
 
 .button:hover {
