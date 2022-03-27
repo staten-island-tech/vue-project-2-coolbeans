@@ -14,11 +14,15 @@
       <Button
         class="signin"
         type="button"
-        v-if="whatButton()"
+        v-if="!user"
         @button-click="openModal"
         >LOGIN
       </Button>
-      <Button class="signin" type="button" v-else @button-click="handleClick"
+      <Button
+        class="signin"
+        type="button"
+        v-if="user"
+        @button-click="handleClick"
         >LOGOUT
       </Button>
     </div>
