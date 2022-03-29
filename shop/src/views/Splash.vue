@@ -38,6 +38,16 @@ import scrollTo from "gsap/ScrollToPlugin";
 import scrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(scrollTo, scrollTrigger);
+
+export default {
+  methods: {
+    mounted() {
+      gsap.from(".explore", {
+        y: -50, opacity: 0, ease: "power2.out"
+      }, 0)
+    } 
+  },
+}
 </script>
 
 <style scoped>
