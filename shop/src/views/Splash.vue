@@ -1,0 +1,77 @@
+<template>
+  <div class="splash">
+    <div class="scrollDist"></div>
+    <div class="splash">
+      <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+        <mask id="m">
+          <g class="cloud1">
+            <rect fill="#fff" width="100%" height="801" y="799" />
+            <image xlink:href="https://assets.codepen.io/721952/cloud1Mask.jpg" width="1200" height="800"/>
+          </g>
+        </mask>
+        
+        <image class="bg" xlink:href="https://images.unsplash.com/41/LGhxuAbT5Wop4JYcrMpV_IMG_3808.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"  width="1200" height="800" />
+        <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800"/>    
+        <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800"/>
+        <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800"/>
+        <text class="explore" fill="#151515" x="350" y="220">EXPLORE</text>
+        <image class="arrow-down" xlink:href="/arrow-down.svg" width="60" height="60" x="565" y="230" opacity="0.5"/>
+        <!-- <svg class="arrow-down" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#151515" stroke-width="2" width="60" height="60" x="565" y="230" opacity="0.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+        </svg> -->
+        
+        <g mask="url(#m)">
+          <rect fill="#fff" width="100%" height="100%" />      
+          <text class="iceland" x="360" y="220" fill="#151515">ICELAND</text>
+          <g class="go" style="cursor:pointer">
+            <text x="450" y="320" opacity="0.9" fill="#234090"><RouterLink to="/home">LET'S GO</RouterLink></text>
+            <image class="arrow-right" xlink:href="/arrow-right.svg" width="50" height="50" x="720" y="275" opacity="0"/>
+          </g>
+        </g>
+        
+        <rect id="arrowBtn" width="60" height="60" opacity="0" x="565" y="230" style="cursor:pointer"/>
+      </svg>
+    </div>
+  </div>
+</template>
+
+<script>
+import gsap from "gsap";
+import scrollTo from "gsap/ScrollToPlugin";
+import scrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(scrollTo, scrollTrigger);
+</script>
+
+<style scoped>
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background: #151515;
+  text-align: center;
+}
+
+.scrollDist {
+  position: absolute;
+}
+
+text {
+  font-size: 99px;
+  font-family: "Montserrat", sans-serif;
+}
+
+a {
+  font-size: 60px;
+  font-family: "Montserrat", sans-serif;
+  color: #234090;
+  top: 450px;
+  left: 320px;
+}
+
+</style>
