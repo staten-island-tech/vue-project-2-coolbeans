@@ -57,10 +57,9 @@ export default {
 
     gsap.set(".scrollDist", { width: "100%", height: "200%" });
 
-    gsap
-      .timeline({ defaults: { duration: 1 } })
-      .from(".explore", { y: -50, opacity: 0, ease: "power2.out" }, 0)
-      .from(
+    const start = gsap.timeline({ defaults: { duration: 1 } })
+    start.from(".explore", { y: -50, opacity: 0, ease: "power2.out" }, 0)
+    start.from(
         ".arrow-down",
         {
           y: -25,
@@ -70,23 +69,23 @@ export default {
         "-=.4"
       );
 
-    gsap
-      .timeline({
-        scrollTrigger: {
+    gsap.timeline({
+      scrollTrigger: {
           trigger: ".scrollDist",
           start: "top top",
           end: "bottom bottom",
           scrub: 1,
         },
       })
-      .fromTo(".bg", { y: 0 }, { y: -250 }, 0)
-      .fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
-      .fromTo(".cloud2", { y: -150 }, { y: -500 }, 0)
-      .fromTo(".cloud3", { y: -50 }, { y: -575 }, 0)
-      .to(".explore", { opacity: 0.3 }, 0)
-      .to(".arrow-down", { opacity: 0 }, 0)
-      .from(".iceland", { opacity: 0.3 }, 0)
-      .from(".go", { y: -20, opacity: 0 }, "-=.35");
+    
+    gsap.fromTo(".bg", { y: 0 }, { y: -250 }, 0)
+    gsap.fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
+    gsap.fromTo(".cloud2", { y: -150 }, { y: -500 }, 0)
+    gsap.fromTo(".cloud3", { y: -50 }, { y: -575 }, 0)
+    gsap.to(".explore", { opacity: 0.3 }, 0)
+    gsap.to(".arrow-down", { opacity: 0 }, 0)
+    gsap.from(".iceland", { opacity: 0.3 }, 0)
+    gsap.from(".go", { y: -20, opacity: 0 }, "-=.35");
 
     // document.querySelector("#arrowBtn").addEventListener("mouseenter", () => {
     //   gsap.to(".arrow-down", {
