@@ -35,15 +35,15 @@
 <script>
 import gsap from "gsap";
 import scrollTo from "gsap/ScrollToPlugin";
-import scrollTrigger from "gsap/ScrollTrigger";
+import scrollTrigger from "gsap/ScrollTrigger"
 
 gsap.registerPlugin(scrollTo, scrollTrigger);
 
 export default {
   mounted() {
-    window.onbeforeunload = () => {
+  /*   window.onbeforeunload = () => {
       window.scrollTo(0, 0);
-    };
+    }; */
         
     gsap.set(".splash", {
       position: "fixed",
@@ -70,22 +70,23 @@ export default {
       );
 
     gsap.timeline({
-      scrollTrigger: {
+      /* scrollTrigger: {
           trigger: ".scrollDist",
           start: "top top",
           end: "bottom bottom",
           scrub: 1,
-        },
+          
+        }, */
       })
     
     gsap.fromTo(".bg", { y: 0 }, { y: -250 }, 0)
-    gsap.fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
+    /* gsap.fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
     gsap.fromTo(".cloud2", { y: -150 }, { y: -500 }, 0)
     gsap.fromTo(".cloud3", { y: -50 }, { y: -575 }, 0)
     gsap.to(".explore", { opacity: 0.3 }, 0)
     gsap.to(".arrow-down", { opacity: 0 }, 0)
     gsap.from(".iceland", { opacity: 0.3 }, 0)
-    gsap.from(".go", { y: -20, opacity: 0 }, "-=.35");
+    gsap.from(".go", { y: -20, opacity: 0 }, "-=.35"); */
 
     // document.querySelector("#arrowBtn").addEventListener("mouseenter", () => {
     //   gsap.to(".arrow-down", {
