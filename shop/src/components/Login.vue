@@ -104,6 +104,7 @@ export default {
   display: block;
   width: 100%;
   height: 3rem;
+  font-size: 2rem;
 }
 .login {
   padding: 1.5rem;

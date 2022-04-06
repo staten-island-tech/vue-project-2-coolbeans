@@ -121,6 +121,7 @@ export default {
   border-radius: 1rem;
   z-index: 2;
   box-shadow: 5px 6px 10px 3px rgba(0, 0, 0, 0.79);
+  animation: bringup 1s;
   @media screen and (max-width: 992px) {
     width: 90%;
   }
@@ -173,11 +174,11 @@ export default {
   border-right: 0.15em solid orange;
   white-space: nowrap;
   margin: 0 auto;
-  animation: typing 5s steps(40, end) forwards,
-    blink-caret 0.75s step-end infinite;
+  /* animation: typing 5s steps(40, end) forwards,
+    blink-caret 0.75s step-end infinite; */
 }
 
-@keyframes typing {
+/* @keyframes typing {
   from {
     width: 0;
   }
@@ -196,22 +197,40 @@ export default {
   50% {
     border-color: orange;
   }
-}
+} */
 
 .typewriter2 {
-  width: 44rem;
-  font-size: 7rem;
-  color: #ffffff;
-  opacity: 0;
-  /* animation */
-  overflow: hidden;
-  border-right: 0.15em solid orange;
-  white-space: nowrap;
-  margin: 0 auto;
-  animation: typing2 2.5s steps(40, end), blink-caret2 0.75s step-end infinite,
-    comeforward forwards;
-  animation-delay: 2.5s;
+  color: #fff;
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.5em; /* Adjust as needed */
+  animation: typing 1.5s steps(40, end), blink-caret 0.5s step-end infinite;
+  width: fit-content;
 }
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
 @keyframes comeforward {
   from {
     opacity: 1;
@@ -224,11 +243,11 @@ export default {
   from {
     width: 0;
   }
-
   to {
     width: 100%;
   }
 }
+
 @keyframes blink-caret2 {
   from,
   to {
