@@ -1,6 +1,6 @@
 <template>
   <div class="splash">
-    <div class="scrollDist"></div>
+    <div class="scrollAnimation"></div>
     <div class="splash">
       <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
         <mask id="m">
@@ -35,15 +35,39 @@
 <script>
 import gsap from "gsap";
 import scrollTo from "gsap/ScrollToPlugin";
-import scrollTrigger from "gsap/ScrollTrigger"
+import ScrollTrigger from "gsap/ScrollTrigger"
 
-gsap.registerPlugin(scrollTo, scrollTrigger);
+gsap.registerPlugin(scrollTo, ScrollTrigger);
+
+console.log(ScrollTrigger)
 
 export default {
+  methods: {
+    scrollAnimation () {
+      console.log('hello')
+      gsap.timeline({
+        ScrollTrigger: {
+          trigger: ".scrollAnimation",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+      })
+      .fromTo(".bg", { y: 0 }, { y: -250 }, 0)
+      .fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
+      .fromTo(".cloud2", { y: -150 }, { y: -500 }, 0)
+      .fromTo(".cloud3", { y: -50 }, { y: -575 }, 0)
+      .to(".explore", { opacity: 0.3 }, 0)
+      .to(".arrow-down", { opacity: 0 }, 0)
+      .from(".iceland", { opacity: 0.3 }, 0)
+      .from(".go", { y: -20, opacity: 0 }, "-=.35");
+    }
+  },
+
   mounted() {
-  /*   window.onbeforeunload = () => {
+    window.onbeforeunload = () => {
       window.scrollTo(0, 0);
-    }; */
+    };
         
     gsap.set(".splash", {
       position: "fixed",
@@ -55,7 +79,7 @@ export default {
       x: "-50%",
     });
 
-    gsap.set(".scrollDist", { width: "100%", height: "200%" });
+    gsap.set(".scrollAnimation", { width: "100%", height: "200%" });
 
     const start = gsap.timeline({ defaults: { duration: 1 } })
     start.from(".explore", { y: -50, opacity: 0, ease: "power2.out" }, 0)
@@ -69,23 +93,24 @@ export default {
         "-=.4"
       );
 
-    gsap.timeline({
-      // scrollTrigger: {
-      //     trigger: ".scrollDist",
-      //     start: "top top",
-      //     end: "bottom bottom",
-      //     scrub: 1,
-      //   },
-      })
-    
-    gsap.fromTo(".bg", { y: 0 }, { y: -250 }, 0)
-    // gsap.fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
-    // gsap.fromTo(".cloud2", { y: -150 }, { y: -500 }, 0)
-    // gsap.fromTo(".cloud3", { y: -50 }, { y: -575 }, 0)
-    // gsap.to(".explore", { opacity: 0.3 }, 0)
-    // gsap.to(".arrow-down", { opacity: 0 }, 0)
-    // gsap.from(".iceland", { opacity: 0.3 }, 0)
-    // gsap.from(".go", { y: -20, opacity: 0 }, "-=.35");
+    this.scrollAnimation()
+
+    // gsap.timeline({
+    //   ScrollTrigger: {
+    //       trigger: ".scrollAnimation",
+    //       start: "top top",
+    //       end: "bottom bottom",
+    //       scrub: 1,
+    //     },
+    //   })
+    //   .fromTo(".bg", { y: 0 }, { y: -250 }, 0)
+    //   .fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
+    //   .fromTo(".cloud2", { y: -150 }, { y: -500 }, 0)
+    //   .fromTo(".cloud3", { y: -50 }, { y: -575 }, 0)
+    //   .to(".explore", { opacity: 0.3 }, 0)
+    //   .to(".arrow-down", { opacity: 0 }, 0)
+    //   .from(".iceland", { opacity: 0.3 }, 0)
+    //   .from(".go", { y: -20, opacity: 0 }, "-=.35");
 
     // document.querySelector("#arrowBtn").addEventListener("mouseenter", () => {
     //   gsap.to(".arrow-down", {
