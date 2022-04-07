@@ -1,7 +1,10 @@
 <template>
-  <div class="home">
-    <h1 class="title">hello world</h1>
-  </div>
+  <section>
+    <div class="home"></div>
+    <div class="test">
+      <h1 class="title">hello world</h1>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -14,15 +17,21 @@ gsap.registerPlugin(scrollTo, ScrollTrigger);
 export default {
   mounted() {
     gsap.to(".title", {
-      scrollTrigger: ".title",
+      scrollTrigger: ".test",
       y: 200,
       scale: 2,
-    })
-  }
-}
+    });
+  },
+};
 </script>
 
 <style>
+.home {
+  height: 110vh;
+}
+.test {
+  height: 100vh;
+}
 .title {
   text-align: center;
 }
