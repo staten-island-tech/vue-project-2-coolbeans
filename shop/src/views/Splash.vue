@@ -94,11 +94,6 @@ export default {
         "-=.4"
       );
 
-    gsap.to(".explore", {
-      scrollTrigger: ".container",
-      y: 200,
-    })
-
     this.scrollAnimation()
 
     // gsap.timeline({
