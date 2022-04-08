@@ -11,23 +11,28 @@
               class="nature-image"
             />
             <div class="typing">
-              <h4 class="typewriter">LET'S GO ON AN</h4>
-              <h4 class="typewriter2">ADVENTURE</h4>
+              <div class="animation-box">
+                <h4 class="typewriter">LET'S GO ON AN</h4>
+              </div>
+              <div class="animation-box">
+                <h4 class="typewriter2">ADVENTURE</h4>
+              </div>
+
               <div class="askthem">
                 <h5 class="bringthem" v-if="this.signButton">
                   If you're new, then please join us
                 </h5>
                 <h5 class="bringthem" v-else>Welcome Back</h5>
-                <Button
-                  class="changeform"
-                  @button-click="signOpen"
-                  v-if="this.signButton"
-                  >Sign Up</Button
-                >
-                <Button class="changeform" @button-click="closeSign" v-else
-                  >Login</Button
-                >
               </div>
+              <Button
+                class="changeform"
+                @button-click="signOpen"
+                v-if="this.signButton"
+                >Sign Up</Button
+              >
+              <Button class="changeform" @button-click="closeSign" v-else
+                >Login</Button
+              >
             </div>
           </div>
           <div class="form-container">
@@ -159,12 +164,18 @@ export default {
 .typing {
   position: relative;
   z-index: 3;
-  width: 60rem;
   bottom: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.animation-box {
+  width: fit-content;
 }
 
 .typewriter {
-  width: fit-content;
   font-size: 7rem;
   position: relative;
   z-index: 4;
@@ -174,11 +185,11 @@ export default {
   border-right: 0.15em solid orange;
   white-space: nowrap;
   margin: 0 auto;
-  /* animation: typing 5s steps(40, end) forwards,
-    blink-caret 0.75s step-end infinite; */
+  animation: typing 3.5s steps(40, end) forwards,
+    blink-caret 0.75s step-end infinite;
 }
 
-/* @keyframes typing {
+@keyframes typing {
   from {
     width: 0;
   }
@@ -197,7 +208,7 @@ export default {
   50% {
     border-color: orange;
   }
-} */
+}
 
 .typewriter2 {
   color: #fff;
@@ -206,8 +217,8 @@ export default {
   border-right: 0.15em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: 0.5em; /* Adjust as needed */
-  animation: typing 1.5s steps(40, end), blink-caret 0.5s step-end infinite;
+  letter-spacing: 0.3rem; /* Adjust as needed */
+  animation: typing 3.5s steps(40, end), blink-caret 0.5s step-end infinite;
   width: fit-content;
 }
 
@@ -281,8 +292,7 @@ export default {
 
 .changeform {
   width: 10rem;
-  position: relative;
-  left: 25rem;
+
   border-radius: 2rem;
 }
 
