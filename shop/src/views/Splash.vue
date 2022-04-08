@@ -1,28 +1,29 @@
 <template>
   <div class="splash">
-    <div class="scrollAnimation"></div>
-    <div class="splash">
-      <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <div class="scroll"></div>
+    <div class="container">
+      <svg viewBox="0 0 1200 800">
         <mask id="m">
           <g class="cloud1">
             <rect fill="#fff" width="100%" height="801" y="799" />
-            <image xlink:href="https://assets.codepen.io/721952/cloud1Mask.jpg" width="1200" height="800"/>
+            <image href="https://assets.codepen.io/721952/cloud1Mask.jpg" width="1200" height="800"/>
           </g>
         </mask>
         
-        <image class="bg" xlink:href="https://images.unsplash.com/41/LGhxuAbT5Wop4JYcrMpV_IMG_3808.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"  width="1200" height="800" />
-        <image class="cloud2" xlink:href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800"/>    
-        <image class="cloud1" xlink:href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800"/>
-        <image class="cloud3" xlink:href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800"/>
+        <image class="bg" href="https://images.unsplash.com/41/LGhxuAbT5Wop4JYcrMpV_IMG_3808.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"  width="1200" height="800"/>
+        <image class="cloud2" href="https://assets.codepen.io/721952/cloud2.png" width="1200" height="800"/>    
+        <image class="cloud1" href="https://assets.codepen.io/721952/cloud1.png" width="1200" height="800"/>
+        <image class="cloud3" href="https://assets.codepen.io/721952/cloud3.png" width="1200" height="800"/>
+        
         <text class="explore" fill="#151515" x="350" y="220">EXPLORE</text>
-        <image class="arrow-down" xlink:href="/arrow-down.svg" width="60" height="60" x="565" y="230" opacity="0.5"/>
+        <image class="arrow-down" href="/arrow-down.svg" width="60" height="60" x="565" y="230" opacity="0.5"/>
         
         <g mask="url(#m)">
           <rect fill="#fff" width="100%" height="100%" />      
           <text class="iceland" x="360" y="220" fill="#151515">ICELAND</text>
           <g class="go">
             <text x="450" y="320" opacity="0.9" fill="#234090"><RouterLink to="/home">LET'S GO</RouterLink></text>
-            <image class="arrow-right" xlink:href="/arrow-right.svg" width="50" height="50" x="720" y="275" opacity="0"/>
+            <image class="arrow-right" href="/arrow-right.svg" width="50" height="50" x="720" y="275" opacity="0"/>
           </g>
         </g>
         
@@ -43,25 +44,25 @@ console.log(ScrollTrigger)
 
 export default {
   methods: {
-    scrollAnimation () {
-      console.log('hello')
-      gsap.timeline({
-        ScrollTrigger: {
-          trigger: ".scrollAnimation",
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1,
-        },
-      })
-      .fromTo(".bg", { y: 0 }, { y: -250 }, 0)
-      .fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
-      .fromTo(".cloud2", { y: -150 }, { y: -500 }, 0)
-      .fromTo(".cloud3", { y: -50 }, { y: -575 }, 0)
-      .to(".explore", { opacity: 0.3 }, 0)
-      .to(".arrow-down", { opacity: 0 }, 0)
-      .from(".iceland", { opacity: 0.3 }, 0)
-      .from(".go", { y: -20, opacity: 0 }, "-=.35");
-    }
+    // scrollAnimation () {
+    //   console.log('hello')
+    //   gsap.timeline({
+    //     ScrollTrigger: {
+    //       trigger: ".container",
+    //       start: "top top",
+    //       end: "bottom bottom",
+    //       scrub: 1,
+    //     },
+    //   })
+    //   .fromTo(".bg", { y: 0 }, { y: -250 }, 0)
+    //   .fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
+    //   .fromTo(".cloud2", { y: -150 }, { y: -500 }, 0)
+    //   .fromTo(".cloud3", { y: -50 }, { y: -575 }, 0)
+    //   .to(".explore", { opacity: 0.3 }, 0)
+    //   .to(".arrow-down", { opacity: 0 }, 0)
+    //   .from(".iceland", { opacity: 0.3 }, 0)
+    //   .from(".go", { y: -20, opacity: 0 }, "-=.35");
+    // }
   },
 
   mounted() {
@@ -69,21 +70,21 @@ export default {
       window.scrollTo(0, 0);
     };
         
-    gsap.set(".splash", {
-      position: "fixed",
-      background: "#fff",
-      width: "100%",
-      height: "100%",
-      top: 0,
-      left: "50%",
-      x: "-50%",
-    });
+    // gsap.set(".container", {
+    //   position: "fixed",
+    //   background: "#fff",
+    //   width: "100%",
+    //   height: "100%",
+    //   top: 0,
+    //   left: "50%",
+    //   x: "-50%",
+    // });
 
-    gsap.set(".scrollAnimation", { width: "100%", height: "200%" });
+    // gsap.set(".scroll", { width: "100%", height: "200%" });
 
-    const start = gsap.timeline({ defaults: { duration: 1 } })
-    start.from(".explore", { y: -50, opacity: 0, ease: "power2.out" }, 0)
-    start.from(
+    gsap.timeline({ defaults: { duration: 1 } })
+    .from(".explore", { y: -50, opacity: 0, ease: "power2.out" }, 0)
+    .from(
         ".arrow-down",
         {
           y: -25,
@@ -93,11 +94,16 @@ export default {
         "-=.4"
       );
 
+    gsap.to(".explore", {
+      scrollTrigger: ".container",
+      y: 200,
+    })
+
     this.scrollAnimation()
 
     // gsap.timeline({
     //   ScrollTrigger: {
-    //       trigger: ".scrollAnimation",
+    //       trigger: ".container",
     //       start: "top top",
     //       end: "bottom bottom",
     //       scrub: 1,
@@ -172,8 +178,17 @@ html {
   text-align: center;
 }
 
-.scrollDist {
-  position: absolute;
+.scroll {
+  width: 100%;
+  height: 200vh;
+}
+
+.container {
+  position: fixed;
+  background-color: #fff;
+  width: 100%;
+  height: 100vh;
+  top: 0;
 }
 
 text {

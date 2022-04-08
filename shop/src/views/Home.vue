@@ -20,6 +20,7 @@ export default {
       scrollTrigger: ".test",
       y: 200,
       scale: 2,
+      delay: 0.5,
     });
   },
 };
