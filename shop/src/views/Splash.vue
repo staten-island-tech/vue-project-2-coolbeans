@@ -44,25 +44,25 @@ console.log(ScrollTrigger)
 
 export default {
   methods: {
-    // scrollAnimation () {
-    //   console.log('hello')
-    //   gsap.timeline({
-    //     ScrollTrigger: {
-    //       trigger: ".container",
-    //       start: "top top",
-    //       end: "bottom bottom",
-    //       scrub: 1,
-    //     },
-    //   })
-    //   .fromTo(".bg", { y: 0 }, { y: -250 }, 0)
-    //   .fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
-    //   .fromTo(".cloud2", { y: -150 }, { y: -500 }, 0)
-    //   .fromTo(".cloud3", { y: -50 }, { y: -575 }, 0)
-    //   .to(".explore", { opacity: 0.3 }, 0)
-    //   .to(".arrow-down", { opacity: 0 }, 0)
-    //   .from(".iceland", { opacity: 0.3 }, 0)
-    //   .from(".go", { y: -20, opacity: 0 }, "-=.35");
-    // }
+    scrollAnimation () {
+      console.log('hello')
+      gsap.timeline({
+        ScrollTrigger: {
+          trigger: ".container",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+      })
+      .fromTo(".bg", { y: 0 }, { y: -250 }, 0)
+      .fromTo(".cloud1", { y: 100 }, { y: -800 }, 0)
+      .fromTo(".cloud2", { y: -150 }, { y: -500 }, 0)
+      .fromTo(".cloud3", { y: -50 }, { y: -575 }, 0)
+      .to(".explore", { opacity: 0.3 }, 0)
+      .to(".arrow-down", { opacity: 0 }, 0)
+      .from(".iceland", { opacity: 0.3 }, 0)
+      .from(".go", { y: -20, opacity: 0 }, "-=.35");
+    }
   },
 
   mounted() {
