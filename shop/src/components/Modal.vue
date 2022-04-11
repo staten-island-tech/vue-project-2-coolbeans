@@ -15,7 +15,7 @@
                 <h4 class="typewriter">LET'S GO ON AN</h4>
               </div>
               <div class="animation-box">
-                <h4 class="typewriter2">ADVENTURE</h4>
+                <h4 class="typewriter2" id="lol">ADVENTURE</h4>
               </div>
 
               <div class="askthem">
@@ -183,10 +183,11 @@ export default {
   /* animation */
   overflow: hidden;
   border-right: 0.15em solid orange;
+  letter-spacing: none;
   white-space: nowrap;
   margin: 0 auto;
-  animation: typing 3.5s steps(40, end) forwards,
-    blink-caret 0.75s step-end infinite;
+  animation: typing 6s steps(40, end) forwards,
+    blink-caret 0.65s step-end infinite;
 }
 
 @keyframes typing {
@@ -212,26 +213,24 @@ export default {
 
 .typewriter2 {
   color: #fff;
-  font-family: monospace;
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 0.15em solid orange; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: 0.3rem; /* Adjust as needed */
-  animation: typing 3.5s steps(40, end), blink-caret 0.5s step-end infinite;
-  width: fit-content;
+  overflow: hidden;
+  opacity: 0;
+  border-right: 0.15em solid orange;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: 0.05em;
+  animation: typing2 3.5s steps(40, end), blink-caret 0.5s step-end infinite;
 }
 
-@keyframes typing {
+@keyframes typing2 {
   from {
     width: 0;
   }
-  to {
+  100% {
     width: 100%;
   }
 }
 
-/* The typewriter cursor effect */
 @keyframes blink-caret {
   from,
   to {
@@ -242,30 +241,22 @@ export default {
   }
 }
 
-@keyframes comeforward {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes typing2 {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
+#lol {
+  opacity: 0;
+  animation: fadein 12s forward;
 }
 
-@keyframes blink-caret2 {
-  from,
-  to {
-    border-color: transparent;
+@keyframes fadein {
+  from {
+    opacity: 0;
   }
+
   50% {
-    border-color: orange;
+    opacity: 1;
+  }
+
+  to {
+    opacity: 1;
   }
 }
 

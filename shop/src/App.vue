@@ -6,7 +6,11 @@
           <router-link to="/" class="logo">HOME</router-link>
         </template>
         <template v-slot:page>
-          <RouterLink to="/about" class="page">ABOUT</RouterLink></template
+          <RouterLink to="/about" class="page">ABOUT</RouterLink>
+          <RouterLink to="/places" class="page">PLACE</RouterLink>
+          <RouterLink to="/favorite" class="page"
+            >FAVORTIVE</RouterLink
+          ></template
         >
       </Nav>
     </div>
@@ -63,6 +67,7 @@ export default {
 }
 .page {
   display: inline;
+  padding: 0.5rem;
   color: var(--dark-white);
   text-decoration: none;
 }

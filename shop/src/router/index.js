@@ -15,6 +15,18 @@ const router = createRouter({
       component: /*webpackChunkName:"About" */ () =>
         import("../views/About.vue"),
     },
+    {
+      path: "/places",
+      name: "places",
+      component: /*webpackChunkName:"Places" */ () =>
+        import("../views/places.vue"),
+    },
+    {
+      path: "/favorite",
+      name: "favorite",
+      component: /*webpackChunkName:"favorite" */ () =>
+        import("../views/favor.vue"),
+    },
   ],
 });
 

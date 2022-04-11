@@ -15,6 +15,7 @@ export default createStore({
     isHidden: false,
     isSignup: false,
     authIsReady: false,
+    cart: [],
   },
   mutations: {
     setUser(state, payload) {
@@ -35,6 +36,15 @@ export default createStore({
     },
     closeSign(state) {
       state.isSignup = false;
+    },
+    add(state, payload) {
+      state.cart.push(payload);
+    },
+    remove(state, payload) {
+      state.cart.splice(payload, 1);
+    },
+    removeAll(state) {
+      state.cart = [];
     },
   },
   actions: {
@@ -78,6 +88,15 @@ export default createStore({
     },
     closeSign({ commit }) {
       commit("closeSign");
+    },
+    add({ commit }) {
+      commit("add");
+    },
+    remove({ commit }) {
+      commit("remove");
+    },
+    removeAll({ commit }) {
+      commit("removeAll");
     },
   },
   getters: {},
