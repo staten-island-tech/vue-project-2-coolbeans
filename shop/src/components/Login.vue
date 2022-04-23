@@ -1,32 +1,34 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="form">
-    <h3 class="logtext">LOGIN</h3>
-    <iconClose class="modal__close" @click="closeModal"></iconClose>
-    <div class="container">
-      <div class="econtainer">
-        <label for="email" class="email">Email</label>
-        <input
-          type="email"
-          name="email"
-          v-model="email"
-          class="input"
-          required
-        />
-      </div>
-      <div class="pcontainer">
-        <label for="email" class="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          v-model="password"
-          class="input"
-          required
-        />
-      </div>
-      <div class="error" v-if="error">{{ error }}</div>
-      <div class="login"><Button class="button">LOGIN</Button></div>
+    <div class="login">
+      <form @submit.prevent="handleSubmit">
+        <h3>Welcome back,</h3>
+        <div class="email">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            v-model="email"
+            required
+          />
+        </div>
+        <div class="pass">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            v-model="password"
+            required
+          />
+        </div>
+        <div class="error" v-if="error">{{ error }}</div>
+        <div class="btn">
+          <Button>Sign In</Button>
+          <span></span><p>or</p><span></span>
+          <router-link to="/signup"><Button>Sign Up</Button></router-link>
+          
+        </div>
+      </form>
     </div>
-  </form>
 </template>
 
 <script>
@@ -70,48 +72,78 @@ export default {
 </script>
 
 <style scoped>
-.form {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.login {
   width: 40rem;
+  height: 45rem;
+  padding: 2rem;
+  border-radius: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }
 
-.modal__close {
-  width: 1rem;
-  cursor: pointer;
-  position: absolute;
-  right: 1.5rem;
-  top: 1.25rem;
-}
-
-.logtext {
-  width: fit-content;
-  margin: 0 auto;
-  padding-top: 1rem;
-}
-.container {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.econtainer,
-.pcontainer {
+h3 {
+  font-family: 'Open Sans', sans-serif;
+  margin: auto;
   padding: 1.5rem;
 }
+
 .email,
-.password {
-  font-size: 2rem;
+.pass {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-.input {
+
+.pass {
+  padding-bottom: 2.5rem;
+}
+
+.btn {
+  padding-top: 1.5rem;
+}
+
+label {
+  font-size: 1.2rem;
+  font-family: 'Open Sans', sans-serif;
+  text-transform: uppercase;
+}
+
+input {
   display: block;
   width: 100%;
-  height: 3rem;
-  font-size: 2rem;
+  height: 4rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  border-bottom: 0.1rem solid rgba(255,255,255,0.4);
 }
-.login {
-  padding: 1.5rem;
-  width: 100%;
-  font-size: 3rem;
+
+p {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
 }
-.button {
-  width: 100%;
+
+span {
+  background-color: #fff;
+  width: 15rem;
+  height: 0.2rem;
+}
+
+.error {
+  position: absolute;
+  padding-left: 1.5rem;
+  color: red;
 }
 </style>

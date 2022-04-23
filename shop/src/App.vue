@@ -1,26 +1,24 @@
 <template>
-  <div id="home">
+  <div class="home">
     <div class="nav">
       <Nav>
         <template v-slot:logo>
-          <router-link to="/" class="logo">HOME</router-link>
+          <router-link to="/home" class="logo"><HomeBtn/></router-link>
         </template>
         <template v-slot:page>
-          <RouterLink to="/about" class="page">ABOUT</RouterLink>
-          <RouterLink to="/places" class="page">PLACE</RouterLink>
-          <RouterLink to="/favorite" class="page"
-            >FAVORTIVE</RouterLink
-          ></template
-        >
-      </Nav>
+          <RouterLink to="/favorites" class="page"><FavBtn/></RouterLink>
+          <RouterLink to="/account" class="page"><UserBtn/></RouterLink>
+          <RouterLink to="/login" class="page"><LoginBtn/></RouterLink>
+          </template>
+        </Nav>
     </div>
     <div class="container">
-      <div class="form-container">
+      <!-- <div class="form-container">
         <Modal>
-          <template v-slot:form> <logIn /> </template>
-          <template v-slot:form2> <signUp /></template>
+          <template v-slot:form> <logIn/> </template>
+          <template v-slot:form2> <signUp/> </template>
         </Modal>
-      </div>
+      </div> -->
       <RouterView></RouterView>
     </div>
   </div>
@@ -33,6 +31,10 @@ import Button from "./components/Button.vue";
 import Modal from "./components/Modal.vue";
 import logIn from "./components/Login.vue";
 import signUp from "./components/Signup.vue";
+import HomeBtn from "./components/icons/HomeBtn.vue"
+import UserBtn from "./components/icons/UserBtn.vue"
+import LoginBtn from "./components/icons/LoginBtn.vue"
+import FavBtn from "./components/icons/FavBtn.vue"
 
 export default {
   components: {
@@ -41,6 +43,10 @@ export default {
     Modal,
     logIn,
     signUp,
+    HomeBtn,
+    UserBtn,
+    LoginBtn,
+    FavBtn
   },
 
   data() {
@@ -62,20 +68,13 @@ export default {
 
 <style>
 .logo {
-  color: var(--dark-white);
-  text-decoration: none;
+  color: #fff;
 }
 .page {
-  display: inline;
-  padding: 0.5rem;
-  color: var(--dark-white);
-  text-decoration: none;
+  margin-left: 7rem;
+  color: #fff;
 }
 /* nav css */
 
-.signin {
-  font-size: 2rem;
-  border-radius: 5rem;
-}
 /* modal css*/
 </style>

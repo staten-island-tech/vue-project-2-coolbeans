@@ -1,6 +1,8 @@
 <template>
-  <div class="home">
-    <Card
+  <div class="user">
+    <div class="mask"></div>
+    <h2>Hello, User</h2>
+    <!-- <Card
       v-for="(vanguard, index) in vanguards"
       :key="index"
       :name="vanguard.name"
@@ -9,7 +11,7 @@
       class="card"
     >
       <Button @button-click="addCard(vanguard)">Add</Button>
-    </Card>
+    </Card> -->
   </div>
 </template>
 
@@ -87,18 +89,28 @@ export default {
 </script>
 
 <style scoped>
-.home {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  row-gap: 1.25rem;
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
-.card {
-  flex-direction: column;
+.user {
+  height: 100vh;
+  background: url(https://images.unsplash.com/photo-1528837516156-0a7225a43641?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1633&q=80);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 0;
+}
+
+.mask {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+h2 {
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  z-index: 2;
 }
 </style>

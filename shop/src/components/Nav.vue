@@ -12,7 +12,7 @@
       </ul>
     </nav>
 
-    <div class="button">
+    <!-- <div class="button">
       <Button
         class="signin"
         type="button"
@@ -28,7 +28,7 @@
         >LOGOUT
       </Button>
     </div>
-    <div class="user-name" v-if="user">{{ user.email }}</div>
+    <div class="user-name" v-if="user">{{ user.email }}</div> -->
   </div>
 </template>
 
@@ -79,30 +79,14 @@ export default {
 
 <style scoped>
 .views {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  justify-content: flex-end;
-  padding: 1rem 1%;
-  align-items: baseline;
-  background-color: var(--gray-black);
-}
-.logo {
-  font-size: 6rem;
-  padding: 1rem;
-  margin-right: auto;
-  padding-top: 0;
-}
-
-.pages {
-  font-size: 3rem;
-  padding: 1rem;
-  margin: auto;
-  margin-right: 0;
-  list-style-type: none;
-}
-
-.user-name {
-  color: white;
-  font-size: 2rem;
-  margin-left: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3rem 7rem;
+  z-index: 2;
 }
 </style>

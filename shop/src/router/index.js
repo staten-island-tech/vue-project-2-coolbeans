@@ -5,27 +5,38 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/",
+      path: "/home",
       name: "home",
       component: Home,
     },
     {
-      path: "/about",
-      name: "about",
-      component: /*webpackChunkName:"About" */ () =>
-        import("../views/About.vue"),
+      path: "/",
+      name: "splash",
+      component: /*webpackChunkName:"Splash" */ () =>
+        import("../views/Splash.vue"),
     },
     {
-      path: "/places",
-      name: "places",
-      component: /*webpackChunkName:"Places" */ () =>
-        import("../views/places.vue"),
+      path: "/login",
+      name: "login",
+      component: /*webpackChunkName:"Login" */ () =>
+        import("../views/Login.vue"),
     },
     {
-      path: "/favorite",
-      name: "favorite",
-      component: /*webpackChunkName:"favorite" */ () =>
-        import("../views/favor.vue"),
+      path: "/signup",
+      name: "signup",
+      component: /*webpackChunkName:"Signup" */ () =>
+        import("../views/Signup.vue"),
+    },
+    {
+      path: "/account",
+      name: "account",
+      component: /*webpackChunkName:"Account" */ () =>
+        import("../views/Account.vue"),
+    },
+    {
+      path: "/favorites",
+      name: "favorites",
+      component: /*webpackChunkName:"Fav" */ () => import("../views/Fav.vue"),
     },
   ],
 });
