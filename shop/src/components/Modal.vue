@@ -61,11 +61,7 @@ export default {
       signButton: true,
     };
   },
-
   methods: {
-    closeModal: function () {
-      this.$store.dispatch("closeModal");
-    },
     signOpen: function () {
       this.$store.dispatch("signOpen");
       if (this.isSignup === false) {
