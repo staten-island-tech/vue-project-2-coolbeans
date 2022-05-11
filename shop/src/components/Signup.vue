@@ -3,6 +3,26 @@
     <h3 class="logtext">SIGN UP</h3>
     <iconClose class="modal__close" @click="closeModal"></iconClose>
     <div class="container">
+      <div class="ncontainer">
+        <label for="email" class="firstname">First Name</label>
+        <input
+          type="username"
+          name="username"
+          v-model="username"
+          class="input"
+          required
+        />
+      </div>
+      <div class="ncontainer">
+        <label for="email" class="lastname">Last Name</label>
+        <input
+          type="username"
+          name="username"
+          v-model="username"
+          class="input"
+          required
+        />
+      </div>
       <div class="econtainer">
         <label for="email" class="email">Email</label>
         <input
@@ -39,6 +59,8 @@ export default {
   setup() {
     const email = ref("");
     const password = ref("");
+    const firstName = ref("");
+    const lastName = ref("");
     const error = ref(null);
 
     const store = useStore();
@@ -56,7 +78,7 @@ export default {
         error.value = err.message;
       }
     };
-    return { handleSubmit, email, password, error };
+    return { handleSubmit, email, password, error, firstName, lastName };
   },
 
   components: {
@@ -97,11 +119,14 @@ export default {
 }
 
 .econtainer,
-.pcontainer {
+.pcontainer,
+.ncontainer {
   padding: 1.5rem;
 }
 .email,
-.password {
+.password,
+.lastname,
+.firstname {
   font-size: 2rem;
 }
 .input {
