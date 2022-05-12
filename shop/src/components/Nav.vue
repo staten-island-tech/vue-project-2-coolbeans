@@ -105,4 +105,9 @@ export default {
   font-size: 2rem;
   margin-left: 1rem;
 }
+
+.plus {
+  margin-left: 1rem;
+  height: 2rem;
+}
 </style>

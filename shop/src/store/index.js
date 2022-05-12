@@ -1,4 +1,4 @@
-import { createStore, storeKey } from "vuex";
+import { createStore } from "vuex";
 
 //firebase import
 import { auth } from "../firebase/config";
@@ -9,13 +9,17 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-export default createStore({
+const store = createStore({
   state: {
     user: null,
     isHidden: false,
     isSignup: false,
     authIsReady: false,
-    cart: [],
+    place: [
+      {
+        cities: Reykjavík,
+      },
+    ],
   },
   mutations: {
     setUser(state, payload) {
@@ -36,15 +40,6 @@ export default createStore({
     },
     closeSign(state) {
       state.isSignup = false;
-    },
-    add(state, payload) {
-      state.cart.push(payload);
-    },
-    remove(state, payload) {
-      state.cart.splice(payload, 1);
-    },
-    removeAll(state) {
-      state.cart = [];
     },
   },
   actions: {
@@ -89,15 +84,6 @@ export default createStore({
     closeSign({ commit }) {
       commit("closeSign");
     },
-    add({ commit }) {
-      commit("add");
-    },
-    remove({ commit }) {
-      commit("remove");
-    },
-    removeAll({ commit }) {
-      commit("removeAll");
-    },
   },
   getters: {},
   modules: {},
@@ -107,3 +93,4 @@ const unsub = onAuthStateChanged(auth, (user) => {
   store.commit("setUser", user);
   unsub();
 });
+export default store;

@@ -19,13 +19,19 @@ const router = createRouter({
       path: "/places",
       name: "places",
       component: /*webpackChunkName:"Places" */ () =>
-        import("../views/places.vue"),
+        import("../views/Places.vue"),
     },
     {
       path: "/favorite",
       name: "favorite",
       component: /*webpackChunkName:"favorite" */ () =>
-        import("../views/favor.vue"),
+        import("../views/Favor.vue"),
+    },
+    {
+      path: "/addpost",
+      name: "addpost",
+      component: /*webpackChunkName:"addpost" */ () =>
+        import("../views/Addpost.vue"),
     },
   ],
 });

@@ -8,10 +8,9 @@
         <template v-slot:page>
           <RouterLink to="/about" class="page">ABOUT</RouterLink>
           <RouterLink to="/places" class="page">PLACE</RouterLink>
-          <RouterLink to="/favorite" class="page"
-            >FAVORTIVE</RouterLink
-          ></template
-        >
+          <RouterLink to="/favorite" class="page">FAVORTIVE</RouterLink>
+          <Router-Link to="/addpost" class="page"> ADD POST</Router-Link>
+        </template>
       </Nav>
     </div>
     <div class="container">
