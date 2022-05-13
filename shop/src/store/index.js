@@ -17,7 +17,7 @@ const store = createStore({
     authIsReady: false,
     place: [
       {
-        cities: Reykjavík,
+        cities: "Reykjavík",
       },
     ],
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="parent"></div>
+  <div class="parent"><h1>gyuikrdyctfhg</h1></div>
 </template>
 
 <script>

@@ -9,7 +9,9 @@
           <RouterLink to="/about" class="page">ABOUT</RouterLink>
           <RouterLink to="/places" class="page">PLACE</RouterLink>
           <RouterLink to="/favorite" class="page">FAVORTIVE</RouterLink>
-          <Router-Link to="/addpost" class="page"> ADD POST</Router-Link>
+          <Router-Link to="/addpost" class="page" v-if="user">
+            ADD POST</Router-Link
+          >
         </template>
       </Nav>
     </div>
@@ -32,8 +34,17 @@ import Button from "./components/Button.vue";
 import Modal from "./components/Modal.vue";
 import logIn from "./components/Login.vue";
 import signUp from "./components/Signup.vue";
+import { computed } from "@vue/runtime-core";
+import { useStore } from "vuex";
 
 export default {
+  setup() {
+    const store = useStore();
+    return {
+      user: computed(() => store.state.user),
+      authIsReady: computed(() => store.state.authIsReady),
+    };
+  },
   components: {
     Nav,
     Button,
