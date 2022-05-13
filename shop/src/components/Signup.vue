@@ -10,7 +10,6 @@
           name="username"
           v-model="username"
           class="input"
-          required
         />
       </div>
       <div class="ncontainer">
@@ -20,7 +19,6 @@
           name="username"
           v-model="username"
           class="input"
-          required
         />
       </div>
       <div class="econtainer">

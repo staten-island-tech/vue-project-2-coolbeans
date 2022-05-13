@@ -17,7 +17,22 @@ const store = createStore({
     authIsReady: false,
     place: [
       {
-        cities: "Reykjavík",
+        name: "Reykjavík",
+        img: "https://img1.10bestmedia.com/Images/Photos/384645/Over-view_54_990x660.jpg",
+        description:
+          "A very cool wonderfyl place where people can have a lot of fun. You can.....",
+      },
+      {
+        name: "Akureyri",
+        img: "https://www.icelandreview.com/wp-content/uploads/2020/03/akureyri_vetur_droni004.jpg",
+        description:
+          "A very cool wonderfyl place where people can have a lot of fun. You can.....",
+      },
+      {
+        name: "Vík í Mýrdal",
+        img: "https://adventures.com/media/10846/s-iceland-town-summer-vik-i-myrdal.jpg",
+        description:
+          "A very cool wonderfyl place where people can have a lot of fun. You can.....",
       },
     ],
   },

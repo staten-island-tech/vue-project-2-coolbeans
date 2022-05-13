@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 class="hometext">Home</h1>
+    <h1 class="hometext">Where</h1>
   </div>
 </template>
 

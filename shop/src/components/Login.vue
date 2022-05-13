@@ -43,6 +43,7 @@ export default {
 
     const store = useStore();
     const router = useRouter();
+
     const handleSubmit = async () => {
       try {
         await store.dispatch("login", {
