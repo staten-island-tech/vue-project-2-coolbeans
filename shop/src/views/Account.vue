@@ -12,17 +12,17 @@
     >
       <Button @button-click="addCard(vanguard)">Add</Button>
     </Card> -->
-    <div class="create">
-      <router-link to="/create">
-        <p>Create Post</p>
-      </router-link>
-    </div>
+    <router-link to="/create">
+      <div class="create">
+        <p>Create</p>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Card from "../components/card.vue";
+// import Card from "../components/Card.vue";
 import Button from "../components/Button.vue";
 
 export default {
@@ -121,11 +121,11 @@ h2 {
 
 .create {
   position:fixed;
-  background-color:#000;
+  background-color:blue;
   bottom: 5rem;
   right: 5rem;
-  length: 10rem;
-  width: 4rem;
+  height:4rem;
+  width: 15rem;
   display: flex;
   justify-content: center;
   align-items: center;

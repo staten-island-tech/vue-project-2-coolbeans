@@ -68,11 +68,11 @@ export default {
 
 <style>
 .logo {
-  color: #fff;
+  color: #151515;
 }
 .page {
-  margin-left: 7rem;
-  color: #fff;
+  margin-left: 5rem;
+  color: #151515;
 }
 /* nav css */
 

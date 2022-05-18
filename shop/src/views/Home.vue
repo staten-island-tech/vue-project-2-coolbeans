@@ -1,12 +1,14 @@
 <template>
   <div class="home">
-    <div class="mask">
+    <div class="grid">
+      <Card/>
+      <Card/>
     </div>
-    <h2>Home</h2>
   </div>
 </template>
 
 <script>
+import Card from "../components/Card.vue"
 import { ref } from "vue";
 import { useStore } from "vuex";
 export default {
@@ -30,7 +32,9 @@ export default {
 
     return { blogs };
   },
-  components: {},
+  components: {
+    Card
+  },
 };
 </script>
 
@@ -38,25 +42,43 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .home {
-  height: 100vh;
-  background: url(https://images.unsplash.com/photo-1528837516156-0a7225a43641?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1633&q=80);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 0;
-}
-
-.mask {
-  position: absolute;
-  height: 100vh;
+  position: relative;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1;
+  height: 100%;
+  padding: 1rem 0;
+  padding-top: 5rem;
+  background: #f5f4f4;
+  font-family: 'Open Sans', sans-serif;
+  
+  /* @supports(display: grid) {
+    display: block;
+  } */
 }
 
-h2 {
-  color: #fff;
-  font-family: 'Open Sans', sans-serif;
-  z-index: 2;
+/* .section {
+  display: block;
+  padding: 2rem;
+  
+  @media screen and (min-width: 768px) {
+    padding: 4rem;
+  }
+  
+  @supports(display: grid) {
+    display: block;
+  }
+} */
+
+.grid {
+  width: 90vw;
+  display: grid;
+  grid-gap: 1rem;
+  /* grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr)); */
+  grid-template-columns: 3;
+  grid-auto-rows: auto;
+  grid-auto-flow: row dense;
 }
+
 </style>
