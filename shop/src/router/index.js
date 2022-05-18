@@ -38,6 +38,12 @@ const router = createRouter({
       name: "favorites",
       component: /*webpackChunkName:"Fav" */ () => import("../views/Fav.vue"),
     },
+    {
+      path: "/create",
+      name: "create",
+      component: /*webpackChunkName:"Create" */ () =>
+        import("../views/Create.vue"),
+    },
   ],
 });
 

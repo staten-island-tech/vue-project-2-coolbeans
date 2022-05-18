@@ -33,8 +33,8 @@
 </template>
 
 <script>
-import Button from "./Button.vue";
-import Form from "./Modal.vue";
+import Button from "../components/Button.vue";
+import Form from "../components/Modal.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 export default {

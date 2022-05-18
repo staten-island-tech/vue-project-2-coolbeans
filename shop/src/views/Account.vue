@@ -12,6 +12,11 @@
     >
       <Button @button-click="addCard(vanguard)">Add</Button>
     </Card> -->
+    <div class="create">
+      <router-link to="/create">
+        <p>Create Post</p>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -112,5 +117,24 @@ h2 {
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   z-index: 2;
+}
+
+.create {
+  position:fixed;
+  background-color:#000;
+  bottom: 5rem;
+  right: 5rem;
+  length: 10rem;
+  width: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+p {
+  font-size: 2rem; 
+  color: #fff;
+  text-decoration: none;
 }
 </style>

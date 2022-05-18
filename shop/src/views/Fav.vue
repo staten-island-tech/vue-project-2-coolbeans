@@ -22,7 +22,7 @@
 
 <script>
 import listitem from "../components/listitem.vue";
-import Button from "../components/button.vue";
+import Button from "../components/Button.vue";
 
 export default {
   components: {
