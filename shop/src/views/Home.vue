@@ -1,8 +1,16 @@
 <template>
   <div class="home">
+    <h2>EXPLORE</h2>
     <div class="grid">
       <Card/>
       <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+      <Card/>
+      
     </div>
   </div>
 </template>
@@ -13,24 +21,6 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 export default {
   setup() {
-    const blogs = [
-      {
-        title: "why tea is better than coffe.",
-        id: 1,
-      },
-      {
-        title: "why running is fun.",
-        id: 2,
-      },
-      {
-        title: "why is school hard?",
-        id: 3,
-      },
-    ];
-
-    const store = useStore();
-
-    return { blogs };
   },
   components: {
     Card
@@ -43,15 +33,15 @@ export default {
 
 .home {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 1rem 0;
-  padding-top: 5rem;
-  background: #f5f4f4;
-  font-family: 'Open Sans', sans-serif;
+  padding: 0 4rem;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
   
   /* @supports(display: grid) {
     display: block;
@@ -72,13 +62,18 @@ export default {
 } */
 
 .grid {
-  width: 90vw;
+  width: 100%;
   display: grid;
-  grid-gap: 1rem;
+  grid-gap: 1.5rem;
   /* grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr)); */
-  grid-template-columns: 3;
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   grid-auto-flow: row dense;
 }
 
+h2 {
+  color: #151515;
+  padding-bottom: 1rem;
+  letter-spacing: 0.1rem;
+}
 </style>

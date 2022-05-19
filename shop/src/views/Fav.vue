@@ -1,7 +1,12 @@
 <template>
   <div class="fav">
-    <div class="mask"></div>
-    <h2>Favorites</h2>
+    <h2>FAVORITES</h2>
+    <div class="grid">
+      <Card/>
+      <Card/>
+      <Card/>
+    
+    </div>
     <!-- <listitem
       class="listitem"
       v-for="(cart, index) in carts"
@@ -21,12 +26,12 @@
 </template>
 
 <script>
-import listitem from "../components/listitem.vue";
+import Card from "../components/Card.vue"
 import Button from "../components/Button.vue";
 
 export default {
   components: {
-    listitem,
+    Card,
     Button,
   },
   computed: {
@@ -59,25 +64,31 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .fav {
-  height: 100vh;
-  background: url(https://images.unsplash.com/photo-1528837516156-0a7225a43641?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1633&q=80);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 4rem;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
 }
 
-.mask {
-  position: absolute;
-  height: 100vh;
+.grid {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1;
+  display: grid;
+  grid-gap: 1.5rem;
+  /* grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr)); */
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-auto-flow: row dense;
 }
 
 h2 {
-  color: #fff;
-  font-family: 'Open Sans', sans-serif;
-  z-index: 2;
+  color: #151515;
+  padding-bottom:1rem;
+  letter-spacing: 0.1rem;
 }
 </style>

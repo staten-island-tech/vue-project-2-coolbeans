@@ -75,19 +75,18 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .login {
-  width: 40rem;
-  height: 45rem;
-  padding: 2rem;
-  border-radius: 2.5rem;
+  width: 35rem;
+  height: auto;
+  /* padding: 2rem; */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #151515;
+  overflow-y: none;
 }
 
 h3 {
-  font-family: 'Open Sans', sans-serif;
-  margin: auto;
+  text-align: center;
   padding: 1.5rem;
 }
 
@@ -109,7 +108,7 @@ h3 {
 }
 
 label {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-family: 'Open Sans', sans-serif;
   text-transform: uppercase;
 }
@@ -117,21 +116,21 @@ label {
 input {
   display: block;
   width: 100%;
-  height: 4rem;
-  font-size: 1.5rem;
+  height: 3rem;
+  font-size: 1rem;
   padding: 1rem;
   background: none;
   border: none;
   outline: none;
-  color: #fff;
+  color: #151515;
   font-family: 'Open Sans', sans-serif;
-  border-bottom: 0.1rem solid rgba(255,255,255,0.4);
+  border-bottom: 0.1rem solid rgba(0,0,0,0.7);
 }
 
 p {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-transform: uppercase;
 }
 

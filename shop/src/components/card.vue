@@ -38,7 +38,7 @@ export default {
 
 <style scoped>
 .card {
-  width: 25rem;
+  width: auto;
   height: auto;
   position: relative;
   display: flex;
@@ -52,11 +52,8 @@ export default {
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }
-.card:hover {
-  /* opacity: 0.8; */
-}
 .image {
-  width: 25rem;
+  width: auto;
   height: auto;
   object-fit: cover;
   z-index: 1;
@@ -65,7 +62,7 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.35);
   z-index: 2;
   display: none;
   transition: 0.3s;
@@ -81,7 +78,7 @@ export default {
   left: 1rem;
 }
 .name {
-  padding-left: 0.2rem;
+  padding-left: 0.3rem;
   color: #fff;
 }
 .author {
@@ -97,7 +94,7 @@ export default {
   right: 1rem;
 }
 
-.image:hover ~ .m {
+.card:hover .m {
   /* opacity: 1; */
   display: block;
 }

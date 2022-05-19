@@ -14,15 +14,15 @@ export default {};
 .button {
   background-color: rgba(0, 136, 169, 1);
   color: #fff;
-  width: 30rem;
-  height: 4rem;
+  width: 25rem;
+  height: 3rem;
   margin: 1.5rem;
   border: none;
   border-radius: 2rem;
-  font-size: 1.6rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
   font-family: 'Open Sans', sans-serif;
-  transition: all 0.3s ease 0s;
+  transition: 0.3s ease 0s;
 }
 
 .button:hover {
