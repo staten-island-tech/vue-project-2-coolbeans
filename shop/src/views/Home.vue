@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h2>EXPLORE</h2>
+    <!-- <h2>EXPLORE</h2> -->
     <div class="grid">
       <Card/>
       <Card/>
@@ -40,7 +40,7 @@ export default {
   width: 100%;
   height: 100%;
   padding: 0 4rem;
-  padding-top: 4rem;
+  padding-top: 6rem;
   padding-bottom: 2rem;
   
   /* @supports(display: grid) {

@@ -12,11 +12,11 @@ export default {};
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .button {
-  background-color: rgba(0, 136, 169, 1);
+  background-color: rgba(150, 150, 150, 1);
   color: #fff;
-  width: 25rem;
+  width: 24rem;
   height: 3rem;
-  margin: 1.5rem;
+  margin: 1rem;
   border: none;
   border-radius: 2rem;
   font-size: 1.1rem;
@@ -26,7 +26,7 @@ export default {};
 }
 
 .button:hover {
-  background-color: rgba(0, 146, 179, 1);
+  background-color: rgba(160, 160, 160, 1);
   cursor: pointer;
 }
 </style>

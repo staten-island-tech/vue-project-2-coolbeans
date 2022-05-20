@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Login class="login"/>
+    <Login/>
   </div>
 </template>
 
@@ -27,7 +27,4 @@ export default {
   padding-bottom: 2rem;
 }
 
-.login {
-  z-index: 2;
-}
 </style>

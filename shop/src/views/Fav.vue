@@ -1,11 +1,9 @@
 <template>
   <div class="fav">
-    <h2>FAVORITES</h2>
+    <!-- <h2>FAVORITES</h2> -->
     <div class="grid">
       <Card/>
       <Card/>
-      <Card/>
-    
     </div>
     <!-- <listitem
       class="listitem"
@@ -72,7 +70,7 @@ export default {
   width: 100%;
   height: 100%;
   padding: 0 4rem;
-  padding-top: 4rem;
+  padding-top: 6rem;
   padding-bottom: 2rem;
 }
 

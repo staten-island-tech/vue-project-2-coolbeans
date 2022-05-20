@@ -77,7 +77,7 @@ export default {
 .login {
   width: 35rem;
   height: auto;
-  /* padding: 2rem; */
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,7 +92,7 @@ h3 {
 
 .email,
 .pass {
-  padding: 1.5rem;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,11 +100,11 @@ h3 {
 }
 
 .pass {
-  padding-bottom: 2.5rem;
+  padding-bottom: 2rem;
 }
 
 .btn {
-  padding-top: 1.5rem;
+  padding-top: 1rem;
 }
 
 label {
@@ -123,13 +123,11 @@ input {
   border: none;
   outline: none;
   color: #151515;
-  font-family: 'Open Sans', sans-serif;
   border-bottom: 0.1rem solid rgba(0,0,0,0.7);
 }
 
 p {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   text-transform: uppercase;
 }
@@ -144,5 +142,6 @@ span {
   position: absolute;
   padding-left: 1.5rem;
   color: red;
+  
 }
 </style>
