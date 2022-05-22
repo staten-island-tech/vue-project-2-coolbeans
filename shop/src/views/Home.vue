@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <!-- <h2>EXPLORE</h2> -->
+    <h2>Explore</h2>
     <!-- <BigCard/> -->
     <div class="grid">
       <Card/>
@@ -31,8 +31,6 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 .home {
   display: flex;
   flex-direction: column;
@@ -42,7 +40,7 @@ export default {
   width: 100%;
   height: 100%;
   padding: 0 4rem;
-  padding-top: 6rem;
+  padding-top: 1rem;
   padding-bottom: 2rem;
   
   /* @supports(display: grid) {
@@ -75,7 +73,6 @@ export default {
 
 h2 {
   color: #151515;
-  padding-bottom: 1rem;
-  letter-spacing: 0.1rem;
+  padding-bottom: 4rem;
 }
 </style>

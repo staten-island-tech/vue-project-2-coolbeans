@@ -1,36 +1,19 @@
 <template>
   <div class="fav">
-    <!-- <h2>FAVORITES</h2> -->
+    <h2>Favorites</h2>
     <div class="grid">
       <Card/>
       <Card/>
     </div>
-    <!-- <listitem
-      class="listitem"
-      v-for="(cart, index) in carts"
-      :key="index"
-      :name="cart.name"
-      :price="cart.price"
-      :image="cart.img"
-    >
-      <Button @button-click="removeCard(index)">Remove</Button>
-    </listitem>
-    <Button v-if="this.carts.length > 0" @button-click="removeAll()"
-      >Remove All</Button
-    >
-    <h2 v-if="this.carts.length === 0">Price: $0 (BUY SOMETHING PLZ)</h2>
-    <h2 v-if="this.carts.length > 0">Price: ${{ sum }}</h2> -->
   </div>
 </template>
 
 <script>
 import Card from "../components/Card.vue"
-import Button from "../components/Button.vue";
 
 export default {
   components: {
     Card,
-    Button,
   },
   computed: {
     carts() {
@@ -59,8 +42,6 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 .fav {
   display: flex;
   flex-direction: column;
@@ -70,7 +51,7 @@ export default {
   width: 100%;
   height: 100%;
   padding: 0 4rem;
-  padding-top: 6rem;
+  padding-top: 1rem;
   padding-bottom: 2rem;
 }
 
@@ -86,7 +67,6 @@ export default {
 
 h2 {
   color: #151515;
-  padding-bottom:1rem;
-  letter-spacing: 0.1rem;
+  padding-bottom:4rem;
 }
 </style>

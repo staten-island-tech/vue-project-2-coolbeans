@@ -1,17 +1,11 @@
 <template>
   <div class="user">
-    <div class="mask"></div>
     <h2>Hello, User</h2>
-    <!-- <Card
-      v-for="(vanguard, index) in vanguards"
-      :key="index"
-      :name="vanguard.name"
-      :image="vanguard.img"
-      :price="vanguard.price"
-      class="card"
-    >
-      <Button @button-click="addCard(vanguard)">Add</Button>
-    </Card> -->
+    <h4>Your Posts</h4>
+    <div class="grid">
+      <Card/>
+      <Card/>
+    </div>
     <router-link to="/create">
       <div class="create">
         <p>Create</p>
@@ -22,14 +16,14 @@
 
 <script>
 // @ is an alias to /src
-// import Card from "../components/Card.vue";
-import Button from "../components/Button.vue";
+import Card from "../components/Card.vue";
+// import Button from "../components/Button.vue";
 
 export default {
   name: "Home",
   components: {
     Card,
-    Button,
+    // Button,
   },
   methods: {
     addCard(vanguard) {
@@ -94,33 +88,59 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .user {
-  height: 100vh;
-  background: url(https://images.unsplash.com/photo-1528837516156-0a7225a43641?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1633&q=80);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 4rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  
+  /* @supports(display: grid) {
+    display: block;
+  } */
 }
 
-.mask {
-  position: absolute;
-  height: 100vh;
+/* .section {
+  display: block;
+  padding: 2rem;
+  
+  @media screen and (min-width: 768px) {
+    padding: 4rem;
+  }
+  
+  @supports(display: grid) {
+    display: block;
+  }
+} */
+
+.grid {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1;
+  display: grid;
+  grid-gap: 1.5rem;
+  /* grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr)); */
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  grid-auto-flow: row dense;
 }
 
 h2 {
-  color: #fff;
-  font-family: 'Open Sans', sans-serif;
-  z-index: 2;
+  color: #151515;
+  padding-bottom: 3rem;
+  /* letter-spacing: 0.1rem; */
+}
+h4 {
+  color:#151515;
+  padding-bottom: 1rem;
 }
 
 .create {
-  position:fixed;
+  position: fixed;
   background-color:blue;
   bottom: 5rem;
   right: 5rem;

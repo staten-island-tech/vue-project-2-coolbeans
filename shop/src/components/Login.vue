@@ -72,10 +72,9 @@ export default {
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
 .login {
-  width: 35rem;
+  position: relative;
+  width: auto;
   height: auto;
   padding: 1rem;
   display: flex;
@@ -87,7 +86,7 @@ export default {
 
 h3 {
   text-align: center;
-  padding: 1.5rem;
+  padding: 0.5rem;
 }
 
 .email,
@@ -100,7 +99,7 @@ h3 {
 }
 
 .pass {
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 .btn {
@@ -108,9 +107,11 @@ h3 {
 }
 
 label {
-  font-size: 1rem;
-  font-family: 'Open Sans', sans-serif;
+  color: #a1a1a1;
+  font-size: 0.8rem;
   text-transform: uppercase;
+    font-family: 'Kumbh Sans', sans-serif;
+
 }
 
 input {
@@ -123,25 +124,24 @@ input {
   border: none;
   outline: none;
   color: #151515;
-  border-bottom: 0.1rem solid rgba(0,0,0,0.7);
+  border-bottom: 0.1rem solid #a1a1a1;
+    font-family: 'Kumbh Sans', sans-serif;
+
 }
 
 p {
+  color: #a1a1a1;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-}
-
-span {
-  background-color: #fff;
-  width: 15rem;
-  height: 0.2rem;
 }
 
 .error {
   position: absolute;
-  padding-left: 1.5rem;
+  padding-left: 1rem;
   color: red;
-  
+  font-size: 0.8rem;
+    font-family: 'Kumbh Sans', sans-serif;
+
 }
 </style>

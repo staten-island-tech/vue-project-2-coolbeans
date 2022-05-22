@@ -9,24 +9,24 @@ export default {};
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 .button {
-  background-color: rgba(150, 150, 150, 1);
+  background-color: #73a5c9;
   color: #fff;
-  width: 24rem;
-  height: 3rem;
-  margin: 1rem;
+  width: 20rem;
+  height: 2.5rem;
+  margin: 0.8rem;
   border: none;
   border-radius: 2rem;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
-  font-family: 'Open Sans', sans-serif;
   transition: 0.3s ease 0s;
+  font-family: 'Kumbh Sans', sans-serif;
+
 }
 
 .button:hover {
-  background-color: rgba(160, 160, 160, 1);
+  opacity: 0.9;
   cursor: pointer;
 }
 </style>

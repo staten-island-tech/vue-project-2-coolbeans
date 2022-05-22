@@ -3,9 +3,10 @@
     <div class="nav">
       <Nav>
         <template v-slot:logo>
-          <router-link to="/home" class="logo"><HomeBtn/></router-link>
+          <router-link to="/" class="logo"><HomeBtn/></router-link>
         </template>
         <template v-slot:page>
+          <!-- <router-link to="/" class="logo"><HomeBtn/></router-link> -->
           <RouterLink to="/favorites" class="page"><FavBtn/></RouterLink>
           <RouterLink to="/account" class="page"><UserBtn/></RouterLink>
           <RouterLink to="/login" class="page"><LoginBtn/></RouterLink>
