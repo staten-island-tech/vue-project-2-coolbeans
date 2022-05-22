@@ -72,6 +72,8 @@ export default {
         });
         router.push("/");
         store.dispatch("closeModal");
+        email.value = "";
+        password.value = "";
       } catch (err) {
         error.value = err.message;
       }
