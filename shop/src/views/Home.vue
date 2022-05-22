@@ -1,6 +1,7 @@
 <template>
   <div class="home">
     <!-- <h2>EXPLORE</h2> -->
+    <!-- <BigCard/> -->
     <div class="grid">
       <Card/>
       <Card/>
@@ -10,20 +11,21 @@
       <Card/>
       <Card/>
       <Card/>
-      
     </div>
   </div>
 </template>
 
 <script>
 import Card from "../components/Card.vue"
+import BigCard from "../components/BigCard.vue"
 import { ref } from "vue";
 import { useStore } from "vuex";
 export default {
   setup() {
   },
   components: {
-    Card
+    Card,
+    BigCard
   },
 };
 </script>
