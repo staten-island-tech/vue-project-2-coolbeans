@@ -13,28 +13,9 @@ const store = createStore({
   state: {
     user: null,
     isHidden: false,
+    wantAdd: false,
     isSignup: false,
     authIsReady: false,
-    place: [
-      {
-        name: "Reykjavík",
-        img: "https://img1.10bestmedia.com/Images/Photos/384645/Over-view_54_990x660.jpg",
-        description:
-          "A very cool wonderfyl place where people can have a lot of fun. You can.....",
-      },
-      {
-        name: "Akureyri",
-        img: "https://www.icelandreview.com/wp-content/uploads/2020/03/akureyri_vetur_droni004.jpg",
-        description:
-          "A very cool wonderfyl place where people can have a lot of fun. You can.....",
-      },
-      {
-        name: "Vík í Mýrdal",
-        img: "https://adventures.com/media/10846/s-iceland-town-summer-vik-i-myrdal.jpg",
-        description:
-          "A very cool wonderfyl place where people can have a lot of fun. You can.....",
-      },
-    ],
   },
   mutations: {
     setUser(state, payload) {
@@ -49,6 +30,12 @@ const store = createStore({
     },
     closeModal(state) {
       state.isHidden = false;
+    },
+    openModal2(state) {
+      state.wantAdd = true;
+    },
+    closeModal2(state) {
+      state.wantAdd = false;
     },
     signOpen(state) {
       state.isSignup = true;
@@ -92,6 +79,12 @@ const store = createStore({
     },
     closeModal({ commit }) {
       commit("closeModal");
+    },
+    openModal2({ commit }) {
+      commit("openModal2");
+    },
+    closeModal2({ commit }) {
+      commit("closeModal2");
     },
     signOpen({ commit }) {
       commit("signOpen");
