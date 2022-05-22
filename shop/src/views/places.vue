@@ -1,33 +1,31 @@
 <template>
   <div class="wrapper">
-    <Card
-      v-for="(postData, index) in postDatas"
+    <Posticon
+      class="post"
+      v-for="(post, index) in posts"
       :key="index"
-      :name="postData.name"
-      :image="postData.img"
-      :description="postData.description"
-      class="card"
-    ></Card>
+      :title="post.title"
+      :image="post.image"
+    />
   </div>
 </template>
 
 <script>
 import Button from "../components/Button.vue";
-import Card from "../components/Card.vue";
+import Posticon from "../components/Posticon.vue";
 
 export default {
   name: "Home",
   components: {
     Button,
-    Card,
+    Posticon,
   },
   methods: {},
   computed: {
-    postDatas() {
-      return this.$store.state.place;
+    posts() {
+      return this.$store.state.loadPost;
     },
   },
-
   data() {
     return {};
   },

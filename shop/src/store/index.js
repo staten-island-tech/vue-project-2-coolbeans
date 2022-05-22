@@ -16,6 +16,32 @@ const store = createStore({
     wantAdd: false,
     isSignup: false,
     authIsReady: false,
+    loadPost: [
+      {
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg",
+        id: "afajfjadfaadfa323",
+        title: "Meetup in New York",
+        location: "New York",
+        description: "New York, New York!",
+      },
+      {
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg",
+        id: "afajfjadfaadfa323",
+        title: "Meetup in New York",
+        location: "New York",
+        description: "New York, New York!",
+      },
+      {
+        image:
+          "https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg",
+        id: "afajfjadfaadfa323",
+        title: "Meetup in New York",
+        location: "New York",
+        description: "New York, New York!",
+      },
+    ],
   },
   mutations: {
     setUser(state, payload) {
@@ -24,6 +50,9 @@ const store = createStore({
     },
     setAuthIsReady(state, payload) {
       state.authIsReady = payload;
+    },
+    createPost(state, payload) {
+      state.loadPost.push(payload);
     },
     openModal(state) {
       state.isHidden = true;
@@ -73,6 +102,23 @@ const store = createStore({
       // async code
       await signOut(auth);
       context.commit("setUser", null);
+    },
+    createPost({ commit }, payload) {
+      const Post = {
+        title: payload.title,
+        image: payload.image,
+        description: payload.description,
+      };
+      commit("creatPost", Post);
+      database
+        .ref("postData")
+        .push(Post)
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
     openModal({ commit }) {
       commit("openModal");
