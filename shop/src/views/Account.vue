@@ -8,7 +8,7 @@
     </div>
     <router-link to="/create">
       <div class="create">
-        <img class="plus" src="../components/icons/plus.svg" alt="">
+        <img class="plus" src="../components/icons/plus.svg" alt="plus">
         <p>Create</p>
       </div>
     </router-link>

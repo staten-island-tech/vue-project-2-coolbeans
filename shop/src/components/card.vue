@@ -14,7 +14,7 @@
       </div>
       <h5 class="author">Jason Chen</h5>
       <div class="fav">
-        <img class="love" src="../components/icons/love-w.svg" alt="heart">
+        <img class="love" src="../components/icons/love-w.svg" alt="favorite">
       </div>
     </div>
   </div>
@@ -44,8 +44,7 @@ export default {
   color: #fff;
   grid-column-start: auto;
   grid-row-start: auto;
-  box-shadow: -2px 2px 10px 0px rgba(#000, 0.4);
-  transition: transform 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
   cursor: zoom-in;
 }
 .image {
@@ -88,8 +87,12 @@ export default {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  cursor: pointer;
 }
 
+.card:hover {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
 .card:hover .m {
   /* opacity: 1; */
   display: block;

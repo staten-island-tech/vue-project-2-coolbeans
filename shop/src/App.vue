@@ -64,10 +64,19 @@ export default {
 <style>
 .logo {
   color: #151515;
+  transition: opacity 0.2s ease-in-out;
 }
+.logo:hover{
+  opacity: 0.7;
+}
+
 .page {
   margin-left: 5rem;
   color: #151515;
+  transition: opacity 0.2s ease-in-out;
+}
+.page:hover {
+  opacity: 0.7;
 }
 /* nav css */
 

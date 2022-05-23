@@ -2,13 +2,13 @@
     <div class="card">
         <div class="background">
             <div class="content">
-                <img class="left" src="../components/icons/left.svg" alt="">
+                <img class="left" src="../components/icons/left.svg" alt="left-arrow">
                 <div class="container">
                     <p>hello</p>
                 </div>
-                <img class="right" src="../components/icons/right.svg" alt="">
+                <img class="right" src="../components/icons/right.svg" alt="right-arrow">
             </div>
-            <img class="close" src="../components/icons/close.svg" alt="">
+            <img class="close" src="../components/icons/close.svg" alt="close">
         </div>
     </div>
 </template>
