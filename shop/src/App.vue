@@ -39,6 +39,13 @@ import Nav from "./components/Nav.vue";
 import Button from "./components/Button.vue";
 
 export default {
+  setup() {
+    const store = useStore();
+    return {
+      user: computed(() => store.state.user),
+      authIsReady: computed(() => store.state.authIsReady),
+    };
+  },
   components: {
     Nav,
     Button,

@@ -28,7 +28,8 @@
         >LOGOUT
       </Button>
     </div>
-    <div class="user-name" v-if="user">{{ user.email }}</div> -->
+
+    <div class="user-name" v-if="user">{{ user.email }}</div>
   </div>
 </template>
 
@@ -79,5 +80,10 @@ export default {
 
 .sticky {
   border-bottom: 0.08rem solid rgba(221,220,220, 0.9);
+}
+
+.plus {
+  margin-left: 1rem;
+  height: 2rem;
 }
 </style>
