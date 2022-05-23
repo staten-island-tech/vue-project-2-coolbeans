@@ -48,8 +48,6 @@ export default {
   setup() {
     const email = ref("");
     const password = ref("");
-    const firstName = ref("");
-    const lastName = ref("");
     const error = ref(null);
 
     const store = useStore();
@@ -63,13 +61,11 @@ export default {
         });
         router.push("/");
         store.dispatch("closeModal");
-        email.value = "";
-        password.value = "";
       } catch (err) {
         error.value = err.message;
       }
     };
-    return { handleSubmit, email, password, error, firstName, lastName };
+    return { handleSubmit, email, password, error };
   },
 
   components: {

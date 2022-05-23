@@ -23,9 +23,6 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 export default {
   setup() {
-    const store = useStore();
-
-    return {};
   },
   components: {
     Card,

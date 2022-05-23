@@ -41,9 +41,9 @@ export default {
     const email = ref("");
     const password = ref("");
     const error = ref(null);
+
     const store = useStore();
     const router = useRouter();
-
     const handleSubmit = async () => {
       try {
         await store.dispatch("login", {
@@ -52,8 +52,6 @@ export default {
         });
         router.push("/");
         store.dispatch("closeModal");
-        email.value = "";
-        password.value = "";
       } catch (err) {
         error.value = err.message;
       }
@@ -63,7 +61,6 @@ export default {
   components: {
     Button,
   },
-
   methods: {
     closeModal: function () {
       this.$store.dispatch("closeModal");

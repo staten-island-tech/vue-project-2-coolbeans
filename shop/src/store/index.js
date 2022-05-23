@@ -1,4 +1,4 @@
-import { createStore } from "vuex";
+import { createStore, storeKey } from "vuex";
 
 //firebase import
 import { auth } from "../firebase/config";
@@ -9,39 +9,13 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-const store = createStore({
+export default createStore({
   state: {
     user: null,
     isHidden: false,
-    wantAdd: false,
     isSignup: false,
     authIsReady: false,
-    loadPost: [
-      {
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg",
-        id: "afajfjadfaadfa323",
-        title: "Meetup in New York",
-        location: "New York",
-        description: "New York, New York!",
-      },
-      {
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg",
-        id: "afajfjadfaadfa323",
-        title: "Meetup in New York",
-        location: "New York",
-        description: "New York, New York!",
-      },
-      {
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg",
-        id: "afajfjadfaadfa323",
-        title: "Meetup in New York",
-        location: "New York",
-        description: "New York, New York!",
-      },
-    ],
+    cart: [],
   },
   mutations: {
     setUser(state, payload) {
@@ -57,17 +31,20 @@ const store = createStore({
     closeModal(state) {
       state.isHidden = false;
     },
-    openModal2(state) {
-      state.wantAdd = true;
-    },
-    closeModal2(state) {
-      state.wantAdd = false;
-    },
     signOpen(state) {
       state.isSignup = true;
     },
     closeSign(state) {
       state.isSignup = false;
+    },
+    add(state, payload) {
+      state.cart.push(payload);
+    },
+    remove(state, payload) {
+      state.cart.splice(payload, 1);
+    },
+    removeAll(state) {
+      state.cart = [];
     },
   },
   actions: {
@@ -100,24 +77,26 @@ const store = createStore({
       await signOut(auth);
       context.commit("setUser", null);
     },
-
     openModal({ commit }) {
       commit("openModal");
     },
     closeModal({ commit }) {
       commit("closeModal");
     },
-    openModal2({ commit }) {
-      commit("openModal2");
-    },
-    closeModal2({ commit }) {
-      commit("closeModal2");
-    },
     signOpen({ commit }) {
       commit("signOpen");
     },
     closeSign({ commit }) {
       commit("closeSign");
+    },
+    add({ commit }) {
+      commit("add");
+    },
+    remove({ commit }) {
+      commit("remove");
+    },
+    removeAll({ commit }) {
+      commit("removeAll");
     },
   },
   getters: {},
@@ -128,4 +107,3 @@ const unsub = onAuthStateChanged(auth, (user) => {
   store.commit("setUser", user);
   unsub();
 });
-export default store;

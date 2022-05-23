@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div class="modal" v-show="isHidden">
-      <div class="modal-backdrop" />
+      <div class="modal-backdrop" @click="closeModal" />
       <div class="modal-dialog">
         <div class="container">
           <div class="side-image">
@@ -61,7 +61,11 @@ export default {
       signButton: true,
     };
   },
+
   methods: {
+    closeModal: function () {
+      this.$store.dispatch("closeModal");
+    },
     signOpen: function () {
       this.$store.dispatch("signOpen");
       if (this.isSignup === false) {
