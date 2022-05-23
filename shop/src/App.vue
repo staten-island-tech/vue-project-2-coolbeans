@@ -19,14 +19,12 @@
             <img src="./components/icons/login.svg" alt="Login">
           </RouterLink>
           </template>
-        </Nav>
           <!-- <RouterLink to="/about" class="page">ABOUT</RouterLink>
           <RouterLink to="/places" class="page">PLACE</RouterLink>
           <RouterLink to="/favorite" class="page">FAVORTIVE</RouterLink>
           <Router-Link to="/addpost" class="page" v-if="user">
             ADD POST</Router-Link
           > -->
-        </template>
       </Nav>
     </div>
     <div class="container">
