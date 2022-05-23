@@ -71,7 +71,7 @@ export default {
   },
   data() {
     return {
-      postData: { title: "", description: "", image: this.imageUrl },
+      postData: { title: "", description: "" },
       imageUrl: "",
       image: null,
     };
