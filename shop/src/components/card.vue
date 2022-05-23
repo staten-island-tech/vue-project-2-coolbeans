@@ -9,20 +9,18 @@
     <img src="https://images.unsplash.com/photo-1652785179637-2cf785eaa652?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587" alt="" class="image"/>
     <div class="m">
       <div class="location">
-        <Pin/>
+        <img src="../components/icons/location.svg" alt="pin">
         <h5 class="name">Tokyo, Japan</h5>
       </div>
       <h5 class="author">Jason Chen</h5>
       <div class="fav">
-        <Fav/>
+        <img class="love" src="../components/icons/love-w.svg" alt="heart">
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Pin from "../components/icons/Location.vue"
-import Fav from "../components/icons/FavBtn.vue"
 export default {
   props: {
     name: String,
@@ -30,8 +28,6 @@ export default {
     price: Number,
   },
   components: {
-    Pin,
-    Fav
     },
 };
 </script>
@@ -50,7 +46,7 @@ export default {
   grid-row-start: auto;
   box-shadow: -2px 2px 10px 0px rgba(#000, 0.4);
   transition: transform 0.3s ease-in-out;
-  cursor: pointer;
+  cursor: zoom-in;
 }
 .image {
   width: auto;

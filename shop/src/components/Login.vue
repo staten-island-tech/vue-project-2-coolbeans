@@ -33,7 +33,6 @@
 
 <script>
 import Button from "./Button.vue";
-import iconClose from "./icons/IconClose.vue";
 import { ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
@@ -61,7 +60,6 @@ export default {
   },
   components: {
     Button,
-    iconClose,
   },
   methods: {
     closeModal: function () {
@@ -80,8 +78,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #151515;
-  overflow-y: none;
 }
 
 h3 {

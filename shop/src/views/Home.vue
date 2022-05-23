@@ -1,7 +1,8 @@
 <template>
   <div class="home">
-    <h2>Explore</h2>
-    <!-- <BigCard/> -->
+    <h2>Home</h2>
+    <h4>Explore</h4>
+    <!-- <Modal/> -->
     <div class="grid">
       <Card/>
       <Card/>
@@ -17,7 +18,7 @@
 
 <script>
 import Card from "../components/Card.vue"
-import BigCard from "../components/BigCard.vue"
+import Modal from "../components/BigCard.vue"
 import { ref } from "vue";
 import { useStore } from "vuex";
 export default {
@@ -25,7 +26,7 @@ export default {
   },
   components: {
     Card,
-    BigCard
+    Modal
   },
 };
 </script>
@@ -73,6 +74,10 @@ export default {
 
 h2 {
   color: #151515;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
+}
+h4 {
+  color:#8a8a8a;
+  padding-bottom: 1rem;
 }
 </style>

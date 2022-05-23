@@ -1,7 +1,9 @@
 <template>
   <div class="fav">
     <h2>Favorites</h2>
+    <h4>Favorite Posts</h4>
     <div class="grid">
+      <Card/>
       <Card/>
       <Card/>
     </div>
@@ -67,6 +69,10 @@ export default {
 
 h2 {
   color: #151515;
-  padding-bottom:4rem;
+  padding-bottom: 2rem;
+}
+h4 {
+  color:#8a8a8a;
+  padding-bottom: 1rem;
 }
 </style>

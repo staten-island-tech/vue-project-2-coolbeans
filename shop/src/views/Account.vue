@@ -8,6 +8,7 @@
     </div>
     <router-link to="/create">
       <div class="create">
+        <img class="plus" src="../components/icons/plus.svg" alt="">
         <p>Create</p>
       </div>
     </router-link>
@@ -15,15 +16,12 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Card from "../components/Card.vue";
-// import Button from "../components/Button.vue";
 
 export default {
   name: "Home",
   components: {
     Card,
-    // Button,
   },
   methods: {
     addCard(vanguard) {
@@ -131,30 +129,36 @@ export default {
 
 h2 {
   color: #151515;
-  padding-bottom: 3rem;
-  /* letter-spacing: 0.1rem; */
+  padding-bottom: 2rem;
 }
 h4 {
-  color:#151515;
+  color:#8a8a8a;
   padding-bottom: 1rem;
 }
 
 .create {
   position: fixed;
-  background-color:blue;
-  bottom: 5rem;
-  right: 5rem;
-  height:4rem;
-  width: 15rem;
+  background-color: #151515;
+  /* background-color: #73a5c9; */
+  bottom: 2rem;
+  right: 3rem;
+  height: 3rem;
+  width: 8rem;
+  border-radius: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  z-index: 5;
 }
 
+.plus {
+  color:#fff;
+  padding-right: 0.3rem;
+}
 p {
-  font-size: 2rem; 
+  font-size: 1.2rem; 
   color: #fff;
   text-decoration: none;
+  padding-right: 0.3rem;
 }
 </style>

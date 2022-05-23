@@ -34,13 +34,11 @@
 
 <script>
 import Button from "../components/Button.vue";
-import Form from "../components/Modal.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 export default {
   components: {
     Button,
-    Form,
   },
   setup() {
     const store = useStore();
@@ -87,6 +85,8 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 5rem;
-  z-index: 2;
+  z-index: 4;
+  /* background-color: rgba(245,244,244, 0.7); */
+  background: linear-gradient(rgba(245,244,244, 0.7), rgba(0, 0, 0, 0));
 }
 </style>

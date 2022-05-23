@@ -20,11 +20,8 @@ export default {
   justify-content: center;
   align-items: center;
   position: relative;
-  width: auto;
-  height: auto;
-  padding: 0 4rem;
-  padding-top: 7rem;
-  padding-bottom: 2rem;
+  width: 100%;
+  height: 100vh;
 }
 
 </style>

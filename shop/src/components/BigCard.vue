@@ -1,9 +1,14 @@
 <template>
     <div class="card">
         <div class="background">
-            <div class="container">
-                
+            <div class="content">
+                <img class="left" src="../components/icons/left.svg" alt="">
+                <div class="container">
+                    <p>hello</p>
+                </div>
+                <img class="right" src="../components/icons/right.svg" alt="">
             </div>
+            <img class="close" src="../components/icons/close.svg" alt="">
         </div>
     </div>
 </template>
@@ -24,22 +29,40 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     width: 100%;
-    height: 100vh;
-    z-index: 2;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 9;
 
 }
 .background {
-    position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
 }
-
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    }
 .container {
-    width: 80%;
+    position: relative;
+    width: 82%;
     height: 90%;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
 </style>

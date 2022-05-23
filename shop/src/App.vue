@@ -3,13 +3,21 @@
     <div class="nav">
       <Nav>
         <template v-slot:logo>
-          <router-link to="/" class="logo"><HomeBtn/></router-link>
+          <router-link to="/" class="logo">
+            <img src="./components/icons/home.svg" alt="Home">
+          </router-link>
         </template>
         <template v-slot:page>
           <!-- <router-link to="/" class="logo"><HomeBtn/></router-link> -->
-          <RouterLink to="/favorites" class="page"><FavBtn/></RouterLink>
-          <RouterLink to="/account" class="page"><UserBtn/></RouterLink>
-          <RouterLink to="/login" class="page"><LoginBtn/></RouterLink>
+          <RouterLink to="/favorites" class="page">
+            <img src="./components/icons/love-b.svg" alt="Favorites">
+          </RouterLink>
+          <RouterLink to="/account" class="page">
+            <img src="./components/icons/user.svg" alt="Account">
+          </RouterLink>
+          <RouterLink to="/login" class="page">
+            <img src="./components/icons/login.svg" alt="Login">
+          </RouterLink>
           </template>
         </Nav>
     </div>
@@ -29,25 +37,11 @@
 import { RouterView, RouterLink } from "vue-router";
 import Nav from "./components/Nav.vue";
 import Button from "./components/Button.vue";
-import Modal from "./components/Modal.vue";
-import logIn from "./components/Login.vue";
-import signUp from "./components/Signup.vue";
-import HomeBtn from "./components/icons/HomeBtn.vue"
-import UserBtn from "./components/icons/UserBtn.vue"
-import LoginBtn from "./components/icons/LoginBtn.vue"
-import FavBtn from "./components/icons/FavBtn.vue"
 
 export default {
   components: {
     Nav,
     Button,
-    Modal,
-    logIn,
-    signUp,
-    HomeBtn,
-    UserBtn,
-    LoginBtn,
-    FavBtn
   },
 
   data() {

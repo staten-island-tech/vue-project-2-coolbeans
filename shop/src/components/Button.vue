@@ -11,9 +11,10 @@ export default {};
 <style scoped>
 
 .button {
+  /* background-color: #151515; */
   background-color: #73a5c9;
   color: #fff;
-  width: 20rem;
+  width: 19rem;
   height: 2.5rem;
   margin: 0.8rem;
   border: none;
