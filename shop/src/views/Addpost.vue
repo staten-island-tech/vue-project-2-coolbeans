@@ -9,9 +9,6 @@
         :image="post.image"
       />
       <Plus @click="openModal2" />
-      <div class="test">
-        <h1>{{ postData.image }}</h1>
-      </div>
       <Modal2
         ><template v-slot:insert-image>
           <h2 class="heading">Submit Your Image</h2>
@@ -22,7 +19,6 @@
               placeholder="Title"
               class="form-field"
               required
-              v-model="postData.title"
             />
             <input
               type="file"
@@ -41,15 +37,14 @@
             </div>
             <div class="form-group">
               <h5 class="top-label">Description</h5>
-              <textarea
+              <input
                 type="description"
                 placeholder="Description"
                 class="form-field"
                 required
-                v-model="postData.description"
               />
             </div>
-            <Button @button-click="uploadPost">Upload Post</Button>
+            <Button @click="uploadPost">Upload Post</Button>
           </div>
         </template></Modal2
       >
@@ -62,9 +57,6 @@ import Plus from "../components/Plus.vue";
 import Modal2 from "../components/Modal2.vue";
 import Button from "../components/Button.vue";
 import Posticon from "../components/Posticon.vue";
-import axios from "axios";
-import firebase from "firebase/app";
-import "firebase/storage";
 
 export default {
   setup() {
@@ -78,10 +70,8 @@ export default {
   },
   data() {
     return {
-      postData: { title: "", description: "" },
       imageUrl: "",
-      imageData: null,
-      picture: null,
+      image: null,
     };
   },
   computed: {
@@ -94,18 +84,13 @@ export default {
       this.$store.dispatch("openModal2");
     },
     uploadPost: function () {
-      this.onUpload();
-      console.log(this.postData);
-      axios
-        .post(
-          "https://auth-shop-994d6-default-rtdb.firebaseio.com/posts.json",
-          this.postData
-        )
-        .then(function (data) {
-          console.log(data);
-        });
-
-      // this.$router.push("/addpost");
+      const Post = {
+        title: this.title,
+        image: this.image,
+        description: this.description,
+      };
+      this.$store.dispatch("createPost", Post);
+      this.$router.push("/addpost");
     },
     previewImage(event) {
       this.uploadValue = 0;
@@ -149,7 +134,7 @@ export default {
       });
       fileReader.readAsDataURL(files[0]);
       this.image = files[0];
-    }, */
+    },
   },
 };
 </script>
