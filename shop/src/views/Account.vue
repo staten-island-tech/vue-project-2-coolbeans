@@ -138,7 +138,7 @@ h4 {
 
 .create {
   position: fixed;
-  background-color: #151515;
+  background-color: rgba(21, 21, 21, 1);
   /* background-color: #73a5c9; */
   bottom: 2rem;
   right: 3rem;
@@ -149,6 +149,8 @@ h4 {
   justify-content: center;
   align-items: center;
   z-index: 5;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .plus {
@@ -160,5 +162,9 @@ p {
   color: #fff;
   text-decoration: none;
   padding-right: 0.3rem;
+}
+.create:hover{
+  background-color: rgba(35, 35, 35, 1);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 </style>

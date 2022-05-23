@@ -1,5 +1,5 @@
 <template>
-  <div class="views">
+  <div :class="{ sticky: isActive }" class="views">
     <span class="logo">
       <slot name="logo" />
     </span>
@@ -33,44 +33,31 @@
 </template>
 
 <script>
-import Button from "../components/Button.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 export default {
-  components: {
-    Button,
-  },
-  setup() {
-    const store = useStore();
-    const handleClick = () => {
-      store.dispatch("logout");
-    };
-    return {
-      handleClick,
-      user: computed(() => store.state.user),
-      authIsReady: computed(() => store.state.authIsReady),
-    };
-  },
-  data() {
-    return {};
-  },
-  computed: {
-    isNull() {
-      return this.$store.state.user;
-    },
+  name: "NavBar",
+  components: {},
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
   },
 
   methods: {
-    whatButton: function () {
-      if (this.isNull === null) {
-        return true;
+    handleScroll() {
+      if (window.scrollY > 0) {
+        this.isActive = true;
       } else {
-        return false;
+        this.isActive = false;
       }
     },
-    openModal: function () {
-      this.$store.dispatch("openModal");
+    isLoad() {
+      this.isActive = true;
     },
+  },
+  data() {
+    return {
+      isActive: false,
+    };
   },
 };
 </script>
@@ -86,7 +73,11 @@ export default {
   justify-content: space-between;
   padding: 1.5rem 5rem;
   z-index: 4;
-  /* background-color: rgba(245,244,244, 0.7); */
-  background: linear-gradient(rgba(245,244,244, 0.7), rgba(0, 0, 0, 0));
+  background-color: rgba(245,244,244, 0.85);
+  /* background: linear-gradient(rgba(245,244,244, 0.7), rgba(0, 0, 0, 0)); */
+}
+
+.sticky {
+  border-bottom: 0.08rem solid rgba(221,220,220, 0.9);
 }
 </style>
