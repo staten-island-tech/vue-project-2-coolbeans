@@ -71,9 +71,8 @@ export default {
   },
   data() {
     return {
-      postData: { title: "", description: "", image: this.imageUrl },
+      postData: { title: "", description: "" },
       imageUrl: "",
-      image: null,
     };
   },
   computed: {
@@ -87,7 +86,6 @@ export default {
     },
     uploadPost: function () {
       console.log(this.postData);
-      console.log(this.imageUrl);
       axios
         .post(
           "https://auth-shop-994d6-default-rtdb.firebaseio.com/posts.json",
@@ -111,7 +109,7 @@ export default {
         this.imageUrl = fileReader.result;
       });
       fileReader.readAsDataURL(files[0]);
-      this.image = files[0];
+      // this.image = files[0];
     },
   },
 };

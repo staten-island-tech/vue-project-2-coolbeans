@@ -26,13 +26,6 @@ export default {
       return this.$store.state.loadPost;
     },
   },
-  created() {
-    axios
-      .get("https://auth-shop-994d6-default-rtdb.firebaseio.com/posts.json")
-      .then(function (data) {
-        console.log(data);
-      });
-  },
   data() {
     return {};
   },
