@@ -44,6 +44,24 @@ const router = createRouter({
       component: /*webpackChunkName:"Create" */ () =>
         import("../views/Create.vue"),
     },
+    // {
+    //   path: "/places",
+    //   name: "places",
+    //   component: /*webpackChunkName:"Places" */ () =>
+    //     import("../views/Places.vue"),
+    // },
+    // {
+    //   path: "/favorite",
+    //   name: "favorite",
+    //   component: /*webpackChunkName:"favorite" */ () =>
+    //     import("../views/Favor.vue"),
+    // },
+    // {
+    //   path: "/addpost",
+    //   name: "addpost",
+    //   component: /*webpackChunkName:"addpost" */ () =>
+    //     import("../views/Addpost.vue"),
+    // },
   ],
 });
 
