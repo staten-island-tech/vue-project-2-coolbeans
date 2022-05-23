@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 
 //firebase import
-import { auth } from "../firebase/config";
+import { auth, storage } from "../firebase/config";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -101,6 +101,13 @@ const store = createStore({
       context.commit("setUser", null);
     },
 
+    createPost({ commit, getters }, payload) {
+      const postUp = {
+        title: payload.title,
+        description: payload.description,
+      };
+      storage.database().ref;
+    },
     openModal({ commit }) {
       commit("openModal");
     },
