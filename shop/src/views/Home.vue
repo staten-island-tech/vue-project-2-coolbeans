@@ -18,15 +18,18 @@
 
 <script>
 import Card from "../components/Card.vue"
-// import Modal from "../components/BigCard.vue"
+import Modal from "../components/BigCard.vue"
 import { ref } from "vue";
-// import { useStore } from "vuex";
+import { useStore } from "vuex";
 export default {
   setup() {
+    const store = useStore();
+
+    return {};
   },
   components: {
     Card,
-    // Modal
+    Modal
   },
 };
 </script>

@@ -36,6 +36,7 @@
 <script>
 import { RouterView, RouterLink } from "vue-router";
 import Nav from "./components/Nav.vue";
+import Button from "./components/Button.vue";
 
 export default {
   setup() {
@@ -47,6 +48,7 @@ export default {
   },
   components: {
     Nav,
+    Button,
   },
 
   data() {
