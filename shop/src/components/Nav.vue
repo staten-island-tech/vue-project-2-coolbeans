@@ -27,9 +27,9 @@
         @button-click="handleClick"
         >LOGOUT
       </Button>
-    </div>
+    </div> -->
 
-    <div class="user-name" v-if="user">{{ user.email }}</div>
+    <div class="user-name" v-if="user">{{ user.email }}</div> 
   </div>
 </template>
 
