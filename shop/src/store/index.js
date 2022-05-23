@@ -51,9 +51,6 @@ const store = createStore({
     setAuthIsReady(state, payload) {
       state.authIsReady = payload;
     },
-    createPost(state, payload) {
-      state.loadPost.push(payload);
-    },
     openModal(state) {
       state.isHidden = true;
     },
@@ -103,23 +100,7 @@ const store = createStore({
       await signOut(auth);
       context.commit("setUser", null);
     },
-    createPost({ commit }, payload) {
-      const Post = {
-        title: payload.title,
-        image: payload.image,
-        description: payload.description,
-      };
-      commit("creatPost", Post);
-      database
-        .ref("postData")
-        .push(Post)
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
+
     openModal({ commit }) {
       commit("openModal");
     },
