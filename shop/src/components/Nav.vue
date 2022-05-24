@@ -29,7 +29,7 @@
       </Button>
     </div> -->
 
-    <div class="user-name" v-if="user">{{ user.email }}</div>
+    <!-- <div class="user-name" v-if="user">{{ user.email }}</div> -->
   </div>
 </template>
 
