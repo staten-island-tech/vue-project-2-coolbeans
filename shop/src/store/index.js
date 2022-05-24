@@ -107,3 +107,4 @@ const unsub = onAuthStateChanged(auth, (user) => {
   store.commit("setUser", user);
   unsub();
 });
+export default store;
