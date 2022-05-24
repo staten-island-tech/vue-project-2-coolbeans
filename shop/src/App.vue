@@ -9,11 +9,11 @@
         </template>
         <template v-slot:page>
           <!-- <router-link to="/" class="logo"><HomeBtn/></router-link> -->
-          <span class="fix-later" v-if="user">
-            <RouterLink to="/favorites" class="page">
+          <span>
+            <RouterLink to="/favorites" class="page" @click="referSign">
               <img src="./components/icons/love-b.svg" alt="Favorites" />
             </RouterLink>
-            <RouterLink to="/account" class="page">
+            <RouterLink to="/account" class="page" @click="referSign">
               <img src="./components/icons/user.svg" alt="Account" />
             </RouterLink>
           </span>
@@ -48,6 +48,7 @@ import Nav from "./components/Nav.vue";
 import Button from "./components/Button.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   components: {
@@ -59,6 +60,7 @@ export default {
     const handleClick = () => {
       store.dispatch("logout");
     };
+
     return {
       handleClick,
       user: computed(() => store.state.user),
@@ -66,9 +68,17 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      router: useRouter(),
+    };
   },
-  methods: {},
+  methods: {
+    referSign() {
+      if (!this.user) {
+        this.router.push("/login");
+      }
+    },
+  },
 };
 </script>
 
