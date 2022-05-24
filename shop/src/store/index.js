@@ -68,15 +68,20 @@ const store = createStore({
     },
   },
   actions: {
-    async signup(context, { email, password }) {
+    async signup(context, { email, password, firstName }) {
       console.log("signup action");
 
       // async code
-      const res = await createUserWithEmailAndPassword(auth, email, password);
+      const res = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+        firstName
+      );
       if (res) {
         context.commit("setUser", res.user);
         await updateProfile(res.user, {
-          displayName: "notlast",
+          displayName: firstName,
         });
       } else {
         throw new Error("could not complete sign up");

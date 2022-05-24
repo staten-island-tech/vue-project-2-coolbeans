@@ -52,6 +52,10 @@ export default {
   setup() {
     const email = ref("");
     const password = ref("");
+    const firstName = ref("");
+    const lastName = ref("");
+    //ask later why does this not work
+    const jointName = `${firstName} ${lastName}`;
 
     const error = ref(null);
     const store = useStore();
@@ -63,6 +67,7 @@ export default {
         await store.dispatch("signup", {
           email: email.value,
           password: password.value,
+          firstName: firstName.value,
         });
         router.push("/account");
         store.dispatch("closeModal");
@@ -80,11 +85,7 @@ export default {
       error,
     };
   },
-  data() {
-    return {
-      firstName() {},
-    };
-  },
+
   components: {
     Button,
   },
