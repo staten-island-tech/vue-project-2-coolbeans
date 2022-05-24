@@ -56,12 +56,12 @@ const router = createRouter({
     //   component: /*webpackChunkName:"favorite" */ () =>
     //     import("../views/Favor.vue"),
     // },
-    // {
-    //   path: "/addpost",
-    //   name: "addpost",
-    //   component: /*webpackChunkName:"addpost" */ () =>
-    //     import("../views/Addpost.vue"),
-    // },
+    {
+      path: "/addpost",
+      name: "addpost",
+      component: /*webpackChunkName:"addpost" */ () =>
+        import("../views/Addpost.vue"),
+    },
   ],
 });
 

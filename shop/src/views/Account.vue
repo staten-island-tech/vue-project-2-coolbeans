@@ -6,7 +6,7 @@
       <Card/>
       <Card/>
     </div>
-    <router-link to="/create">
+    <router-link to="/addpost">
       <div class="create">
         <img class="plus" src="../components/icons/plus.svg" alt="plus">
         <p>Create</p>
