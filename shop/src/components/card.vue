@@ -38,13 +38,13 @@ export default {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   box-sizing: border-box;
   color: #fff;
   grid-column-start: auto;
   grid-row-start: auto;
-  transition: box-shadow 0.3s ease-in-out;
   cursor: zoom-in;
+  /* transition: box-shadow 0.3s ease-in-out; */
 }
 .image {
   width: auto;
@@ -89,10 +89,10 @@ export default {
   cursor: pointer;
 }
 
-.card:hover {
+/* .card:hover {
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-}
+} */
 .card:hover .m {
   /* opacity: 1; */
   display: block;

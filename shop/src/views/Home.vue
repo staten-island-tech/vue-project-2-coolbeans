@@ -99,6 +99,7 @@ export default {
   grid-gap: 1.5rem;
   /* grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr)); */
   grid-template-columns: repeat(3, 1fr);
+  /* grid-auto-rows: minmax(min-content, max-content); */
   grid-auto-rows: auto;
   grid-auto-flow: row dense;
 }

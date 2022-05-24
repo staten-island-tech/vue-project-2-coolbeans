@@ -4,22 +4,29 @@
       <Nav>
         <template v-slot:logo>
           <router-link to="/" class="logo">
-            <img src="./components/icons/home.svg" alt="Home" />
+            <div class="logo-container">
+              <img src="./components/icons/home.svg" alt="Home" />
+            </div>
           </router-link>
         </template>
-        <template v-slot:page>
-          <!-- <router-link to="/" class="logo"><HomeBtn/></router-link> -->
+        <template class="pages" v-slot:page>
           <span>
-            <RouterLink to="/favorites" class="page" @click="referSign">
-              <img src="./components/icons/love-b.svg" alt="Favorites" />
-            </RouterLink>
-            <RouterLink to="/account" class="page" @click="referSign">
-              <img src="./components/icons/user.svg" alt="Account" />
-            </RouterLink>
+            <div class="fav">
+              <RouterLink to="/favorites" class="page" @click="referSign">
+                <img src="./components/icons/love-b.svg" alt="Favorites" />
+              </RouterLink>
+            </div>
+            <div class="acc">
+              <RouterLink to="/account" class="page" @click="referSign">
+                <img src="./components/icons/user.svg" alt="Account" />
+              </RouterLink>
+            </div>
           </span>
-          <RouterLink to="/login" class="page" v-if="!user">
-            <img src="./components/icons/login.svg" alt="Login" class="login" />
-          </RouterLink>
+          <div class="in">
+            <RouterLink to="/login" class="page" v-if="!user">
+              <img src="./components/icons/login.svg" alt="Login" class="login" />
+            </RouterLink>
+          </div>
           <span class="page" v-if="user" @click="handleClick">
             <img
               src="./components/icons/logout.svg"
@@ -87,24 +94,47 @@ export default {
   color: #151515;
   transition: opacity 0.2s ease-in-out;
 }
-.logo:hover {
+/* .logo:hover {
   opacity: 0.7;
+} */
+
+.pages {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.pages span {
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .page {
-  margin-left: 5rem;
-  color: #151515;
-  transition: opacity 0.2s ease-in-out;
-}
-.page:hover {
-  opacity: 0.7;
-}
-
-.logout {
+  margin-left: 2.5rem;
+  width: 3.5rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out;
   cursor: pointer;
 }
+.page:hover {
+  background-color: rgba(21, 21, 21, 0.15);
+}
 
-/* nav css */
+.logo-container {
+  width: 3.5rem;
+  height: 3rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out;
 
-/* modal css*/
+}
+.logo-container:hover {
+  background-color: rgba(21, 21, 21, 0.15);
+}
 </style>
