@@ -44,12 +44,6 @@ const router = createRouter({
       component: /*webpackChunkName:"Create" */ () =>
         import("../views/Create.vue"),
     },
-    // {
-    //   path: "/addpost",
-    //   name: "addpost",
-    //   component: /*webpackChunkName:"addpost" */ () =>
-    //     import("../views/Addpost.vue"),
-    // },
   ],
 });
 

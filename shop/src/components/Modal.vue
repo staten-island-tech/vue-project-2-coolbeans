@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
-    <div class="modal" v-show="isHidden">
-      <div class="modal-backdrop" @click="closeModal" />
+    <div class="modal">
+      <div class="modal-backdrop" />
       <div class="modal-dialog">
         <div class="container">
           <div class="side-image">

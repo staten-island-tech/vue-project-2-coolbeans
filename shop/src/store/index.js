@@ -13,35 +13,35 @@ const store = createStore({
   state: {
     user: null,
     isHidden: false,
-    wantAdd: false,
     isSignup: false,
     authIsReady: false,
-    loadPost: [
+    loadedPosts: [
       {
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg",
-        id: "afajfjadfaadfa323",
-        title: "Meetup in New York",
-        location: "New York",
-        description: "New York, New York!",
+        name: "Tokyo, Japan",
+        author: "Jason Chen",
+        imageUrl:
+          "https://images.unsplash.com/photo-1652785179637-2cf785eaa652?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique senectus et netus et malesuada fames ac turpis egestas. Morbi quis commodo odio aenean sed adipiscing diam. Consectetur purus ut faucibus pulvinar. Est pellentesque elit ullamcorper dignissim cras tincidunt. Consectetur adipiscing elit ",
       },
       {
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg",
-        id: "afajfjadfaadfa323",
-        title: "Meetup in New York",
-        location: "New York",
-        description: "New York, New York!",
+        name: "France, Pairs",
+        author: "Jason Chen",
+        imageUrl:
+          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/1200px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg",
+        description:
+          "Cras sed felis eget velit aliquet. Nibh ipsum consequat nisl vel pretium lectus quam id leo. Amet consectetur adipiscing elit pellentesque habitant morbi tristique. Enim nulla aliquet porttitor lacus luctus. Vestibulum lorem sed risus ultricies tristique. Tortor at auctor urna nunc. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor. Pellentesque massa placerat duis ultricies lacus.",
       },
       {
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg",
-        id: "afajfjadfaadfa323",
-        title: "Meetup in New York",
-        location: "New York",
-        description: "New York, New York!",
+        name: "Italy, Rome",
+        author: "Jason Chen",
+        imageUrl:
+          "https://www.towerofpisa.org/wp-content/uploads/2015/04/pisa-leaning-tower1.jpg",
+        description:
+          "Elementum facilisis leo vel fringilla est ullamcorper eget. Vulputate eu scelerisque felis imperdiet proin fermentum leo. Quis hendrerit dolor magna eget est lorem. Diam in arcu cursus euismod quis viverra nibh cras. Vel turpis nunc eget lorem. Vehicula ipsum a arcu cursus vitae congue. Non enim praesent elementum facilisis leo vel fringilla est. Mi proin sed libero enim sed faucibus. ",
       },
     ],
+    tempStore: [],
   },
   mutations: {
     setUser(state, payload) {
@@ -51,17 +51,13 @@ const store = createStore({
     setAuthIsReady(state, payload) {
       state.authIsReady = payload;
     },
-    openModal(state) {
+    openModal(state, loadedPost) {
       state.isHidden = true;
+      state.tempStore.push(loadedPost);
     },
     closeModal(state) {
       state.isHidden = false;
-    },
-    openModal2(state) {
-      state.wantAdd = true;
-    },
-    closeModal2(state) {
-      state.wantAdd = false;
+      state.tempStore = [];
     },
     signOpen(state) {
       state.isSignup = true;
@@ -100,24 +96,11 @@ const store = createStore({
       await signOut(auth);
       context.commit("setUser", null);
     },
-
-    createPost({ commit, getters }, payload) {
-      const postUp = {
-        title: payload.title,
-        description: payload.description,
-      };
-    },
-    openModal({ commit }) {
-      commit("openModal");
+    openModal({ commit, loadedPost }) {
+      commit("openModal", loadedPost);
     },
     closeModal({ commit }) {
       commit("closeModal");
-    },
-    openModal2({ commit }) {
-      commit("openModal2");
-    },
-    closeModal2({ commit }) {
-      commit("closeModal2");
     },
     signOpen({ commit }) {
       commit("signOpen");

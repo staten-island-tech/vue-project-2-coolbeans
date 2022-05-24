@@ -9,11 +9,16 @@
         </template>
         <template v-slot:page>
           <!-- <router-link to="/" class="logo"><HomeBtn/></router-link> -->
-          <RouterLink to="/favorites" class="page">
-            <img src="./components/icons/love-b.svg" alt="Favorites" />
-          </RouterLink>
-          <RouterLink to="/account" class="page">
-            <img src="./components/icons/user.svg" alt="Account" />
+          <span class="fix-later" v-if="user">
+            <RouterLink to="/favorites" class="page">
+              <img src="./components/icons/love-b.svg" alt="Favorites" />
+            </RouterLink>
+            <RouterLink to="/account" class="page">
+              <img src="./components/icons/user.svg" alt="Account" />
+            </RouterLink>
+          </span>
+          <RouterLink to="/login" class="page" v-if="!user">
+            <img src="./components/icons/login.svg" alt="Login" class="login" />
           </RouterLink>
           <span class="page" v-if="user" @click="handleClick">
             <img
@@ -22,9 +27,6 @@
               class="logout"
             />
           </span>
-          <RouterLink to="/login" class="page" v-if="!user">
-            <img src="./components/icons/login.svg" alt="Login" class="login" />
-          </RouterLink>
         </template>
       </Nav>
     </div>

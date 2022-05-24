@@ -2,31 +2,62 @@
   <div class="home">
     <h2>Home</h2>
     <h4>Explore</h4>
-    <!-- <Modal/> -->
+    <Modal
+      v-show="isHidden"
+      v-for="(tempS, index) in tempStore"
+      :key="index"
+      :name="tempS.name"
+      :image="tempS.imageUrl"
+      :author="tempS.author"
+      :description="tempS.description"
+    />
     <div class="grid">
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
-      <Card/>
+      <Card
+        @card-click="openModal(loadedPost)"
+        v-for="(loadedPost, index) in loadedPosts"
+        :key="index"
+        :name="loadedPost.name"
+        :image="loadedPost.imageUrl"
+        :author="loadedPost.author"
+        :description="loadedPost.description"
+      >
+      </Card>
     </div>
   </div>
 </template>
 
 <script>
-import Card from "../components/Card.vue"
-import Modal from "../components/BigCard.vue"
-import { ref } from "vue";
-import { useStore } from "vuex";
+import Card from "../components/card.vue";
+import Modal from "../components/BigCard.vue";
+
 export default {
-  setup() {
-  },
+  setup() {},
   components: {
     Card,
-    Modal
+    Modal,
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    openModal(loadedPost) {
+      this.$store.commit("openModal", loadedPost);
+      loadedPost.name,
+        loadedPost.imageUrl,
+        loadedPost.author,
+        loadedPost.description;
+    },
+  },
+  computed: {
+    isHidden() {
+      return this.$store.state.isHidden;
+    },
+    loadedPosts() {
+      return this.$store.state.loadedPosts;
+    },
+    tempStore() {
+      return this.$store.state.tempStore;
+    },
   },
 };
 </script>
@@ -43,7 +74,7 @@ export default {
   padding: 0 4rem;
   padding-top: 1rem;
   padding-bottom: 2rem;
-  
+
   /* @supports(display: grid) {
     display: block;
   } */
@@ -77,7 +108,7 @@ h2 {
   padding-bottom: 2rem;
 }
 h4 {
-  color:#8a8a8a;
+  color: #8a8a8a;
   padding-bottom: 1rem;
 }
 </style>

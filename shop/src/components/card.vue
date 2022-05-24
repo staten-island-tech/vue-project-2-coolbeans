@@ -1,20 +1,20 @@
 <template>
-    <!-- <img :src="image" alt="" class="item-img" />
+  <!-- <img :src="image" alt="" class="item-img" />
     <div class="container">
       <h3 class="location">{{ name }}</h3>
       <p class="description">{{ description }}</p>
       <h5 class="author">{{ author }}</h5>
     </div> -->
-  <div class="card">
-    <img src="https://images.unsplash.com/photo-1652785179637-2cf785eaa652?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587" alt="" class="image"/>
+  <div class="card" @click="$emit('card-click')">
+    <img :src="image" alt="image" />
     <div class="m">
       <div class="location">
-        <img src="../components/icons/location.svg" alt="pin">
-        <h5 class="name">Tokyo, Japan</h5>
+        <img src="../components/icons/location.svg" alt="pin" />
+        <h5 class="name">{{ name }}</h5>
       </div>
-      <h5 class="author">Jason Chen</h5>
+      <h5 class="author">{{ author }}</h5>
       <div class="fav">
-        <img class="love" src="../components/icons/love-w.svg" alt="favorite">
+        <img class="love" src="../components/icons/love-w.svg" alt="favorite" />
       </div>
     </div>
   </div>
@@ -25,10 +25,9 @@ export default {
   props: {
     name: String,
     image: String,
-    price: Number,
+    author: String,
   },
-  components: {
-    },
+  components: {},
 };
 </script>
 
@@ -63,8 +62,8 @@ export default {
   transition: 0.3s;
 }
 
-.location{
-  position:absolute;
+.location {
+  position: absolute;
   display: flex;
   /* justify-content: center; */
   /* align-items: center; */
@@ -91,7 +90,8 @@ export default {
 }
 
 .card:hover {
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 .card:hover .m {
   /* opacity: 1; */
