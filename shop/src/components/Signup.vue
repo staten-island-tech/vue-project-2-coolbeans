@@ -9,14 +9,16 @@
             class="first-name"
             type="first-name"
             name="first-name"
-            v-model="name"
+            v-model="firstName"
+            placeholder="First Name"
             required
           />
           <input
             class="last-name"
             type="last-name"
             name="last-name"
-            v-model="name"
+            v-model="lastName"
+            placeholder="Last Name"
             required
           />
         </div>
@@ -50,12 +52,13 @@ export default {
   setup() {
     const email = ref("");
     const password = ref("");
-    const error = ref(null);
 
+    const error = ref(null);
     const store = useStore();
     const router = useRouter();
 
     const handleSubmit = async () => {
+      console.log(jointName);
       try {
         await store.dispatch("signup", {
           email: email.value,
@@ -67,17 +70,25 @@ export default {
         error.value = err.message;
       }
     };
-    return { handleSubmit, email, password, error };
+    return {
+      handleSubmit,
+      email,
+      password,
+      firstName,
+      lastName,
+      jointName,
+      error,
+    };
   },
-
+  data() {
+    return {
+      firstName() {},
+    };
+  },
   components: {
     Button,
   },
-  methods: {
-    closeModal: function () {
-      this.$store.dispatch("closeModal");
-    },
-  },
+  methods: {},
 };
 </script>
 

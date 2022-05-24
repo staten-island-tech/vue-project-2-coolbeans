@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 
 const store = createStore({
@@ -74,6 +75,9 @@ const store = createStore({
       const res = await createUserWithEmailAndPassword(auth, email, password);
       if (res) {
         context.commit("setUser", res.user);
+        await updateProfile(res.user, {
+          displayName: "notlast",
+        });
       } else {
         throw new Error("could not complete sign up");
       }
