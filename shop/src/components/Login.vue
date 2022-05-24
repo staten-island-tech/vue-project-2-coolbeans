@@ -1,34 +1,25 @@
 <template>
-    <div class="login">
-      <form @submit.prevent="handleSubmit">
-        <h3>Welcome back,</h3>
-        <div class="email">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            v-model="email"
-            required
-          />
-        </div>
-        <div class="pass">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            v-model="password"
-            required
-          />
-        </div>
-        <div class="error" v-if="error">{{ error }}</div>
-        <div class="btn">
-          <Button>Sign In</Button>
-          <span></span><p>or</p><span></span>
-          <router-link to="/signup"><Button>Sign Up</Button></router-link>
-          
-        </div>
-      </form>
-    </div>
+  <div class="login">
+    <form @submit.prevent="handleSubmit">
+      <h3>Welcome back,</h3>
+      <div class="email">
+        <label for="email">Email</label>
+        <input type="email" name="email" v-model="email" required />
+      </div>
+      <div class="pass">
+        <label for="password">Password</label>
+        <input type="password" name="password" v-model="password" required />
+      </div>
+      <div class="error" v-if="error">{{ error }}</div>
+      <div class="btn">
+        <Button>Sign In</Button>
+        <span></span>
+        <p>or</p>
+        <span></span>
+        <router-link to="/signup"><Button>Sign Up</Button></router-link>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -50,7 +41,7 @@ export default {
           email: email.value,
           password: password.value,
         });
-        router.push("/");
+        router.push("/account");
         store.dispatch("closeModal");
       } catch (err) {
         error.value = err.message;
@@ -106,8 +97,7 @@ label {
   color: #a1a1a1;
   font-size: 0.8rem;
   text-transform: uppercase;
-    font-family: 'Kumbh Sans', sans-serif;
-
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 input {
@@ -121,8 +111,7 @@ input {
   outline: none;
   color: #151515;
   border-bottom: 0.1rem solid #a1a1a1;
-    font-family: 'Kumbh Sans', sans-serif;
-
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 p {
@@ -137,7 +126,6 @@ p {
   padding-left: 1rem;
   color: red;
   font-size: 0.8rem;
-    font-family: 'Kumbh Sans', sans-serif;
-
+  font-family: "Kumbh Sans", sans-serif;
 }
 </style>

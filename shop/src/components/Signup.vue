@@ -1,42 +1,29 @@
 <template>
   <div class="signup">
-      <form @submit.prevent="handleSubmit">
-        <h3>Join us,</h3>
-        <div class="name">
-          <label for="name">Name</label>
-          <input
-            type="name"
-            name="name"
-            v-model="name"
-            required
-          />
-        </div>
-        <div class="email">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            v-model="email"
-            required
-          />
-        </div>
-        <div class="pass">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            v-model="password"
-            required
-          />
-        </div>
-        <div class="error" v-if="error">{{ error }}</div>
-        <div class="btn">
-          <Button>Sign Up</Button>
-          <span></span><p>or</p><span></span>
-          <router-link to="/login"><Button>Sign In</Button></router-link>
-        </div>
-      </form>
-    </div>
+    <form @submit.prevent="handleSubmit">
+      <h3>Join us,</h3>
+      <div class="name">
+        <label for="name">Name</label>
+        <input type="name" name="name" v-model="name" required />
+      </div>
+      <div class="email">
+        <label for="email">Email</label>
+        <input type="email" name="email" v-model="email" required />
+      </div>
+      <div class="pass">
+        <label for="password">Password</label>
+        <input type="password" name="password" v-model="password" required />
+      </div>
+      <div class="error" v-if="error">{{ error }}</div>
+      <div class="btn">
+        <Button>Sign Up</Button>
+        <span></span>
+        <p>or</p>
+        <span></span>
+        <router-link to="/login"><Button>Sign In</Button></router-link>
+      </div>
+    </form>
+  </div>
 </template>
 
 <script>
@@ -59,7 +46,7 @@ export default {
           email: email.value,
           password: password.value,
         });
-        router.push("/");
+        router.push("/account");
         store.dispatch("closeModal");
       } catch (err) {
         error.value = err.message;
@@ -116,8 +103,7 @@ label {
   color: #a1a1a1;
   font-size: 0.8rem;
   text-transform: uppercase;
-    font-family: 'Kumbh Sans', sans-serif;
-
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 input {
@@ -131,8 +117,7 @@ input {
   outline: none;
   color: #151515;
   border-bottom: 0.1rem solid #a1a1a1;
-    font-family: 'Kumbh Sans', sans-serif;
-
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 p {
@@ -142,12 +127,10 @@ p {
   text-transform: uppercase;
 }
 
-
 .error {
   position: absolute;
   padding-left: 1.5rem;
   color: red;
-    font-family: 'Kumbh Sans', sans-serif;
-
+  font-family: "Kumbh Sans", sans-serif;
 }
 </style>
