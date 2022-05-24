@@ -38,6 +38,13 @@ import { useStore } from "vuex";
 import { computed } from "vue";
 export default {
   components: {},
+  setup() {
+    const store = useStore();
+
+    return {
+      user: computed(() => store.state.user),
+    };
+  },
   created() {
     window.addEventListener("scroll", this.handleScroll);
   },
@@ -57,17 +64,6 @@ export default {
   data() {
     return {
       isActive: false,
-    };
-  },
-  setup() {
-    const store = useStore();
-    const handleClick = () => {
-      store.dispatch("logout");
-    };
-    return {
-      handleClick,
-      user: computed(() => store.state.user),
-      authIsReady: computed(() => store.state.authIsReady),
     };
   },
 };

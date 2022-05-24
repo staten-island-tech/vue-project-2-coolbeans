@@ -15,14 +15,14 @@
           <RouterLink to="/account" class="page">
             <img src="./components/icons/user.svg" alt="Account" />
           </RouterLink>
-          <span class="out" v-if="userState">
+          <span class="page" v-if="user" @click="handleClick">
             <img
               src="./components/icons/logout.svg"
               alt="Logout"
               class="logout"
             />
           </span>
-          <RouterLink to="/login" class="page" v-else>
+          <RouterLink to="/login" class="page" v-if="!user">
             <img src="./components/icons/login.svg" alt="Login" class="login" />
           </RouterLink>
         </template>
@@ -44,23 +44,29 @@
 import { RouterView, RouterLink } from "vue-router";
 import Nav from "./components/Nav.vue";
 import Button from "./components/Button.vue";
+import { useStore } from "vuex";
+import { computed } from "vue";
 
 export default {
   components: {
     Nav,
     Button,
   },
-
+  setup() {
+    const store = useStore();
+    const handleClick = () => {
+      store.dispatch("logout");
+    };
+    return {
+      handleClick,
+      user: computed(() => store.state.user),
+      authIsReady: computed(() => store.state.authIsReady),
+    };
+  },
   data() {
     return {};
   },
-  methods: {
-    computed: {
-      userState: function () {
-        return this.$store.state.authIsReady;
-      },
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -80,6 +86,10 @@ export default {
 }
 .page:hover {
   opacity: 0.7;
+}
+
+.logout {
+  cursor: pointer;
 }
 
 /* nav css */
