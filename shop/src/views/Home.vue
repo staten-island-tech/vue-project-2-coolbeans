@@ -41,6 +41,7 @@ export default {
   },
   methods: {
     openModal(loadedPost) {
+      //make this dispatch later
       this.$store.commit("openModal", loadedPost);
       loadedPost.name,
         loadedPost.imageUrl,
