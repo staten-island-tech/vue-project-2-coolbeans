@@ -29,7 +29,7 @@
       </Button>
     </div> -->
 
-    <div class="user-name" v-if="user">{{ user.email }}</div> 
+    <div class="user-name" v-if="user">{{ user.email }}</div>
   </div>
 </template>
 
@@ -37,7 +37,6 @@
 import { useStore } from "vuex";
 import { computed } from "vue";
 export default {
-  name: "NavBar",
   components: {},
   created() {
     window.addEventListener("scroll", this.handleScroll);
@@ -74,11 +73,11 @@ export default {
   justify-content: space-between;
   padding: 1.5rem 5rem;
   z-index: 4;
-  background-color: rgba(245,244,244, 0.85);
+  background-color: rgba(245, 244, 244, 0.85);
   /* background: linear-gradient(rgba(245,244,244, 0.7), rgba(0, 0, 0, 0)); */
 }
 
 .sticky {
-  border-bottom: 0.08rem solid rgba(221,220,220, 0.9);
+  border-bottom: 0.08rem solid rgba(221, 220, 220, 0.9);
 }
 </style>

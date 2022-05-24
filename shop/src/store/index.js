@@ -15,7 +15,7 @@ export default createStore({
     isHidden: false,
     isSignup: false,
     authIsReady: false,
-    cart: [],
+    loadedPost: [],
   },
   mutations: {
     setUser(state, payload) {
