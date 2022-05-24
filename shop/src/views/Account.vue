@@ -2,13 +2,10 @@
   <div class="user">
     <h2>Hello, User</h2>
     <h4>Your Posts</h4>
-    <div class="grid">
-      <Card/>
-      <Card/>
-    </div>
+    <div class="grid"></div>
     <router-link to="/create">
       <div class="create">
-        <img class="plus" src="../components/icons/plus.svg" alt="plus">
+        <img class="plus" src="../components/icons/plus.svg" alt="plus" />
         <p>Create</p>
       </div>
     </router-link>
@@ -19,7 +16,6 @@
 import Card from "../components/Card.vue";
 
 export default {
-  name: "Home",
   components: {
     Card,
   },
@@ -30,63 +26,10 @@ export default {
     },
   },
   computed: {},
-
-  data() {
-    return {
-      vanguards: [
-        {
-          name: "",
-          img: "https://cdn.britannica.com/71/73371-050-9DFAEC1E/Reykjavik-Iceland.jpg",
-          price: "",
-        },
-        {
-          name: "",
-          img: "https://www.icelandairhotels.com/static/news/lg/midbaer-1__1486546974_185.56.12.2.jpg",
-          price: "",
-        },
-        {
-          name: "",
-          img: "https://adventures.com/media/10846/s-iceland-town-summer-vik-i-myrdal.jpg",
-          price: "",
-        },
-        {
-          name: "",
-          img: "https://old.myvisiticeland.is/reykjanes/wp-content/uploads/2016/08/reykjanesbaer-front-2-1.jpg",
-          price: "",
-        },
-        {
-          name: "",
-          img: "https://guidetoiceland.imgix.net/566430/x/0/selfoss-waterfall.jpg",
-          price: "",
-        },
-        {
-          name: "",
-          img: "https://adventures.com/media/208417/s-hafnarfjordur-town-seaside-view-buildings-houses-iceland-reykjavikjpg.jpg",
-          price: "",
-        },
-        {
-          name: "",
-          img: "https://i.ytimg.com/vi/h-zsQChbVDA/maxresdefault.jpg",
-          price: "",
-        },
-        {
-          name: "",
-          img: "https://cdn.kimkim.com/files/a/content_articles/featured_photos/7ad92724232b2f2083f48175acb6a376deafe31f/big-32d5d9b36c847982ca39e22677429c01.jpg",
-          price: "",
-        },
-        {
-          name: "",
-          img: "https://content.r9cdn.net/rimg/dimg/8e/f0/66aa3c21-city-7321-172d081a461.jpg?width=1200&height=630&crop=true",
-          price: "",
-        },
-      ],
-    };
-  },
 };
 </script>
 
 <style scoped>
-
 .user {
   display: flex;
   flex-direction: column;
@@ -98,7 +41,7 @@ export default {
   padding: 0 4rem;
   padding-top: 1rem;
   padding-bottom: 2rem;
-  
+
   /* @supports(display: grid) {
     display: block;
   } */
@@ -132,7 +75,7 @@ h2 {
   padding-bottom: 2rem;
 }
 h4 {
-  color:#8a8a8a;
+  color: #8a8a8a;
   padding-bottom: 1rem;
 }
 
@@ -154,17 +97,18 @@ h4 {
 }
 
 .plus {
-  color:#fff;
+  color: #fff;
   padding-right: 0.3rem;
 }
 p {
-  font-size: 1.2rem; 
+  font-size: 1.2rem;
   color: #fff;
   text-decoration: none;
   padding-right: 0.3rem;
 }
-.create:hover{
+.create:hover {
   background-color: rgba(35, 35, 35, 1);
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 </style>

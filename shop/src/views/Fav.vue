@@ -2,44 +2,20 @@
   <div class="fav">
     <h2>Favorites</h2>
     <h4>Favorite Posts</h4>
-    <div class="grid">
-      <Card/>
-      <Card/>
-      <Card/>
-    </div>
+    <div class="grid"></div>
   </div>
 </template>
 
 <script>
-import Card from "../components/Card.vue"
+import Card from "../components/Card.vue";
 
 export default {
   components: {
     Card,
   },
-  computed: {
-    carts() {
-      return this.$store.state.cart;
-    },
-    total() {
-      return this.$store.state.total;
-    },
-    sum() {
-      return this.$store.state.cart.reduce(
-        (total, vanguard) => total + vanguard.price,
-        0
-      );
-    },
-  },
+  computed: {},
 
-  methods: {
-    removeCard(index, price) {
-      this.$store.commit("remove", index, price);
-    },
-    removeAll() {
-      this.$store.commit("removeAll");
-    },
-  },
+  methods: {},
 };
 </script>
 
@@ -72,7 +48,7 @@ h2 {
   padding-bottom: 2rem;
 }
 h4 {
-  color:#8a8a8a;
+  color: #8a8a8a;
   padding-bottom: 1rem;
 }
 </style>

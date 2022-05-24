@@ -12,7 +12,6 @@
       :description="tempS.description"
     />
     <div class="grid">
-      z
       <Card
         @card-click="openModal(loadedPost)"
         v-for="(loadedPost, index) in loadedPosts"

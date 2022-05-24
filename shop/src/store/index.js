@@ -26,7 +26,7 @@ const store = createStore({
       },
       {
         name: "France, Pairs",
-        author: "Jason Chen",
+        author: "Michael Chen",
         imageUrl:
           "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/1200px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg",
         description:
