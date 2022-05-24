@@ -4,22 +4,29 @@
       <Nav>
         <template v-slot:logo>
           <router-link to="/" class="logo">
-            <img src="./components/icons/home.svg" alt="Home">
+            <img src="./components/icons/home.svg" alt="Home" />
           </router-link>
         </template>
         <template v-slot:page>
           <!-- <router-link to="/" class="logo"><HomeBtn/></router-link> -->
           <RouterLink to="/favorites" class="page">
-            <img src="./components/icons/love-b.svg" alt="Favorites">
+            <img src="./components/icons/love-b.svg" alt="Favorites" />
           </RouterLink>
           <RouterLink to="/account" class="page">
-            <img src="./components/icons/user.svg" alt="Account">
+            <img src="./components/icons/user.svg" alt="Account" />
           </RouterLink>
-          <RouterLink to="/login" class="page">
-            <img src="./components/icons/login.svg" alt="Login">
+          <span class="out" v-if="userState">
+            <img
+              src="./components/icons/logout.svg"
+              alt="Logout"
+              class="logout"
+            />
+          </span>
+          <RouterLink to="/login" class="page" v-else>
+            <img src="./components/icons/login.svg" alt="Login" class="login" />
           </RouterLink>
-          </template>
-        </Nav>
+        </template>
+      </Nav>
     </div>
     <div class="container">
       <!-- <div class="form-container">
@@ -48,14 +55,10 @@ export default {
     return {};
   },
   methods: {
-    openModal: function () {
-      this.$store.dispatch("openModal");
-    },
-    closeModal: function () {
-      this.$store.dispatch("closeModal");
-    },
-    openSign: function () {
-      this.$store.commit("openSign");
+    computed: {
+      userState: function () {
+        return this.$store.state.authIsReady;
+      },
     },
   },
 };
@@ -66,7 +69,7 @@ export default {
   color: #151515;
   transition: opacity 0.2s ease-in-out;
 }
-.logo:hover{
+.logo:hover {
   opacity: 0.7;
 }
 
@@ -78,6 +81,7 @@ export default {
 .page:hover {
   opacity: 0.7;
 }
+
 /* nav css */
 
 /* modal css*/
