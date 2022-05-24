@@ -72,12 +72,13 @@ export default {
 <style scoped>
 .login {
   position: relative;
-  width: auto;
+  width: 22rem;
   height: auto;
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 h3 {
@@ -106,8 +107,7 @@ label {
   color: #a1a1a1;
   font-size: 0.8rem;
   text-transform: uppercase;
-    font-family: 'Kumbh Sans', sans-serif;
-
+  font-family: 'Kumbh Sans', sans-serif;
 }
 
 input {
@@ -115,7 +115,7 @@ input {
   width: 100%;
   height: 3rem;
   font-size: 1rem;
-  padding: 1rem;
+  padding: 0.7rem;
   background: none;
   border: none;
   outline: none;
@@ -137,7 +137,6 @@ p {
   padding-left: 1rem;
   color: red;
   font-size: 0.8rem;
-    font-family: 'Kumbh Sans', sans-serif;
-
+  font-family: 'Kumbh Sans', sans-serif;
 }
 </style>

@@ -14,7 +14,7 @@ export default {};
   /* background-color: #151515; */
   background-color: #73a5c9;
   color: #fff;
-  width: 19rem;
+  width: 20rem;
   height: 2.5rem;
   margin: 0.8rem;
   border: none;
