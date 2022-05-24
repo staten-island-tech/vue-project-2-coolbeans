@@ -63,12 +63,13 @@ export default {
 <style scoped>
 .login {
   position: relative;
-  width: auto;
+  width: 22rem;
   height: auto;
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 h3 {
@@ -105,7 +106,7 @@ input {
   width: 100%;
   height: 3rem;
   font-size: 1rem;
-  padding: 1rem;
+  padding: 0.7rem;
   background: none;
   border: none;
   outline: none;

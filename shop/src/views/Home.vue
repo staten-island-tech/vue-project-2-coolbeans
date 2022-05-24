@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Card from "../components/card.vue";
+import Card from "../components/Card.vue";
 import Modal from "../components/BigCard.vue";
 
 export default {

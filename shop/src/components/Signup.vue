@@ -4,7 +4,22 @@
       <h3>Join us,</h3>
       <div class="name">
         <label for="name">Name</label>
-        <input type="name" name="name" v-model="name" required />
+        <div class="name-field">
+          <input
+            class="first-name"
+            type="first-name"
+            name="first-name"
+            v-model="name"
+            required
+          />
+          <input
+            class="last-name"
+            type="last-name"
+            name="last-name"
+            v-model="name"
+            required
+          />
+        </div>
       </div>
       <div class="email">
         <label for="email">Email</label>
@@ -69,12 +84,13 @@ export default {
 <style scoped>
 .signup {
   position: relative;
-  width: auto;
+  width: 22rem;
   height: auto;
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 h3 {
@@ -111,13 +127,25 @@ input {
   width: 100%;
   height: 3rem;
   font-size: 1rem;
-  padding: 1rem;
+  padding: 0.7rem;
   background: none;
   border: none;
   outline: none;
   color: #151515;
   border-bottom: 0.1rem solid #a1a1a1;
   font-family: "Kumbh Sans", sans-serif;
+}
+
+.name-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.first-name {
+  width: 49%;
+}
+.last-name {
+  width: 49%;
 }
 
 p {
