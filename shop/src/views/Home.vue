@@ -10,16 +10,18 @@
       :image="tempS.imageUrl"
       :author="tempS.author"
       :description="tempS.description"
+      :postDate="tempS.postDate"
     />
     <div class="grid">
       <Card
-        @card-click="openModal(loadedPost)"
-        v-for="(loadedPost, index) in loadedPosts"
-        :key="index"
-        :name="loadedPost.name"
-        :image="loadedPost.imageUrl"
-        :author="loadedPost.author"
-        :description="loadedPost.description"
+        @card-click="openModal(post)"
+        v-for="post in posts"
+        :key="post.id"
+        :name="post.name"
+        :image="post.imageUrl"
+        :author="post.author"
+        :description="post.description"
+        :postDate="post.postDate"
       >
       </Card>
     </div>
@@ -40,21 +42,18 @@ export default {
     return {};
   },
   methods: {
-    openModal(loadedPost) {
+    openModal(post) {
       //make this dispatch later
-      this.$store.commit("openModal", loadedPost);
-      loadedPost.name,
-        loadedPost.imageUrl,
-        loadedPost.author,
-        loadedPost.description;
+      this.$store.commit("openModal", post);
+      post.name, post.imageUrl, post.author, post.description, post.postDate;
     },
   },
   computed: {
     isHidden() {
       return this.$store.state.isHidden;
     },
-    loadedPosts() {
-      return this.$store.state.loadedPosts;
+    posts() {
+      return this.$store.getters.loadedPosts;
     },
     tempStore() {
       return this.$store.state.tempStore;

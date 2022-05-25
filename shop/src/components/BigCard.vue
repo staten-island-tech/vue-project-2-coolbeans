@@ -7,9 +7,7 @@
           <h2 class="title">{{ name }}</h2>
           <img :src="image" alt="" class="image" />
           <h3 class="author">{{ author }}</h3>
-          <p class="description">
-            {{ description }}
-          </p>
+          <p class="description">{{ description }}, {{ postDate }}</p>
         </div>
         <img
           class="right"
@@ -35,6 +33,7 @@ export default {
     image: String,
     author: String,
     description: String,
+    postDate: String,
   },
   components: {},
   methods: {
