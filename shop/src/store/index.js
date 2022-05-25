@@ -58,6 +58,9 @@ const store = createStore({
     setAuthIsReady(state, payload) {
       state.authIsReady = payload;
     },
+    createPost(state, payload) {
+      state.loadedPosts.push(payload);
+    },
     openModal(state, loadedPost) {
       state.isHidden = true;
       state.tempStore.push(loadedPost);
@@ -105,6 +108,13 @@ const store = createStore({
       // async code
       await signOut(auth);
       context.commit("setUser", null);
+    },
+    createPost({ commit }, payload) {
+      const post = {
+        title: payload.title,
+        imageUrl: payload.imageUrl,
+        description: payload.description,
+      };
     },
     openModal({ commit, loadedPost }) {
       commit("openModal", loadedPost);

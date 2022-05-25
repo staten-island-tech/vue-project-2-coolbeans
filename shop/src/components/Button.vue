@@ -9,7 +9,6 @@ export default {};
 </script>
 
 <style scoped>
-
 .button {
   /* background-color: #151515; */
   background-color: #73a5c9;
@@ -22,8 +21,7 @@ export default {};
   font-size: 0.9rem;
   text-transform: uppercase;
   transition: 0.3s ease 0s;
-  font-family: 'Kumbh Sans', sans-serif;
-
+  font-family: "Kumbh Sans", sans-serif;
 }
 
 .button:hover {
