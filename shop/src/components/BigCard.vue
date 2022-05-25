@@ -33,7 +33,7 @@ export default {
     image: String,
     author: String,
     description: String,
-    postDate: Date,
+    postDate: String,
   },
   components: {},
   methods: {

@@ -43,9 +43,14 @@ export default {
   },
   methods: {
     openModal(post) {
-      //make this dispatch later
-      this.$store.commit("openModal", post);
-      post.name, post.imageUrl, post.author, post.description, post.postDate;
+      const postname = {
+        name: post.name,
+        imageUrl: post.imageUrl,
+        author: post.author,
+        description: post.description,
+        postDate: post.postDate,
+      };
+      this.$store.dispatch("openModal", postname);
     },
   },
   computed: {

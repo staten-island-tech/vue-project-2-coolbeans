@@ -35,7 +35,6 @@
         />
       </div>
       <div class="time">Time: {{ postDate }}</div>
-      <button class="check" @click="time">check me out</button>
       <button :disabled="!isFormVaild" type="submit">Create Post</button>
     </form>
     <div class="back"></div>
@@ -43,7 +42,6 @@
 </template>
 
 <script>
-import Button from "../components/Button.vue";
 export default {
   component: {},
   data() {

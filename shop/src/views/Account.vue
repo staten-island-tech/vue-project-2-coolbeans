@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <h2>Hello, {{ userName.displayName }}</h2>
+    <h2>Hello, fix name here</h2>
     <h4>Your Posts</h4>
     <div class="grid"></div>
     <router-link to="/create">
@@ -20,11 +20,7 @@ export default {
     Card,
   },
   methods: {},
-  computed: {
-    userName() {
-      return this.$store.state.user;
-    },
-  },
+  computed: {},
 };
 </script>
 

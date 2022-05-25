@@ -1,14 +1,14 @@
 import { createStore } from "vuex";
 
 //firebase import
-import { auth } from "../firebase/config";
+import { auth, db } from "../firebase/config";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
-  updateProfile,
 } from "firebase/auth";
+import { collection, addDoc, getDocs } from "firebase/firestore";
 
 const reformatingDate = function () {
   const date = new Date();
@@ -24,6 +24,7 @@ const reformatingDate = function () {
 const store = createStore({
   state: {
     user: null,
+    userName: null,
     isHidden: false,
     isSignup: false,
     authIsReady: false,
@@ -72,9 +73,12 @@ const store = createStore({
     createPost(state, payload) {
       state.loadedPosts.push(payload);
     },
-    openModal(state, loadedPost) {
+    setLoadedPosts(state, payload) {
+      state.loadedPosts = payload;
+    },
+    openModal(state, payload) {
       state.isHidden = true;
-      state.tempStore.push(loadedPost);
+      state.tempStore.push(payload);
     },
     closeModal(state) {
       state.isHidden = false;
@@ -88,16 +92,16 @@ const store = createStore({
     },
   },
   actions: {
-    async signup(context, { email, password, firstName }) {
+    async signup(context, { email, password, firstName, lastName }) {
       console.log("signup action");
-
       // async code
       const res = await createUserWithEmailAndPassword(auth, email, password);
       if (res) {
         context.commit("setUser", res.user);
-        await updateProfile(res.user, {
-          displayName: firstName,
+        const docRef = await addDoc(collection(db, this.state.user.uid), {
+          name: { fname: firstName, lname: lastName },
         });
+        console.log("Document written with ID: ", docRef.id);
       } else {
         throw new Error("could not complete sign up");
       }
@@ -120,18 +124,49 @@ const store = createStore({
       await signOut(auth);
       context.commit("setUser", null);
     },
-    createPost({ commit }, payload) {
+    async createPost({ commit }, payload) {
       const post = {
         name: payload.name,
         imageUrl: payload.imageUrl,
         description: payload.description,
         postDate: payload.postDate,
       };
-      commit("createPost", post);
-      //maybe this is how i should do for popup
+      try {
+        commit("createPost", post);
+        const docRef = await addDoc(collection(db, publicPosts), {
+          post,
+        });
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
     },
-    openModal({ commit, loadedPost }) {
-      commit("openModal", loadedPost);
+    async loadPost({ commit }) {
+      const eachPost = await getDocs(collection(db, publicPosts));
+      eachPost.forEach((doc) => {
+        const allPost = [];
+        const obj = doc.val();
+        for (let key in obj) {
+          allPost.push({
+            id: key,
+            name: obj[key].name,
+            description: obj[key].description,
+            imageUrl: obj[key].imageUrl,
+            postDate: obj[key].postDate,
+          });
+        }
+        commit("setLoadedPosts", allPost);
+      });
+    },
+    openModal({ commit }, payload) {
+      const popupPost = {
+        name: payload.name,
+        imageUrl: payload.imageUrl,
+        author: payload.author,
+        description: payload.description,
+        postDate: payload.postDate,
+      };
+      commit("openModal", popupPost);
     },
     closeModal({ commit }) {
       commit("closeModal");
@@ -158,3 +193,20 @@ const unsub = onAuthStateChanged(auth, (user) => {
   unsub();
 });
 export default store;
+
+// database
+//   .ref("createposts")
+//   .push(post)
+//   .then((data) => {
+//     commit("createPost", post);
+//     console.log(data);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+// function setUserData(post) {
+//   const db = getDatabase();
+//   set(ref(db, "users/"), {
+//     post,
+//   });
+// }    setUserData();

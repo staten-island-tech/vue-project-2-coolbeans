@@ -54,25 +54,24 @@ export default {
     const password = ref("");
     const firstName = ref("");
     const lastName = ref("");
-    //ask later why does this not work
-    const jointName = `${firstName} ${lastName}`;
 
     const error = ref(null);
     const store = useStore();
     const router = useRouter();
 
     const handleSubmit = async () => {
-      console.log(jointName);
       try {
         await store.dispatch("signup", {
           email: email.value,
           password: password.value,
           firstName: firstName.value,
+          lastName: lastName.value,
         });
         router.push("/account");
         store.dispatch("closeModal");
       } catch (err) {
         error.value = err.message;
+        console.log(error);
       }
     };
     return {
@@ -81,7 +80,6 @@ export default {
       password,
       firstName,
       lastName,
-      jointName,
       error,
     };
   },

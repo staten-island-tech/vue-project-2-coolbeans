@@ -9,15 +9,4 @@ const app = createApp(App);
 
 app.use(router);
 app.use(store);
-app.mount("#app");
-
-export default (value) => {
-  const date = new Date(value);
-  return date.toLocaleString(["em-US"], {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-};
+app.mount("#app").created(this.$store.dispatch("loadPost"));
