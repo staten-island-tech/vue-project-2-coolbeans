@@ -9,4 +9,4 @@ const app = createApp(App);
 
 app.use(router);
 app.use(store);
-app.mount("#app").created(this.$store.dispatch("loadPost"));
+app.mount("#app");

@@ -125,25 +125,28 @@ const store = createStore({
       context.commit("setUser", null);
     },
     async createPost({ commit }, payload) {
-      const post = {
-        name: payload.name,
-        imageUrl: payload.imageUrl,
-        description: payload.description,
-        postDate: payload.postDate,
-      };
       try {
+        const post = {
+          name: payload.name,
+          imageUrl: payload.imageUrl,
+          description: payload.description,
+          postDate: payload.postDate,
+        };
         commit("createPost", post);
-        const docRef = await addDoc(collection(db, publicPosts), {
+        const docRef = await addDoc(collection(db, this.state.user.uid), {
           post,
         });
-        console.log("Document written with ID: ", docRef.id);
+        const docRefCopy = await addDoc(collection(db, "publicPosts"), {
+          post,
+        });
+        console.log("Document written with ID: ", docRef.id, docRefCopy.id);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
     },
     async loadPost({ commit }) {
-      const eachPost = await getDocs(collection(db, publicPosts));
-      eachPost.forEach((doc) => {
+      const eachPost = await getDocs(collection(db, "publicPosts"));
+      /* eachPost.forEach((doc) => {
         const allPost = [];
         const obj = doc.val();
         for (let key in obj) {
@@ -155,7 +158,10 @@ const store = createStore({
             postDate: obj[key].postDate,
           });
         }
-        commit("setLoadedPosts", allPost);
+      }); */
+
+      const allPost = eachPost.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
       });
     },
     openModal({ commit }, payload) {

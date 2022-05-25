@@ -38,6 +38,9 @@ export default {
     Card,
     Modal,
   },
+  beforeMount() {
+    this.$store.dispatch("loadPost");
+  },
   data() {
     return {};
   },
