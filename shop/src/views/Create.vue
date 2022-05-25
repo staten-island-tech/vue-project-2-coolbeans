@@ -2,18 +2,15 @@
   <div class="create">
     <h2>Create</h2>
     <h4>Create a Post</h4>
-    <div class="back">
 
-    </div>
+    <div class="back"></div>
   </div>
 </template>
 
 <script>
 export default {
-  setup() {
-    
-  },
-}
+  setup() {},
+};
 </script>
 
 <style scoped>
@@ -34,7 +31,7 @@ h2 {
   padding-bottom: 2rem;
 }
 h4 {
-  color:#8a8a8a;
+  color: #8a8a8a;
   padding-bottom: 1rem;
 }
 </style>

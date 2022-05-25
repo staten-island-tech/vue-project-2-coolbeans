@@ -125,13 +125,6 @@ const store = createStore({
         return postA.postDate > postB.postDate;
       });
     },
-    loadPost(state) {
-      return (postId) => {
-        return state.loadPosts.find((post) => {
-          return post.id === postId;
-        });
-      };
-    },
   },
   modules: {},
 });
