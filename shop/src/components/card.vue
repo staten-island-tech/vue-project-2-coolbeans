@@ -26,7 +26,7 @@ export default {
     name: String,
     image: String,
     author: String,
-    postDate: String,
+    postDate: Date,
   },
   components: {},
 };

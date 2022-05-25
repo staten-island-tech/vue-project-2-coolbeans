@@ -2,14 +2,14 @@
   <div class="create">
     <h2>Create</h2>
     <h4>Create a Post</h4>
-    <form class="form">
+    <form class="form" @submit.prevent="onCreatePost">
       <div class="title">
         <h5 class="titletext">Title</h5>
         <input
           type="text"
           placeholder="Title"
           class="form-field"
-          v-model="title"
+          v-model="name"
           required
         />
       </div>
@@ -34,27 +34,57 @@
           required
         />
       </div>
-      <button :disabled="!isFormVaild">Create Post</button>
+      <div class="time">Time: {{ postDate }}</div>
+      <button class="check" @click="time">check me out</button>
+      <button :disabled="!isFormVaild" type="submit">Create Post</button>
     </form>
     <div class="back"></div>
   </div>
 </template>
 
 <script>
+import Button from "../components/Button.vue";
 export default {
   component: {},
   data() {
     return {
-      title: "",
+      name: "",
       imageUrl: "",
       description: "",
+      postDate: this.reformatingDate(),
     };
   },
   computed: {
     isFormVaild() {
       return (
-        this.title !== "" && this.imageUrl !== "" && this.description !== ""
+        this.name !== "" && this.imageUrl !== "" && this.description !== ""
       );
+    },
+  },
+  methods: {
+    onCreatePost() {
+      if (!this.isFormVaild) {
+        return;
+      }
+      const postData = {
+        name: this.name,
+        imageUrl: this.imageUrl,
+        description: this.description,
+        postDate: this.postDate,
+      };
+      this.$store.dispatch("createPost", postData);
+      // just figure this out, no need to import useRouter anymore
+      this.$router.push("/");
+    },
+    reformatingDate() {
+      const date = new Date();
+      return date.toLocaleString(["en-US"], {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
     },
   },
   setup() {},
