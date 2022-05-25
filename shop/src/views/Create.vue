@@ -53,6 +53,7 @@ export default {
       description: "",
       postDate: this.reformatingDate(),
     };
+    z;
   },
   computed: {
     isFormVaild() {
