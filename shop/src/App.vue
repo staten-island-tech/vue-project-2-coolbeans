@@ -24,7 +24,11 @@
           </span>
           <div class="in">
             <RouterLink to="/login" class="page" v-if="!user">
-              <img src="./components/icons/login.svg" alt="Login" class="login" />
+              <img
+                src="./components/icons/login.svg"
+                alt="Login"
+                class="login"
+              />
             </RouterLink>
           </div>
           <span class="page" v-if="user" @click="handleClick">
@@ -64,8 +68,10 @@ export default {
   },
   setup() {
     const store = useStore();
+    const router = useRouter();
     const handleClick = () => {
       store.dispatch("logout");
+      router.push("/");
     };
 
     return {
@@ -99,12 +105,12 @@ export default {
 } */
 
 .pages {
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
 .pages span {
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -132,7 +138,6 @@ export default {
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s ease-in-out;
-
 }
 .logo-container:hover {
   background-color: rgba(21, 21, 21, 0.15);

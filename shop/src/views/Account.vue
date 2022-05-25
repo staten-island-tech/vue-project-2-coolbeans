@@ -19,12 +19,7 @@ export default {
   components: {
     Card,
   },
-  methods: {
-    addCard(vanguard) {
-      this.$store.commit("add", vanguard);
-      vanguard.name, vanguard.img, vanguard.price;
-    },
-  },
+  methods: {},
   computed: {
     userName() {
       return this.$store.state.user;
