@@ -17,6 +17,8 @@ import {
   getDoc,
   doc,
   query,
+  collectionGroup,
+  where,
 } from "firebase/firestore";
 
 const store = createStore({
@@ -28,6 +30,8 @@ const store = createStore({
     authIsReady: false,
     loadedPosts: [],
     tempStore: [],
+    favorite: [],
+    userCreated: [],
   },
   mutations: {
     setUser(state, payload) {
@@ -44,6 +48,7 @@ const store = createStore({
       state.loadedPosts = payload;
       console.log(payload);
     },
+    loadUsercreated(state, payload) {},
     openModal(state, payload) {
       state.isHidden = true;
       state.tempStore.push(payload);
@@ -98,6 +103,7 @@ const store = createStore({
           imageUrl: payload.imageUrl,
           description: payload.description,
           postDate: payload.postDate,
+          type: "post",
         };
         const userPath = doc(db, `allUser/${this.state.user.uid}`);
         const userPostPath = doc(userPath, "UserPosts/posts");
@@ -112,14 +118,31 @@ const store = createStore({
     loadPost({ commit }) {
       async function queryForDocuments() {
         const thePost = query(
-          collection(
-            db,
-            "publicPost",
-            "allPost",
-            "post"
-          ) /* can insert limit of post here */
+          collectionGroup(db, "post")
+          /* can insert limit of post here
+           */
         );
         const querySnapshot = await getDocs(thePost);
+
+        const st = [];
+        const allPublicpost = querySnapshot.forEach((snap) => {
+          console.log(snap.data());
+          st.push(snap.data());
+          snap.data();
+        });
+        commit("setLoadedPosts", st);
+      }
+      queryForDocuments();
+    },
+    async loadUsercreated({ commit }) {
+      async function queryForDocuments() {
+        const thePost = query(
+          collectionGroup(db, "post")
+          /* can insert limit of post here
+           */
+        );
+        const querySnapshot = await getDocs(thePost);
+
         const st = [];
         const allPublicpost = querySnapshot.forEach((snap) => {
           console.log(snap.data());

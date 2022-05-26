@@ -7,7 +7,8 @@
           <h2 class="title">{{ location }}</h2>
           <img :src="image" alt="" class="image" />
           <h3 class="author">{{ author }}</h3>
-          <p class="description">{{ description }}, {{ postDate }}</p>
+          <p class="description">{{ description }}</p>
+          <p class="date">{{ postDate }}</p>
         </div>
         <!-- <img
           class="right"
