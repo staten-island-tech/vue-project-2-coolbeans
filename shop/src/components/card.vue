@@ -10,7 +10,7 @@
     <div class="m">
       <div class="location">
         <img src="../components/icons/location.svg" alt="pin" />
-        <h5 class="name">{{ name }}</h5>
+        <h5 class="name">{{ location }}</h5>
       </div>
       <h5 class="author">{{ author }}</h5>
       <div class="fav">
@@ -23,7 +23,7 @@
 <script>
 export default {
   props: {
-    name: String,
+    location: String,
     image: String,
     author: String,
     postDate: String,

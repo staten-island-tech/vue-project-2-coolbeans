@@ -6,7 +6,7 @@
       v-show="isHidden"
       v-for="(tempS, index) in tempStore"
       :key="index"
-      :name="tempS.name"
+      :location="tempS.location"
       :image="tempS.imageUrl"
       :author="tempS.author"
       :description="tempS.description"
@@ -17,7 +17,7 @@
         @card-click="openModal(post)"
         v-for="(post, index) in posts"
         :key="index"
-        :name="post.name"
+        :location="post.location"
         :image="post.imageUrl"
         :author="post.author"
         :description="post.description"
@@ -47,7 +47,7 @@ export default {
   methods: {
     openModal(post) {
       const postname = {
-        name: post.name,
+        location: post.location,
         imageUrl: post.imageUrl,
         author: post.author,
         description: post.description,

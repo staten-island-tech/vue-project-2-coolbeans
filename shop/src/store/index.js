@@ -94,7 +94,7 @@ const store = createStore({
     async createPost({ commit }, payload) {
       try {
         const post = {
-          name: payload.name,
+          location: payload.location,
           imageUrl: payload.imageUrl,
           description: payload.description,
           postDate: payload.postDate,
@@ -132,7 +132,7 @@ const store = createStore({
     },
     openModal({ commit }, payload) {
       const popupPost = {
-        name: payload.name,
+        location: payload.location,
         imageUrl: payload.imageUrl,
         author: payload.author,
         description: payload.description,
