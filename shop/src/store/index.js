@@ -13,6 +13,7 @@ import {
   addDoc,
   getDocs,
   setDoc,
+  getDoc,
   doc,
   query,
 } from "firebase/firestore";
@@ -43,6 +44,7 @@ const store = createStore({
   mutations: {
     fsName(state, payload) {
       state.firstN = payload;
+      console.log(payload);
     },
     lsName(state, payload) {
       state.lastN = payload;
@@ -130,7 +132,6 @@ const store = createStore({
       }
     },
     loadPost({ commit }) {
-      console.log("test");
       async function queryForDocuments() {
         const thePost = query(
           collection(
@@ -149,7 +150,6 @@ const store = createStore({
         });
         commit("setLoadedPosts", st);
       }
-
       queryForDocuments();
     },
     openModal({ commit }, payload) {
@@ -163,7 +163,18 @@ const store = createStore({
       commit("openModal", popupPost);
     },
     fsName({ commit }) {
-      async function readname
+      const userPath = doc(db, `allUser/xBY3bntotTgzGIbo564GxUOCyRP2`);
+      const userPostPath = doc(userPath, "name/90dPedzoLBcYkH5mNvJZ");
+
+      const container = [];
+      async function readName() {
+        const nameSnap = await getDoc(userPostPath);
+        if (nameSnap.exists()) {
+          container.push(nameSnap.data());
+        }
+        commit("fsName", container);
+      }
+      readName();
     },
     closeModal({ commit }) {
       commit("closeModal");
@@ -177,7 +188,6 @@ const store = createStore({
   },
   getters: {
     loadedPosts(state) {
-      console.log("getters loaded");
       return state.loadedPosts.sort((postA, postB) => {
         return postA.postDate > postB.postDate;
       });

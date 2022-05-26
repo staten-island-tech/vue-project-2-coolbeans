@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <h2>Hello, fix name here</h2>
+    <h2>Hello, {{ allName }}</h2>
     <h4>Your Posts</h4>
     <div class="grid"></div>
     <router-link to="/create">
@@ -16,6 +16,9 @@
 import Card from "../components/Card.vue";
 
 export default {
+  mounted() {
+    this.$store.dispatch("fsName");
+  },
   components: {
     Card,
   },
