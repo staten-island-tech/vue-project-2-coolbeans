@@ -2,18 +2,18 @@
   <div class="card">
     <div class="background">
       <div class="content">
-        <img class="left" src="../components/icons/left.svg" alt="left-arrow" />
+        <!-- <img class="left" src="../components/icons/left.svg" alt="left-arrow" /> -->
         <div class="container">
-          <h2 class="title">{{ name }}</h2>
+          <h2 class="title">{{ location }}</h2>
           <img :src="image" alt="" class="image" />
           <h3 class="author">{{ author }}</h3>
           <p class="description">{{ description }}, {{ postDate }}</p>
         </div>
-        <img
+        <!-- <img
           class="right"
           src="../components/icons/right.svg"
           alt="right-arrow"
-        />
+        /> -->
       </div>
       <img
         class="close"
@@ -29,7 +29,7 @@
 export default {
   setup() {},
   props: {
-    name: String,
+    location: String,
     image: String,
     author: String,
     description: String,

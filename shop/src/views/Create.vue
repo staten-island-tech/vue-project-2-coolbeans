@@ -1,43 +1,49 @@
 <template>
-  <div class="create">
-    <h2>Create</h2>
-    <h4>Create a Post</h4>
+  <div class="container">
+    <div class="create">
+    <h3>Create a Post</h3>
     <form class="form" @submit.prevent="onCreatePost">
-      <div class="title">
-        <h5 class="titletext">Title</h5>
+      <div class="location">
+        <!-- <label class="locationtext">Location</label> -->
         <input
+          id="autocomplete"
           type="text"
-          placeholder="Title"
+          placeholder="Location"
           class="form-field"
-          v-model="name"
+          v-model="location"
           required
         />
       </div>
       <div class="image">
-        <h5 class="imagetext">Image-Url</h5>
+        <!-- <label class="imagetext">Image</label> -->
         <input
           type="text"
-          placeholder="imageUrl"
+          placeholder="Image URL"
           class="form-field"
           v-model="imageUrl"
           required
         />
-        <img :src="imageUrl" alt="" class="image" />
+        <img :disabled="!isPicVaild" :src="imageUrl" alt=""/>
       </div>
       <div class="description">
-        <h5 class="descriptiontext">Description</h5>
-        <textarea
+        <!-- <label class="descriptiontext">Description</label> -->
+        <input
           type="text"
-          placeholder="Description"
+          placeholder="Add a description (optional)"
           class="form-field"
           v-model="description"
           required
         />
       </div>
-      <div class="time">Time: {{ postDate }}</div>
+      <div class="time">
+        <p>
+          {{ postDate }}
+        </p>
+      </div>
       <button :disabled="!isFormVaild" type="submit">Create Post</button>
     </form>
     <div class="back"></div>
+  </div>
   </div>
 </template>
 
@@ -46,7 +52,7 @@ export default {
   component: {},
   data() {
     return {
-      name: "",
+      location: "",
       imageUrl: "",
       description: "",
       postDate: this.reformatingDate(),
@@ -54,9 +60,14 @@ export default {
     ll;
   },
   computed: {
+    isPicVaild() {
+      return (
+        this.imageUrl !== ""
+      );
+    },
     isFormVaild() {
       return (
-        this.name !== "" && this.imageUrl !== "" && this.description !== ""
+        this.location !== "" && this.imageUrl !== "" && this.description !== ""
       );
     },
   },
@@ -65,8 +76,11 @@ export default {
       if (!this.isFormVaild) {
         return;
       }
+      if (!this.isPicVaild) {
+        return;
+      }
       const postData = {
-        name: this.name,
+        location: this.location,
         imageUrl: this.imageUrl,
         description: this.description,
         postDate: this.postDate,
@@ -81,44 +95,162 @@ export default {
         month: "short",
         day: "2-digit",
         year: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
+        // hour: "2-digit",
+        // minute: "2-digit",
       });
     },
   },
   setup() {},
+  async created() {
+    const response = await fetch("https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete")
+    const {data:location} = await response.json()
+    this.location = location
+    let autocomplete;
+      function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(
+          document.getElementById('autocomplete'),
+          {
+            types: ['establishments'],
+            fields:['place_id', 'geometry', 'name']
+          }
+        )
+        // autocomplete.addListener('place_changed', onPlaceChanged)
+      }
+
+      // function onPlaceChanged() {
+      //   const place = autocomplete.getPlace();
+
+      //   if (!place.geometry) {
+      //     document.getElementById('autocomplete').placeholder = 'Location'
+      //   } else {
+      //     document.getElementById('details').innerHTML = place.name
+      //   }
+      // }
+  },
 };
 </script>
 
 <style scoped>
-.create {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 100%;
-  height: 100%;
-  padding: 0 4rem;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
+  height: 100vh;
 }
-h2 {
-  color: #151515;
-  padding-bottom: 2rem;
-}
-h4 {
-  color: #8a8a8a;
-  padding-bottom: 1rem;
+.create {
+  position: relative;
+  width: auto;
+  height: auto;
+  /* max-height: 80vh; */
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* overflow-y: scroll; */
 }
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+h3 {
+  color: #8a8a8a;
+  text-align: center;
+  padding: 1rem;
+  z-index: 5;
+}
+
+.location,
+.image,
+.description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.location {
+  padding-bottom: 2rem;
 }
 .image {
+  padding-bottom: 1rem;
+}
+.description {
+  padding: 0;
+  padding-bottom: 1.5rem;
+}
+
+
+label {
+  color: #a1a1a1;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+input {
+  display: block;
+  width: 20rem;
+  height: 3rem;
+  font-size: 1rem;
+  padding: 0.7rem;
+  background: none;
+  border: none;
+  outline: none;
+  color: #151515;
+  border-bottom: 0.1rem solid #a1a1a1;
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+p {
+  color: #a1a1a1;
+  text-align: center;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+}
+
+
+img {
+  display:block;
+  padding-top: 1rem;
   object-fit: cover;
-  height: 25rem;
-  width: 25rem;
+  max-height: 15rem;
+  max-width: 18rem;
+}
+
+img:disabled {
+  display: none;
+}
+
+button {
+  background-color: #73a5c9;
+  color: #fff;
+  width: 20rem;
+  height: 2.5rem;
+  margin: 0.8rem;
+  border: none;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  transition: 0.3s ease 0s;
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+button:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #a1a1a1;
+  cursor: default;
+  opacity: 1;
 }
 </style>

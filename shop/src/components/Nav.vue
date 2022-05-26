@@ -78,13 +78,13 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 5rem;
+  padding: 1rem 5rem;
   z-index: 4;
   background-color: rgba(245, 244, 244, 0.85);
   /* background: linear-gradient(rgba(245,244,244, 0.7), rgba(0, 0, 0, 0)); */
 }
 
-.sticky {
+/* .sticky {
   border-bottom: 0.08rem solid rgba(221, 220, 220, 0.9);
-}
+} */
 </style>

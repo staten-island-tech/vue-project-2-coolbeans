@@ -47,11 +47,13 @@ export default {
   cursor: zoom-in;
   /* transition: box-shadow 0.3s ease-in-out; */
 }
-.image {
+img {
   width: auto;
   height: auto;
   object-fit: cover;
+  object-position: 50% 50%;
   z-index: 1;
+  transition: transform 0.25s ease-in-out;
 }
 .m {
   position: absolute;
@@ -97,6 +99,10 @@ export default {
 .card:hover .m {
   /* opacity: 1; */
   display: block;
+}
+
+.card:hover img {
+  transform: scale(1.05);
 }
 /* .item {
   position: relative;

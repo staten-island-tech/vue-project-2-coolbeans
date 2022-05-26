@@ -3,12 +3,12 @@
     <form @submit.prevent="handleSubmit">
       <h3>Welcome back,</h3>
       <div class="email">
-        <label for="email">Email</label>
-        <input type="email" name="email" v-model="email" required />
+        <!-- <label for="email">Email</label> -->
+        <input type="email" name="email" v-model="email" placeholder="Email" required />
       </div>
       <div class="pass">
-        <label for="password">Password</label>
-        <input type="password" name="password" v-model="password" required />
+        <!-- <label for="password">Password</label> -->
+        <input type="password" name="password" v-model="password" placeholder="Password" required />
       </div>
       <div class="error" v-if="error">{{ error }}</div>
       <div class="btn">
@@ -73,8 +73,9 @@ export default {
 }
 
 h3 {
+  color: #8a8a8a;
   text-align: center;
-  padding: 0.5rem;
+  padding: 1rem;
 }
 
 .email,
