@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  updateProfile,
 } from "firebase/auth";
 import {
   collection,
@@ -86,9 +87,8 @@ const store = createStore({
       if (res) {
         context.commit("setUser", res.user);
         await updateProfile(res.user, {
-          displayName: firstName,
+          displayName: `${firstName} ${lastName}`,
         });
-        console.log("Document written with ID: ", docRef.id);
       } else {
         throw new Error("could not complete sign up");
       }
@@ -121,10 +121,9 @@ const store = createStore({
         };
         const userPath = doc(db, `allUser/${this.state.user.uid}`);
         const userPostPath = doc(userPath, "UserPosts/posts");
-        const postAllPath = doc(db, "publicPost/allPost");
         const docRef = await addDoc(collection(userPostPath, "post"), post);
-        const docRef2 = await addDoc(collection(postAllPath, "post"), post);
-        console.log("Document written with ID: ", docRef.id, docRef2.id);
+
+        console.log("Document written with ID: ", docRef.id);
         commit("createPost", post);
       } catch (e) {
         console.error("Error adding document: ", e);
