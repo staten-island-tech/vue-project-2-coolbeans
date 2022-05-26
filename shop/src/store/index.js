@@ -19,17 +19,6 @@ import {
   query,
 } from "firebase/firestore";
 
-const reformatingDate = function () {
-  const date = new Date();
-  return date.toLocaleString(["en-US"], {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-};
-
 const store = createStore({
   state: {
     user: null,
@@ -37,19 +26,10 @@ const store = createStore({
     isHidden: false,
     isSignup: false,
     authIsReady: false,
-    firstN: null,
-    lastN: null,
     loadedPosts: [],
     tempStore: [],
   },
   mutations: {
-    fsName(state, payload) {
-      state.firstN = payload;
-      console.log(payload);
-    },
-    lsName(state, payload) {
-      state.lastN = payload;
-    },
     setUser(state, payload) {
       state.user = payload;
       console.log("user state change:", state.user);
@@ -159,20 +139,6 @@ const store = createStore({
         postDate: payload.postDate,
       };
       commit("openModal", popupPost);
-    },
-    fsName({ commit }) {
-      const userPath = doc(db, `allUser/xBY3bntotTgzGIbo564GxUOCyRP2`);
-      const userPostPath = doc(userPath, "name/90dPedzoLBcYkH5mNvJZ");
-
-      const container = [];
-      async function readName() {
-        const nameSnap = await getDoc(userPostPath);
-        if (nameSnap.exists()) {
-          container.push(nameSnap.data());
-        }
-        commit("fsName", container);
-      }
-      readName();
     },
     closeModal({ commit }) {
       commit("closeModal");

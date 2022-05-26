@@ -1,49 +1,48 @@
 <template>
   <div class="container">
     <div class="create">
-    <h3>Create a Post</h3>
-    <form class="form" @submit.prevent="onCreatePost">
-      <div class="location">
-        <!-- <label class="locationtext">Location</label> -->
-        <input
-          id="autocomplete"
-          type="text"
-          placeholder="Location"
-          class="form-field"
-          v-model="location"
-          required
-        />
-      </div>
-      <div class="image">
-        <!-- <label class="imagetext">Image</label> -->
-        <input
-          type="text"
-          placeholder="Image URL"
-          class="form-field"
-          v-model="imageUrl"
-          required
-        />
-        <img :disabled="!isPicVaild" :src="imageUrl" alt=""/>
-      </div>
-      <div class="description">
-        <!-- <label class="descriptiontext">Description</label> -->
-        <input
-          type="text"
-          placeholder="Add a description (optional)"
-          class="form-field"
-          v-model="description"
-          required
-        />
-      </div>
-      <div class="time">
-        <p>
-          {{ postDate }}
-        </p>
-      </div>
-      <button :disabled="!isFormVaild" type="submit">Create Post</button>
-    </form>
-    <div class="back"></div>
-  </div>
+      <h3>Create a Post</h3>
+      <form class="form" @submit.prevent="onCreatePost">
+        <div class="location">
+          <!-- <label class="locationtext">Location</label> -->
+          <input
+            id="autocomplete"
+            type="text"
+            placeholder="Location"
+            class="form-field"
+            v-model="location"
+            required
+          />
+        </div>
+        <div class="image">
+          <!-- <label class="imagetext">Image</label> -->
+          <input
+            type="text"
+            placeholder="Image URL"
+            class="form-field"
+            v-model="imageUrl"
+            required
+          />
+          <img :disabled="!isPicVaild" :src="imageUrl" alt="" />
+        </div>
+        <div class="description">
+          <!-- <label class="descriptiontext">Description</label> -->
+          <input
+            type="text"
+            placeholder="Add a description (optional)"
+            class="form-field"
+            v-model="description"
+          />
+        </div>
+        <div class="time">
+          <p>
+            {{ postDate }}
+          </p>
+        </div>
+        <button :disabled="!isFormVaild" type="submit">Create Post</button>
+      </form>
+      <div class="back"></div>
+    </div>
   </div>
 </template>
 
@@ -61,14 +60,10 @@ export default {
   },
   computed: {
     isPicVaild() {
-      return (
-        this.imageUrl !== ""
-      );
+      return this.imageUrl !== "";
     },
     isFormVaild() {
-      return (
-        this.location !== "" && this.imageUrl !== "" && this.description !== ""
-      );
+      return this.location !== "" && this.imageUrl !== "";
     },
   },
   methods: {
@@ -101,32 +96,34 @@ export default {
     },
   },
   setup() {},
-  async created() {
-    const response = await fetch("https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete")
-    const {data:location} = await response.json()
-    this.location = location
+  /*  async created() {
+    const response = await fetch(
+      "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete"
+    );
+    const { data: location } = await response.json();
+    this.location = location;
     let autocomplete;
-      function initAutocomplete() {
-        autocomplete = new google.maps.places.Autocomplete(
-          document.getElementById('autocomplete'),
-          {
-            types: ['establishments'],
-            fields:['place_id', 'geometry', 'name']
-          }
-        )
-        // autocomplete.addListener('place_changed', onPlaceChanged)
-      }
+    function initAutocomplete() {
+      autocomplete = new google.maps.places.Autocomplete(
+        document.getElementById("autocomplete"),
+        {
+          types: ["establishments"],
+          fields: ["place_id", "geometry", "name"],
+        }
+      );
+      // autocomplete.addListener('place_changed', onPlaceChanged)
+    }
 
-      // function onPlaceChanged() {
-      //   const place = autocomplete.getPlace();
+    // function onPlaceChanged() {
+    //   const place = autocomplete.getPlace();
 
-      //   if (!place.geometry) {
-      //     document.getElementById('autocomplete').placeholder = 'Location'
-      //   } else {
-      //     document.getElementById('details').innerHTML = place.name
-      //   }
-      // }
-  },
+    //   if (!place.geometry) {
+    //     document.getElementById('autocomplete').placeholder = 'Location'
+    //   } else {
+    //     document.getElementById('details').innerHTML = place.name
+    //   }
+    // }
+  }, */
 };
 </script>
 
@@ -186,7 +183,6 @@ h3 {
   padding-bottom: 1.5rem;
 }
 
-
 label {
   color: #a1a1a1;
   font-size: 0.8rem;
@@ -216,9 +212,8 @@ p {
   padding-bottom: 0.5rem;
 }
 
-
 img {
-  display:block;
+  display: block;
   padding-top: 1rem;
   object-fit: cover;
   max-height: 15rem;
