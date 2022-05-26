@@ -6,6 +6,7 @@
       <div class="location">
         <!-- <label class="locationtext">Location</label> -->
         <input
+          id="autocomplete"
           type="text"
           placeholder="Location"
           class="form-field"
@@ -28,7 +29,7 @@
         <!-- <label class="descriptiontext">Description</label> -->
         <input
           type="text"
-          placeholder="Write a short description"
+          placeholder="Add a description (optional)"
           class="form-field"
           v-model="description"
           required
@@ -100,6 +101,32 @@ export default {
     },
   },
   setup() {},
+  async created() {
+    const response = await fetch("https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=initAutocomplete")
+    const {data:location} = await response.json()
+    this.location = location
+    let autocomplete;
+      function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(
+          document.getElementById('autocomplete'),
+          {
+            types: ['establishments'],
+            fields:['place_id', 'geometry', 'name']
+          }
+        )
+        // autocomplete.addListener('place_changed', onPlaceChanged)
+      }
+
+      // function onPlaceChanged() {
+      //   const place = autocomplete.getPlace();
+
+      //   if (!place.geometry) {
+      //     document.getElementById('autocomplete').placeholder = 'Location'
+      //   } else {
+      //     document.getElementById('details').innerHTML = place.name
+      //   }
+      // }
+  },
 };
 </script>
 
