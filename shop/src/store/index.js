@@ -85,9 +85,8 @@ const store = createStore({
       const res = await createUserWithEmailAndPassword(auth, email, password);
       if (res) {
         context.commit("setUser", res.user);
-        const userPath = doc(db, `allUser/${this.state.user.uid}`);
-        const docRef = await addDoc(collection(userPath, "name"), {
-          name: { fname: firstName, lname: lastName },
+        await updateProfile(res.user, {
+          displayName: firstName,
         });
         console.log("Document written with ID: ", docRef.id);
       } else {
