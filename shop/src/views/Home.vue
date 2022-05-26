@@ -15,8 +15,8 @@
     <div class="grid">
       <Card
         @card-click="openModal(post)"
-        v-for="post in posts"
-        :key="post.id"
+        v-for="(post, index) in posts"
+        :key="index"
         :name="post.name"
         :image="post.imageUrl"
         :author="post.author"

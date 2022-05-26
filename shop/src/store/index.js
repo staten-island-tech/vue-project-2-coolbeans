@@ -8,7 +8,15 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { collection, addDoc, getDocs, setDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  getDocs,
+  setDoc,
+  doc,
+  query,
+} from "firebase/firestore";
+import { async } from "@firebase/util";
 
 const reformatingDate = function () {
   const date = new Date();
@@ -29,7 +37,7 @@ const store = createStore({
     isSignup: false,
     authIsReady: false,
     loadedPosts: [
-      {
+      /*  {
         name: "Tokyo, Japan",
         author: "Jason Chen",
         imageUrl:
@@ -58,7 +66,7 @@ const store = createStore({
           "Elementum facilisis leo vel fringilla est ullamcorper eget. Vulputate eu scelerisque felis imperdiet proin fermentum leo. Quis hendrerit dolor magna eget est lorem. Diam in arcu cursus euismod quis viverra nibh cras. Vel turpis nunc eget lorem. Vehicula ipsum a arcu cursus vitae congue. Non enim praesent elementum facilisis leo vel fringilla est. Mi proin sed libero enim sed faucibus. ",
         postDate: reformatingDate(),
         id: "plmkjknbi",
-      },
+      }, */
     ],
     tempStore: [],
   },
@@ -132,38 +140,35 @@ const store = createStore({
           description: payload.description,
           postDate: payload.postDate,
         };
-        commit("createPost", post);
         const userPath = doc(db, `allUser/${this.state.user.uid}`);
-        const userPostPath = doc(userPath, "allUserPosts/post");
-
-        /*  const postAllPath = doc(db, "allPost");
-        const publicPostsPath = doc(postAllPath, "publicPosts"); */
-        const docRef = await setDoc(userPostPath, post);
-        /* const docRefCopy = await setDoc(publicPostsPath, post); */
+        const userPostPath = doc(userPath, "UserPosts/posts");
+        const postAllPath = doc(db, "publicPost/allPost");
+        const docRef = await addDoc(collection(userPostPath, "post"), post);
+        const docRef2 = await addDoc(collection(postAllPath, "post"), post);
+        console.log("Document written with ID: ", docRef.id, docRef2.id);
         commit("createPost", post);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
     },
-    async loadPost({ commit }) {
-      const eachPost = await getDocs(collection(db, "publicPosts"));
-      /* eachPost.forEach((doc) => {
-        const allPost = [];
-        const obj = doc.val();
-        for (let key in obj) {
-          allPost.push({
-            id: key,
-            name: obj[key].name,
-            description: obj[key].description,
-            imageUrl: obj[key].imageUrl,
-            postDate: obj[key].postDate,
-          });
-        }
-      }); */
-
-      const allPost = eachPost.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
-      });
+    loadPost({ commit }) {
+      async function queryForDocuments() {
+        const thePost = query(
+          collection(
+            db,
+            "publicPost",
+            "allPost",
+            "post"
+          ) /* can insert limit of post here */
+        );
+        const querySnapshot = await getDocs(thePost);
+        const allPublicpost = querySnapshot.forEach((snap) => {
+          console.log(snap.data());
+          snap.data();
+        });
+        commit("setLoadedPosts", allPublicpost);
+      }
+      queryForDocuments();
     },
     openModal({ commit }, payload) {
       const popupPost = {
@@ -187,7 +192,9 @@ const store = createStore({
   },
   getters: {
     loadedPosts(state) {
+      // make a function to check the data coming in has proptery
       return state.loadedPosts.sort((postA, postB) => {
+        console.log(postA);
         return postA.postDate > postB.postDate;
       });
     },
