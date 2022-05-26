@@ -8,7 +8,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, getDocs, setDoc, doc } from "firebase/firestore";
 
 const reformatingDate = function () {
   const date = new Date();
@@ -133,13 +133,14 @@ const store = createStore({
           postDate: payload.postDate,
         };
         commit("createPost", post);
-        const docRef = await addDoc(collection(db, this.state.user.uid), {
-          post,
-        });
-        const docRefCopy = await addDoc(collection(db, "publicPosts"), {
-          post,
-        });
-        console.log("Document written with ID: ", docRef.id, docRefCopy.id);
+        const userPath = doc(db, `allUser/${this.state.user.uid}`);
+        const userPostPath = doc(userPath, "allUserPosts/post");
+
+        /*  const postAllPath = doc(db, "allPost");
+        const publicPostsPath = doc(postAllPath, "publicPosts"); */
+        const docRef = await setDoc(userPostPath, post);
+        /* const docRefCopy = await setDoc(publicPostsPath, post); */
+        commit("createPost", post);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
