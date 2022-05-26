@@ -153,6 +153,23 @@ const store = createStore({
       }
       queryForDocuments();
     },
+    async loadUsercreated({ commit }) {
+      const thePost = query(
+        collection(
+          db,
+          "publicPost",
+          "allPost",
+          "post"
+        ) /* can insert limit of post here */
+      );
+      const querySnapshot = await getDocs(thePost);
+      const st = [];
+      const allPublicpost = querySnapshot.forEach((snap) => {
+        console.log(snap.data());
+        st.push(snap.data());
+        snap.data();
+      });
+    },
     openModal({ commit }, payload) {
       const popupPost = {
         location: payload.location,
