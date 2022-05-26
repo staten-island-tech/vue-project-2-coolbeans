@@ -192,7 +192,7 @@ const store = createStore({
   },
   getters: {
     loadedPosts(state) {
-      // make a function to check the data coming in has proptery
+      // make a function to check the data coming in has proptery s
       return state.loadedPosts.sort((postA, postB) => {
         console.log(postA);
         return postA.postDate > postB.postDate;
