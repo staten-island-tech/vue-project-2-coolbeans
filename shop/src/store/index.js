@@ -16,7 +16,6 @@ import {
   doc,
   query,
 } from "firebase/firestore";
-import { async } from "@firebase/util";
 
 const reformatingDate = function () {
   const date = new Date();
@@ -36,41 +35,18 @@ const store = createStore({
     isHidden: false,
     isSignup: false,
     authIsReady: false,
-    loadedPosts: [
-      /*  {
-        name: "Tokyo, Japan",
-        author: "Jason Chen",
-        imageUrl:
-          "https://images.unsplash.com/photo-1652785179637-2cf785eaa652?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1587",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tristique senectus et netus et malesuada fames ac turpis egestas. Morbi quis commodo odio aenean sed adipiscing diam. Consectetur purus ut faucibus pulvinar. Est pellentesque elit ullamcorper dignissim cras tincidunt. Consectetur adipiscing elit",
-        postDate: reformatingDate(),
-        id: "fibvdhksj",
-      },
-      {
-        name: "France, Pairs",
-        author: "Michael Chen",
-        imageUrl:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg/1200px-Tour_Eiffel_Wikimedia_Commons_%28cropped%29.jpg",
-        description:
-          "Cras sed felis eget velit aliquet. Nibh ipsum consequat nisl vel pretium lectus quam id leo. Amet consectetur adipiscing elit pellentesque habitant morbi tristique. Enim nulla aliquet porttitor lacus luctus. Vestibulum lorem sed risus ultricies tristique. Tortor at auctor urna nunc. Viverra accumsan in nisl nisi scelerisque eu ultrices vitae auctor. Pellentesque massa placerat duis ultricies lacus.",
-        postDate: reformatingDate(),
-        id: "csacvas",
-      },
-      {
-        name: "Italy, Rome",
-        author: "Jason Chen",
-        imageUrl:
-          "https://www.towerofpisa.org/wp-content/uploads/2015/04/pisa-leaning-tower1.jpg",
-        description:
-          "Elementum facilisis leo vel fringilla est ullamcorper eget. Vulputate eu scelerisque felis imperdiet proin fermentum leo. Quis hendrerit dolor magna eget est lorem. Diam in arcu cursus euismod quis viverra nibh cras. Vel turpis nunc eget lorem. Vehicula ipsum a arcu cursus vitae congue. Non enim praesent elementum facilisis leo vel fringilla est. Mi proin sed libero enim sed faucibus. ",
-        postDate: reformatingDate(),
-        id: "plmkjknbi",
-      }, */
-    ],
+    firstN: null,
+    lastN: null,
+    loadedPosts: [],
     tempStore: [],
   },
   mutations: {
+    fsName(state, payload) {
+      state.firstN = payload;
+    },
+    lsName(state, payload) {
+      state.lastN = payload;
+    },
     setUser(state, payload) {
       state.user = payload;
       console.log("user state change:", state.user);
@@ -83,6 +59,7 @@ const store = createStore({
     },
     setLoadedPosts(state, payload) {
       state.loadedPosts = payload;
+      console.log(payload);
     },
     openModal(state, payload) {
       state.isHidden = true;
@@ -106,7 +83,8 @@ const store = createStore({
       const res = await createUserWithEmailAndPassword(auth, email, password);
       if (res) {
         context.commit("setUser", res.user);
-        const docRef = await addDoc(collection(db, this.state.user.uid), {
+        const userPath = doc(db, `allUser/${this.state.user.uid}`);
+        const docRef = await addDoc(collection(userPath, "name"), {
           name: { fname: firstName, lname: lastName },
         });
         console.log("Document written with ID: ", docRef.id);
@@ -152,6 +130,7 @@ const store = createStore({
       }
     },
     loadPost({ commit }) {
+      console.log("test");
       async function queryForDocuments() {
         const thePost = query(
           collection(
@@ -162,12 +141,15 @@ const store = createStore({
           ) /* can insert limit of post here */
         );
         const querySnapshot = await getDocs(thePost);
+        const st = [];
         const allPublicpost = querySnapshot.forEach((snap) => {
           console.log(snap.data());
+          st.push(snap.data());
           snap.data();
         });
-        commit("setLoadedPosts", allPublicpost);
+        commit("setLoadedPosts", st);
       }
+
       queryForDocuments();
     },
     openModal({ commit }, payload) {
@@ -179,6 +161,9 @@ const store = createStore({
         postDate: payload.postDate,
       };
       commit("openModal", popupPost);
+    },
+    fsName({ commit }) {
+      async function readname
     },
     closeModal({ commit }) {
       commit("closeModal");
@@ -192,9 +177,8 @@ const store = createStore({
   },
   getters: {
     loadedPosts(state) {
-      // make a function to check the data coming in has proptery s
+      console.log("getters loaded");
       return state.loadedPosts.sort((postA, postB) => {
-        console.log(postA);
         return postA.postDate > postB.postDate;
       });
     },

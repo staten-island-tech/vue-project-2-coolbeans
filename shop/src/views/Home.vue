@@ -38,7 +38,7 @@ export default {
     Card,
     Modal,
   },
-  beforeMount() {
+  mounted() {
     this.$store.dispatch("loadPost");
   },
   data() {

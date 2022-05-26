@@ -55,6 +55,8 @@ export default {
     const firstName = ref("");
     const lastName = ref("");
 
+    // cap firdt letter of name
+
     const error = ref(null);
     const store = useStore();
     const router = useRouter();
@@ -67,6 +69,7 @@ export default {
           firstName: firstName.value,
           lastName: lastName.value,
         });
+
         router.push("/account");
         store.dispatch("closeModal");
       } catch (err) {
