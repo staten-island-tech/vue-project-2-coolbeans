@@ -142,6 +142,20 @@ const store = createStore({
         console.error("Error adding document: ", e);
       }
     },
+    async fetchPost() {
+      const userPath = doc(db, `allUser/${this.state.user.uid}`);
+      const userPostPath = doc(userPath, "UserPosts/posts");
+      let postSnapShot = await getDocs(userPostPath);
+      let posts = [];
+      postSnapShot.forEach((post) => {
+        let postData = post.data();
+        console.log(postData);
+        postData.id = post.id;
+        posts.push(cityData);
+      });
+      console.log(cities);
+      this.cities = cities;
+    },
     async addFavorite({ commit }, payload) {
       try {
         const post = {
@@ -244,14 +258,24 @@ const store = createStore({
       commit("openModal", popupPost);
     },
     deletePosttemp({ commit }, payload) {
-      console.log(payload);
+      const ogiweg = payload;
+      console.log(ogiweg);
       const uidUser = this.state.user.uid;
       console.log(uidUser);
-      async function deleteUserpost() {
-        const docRef = doc(db, "allUser", `KeTEV8rKW0N0EJGoD2xKlhcmvEd2`,"UserPosts", "posts", "post", `43XNB6SFvxpoLlESrK2w`);
-        await deleteDoc(docRef)
-      }
-      console.log(deleteUserpost());
+      const postRef = collection(
+        db,
+        "allUser",
+        `${uidUser}`,
+        "UserPosts",
+        "posts",
+        "post"
+      );
+      const q = query(postRef, where("uuid", "==", `${ogiweg}`));
+      q.get().then(function (querySnapshot) {
+        querySnapshot.forEach(function (doc) {
+          doc.ref.delete();
+        });
+      });
       // commit("deletePosttemp", payload);
     },
     closeModal({ commit }) {
