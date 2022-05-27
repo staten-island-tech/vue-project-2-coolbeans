@@ -243,21 +243,16 @@ const store = createStore({
       };
       commit("openModal", popupPost);
     },
-    async deletePosttemp({ commit }, payload) {
+    deletePosttemp({ commit }, payload) {
       console.log(payload);
+      const uidUser = this.state.user.uid;
+      console.log(uidUser);
       async function deleteUserpost() {
-        const take_query = query(
-          collectionGroup("allUser").where("uuid", "==", payload)
-        );
-        /* const deleteQuerysnapshot = await getDocs(take_query);
-        take_query.get().then(function (querySnapshot) {
-          querySnapshot.forEach(function (doc) {
-            doc.ref.delete();
-          });
-        }); */
+        const docRef = doc(db, "allUser", `KeTEV8rKW0N0EJGoD2xKlhcmvEd2`,"UserPosts", "posts", "post", `43XNB6SFvxpoLlESrK2w`);
+        await deleteDoc(docRef)
       }
       console.log(deleteUserpost());
-      commit("deletePosttemp", payload);
+      // commit("deletePosttemp", payload);
     },
     closeModal({ commit }) {
       commit("closeModal");
