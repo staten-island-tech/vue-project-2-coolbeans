@@ -13,9 +13,7 @@
         <h5 class="name">{{ location }}</h5>
       </div>
       <h5 class="author">{{ author }}</h5>
-      <div class="fav">
-        <img class="love" src="../components/icons/love-w.svg" alt="favorite" />
-      </div>
+      <slot name="love"></slot>
     </div>
   </div>
 </template>

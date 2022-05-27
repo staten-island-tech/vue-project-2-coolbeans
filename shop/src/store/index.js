@@ -48,7 +48,15 @@ const store = createStore({
       state.loadedPosts = payload;
       console.log(payload);
     },
-    loadUsercreated(state, payload) {},
+    createdUserpost(state, payload) {
+      state.userCreated = payload;
+    },
+    setCreatedpost(state, payload) {
+      state.userCreated.push(payload);
+    },
+    addFavorite(state, payload) {
+      state.favorite.push(payload);
+    },
     openModal(state, payload) {
       state.isHidden = true;
       state.tempStore.push(payload);
@@ -115,6 +123,24 @@ const store = createStore({
         console.error("Error adding document: ", e);
       }
     },
+    async addFavorite({ commit }, payload) {
+      try {
+        const post = {
+          location: payload.location,
+          imageUrl: payload.imageUrl,
+          description: payload.description,
+          postDate: payload.postDate,
+          type: "favorite",
+        };
+        const userPath = doc(db, `allUser/${this.state.user.uid}`);
+        const userPostPath = doc(userPath, "Userfavorites/favorites");
+        const docRef = await addDoc(collection(userPostPath, "favorite"), post);
+        console.log("Document written with ID: ", docRef.id);
+        commit("addFavorite", post);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    },
     loadPost({ commit }) {
       async function queryForDocuments() {
         const thePost = query(
@@ -123,7 +149,6 @@ const store = createStore({
            */
         );
         const querySnapshot = await getDocs(thePost);
-
         const st = [];
         const allPublicpost = querySnapshot.forEach((snap) => {
           console.log(snap.data());
@@ -134,41 +159,32 @@ const store = createStore({
       }
       queryForDocuments();
     },
-    async loadUsercreated({ commit }) {
+    loadUsercreated({ commit }) {
+      console.log(this.state);
+      var self = this;
       async function queryForDocuments() {
+        console.log("query");
+        console.log(self.state);
         const thePost = query(
-          collectionGroup(db, "post")
-          /* can insert limit of post here
-           */
+          collection(
+            db,
+            "allUser",
+            `${self.state.user.uid}`,
+            "UserPosts",
+            "posts",
+            "post"
+          ) /* can insert limit of post here */
         );
         const querySnapshot = await getDocs(thePost);
-
-        const st = [];
+        const postload = [];
         const allPublicpost = querySnapshot.forEach((snap) => {
           console.log(snap.data());
-          st.push(snap.data());
+          postload.push(snap.data());
           snap.data();
         });
-        commit("setLoadedPosts", st);
+        commit("createdUserpost", postload);
       }
       queryForDocuments();
-    },
-    async loadUsercreated({ commit }) {
-      const thePost = query(
-        collection(
-          db,
-          "publicPost",
-          "allPost",
-          "post"
-        ) /* can insert limit of post here */
-      );
-      const querySnapshot = await getDocs(thePost);
-      const st = [];
-      const allPublicpost = querySnapshot.forEach((snap) => {
-        console.log(snap.data());
-        st.push(snap.data());
-        snap.data();
-      });
     },
     openModal({ commit }, payload) {
       const popupPost = {
@@ -193,6 +209,11 @@ const store = createStore({
   getters: {
     loadedPosts(state) {
       return state.loadedPosts.sort((postA, postB) => {
+        return postA.postDate > postB.postDate;
+      });
+    },
+    userCreated(state) {
+      return state.userCreated.sort((postA, postB) => {
         return postA.postDate > postB.postDate;
       });
     },

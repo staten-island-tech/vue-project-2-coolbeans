@@ -23,6 +23,15 @@
         :description="post.description"
         :postDate="post.postDate"
       >
+        <template v-slot:love>
+          <div class="fav" @click="addTofav">
+            <img
+              class="love"
+              src="../components/icons/love-w.svg"
+              alt="favorite"
+            />
+          </div>
+        </template>
       </Card>
     </div>
   </div>
@@ -54,6 +63,16 @@ export default {
         postDate: post.postDate,
       };
       this.$store.dispatch("openModal", postname);
+    },
+    addTofav(post) {
+      const favData = {
+        location: post.location,
+        imageUrl: post.imageUrl,
+        author: post.author,
+        description: post.description,
+        postDate: post.postDate,
+      };
+      this.$store.dispatch("addFavorite", favData);
     },
   },
   computed: {
@@ -100,6 +119,13 @@ export default {
     display: block;
   }
 } */
+
+.fav {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
 
 .grid {
   width: 100%;

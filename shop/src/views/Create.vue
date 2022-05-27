@@ -56,7 +56,6 @@ export default {
       description: "",
       postDate: this.reformatingDate(),
     };
-    ll;
   },
   computed: {
     isPicVaild() {

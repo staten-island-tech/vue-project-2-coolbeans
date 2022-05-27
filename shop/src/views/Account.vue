@@ -8,6 +8,17 @@
         <img class="plus" src="../components/icons/plus.svg" alt="plus" />
         <p>Create</p>
       </div>
+      <Card
+        @card-click="openModal(post)"
+        v-for="(post, index) in posts"
+        :key="index"
+        :location="post.location"
+        :image="post.imageUrl"
+        :author="post.author"
+        :description="post.description"
+        :postDate="post.postDate"
+      >
+      </Card>
     </router-link>
   </div>
 </template>
@@ -19,7 +30,23 @@ export default {
   components: {
     Card,
   },
-  methods: {},
+  mounted() {
+    console.log(this.$store);
+    this.$store.dispatch("loadUsercreated");
+  },
+  methods: {
+    openModal(post) {
+      const postname = {
+        location: post.location,
+        imageUrl: post.imageUrl,
+        author: post.author,
+        description: post.description,
+        postDate: post.postDate,
+      };
+      this.$store.dispatch("openModal", postname);
+    },
+  },
+
   computed: {
     userName() {
       return this.$store.state.user.displayName;
