@@ -8,27 +8,38 @@
         <img class="plus" src="../components/icons/plus.svg" alt="plus" />
         <p>Create</p>
       </div>
-      <Card
-        @card-click="openModal(post)"
-        v-for="(post, index) in posts"
-        :key="index"
-        :location="post.location"
-        :image="post.imageUrl"
-        :author="post.author"
-        :description="post.description"
-        :postDate="post.postDate"
-      >
-      </Card>
     </router-link>
+    <Card
+      @card-click="openModal(post)"
+      v-for="(post, index) in posts"
+      :key="index"
+      :location="post.location"
+      :image="post.imageUrl"
+      :author="post.author"
+      :description="post.description"
+      :postDate="post.postDate"
+    >
+    </Card>
+    <Modal
+      v-show="isHidden"
+      v-for="(tempS, index) in tempStore"
+      :key="index"
+      :location="tempS.location"
+      :image="tempS.imageUrl"
+      :author="tempS.author"
+      :description="tempS.description"
+      :postDate="tempS.postDate"
+    />
   </div>
 </template>
 
 <script>
 import Card from "../components/Card.vue";
-
+import Modal from "../components/BigCard.vue";
 export default {
   components: {
     Card,
+    Modal,
   },
   mounted() {
     console.log(this.$store);
@@ -50,6 +61,15 @@ export default {
   computed: {
     userName() {
       return this.$store.state.user.displayName;
+    },
+    posts() {
+      return this.$store.getters.loadedPosts;
+    },
+    tempStore() {
+      return this.$store.state.tempStore;
+    },
+    isHidden() {
+      return this.$store.state.isHidden;
     },
   },
 };
