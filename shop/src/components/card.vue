@@ -25,6 +25,7 @@ export default {
     image: String,
     author: String,
     postDate: String,
+    uuid: String,
   },
   components: {},
 };

@@ -9,6 +9,7 @@
           <h3 class="author">{{ author }}</h3>
           <p class="description">{{ description }}</p>
           <p class="date">{{ postDate }}</p>
+          <p>{{ uuid }}</p>
         </div>
         <!-- <img
           class="right"
@@ -23,10 +24,12 @@
         @click="closeModal"
       />
     </div>
+    <slot name="deleteBu" class="button"></slot>
   </div>
 </template>
 
 <script>
+import Button from "./Button.vue";
 export default {
   setup() {},
   props: {
@@ -35,8 +38,9 @@ export default {
     author: String,
     description: String,
     postDate: String,
+    uuid: String,
   },
-  components: {},
+  components: { Button },
   methods: {
     closeModal: function () {
       this.$store.dispatch("closeModal");

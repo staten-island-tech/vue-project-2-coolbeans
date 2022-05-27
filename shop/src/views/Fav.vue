@@ -12,6 +12,7 @@
         :author="post.author"
         :description="post.description"
         :postDate="post.postDate"
+        :uuid="post.uuid"
       >
       </Card>
     </div>
@@ -24,6 +25,7 @@
       :author="tempS.author"
       :description="tempS.description"
       :postDate="tempS.postDate"
+      :uuid="tempS.uuid"
     />
   </div>
 </template>
@@ -47,6 +49,7 @@ export default {
         author: post.author,
         description: post.description,
         postDate: post.postDate,
+        uuid: post.uuid,
       };
       this.$store.dispatch("openModal", exportname);
     },

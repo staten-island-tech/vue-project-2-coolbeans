@@ -19,6 +19,7 @@ import {
   query,
   collectionGroup,
   where,
+  deleteDoc,
 } from "firebase/firestore";
 
 const reformatingDate = function () {
@@ -70,6 +71,9 @@ const store = createStore({
     },
     addFavorpost(state, payload) {
       state.favorite.push(payload);
+    },
+    deletePosttemp() {
+      console.log("you did it");
     },
     openModal(state, payload) {
       state.isHidden = true;
@@ -125,6 +129,7 @@ const store = createStore({
           imageUrl: payload.imageUrl,
           description: payload.description,
           postDate: payload.postDate,
+          uuid: payload.uuid,
           type: "post",
         };
         const userPath = doc(db, `allUser/${this.state.user.uid}`);
@@ -144,6 +149,7 @@ const store = createStore({
           imageUrl: payload.imageUrl,
           description: payload.description,
           postDate: payload.postDate,
+          uuid: payload.uuid,
           dateAdded: reformatingDate(),
           type: "favorite",
         };
@@ -233,8 +239,16 @@ const store = createStore({
         author: payload.author,
         description: payload.description,
         postDate: payload.postDate,
+        uuid: payload.uuid,
       };
       commit("openModal", popupPost);
+    },
+    async deletePosttemp({ commit }, payload) {
+      await deleteDoc(
+        doc(db, `${this.state.user.uid}`, "UserPosts", "posts", "post"),
+        where("uuid", "==", `${payload}`)
+      );
+      commit("deletePosttemp", payload);
     },
     closeModal({ commit }) {
       commit("closeModal");
@@ -271,71 +285,3 @@ const unsub = onAuthStateChanged(auth, (user) => {
   unsub();
 });
 export default store;
-
-// database
-//   .ref("createposts")
-//   .push(post)
-//   .then((data) => {
-//     commit("createPost", post);
-//     console.log(data);
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-// function setUserData(post) {
-//   const db = getDatabase();
-//   set(ref(db, "users/"), {
-//     post,
-//   });
-// }    setUserData();
-
-/* loadFavor({ commit }) {
-      console.log(this.state.user.uid);
-      const userUid = this.state.user.id;
-      async function queryForDocuments() {
-        console.log("query");
-        const thePost = query(
-          collection(
-            db,
-            "allUser",
-            `${userUid}`,
-            "Userfavorites",
-            "favorites",
-            "favorite"
-          ) /* can insert limit of post here 
-        );
-        const querySnapshot = await getDocs(thePost);
-        const postload = [];
-        const allPublicpost = querySnapshot.forEach((snap) => {
-          console.log(snap.data());
-          postload.push(snap.data());
-          snap.data();
-        });
-        console.log(allPublicpost);
-      }
-      queryForDocuments();
-    },
-    addFavoritedwqdwq({ commit }) {
-      console.log(this.state.user);
-      async function queryForDocuments() {
-        const postFavor = query(
-          collection(
-            db,
-            "allUser",
-            `dasddsa`,
-            "Userfavorites",
-            "favorites",
-            "favorite"
-          ) // can insert limit of post here 
-        );
-        const querySnapshot = await getDocs(postFavor);
-        const favorPost = [];
-        const allPublicpost = querySnapshot.forEach((snap) => {
-          console.log(snap.data());
-          postload.push(snap.data());
-          snap.data();
-        });
-        // commit("", favorPost);
-      }
-      queryForDocuments();
-    }, */

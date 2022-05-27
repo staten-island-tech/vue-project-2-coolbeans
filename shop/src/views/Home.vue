@@ -11,6 +11,7 @@
       :author="tempS.author"
       :description="tempS.description"
       :postDate="tempS.postDate"
+      :uuid="tempS.uuid"
     />
     <div class="grid">
       <Card
@@ -22,6 +23,7 @@
         :author="post.author"
         :description="post.description"
         :postDate="post.postDate"
+        :uuid="post.uuid"
       >
         <template v-slot:love>
           <div class="fav" @click="addTofav(post)">
@@ -61,6 +63,7 @@ export default {
         author: post.author,
         description: post.description,
         postDate: post.postDate,
+        uuid: post.uuid,
       };
       this.$store.dispatch("openModal", postname);
     },
@@ -71,6 +74,7 @@ export default {
         author: post.author,
         description: post.description,
         postDate: post.postDate,
+        uuid: post.uuid,
       };
       this.$store.dispatch("addFavorite", favData);
     },

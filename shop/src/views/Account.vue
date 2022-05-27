@@ -18,6 +18,7 @@
       :author="post.author"
       :description="post.description"
       :postDate="post.postDate"
+      :uuid="post.uuid"
     >
     </Card>
     <Modal
@@ -29,7 +30,14 @@
       :author="tempS.author"
       :description="tempS.description"
       :postDate="tempS.postDate"
-    />
+      :uuid="tempS.uuid"
+    >
+      <template v-slot:deleteBu
+        ><button class="button" @click="deletePost(tempS)">
+          delete
+        </button></template
+      >
+    </Modal>
   </div>
 </template>
 
@@ -52,8 +60,13 @@ export default {
         author: post.author,
         description: post.description,
         postDate: post.postDate,
+        uuid: post.uuid,
       };
       this.$store.dispatch("openModal", postname);
+    },
+    deletePost(tempS) {
+      const onluUuid = tempS.uuid;
+      this.$store.dispatch("deletePosttemp", onluUuid);
     },
   },
 
@@ -155,5 +168,9 @@ p {
   background-color: rgba(35, 35, 35, 1);
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.button {
+  position: absolute;
+  width: 10rem;
 }
 </style>
