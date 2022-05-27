@@ -123,24 +123,6 @@ const store = createStore({
         console.error("Error adding document: ", e);
       }
     },
-    async addFavorite({ commit }, payload) {
-      try {
-        const post = {
-          location: payload.location,
-          imageUrl: payload.imageUrl,
-          description: payload.description,
-          postDate: payload.postDate,
-          type: "favorite",
-        };
-        const userPath = doc(db, `allUser/${this.state.user.uid}`);
-        const userPostPath = doc(userPath, "Userfavorites/favorites");
-        const docRef = await addDoc(collection(userPostPath, "favorite"), post);
-        console.log("Document written with ID: ", docRef.id);
-        commit("addFavorite", post);
-      } catch (e) {
-        console.error("Error adding document: ", e);
-      }
-    },
     loadPost({ commit }) {
       async function queryForDocuments() {
         const thePost = query(
@@ -160,7 +142,7 @@ const store = createStore({
       queryForDocuments();
     },
     loadUsercreated({ commit }) {
-      console.log(this.state);
+      console.log(this.state.user.uid);
       const userUid = this.state.user.id;
       async function queryForDocuments() {
         console.log("query");
@@ -182,6 +164,55 @@ const store = createStore({
           snap.data();
         });
         commit("createdUserpost", postload);
+      }
+      queryForDocuments();
+    },
+    addFavorite({ commit }) {
+      const userUid = this.state.user.id;
+      async function queryForDocuments() {
+        console.log("query");
+        const thePost = query(
+          collection(
+            db,
+            "allUser",
+            `${userUid}`,
+            "Userfavorites",
+            "favorites",
+            "favorite"
+          ) /* can insert limit of post here */
+        );
+        const querySnapshot = await getDocs(thePost);
+        const postload = [];
+        const allPublicpost = querySnapshot.forEach((snap) => {
+          console.log(snap.data());
+          postload.push(snap.data());
+          snap.data();
+        });
+        console.log(allPublicpost);
+      }
+      queryForDocuments();
+    },
+    addFavoritedwqdwq({ commit }) {
+      console.log(this.state.user);
+      async function queryForDocuments() {
+        const postFavor = query(
+          collection(
+            db,
+            "allUser",
+            `dasddsa`,
+            "Userfavorites",
+            "favorites",
+            "favorite"
+          ) /* can insert limit of post here */
+        );
+        const querySnapshot = await getDocs(postFavor);
+        const favorPost = [];
+        const allPublicpost = querySnapshot.forEach((snap) => {
+          console.log(snap.data());
+          postload.push(snap.data());
+          snap.data();
+        });
+        // commit("", favorPost);
       }
       queryForDocuments();
     },

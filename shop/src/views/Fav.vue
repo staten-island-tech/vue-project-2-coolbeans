@@ -14,7 +14,10 @@ export default {
     Card,
   },
   computed: {},
-
+  mounted() {
+    console.log(this.$store);
+    this.$store.dispatch("addFavorite");
+  },
   methods: {},
 };
 </script>
