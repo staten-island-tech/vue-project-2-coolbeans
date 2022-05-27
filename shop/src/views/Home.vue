@@ -24,7 +24,7 @@
         :postDate="post.postDate"
       >
         <template v-slot:love>
-          <div class="fav" @click="addTofav">
+          <div class="fav" @click="addTofav(post)">
             <img
               class="love"
               src="../components/icons/love-w.svg"

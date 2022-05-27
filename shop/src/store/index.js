@@ -167,7 +167,25 @@ const store = createStore({
       }
       queryForDocuments();
     },
-    addFavorite({ commit }) {
+    async addFavorite({ commit }, payload) {
+      try {
+        const post = {
+          location: payload.location,
+          imageUrl: payload.imageUrl,
+          description: payload.description,
+          postDate: payload.postDate,
+          type: "favorite",
+        };
+        const userPath = doc(db, `allUser/${this.state.user.uid}`);
+        const userPostPath = doc(userPath, "Userfavorites/favorites");
+        const docRef = await addDoc(collection(userPostPath, "favorite"), post);
+        console.log("Document written with ID: ", docRef.id);
+        commit("addFavorite", post);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    },
+    maybethiswhy({ commit }) {
       const userUid = this.state.user.id;
       async function queryForDocuments() {
         console.log("query");
