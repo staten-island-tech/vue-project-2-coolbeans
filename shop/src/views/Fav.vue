@@ -2,23 +2,66 @@
   <div class="fav">
     <h2>Favorites</h2>
     <h4>Favorite Posts</h4>
-    <div class="grid"></div>
+    <div class="grid">
+      <Card
+        @card-click="openModal(post)"
+        v-for="(post, index) in posts"
+        :key="index"
+        :location="post.location"
+        :image="post.imageUrl"
+        :author="post.author"
+        :description="post.description"
+        :postDate="post.postDate"
+      >
+      </Card>
+    </div>
+    <Modal
+      v-show="isHidden"
+      v-for="(tempS, index) in tempStore"
+      :key="index"
+      :location="tempS.location"
+      :image="tempS.imageUrl"
+      :author="tempS.author"
+      :description="tempS.description"
+      :postDate="tempS.postDate"
+    />
   </div>
 </template>
 
 <script>
 import Card from "../components/Card.vue";
-
+import Modal from "../components/BigCard.vue";
 export default {
   components: {
     Card,
+    Modal,
   },
-  computed: {},
   mounted() {
-    console.log(this.$store);
     this.$store.dispatch("loadFavor");
   },
-  methods: {},
+  methods: {
+    openModal(post) {
+      const exportname = {
+        location: post.location,
+        imageUrl: post.imageUrl,
+        author: post.author,
+        description: post.description,
+        postDate: post.postDate,
+      };
+      this.$store.dispatch("openModal", exportname);
+    },
+  },
+  computed: {
+    posts() {
+      return this.$store.getters.favorite;
+    },
+    tempStore() {
+      return this.$store.state.tempStore;
+    },
+    isHidden() {
+      return this.$store.state.isHidden;
+    },
+  },
 };
 </script>
 

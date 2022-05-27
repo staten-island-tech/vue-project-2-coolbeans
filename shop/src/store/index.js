@@ -21,6 +21,17 @@ import {
   where,
 } from "firebase/firestore";
 
+const reformatingDate = function () {
+  const date = new Date();
+  return date.toLocaleString(["en-US"], {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+};
+
 const store = createStore({
   state: {
     user: null,
@@ -54,7 +65,10 @@ const store = createStore({
     setCreatedpost(state, payload) {
       state.userCreated.push(payload);
     },
-    addFavorite(state, payload) {
+    loadFavorite(state, payload) {
+      state.favorite = payload;
+    },
+    addFavorpost(state, payload) {
       state.favorite.push(payload);
     },
     openModal(state, payload) {
@@ -130,16 +144,43 @@ const store = createStore({
           imageUrl: payload.imageUrl,
           description: payload.description,
           postDate: payload.postDate,
+          dateAdded: reformatingDate(),
           type: "favorite",
         };
         const userPath = doc(db, `allUser/${this.state.user.uid}`);
         const userPostPath = doc(userPath, "Userfavorites/favorites");
         const docRef = await addDoc(collection(userPostPath, "favorite"), post);
         console.log("Document written with ID: ", docRef.id);
-        commit("addFavorite", post);
+        commit("addFavorpost", post);
       } catch (e) {
         console.error("Error adding document: ", e);
       }
+    },
+    loadFavor({ commit }) {
+      const ovnwoen = this.state.user.uid;
+      console.log(ovnwoen);
+      async function queryForDocuments() {
+        console.log("query");
+        const pleasPlease = query(
+          collection(
+            db,
+            "allUser",
+            `${ovnwoen}`,
+            "Userfavorites",
+            "favorites",
+            "favorite"
+          ) // can insert limit of post here
+        );
+        const querySnapshot = await getDocs(pleasPlease);
+        const postload = [];
+        const allPublicpost = querySnapshot.forEach((snap) => {
+          console.log(snap.data());
+          postload.push(snap.data());
+          snap.data();
+        });
+        commit("loadFavorite", postload);
+      }
+      queryForDocuments();
     },
     loadPost({ commit }) {
       async function queryForDocuments() {
@@ -185,56 +226,6 @@ const store = createStore({
       }
       queryForDocuments();
     },
-    loadFavor({ commit }) {
-      console.log(this.state.user.uid);
-      const userUid = this.state.user.id;
-      async function queryForDocuments() {
-        console.log("query");
-        const thePost = query(
-          collection(
-            db,
-            "allUser",
-            `${userUid}`,
-            "Userfavorites",
-            "favorites",
-            "favorite"
-          ) /* can insert limit of post here */
-        );
-        const querySnapshot = await getDocs(thePost);
-        const postload = [];
-        const allPublicpost = querySnapshot.forEach((snap) => {
-          console.log(snap.data());
-          postload.push(snap.data());
-          snap.data();
-        });
-        console.log(allPublicpost);
-      }
-      queryForDocuments();
-    },
-    addFavoritedwqdwq({ commit }) {
-      console.log(this.state.user);
-      async function queryForDocuments() {
-        const postFavor = query(
-          collection(
-            db,
-            "allUser",
-            `dasddsa`,
-            "Userfavorites",
-            "favorites",
-            "favorite"
-          ) /* can insert limit of post here */
-        );
-        const querySnapshot = await getDocs(postFavor);
-        const favorPost = [];
-        const allPublicpost = querySnapshot.forEach((snap) => {
-          console.log(snap.data());
-          postload.push(snap.data());
-          snap.data();
-        });
-        // commit("", favorPost);
-      }
-      queryForDocuments();
-    },
     openModal({ commit }, payload) {
       const popupPost = {
         location: payload.location,
@@ -266,6 +257,11 @@ const store = createStore({
         return postA.postDate > postB.postDate;
       });
     },
+    favorite(state) {
+      return state.favorite.sort((postA, postB) => {
+        return postA.dateAdded > postB.dateAdded;
+      });
+    },
   },
   modules: {},
 });
@@ -292,3 +288,54 @@ export default store;
 //     post,
 //   });
 // }    setUserData();
+
+/* loadFavor({ commit }) {
+      console.log(this.state.user.uid);
+      const userUid = this.state.user.id;
+      async function queryForDocuments() {
+        console.log("query");
+        const thePost = query(
+          collection(
+            db,
+            "allUser",
+            `${userUid}`,
+            "Userfavorites",
+            "favorites",
+            "favorite"
+          ) /* can insert limit of post here 
+        );
+        const querySnapshot = await getDocs(thePost);
+        const postload = [];
+        const allPublicpost = querySnapshot.forEach((snap) => {
+          console.log(snap.data());
+          postload.push(snap.data());
+          snap.data();
+        });
+        console.log(allPublicpost);
+      }
+      queryForDocuments();
+    },
+    addFavoritedwqdwq({ commit }) {
+      console.log(this.state.user);
+      async function queryForDocuments() {
+        const postFavor = query(
+          collection(
+            db,
+            "allUser",
+            `dasddsa`,
+            "Userfavorites",
+            "favorites",
+            "favorite"
+          ) // can insert limit of post here 
+        );
+        const querySnapshot = await getDocs(postFavor);
+        const favorPost = [];
+        const allPublicpost = querySnapshot.forEach((snap) => {
+          console.log(snap.data());
+          postload.push(snap.data());
+          snap.data();
+        });
+        // commit("", favorPost);
+      }
+      queryForDocuments();
+    }, */
