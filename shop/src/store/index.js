@@ -161,15 +161,14 @@ const store = createStore({
     },
     loadUsercreated({ commit }) {
       console.log(this.state);
-      var self = this;
+      const userUid = this.state.user.id;
       async function queryForDocuments() {
         console.log("query");
-        console.log(self.state);
         const thePost = query(
           collection(
             db,
             "allUser",
-            `${self.state.user.uid}`,
+            `${userUid}`,
             "UserPosts",
             "posts",
             "post"
