@@ -42,7 +42,6 @@ export default {
     Modal,
   },
   mounted() {
-    console.log(this.$store);
     this.$store.dispatch("loadUsercreated");
   },
   methods: {
@@ -63,7 +62,7 @@ export default {
       return this.$store.state.user.displayName;
     },
     posts() {
-      return this.$store.getters.loadedPosts;
+      return this.$store.getters.userCreated;
     },
     tempStore() {
       return this.$store.state.tempStore;
