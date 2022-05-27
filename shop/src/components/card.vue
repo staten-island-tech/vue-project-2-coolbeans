@@ -72,13 +72,9 @@ export default {
   justify-content: center;
   padding: 0.5rem;
 }
-.caption {
-  font-size: 1.6vw;
+.caption, .author {
   overflow: hidden;
-}
-.author {
-  font-size: 1.3vw;
-  overflow: hidden;
+  padding-bottom: 0.3rem;
 }
 
 .card:hover img {

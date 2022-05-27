@@ -155,4 +155,17 @@ h4 {
   color: #8a8a8a;
   padding-bottom: 1rem;
 }
+
+@media only screen and (max-width: 600px) {
+
+}
+@media only screen and (max-width: 768px) {
+
+}
+@media only screen and (max-width: 992px) {
+
+}
+@media only screen and (max-width: 1200px) {
+
+}
 </style>
