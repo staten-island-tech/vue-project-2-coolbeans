@@ -3,14 +3,12 @@
     <div class="create">
       <h3>Create a Post</h3>
       <form class="form" @submit.prevent="onCreatePost">
-        <div class="location">
-          <!-- <label class="locationtext">Location</label> -->
+        <div class="title">
           <input
-            id="autocomplete"
             type="text"
-            placeholder="Location"
+            placeholder="Title"
             class="form-field"
-            v-model="location"
+            v-model="title"
             required
           />
         </div>
@@ -24,6 +22,17 @@
             required
           />
           <img :disabled="!isPicVaild" :src="imageUrl" alt="" />
+        </div>
+        <div class="location">
+          <!-- <label class="locationtext">Location</label> -->
+          <input
+            id="autocomplete"
+            type="text"
+            placeholder="Location (optional)"
+            class="form-field"
+            v-model="location"
+            required
+          />
         </div>
         <div class="description">
           <!-- <label class="descriptiontext">Description</label> -->
@@ -162,6 +171,7 @@ h3 {
   z-index: 5;
 }
 
+.title,
 .location,
 .image,
 .description {
@@ -171,6 +181,9 @@ h3 {
   flex-direction: column;
 }
 
+.title {
+  padding-bottom: 2rem;
+}
 .location {
   padding-bottom: 2rem;
 }

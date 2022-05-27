@@ -4,7 +4,7 @@
       <div class="content">
         <!-- <img class="left" src="../components/icons/left.svg" alt="left-arrow" /> -->
         <div class="container">
-          <h2 class="title">{{ location }}</h2>
+          <h2 class="location">{{ location }}</h2>
           <img :src="image" alt="" class="image" />
           <h3 class="author">{{ author }}</h3>
           <p class="description">{{ description }}</p>
