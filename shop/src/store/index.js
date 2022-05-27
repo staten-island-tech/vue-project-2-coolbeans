@@ -244,10 +244,19 @@ const store = createStore({
       commit("openModal", popupPost);
     },
     async deletePosttemp({ commit }, payload) {
-      await deleteDoc(
-        doc(db, `${this.state.user.uid}`, "UserPosts", "posts", "post"),
-        where("uuid", "==", `${payload}`)
-      );
+      console.log(payload);
+      async function deleteUserpost() {
+        const take_query = query(
+          collectionGroup("allUser").where("uuid", "==", payload)
+        );
+        /* const deleteQuerysnapshot = await getDocs(take_query);
+        take_query.get().then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+            doc.ref.delete();
+          });
+        }); */
+      }
+      console.log(deleteUserpost());
       commit("deletePosttemp", payload);
     },
     closeModal({ commit }) {

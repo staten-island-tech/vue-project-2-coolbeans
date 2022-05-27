@@ -69,7 +69,6 @@ export default {
       this.$store.dispatch("deletePosttemp", onluUuid);
     },
   },
-
   computed: {
     userName() {
       return this.$store.state.user.displayName;
