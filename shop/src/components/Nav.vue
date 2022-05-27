@@ -1,35 +1,17 @@
 <template>
   <div :class="{ sticky: isActive }" class="views">
-    <span class="logo">
-      <slot name="logo" />
-    </span>
+    <!-- <div class="bg"></div> -->
+      <span class="logo">
+        <slot name="logo" />
+      </span>
 
-    <nav>
-      <ul class="links">
-        <li class="pages">
-          <slot name="page" />
-        </li>
-      </ul>
-    </nav>
-
-    <!-- <div class="button">
-      <Button
-        class="signin"
-        type="button"
-        v-if="!user"
-        @button-click="openModal"
-        >LOGIN
-      </Button>
-      <Button
-        class="signin"
-        type="button"
-        v-if="user"
-        @button-click="handleClick"
-        >LOGOUT
-      </Button>
-    </div> -->
-
-    <!-- <div class="user-name" v-if="user">{{ user.email }}</div> -->
+      <nav>
+        <ul class="links">
+          <li class="pages">
+            <slot name="page" />
+          </li>
+        </ul>
+      </nav>
   </div>
 </template>
 
@@ -71,20 +53,30 @@ export default {
 
 <style scoped>
 .views {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  /* height: 9rem; */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 5rem;
+  padding: 1rem 4rem;
   z-index: 4;
-  background-color: rgba(245, 244, 244, 0.85);
-  /* background: linear-gradient(rgba(245,244,244, 0.7), rgba(0, 0, 0, 0)); */
+  overflow-y: hidden;
+  /* background-color: rgba(245, 244, 244, 0.85); */
+  /* background-color: #f5f4f4; */
 }
 
-/* .sticky {
-  border-bottom: 0.08rem solid rgba(221, 220, 220, 0.9);
+/* .bg {
+  position:absolute;
+  top: 2rem;
+  left: 0;
+  background-image: url(./wave.svg);
+  aspect-ratio: 960/200;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 } */
 </style>

@@ -5,38 +5,43 @@
         <template v-slot:logo>
           <router-link to="/" class="logo">
             <div class="logo-container">
-              <img src="./components/icons/home.svg" alt="Home" />
+              <!-- <img src="./components/icons/home.svg" alt="Home" /> -->
+              <p>Home</p>
             </div>
           </router-link>
         </template>
         <template class="pages" v-slot:page>
           <span>
-            <div class="fav">
+            <!-- <div class="fav">
               <RouterLink to="/favorites" class="page" @click="referSign">
-                <img src="./components/icons/love-b.svg" alt="Favorites" />
+
+                <p>Likes</p>
               </RouterLink>
-            </div>
+            </div> -->
             <div class="acc">
               <RouterLink to="/account" class="page" @click="referSign">
-                <img src="./components/icons/user.svg" alt="Account" />
+                <!-- <img src="./components/icons/user.svg" alt="Account" /> -->
+                <p>User</p>
               </RouterLink>
             </div>
           </span>
           <div class="in">
             <RouterLink to="/login" class="page" v-if="!user">
-              <img
+              <!-- <img
                 src="./components/icons/login.svg"
                 alt="Login"
                 class="login"
-              />
+              /> -->
+              <p>Login</p>
             </RouterLink>
           </div>
           <span class="page" v-if="user" @click="handleClick">
-            <img
+            <!-- <img
               src="./components/icons/logout.svg"
               alt="Logout"
               class="logout"
-            />
+            /> -->
+            <p>Logout</p>
           </span>
         </template>
       </Nav>
@@ -117,7 +122,7 @@ export default {
 
 .page {
   margin-left: 2.5rem;
-  width: 3.5rem;
+  width: 5rem;
   height: 3rem;
   border-radius: 0.5rem;
   display: flex;
@@ -125,13 +130,15 @@ export default {
   align-items: center;
   transition: background-color 0.3s ease-in-out;
   cursor: pointer;
+  z-index: 7;
 }
 .page:hover {
-  background-color: rgba(21, 21, 21, 0.15);
+  /* background-color: rgba(21, 21, 21, 0.15); */
+  text-decoration: underline;
 }
 
 .logo-container {
-  width: 3.5rem;
+  width: 5rem;
   height: 3rem;
   border-radius: 0.5rem;
   display: flex;
@@ -140,6 +147,12 @@ export default {
   transition: background-color 0.3s ease-in-out;
 }
 .logo-container:hover {
-  background-color: rgba(21, 21, 21, 0.15);
+  /* background-color: rgba(21, 21, 21, 0.15); */
+  text-decoration: underline;
+}
+
+a {
+  text-decoration: none;
+  color: #151515;
 }
 </style>

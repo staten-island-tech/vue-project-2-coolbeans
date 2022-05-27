@@ -73,7 +73,7 @@ export default {
 }
 
 h3 {
-  color: #8a8a8a;
+  color: #151515;
   text-align: center;
   padding: 1rem;
 }
@@ -95,13 +95,6 @@ h3 {
   padding-top: 1rem;
 }
 
-label {
-  color: #a1a1a1;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  font-family: "Kumbh Sans", sans-serif;
-}
-
 input {
   display: block;
   width: 100%;
@@ -112,12 +105,16 @@ input {
   border: none;
   outline: none;
   color: #151515;
-  border-bottom: 0.1rem solid #a1a1a1;
-  font-family: "Kumbh Sans", sans-serif;
+  border-bottom: 0.1rem solid #242424;
+  font-family: 'Gloria Hallelujah', cursive;
+}
+
+::placeholder {
+  color: #242424;
 }
 
 p {
-  color: #a1a1a1;
+  color: #242424;
   text-align: center;
   font-size: 0.8rem;
   text-transform: uppercase;
@@ -128,6 +125,6 @@ p {
   padding-left: 1rem;
   color: red;
   font-size: 0.8rem;
-  font-family: "Kumbh Sans", sans-serif;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 </style>

@@ -8,23 +8,21 @@
             type="text"
             placeholder="Title"
             class="form-field"
+            maxlength="25"
             v-model="title"
             required
           />
         </div>
         <div class="image">
-          <!-- <label class="imagetext">Image</label> -->
           <input
             type="text"
-            placeholder="Image URL"
+            placeholder="Image (URL)"
             class="form-field"
             v-model="imageUrl"
             required
           />
-          <img :disabled="!isPicVaild" :src="imageUrl" alt="" />
         </div>
         <div class="location">
-          <!-- <label class="locationtext">Location</label> -->
           <input
             id="autocomplete"
             type="text"
@@ -35,23 +33,33 @@
           />
         </div>
         <div class="description">
-          <!-- <label class="descriptiontext">Description</label> -->
           <input
             type="text"
-            placeholder="Add a description (optional)"
+            placeholder="Description (optional)"
             class="form-field"
             v-model="description"
           />
         </div>
         <div class="time">
-          <p>
+          <p class="date">
             {{ postDate }}
           </p>
         </div>
-        <button :disabled="!isFormVaild" type="submit">Create Post</button>
+        <button :disabled="!isFormValid" type="submit">Post</button>
       </form>
       <div class="back"></div>
     </div>
+    <!-- <div :disabled="!isFormValid" class="preview">
+      <div class="card">
+          <div class="card-image">
+            <img :src="imageUrl" alt="" />
+          </div>
+          <div class="card-container">
+            <h4 class="caption">Title</h4>
+            <p class="author">User</p>
+          </div>
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -60,6 +68,7 @@ export default {
   component: {},
   data() {
     return {
+      title: "",
       location: "",
       imageUrl: "",
       description: "",
@@ -67,22 +76,23 @@ export default {
     };
   },
   computed: {
-    isPicVaild() {
+    isPicValid() {
       return this.imageUrl !== "";
     },
-    isFormVaild() {
-      return this.location !== "" && this.imageUrl !== "";
+    isFormValid() {
+      return this.title !== "" && this.imageUrl !== "";
     },
   },
   methods: {
     onCreatePost() {
-      if (!this.isFormVaild) {
+      if (!this.isFormValid) {
         return;
       }
-      if (!this.isPicVaild) {
+      if (!this.isPicValid) {
         return;
       }
       const postData = {
+        title: this.title,
         location: this.location,
         imageUrl: this.imageUrl,
         description: this.description,
@@ -138,7 +148,7 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -149,13 +159,12 @@ export default {
   position: relative;
   width: auto;
   height: auto;
-  /* max-height: 80vh; */
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  /* overflow-y: scroll; */
+  margin-right: 2rem;
 }
 .form {
   display: flex;
@@ -165,7 +174,7 @@ export default {
 }
 
 h3 {
-  color: #8a8a8a;
+  color: #151515;
   text-align: center;
   padding: 1rem;
   z-index: 5;
@@ -173,8 +182,7 @@ h3 {
 
 .title,
 .location,
-.image,
-.description {
+.image {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -188,18 +196,11 @@ h3 {
   padding-bottom: 2rem;
 }
 .image {
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 .description {
   padding: 0;
   padding-bottom: 1.5rem;
-}
-
-label {
-  color: #a1a1a1;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  font-family: "Kumbh Sans", sans-serif;
 }
 
 input {
@@ -212,32 +213,24 @@ input {
   border: none;
   outline: none;
   color: #151515;
-  border-bottom: 0.1rem solid #a1a1a1;
-  font-family: "Kumbh Sans", sans-serif;
+  border-bottom: 0.1rem solid #242424;
+  font-family: 'Gloria Hallelujah', cursive;
 }
 
-p {
-  color: #a1a1a1;
+::placeholder {
+  color: #242424;
+}
+
+.date {
+  color: #242424;
   text-align: center;
   font-size: 0.8rem;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   padding-bottom: 0.5rem;
 }
 
-img {
-  display: block;
-  padding-top: 1rem;
-  object-fit: cover;
-  max-height: 15rem;
-  max-width: 18rem;
-}
-
-img:disabled {
-  display: none;
-}
-
 button {
-  background-color: #73a5c9;
+  background-color: #151515;
   color: #fff;
   width: 20rem;
   height: 2.5rem;
@@ -245,19 +238,81 @@ button {
   border: none;
   border-radius: 2rem;
   font-size: 0.9rem;
-  text-transform: uppercase;
-  transition: 0.3s ease 0s;
-  font-family: "Kumbh Sans", sans-serif;
-}
-
-button:hover {
-  opacity: 0.9;
+  /* text-transform: uppercase; */
+  transition: background-color 0.3s ease 0s;
+  font-family: 'Gloria Hallelujah', cursive;
   cursor: pointer;
 }
 
+button:hover {
+  background-color: rgba(35,35,35,1);
+}
+
 button:disabled {
-  background-color: #a1a1a1;
+  background-color: #404040;
   cursor: default;
   opacity: 1;
 }
+
+.preview {
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 2rem;
+}
+.card {
+  background-color: #f5f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4/5;
+  position: relative;
+  padding: 0.8rem;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background-color: #151515;
+}
+
+.card-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50%, 50%;
+}
+
+.preview:disabled {
+  display: none;
+}
+
+.card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 0.5rem;
+}
+.caption {
+  font-size: 1.6vw;
+  overflow: hidden;
+}
+.author {
+  font-size: 1.2vw;
+  overflow: hidden;
+}
+
+
 </style>

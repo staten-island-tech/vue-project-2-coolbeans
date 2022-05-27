@@ -1,20 +1,14 @@
 <template>
-  <!-- <img :src="image" alt="" class="item-img" />
-    <div class="container">
-      <h3 class="location">{{ name }}</h3>
-      <p class="description">{{ description }}</p>
-      <h5 class="author">{{ author }}</h5>
-    </div> -->
   <div class="card" @click="$emit('card-click')">
-    <img :src="image" alt="image" />
-    <div class="m">
-      <div class="location">
-        <img src="../components/icons/location.svg" alt="pin" />
-        <h5 class="name">{{ location }}</h5>
+      <div class="image">
+        <img :src="image" alt="image" />
       </div>
-      <h5 class="author">{{ author }}</h5>
-      <slot name="love"></slot>
-    </div>
+      <div class="container">
+        <h4 class="caption">{{ location }}</h4>
+        <!-- <p class="location">Location</p> -->
+        <p class="author">User</p>
+        <!-- <slot name="love"></slot> -->
+      </div>
   </div>
 </template>
 
@@ -27,11 +21,75 @@ export default {
     postDate: String,
   },
   components: {},
+  mounted() {
+//     const cards = document.querySelectorAll('.card');
+//     polaroids.forEach(item => {
+//     const randomRotation = Math.floor(Math.random() * (6 - -6 + 1) + -6);
+//     item.style.transform = `rotate(${randomRotation}deg)`
+// })
+  }
 };
 </script>
 
 <style scoped>
 .card {
+  background-color: #f5f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4/5;
+  grid-column-start: auto;
+  grid-row-start: auto;
+  position: relative;
+  padding: 1.2rem;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background-color: #151515;
+}
+
+.image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50%, 50%;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 0.5rem;
+}
+.caption {
+  font-size: 1.6vw;
+  overflow: hidden;
+}
+.author {
+  font-size: 1.3vw;
+  overflow: hidden;
+}
+
+.card:hover img {
+  opacity: 1;
+}
+
+.card:hover {
+ box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+}
+
+/* .card {
   width: auto;
   height: auto;
   position: relative;
@@ -43,7 +101,7 @@ export default {
   grid-column-start: auto;
   grid-row-start: auto;
   cursor: zoom-in;
-  /* transition: box-shadow 0.3s ease-in-out; */
+  transition: box-shadow 0.3s ease-in-out;
 }
 img {
   width: auto;
@@ -66,9 +124,9 @@ img {
 .location {
   position: absolute;
   display: flex;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* position: relative; */
+  justify-content: center;
+  align-items: center;
+  position: relative;
   top: 1rem;
   left: 1rem;
 }
@@ -90,74 +148,13 @@ img {
   cursor: pointer;
 }
 
-/* .card:hover {
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-} */
 .card:hover .m {
-  /* opacity: 1; */
+  opacity: 1;
   display: block;
 }
 
 .card:hover img {
   transform: scale(1.05);
-}
-/* .item {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  box-sizing: border-box;
-  background: #0c9a9a;
-  color: #fff;
-  grid-column-start: auto;
-  grid-row-start: auto;
-  color: #fff;
-  background:  url('https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=');
-  background-size: cover;
-  background-position: center;
-  box-shadow: -2px 2px 10px 0px rgba(#444, 0.4);
-  transition: transform 0.3s ease-in-out;
-  cursor: pointer;
-}
-  
-.item:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 0.3;
-    transition: opacity 0.3s ease-in-out;
-  }
-  
-.item:hover {
-    transform: scale(1.05);
-  }
-.item:hover:after {
-  opacity:0;
-}
-.item--medium {
-    grid-row-end: span 2;
-  }
-.item--large {
-    grid-row-end: span 3;
-  }
-  
-.item__details {
-    position: relative;
-    z-index: 1;
-    padding: 15px;
-    color: #444;
-    background: #fff;
-    text-transform: lowercase;
-    letter-spacing: 1px;
-    color: #828282;
-  }
- .item__details:before {
-      font-weight: bold;
-      font-size: 1.1rem;
-      padding-right: 0.5em;
-      color: #444;
-    } */
+} */
+
 </style>

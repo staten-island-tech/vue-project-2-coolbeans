@@ -2,7 +2,6 @@
   <div class="card">
     <div class="background">
       <div class="content">
-        <!-- <img class="left" src="../components/icons/left.svg" alt="left-arrow" /> -->
         <div class="container">
           <h2 class="location">{{ location }}</h2>
           <img :src="image" alt="" class="image" />
@@ -10,18 +9,16 @@
           <p class="description">{{ description }}</p>
           <p class="date">{{ postDate }}</p>
         </div>
-        <!-- <img
-          class="right"
-          src="../components/icons/right.svg"
-          alt="right-arrow"
-        /> -->
       </div>
-      <img
+      <!-- <img
         class="close"
         src="../components/icons/close.svg"
         alt="close"
         @click="closeModal"
-      />
+      /> -->
+      <div class="close" @click="closeModal">
+        <p>X</p>
+      </div>
     </div>
   </div>
 </template>
@@ -83,13 +80,18 @@ export default {
 
 .close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 0;
+  right: 1.2rem;
   cursor: pointer;
 }
 
 .image {
   object-fit: cover;
   height: 20rem;
+}
+
+.close p {
+  font-size: 2.5rem;
+  color: #f5f4f4;
 }
 </style>

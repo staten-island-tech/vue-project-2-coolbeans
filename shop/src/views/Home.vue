@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <h2>Home</h2>
-    <h4>Explore</h4>
+    <h2>Explore</h2>
+    <!-- <h4>Explore</h4> -->
     <Modal
       v-show="isHidden"
       v-for="(tempS, index) in tempStore"
@@ -23,15 +23,14 @@
         :description="post.description"
         :postDate="post.postDate"
       >
-        <template v-slot:love>
+        <!-- <template v-slot:love>
           <div class="fav" @click="addTofav">
             <img
-              class="love"
-              src="../components/icons/love-w.svg"
+              src="../components/icons/love.png"
               alt="favorite"
             />
           </div>
-        </template>
+        </template> -->
       </Card>
     </div>
   </div>
@@ -99,7 +98,6 @@ export default {
   width: 100%;
   height: 100%;
   padding: 0 4rem;
-  padding-top: 1rem;
   padding-bottom: 2rem;
 
   /* @supports(display: grid) {
@@ -122,20 +120,31 @@ export default {
 
 .fav {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  bottom: 11%;
+  right: 6%;
   cursor: pointer;
+  width: auto;
+  height: 5%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  z-index: 6;
+}
+
+.fav > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50%, 50%;
 }
 
 .grid {
   width: 100%;
   display: grid;
-  grid-gap: 1.5rem;
-  /* grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr)); */
+  grid-gap: 2rem;
   grid-template-columns: repeat(3, 1fr);
-  /* grid-auto-rows: minmax(min-content, max-content); */
   grid-auto-rows: auto;
   grid-auto-flow: row dense;
+  justify-items: center;
 }
 
 h2 {

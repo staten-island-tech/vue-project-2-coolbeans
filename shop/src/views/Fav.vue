@@ -1,7 +1,7 @@
 <template>
   <div class="fav">
-    <h2>Favorites</h2>
-    <h4>Favorite Posts</h4>
+    <h2>Liked Posts</h2>
+    <!-- <h4>Favorite Posts</h4> -->
     <div class="grid"></div>
   </div>
 </template>
@@ -29,7 +29,6 @@ export default {
   width: 100%;
   height: 100%;
   padding: 0 4rem;
-  padding-top: 1rem;
   padding-bottom: 2rem;
 }
 
