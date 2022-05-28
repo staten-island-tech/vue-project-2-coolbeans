@@ -1,17 +1,10 @@
 <template>
   <div class="user">
     <h2>Hello, {{ userName }}</h2>
-    <h4>You created no post!</h4>
+    <!-- <h4>You created no post!</h4> -->
     <!-- <h4>Your Posts</h4> -->
-    <div class="grid"></div>
-    <router-link to="/create">
-      <div class="create">
-        <p class="plus">+</p>
-        <!-- <img class="plus" src="../components/icons/plus.svg" alt="plus" /> -->
-        <p>Create</p>
-      </div>
-    </router-link>
-    <Card
+    <div class="grid">
+      <Card
       @card-click="openModal(post)"
       v-for="(post, cardIndex) in posts"
       :key="cardIndex"
@@ -24,6 +17,14 @@
       :uuid="post.uuid"
     >
     </Card>
+    </div>
+    <router-link to="/create">
+      <div class="create">
+        <p class="plus">+</p>
+        <!-- <img class="plus" src="../components/icons/plus.svg" alt="plus" /> -->
+        <p>Create</p>
+      </div>
+    </router-link>
     <Modal
       v-show="isHidden"
       v-for="(tempS, index) in tempStore"

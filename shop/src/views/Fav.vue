@@ -1,7 +1,7 @@
 <template>
   <div class="fav">
     <h2>Favorites</h2>
-    <h4>Favorite Posts</h4>
+    <!-- <h4>Favorite Posts</h4> -->
     <div class="grid">
       <Card
         @card-click="openModal(post)"
