@@ -46,25 +46,32 @@
         </div>
         <button :disabled="!isFormValid" type="submit">Post</button>
       </form>
-      <div class="back"></div>
+        <RouterLink to="/account">
+          <div class="back">
+            <p>&lt;--</p>
+            <p>Back</p>
+          </div>
+        </RouterLink>
     </div>
     <!-- <div :disabled="!isFormValid" class="preview">
-      <div class="card">
-          <div class="card-image">
-            <img :src="imageUrl" alt="" />
-          </div>
-          <div class="card-container">
-            <h4 class="caption">Title</h4>
-            <p class="author">User</p>
-          </div>
-      </div>
+      <Card
+        :title="post.title"
+        :location="post.location"
+        :image="imageUrl"
+        :author="post.author"
+      >
+      </Card>
     </div> -->
   </div>
 </template>
 
 <script>
+import Card from "../components/Card.vue"
+
 export default {
-  component: {},
+  component: {
+    Card
+  },
   data() {
     return {
       title: "",
@@ -259,63 +266,22 @@ button:disabled {
   opacity: 1;
 }
 
-.preview {
-  position: relative;
-  width: auto;
-  height: auto;
-  padding: 1rem;
+.back {
+  position: fixed;
+  bottom: 2rem;
+  right: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  margin-left: 2rem;
-}
-.card {
-  background-color: #f5f4f4;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 4/5;
-  position: relative;
-  padding: 0.8rem;
 }
 
-.card-image {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 1/1;
-  overflow: hidden;
-  background-color: #151515;
+.back p {
+  color: #151515;
+  transition: color 0.2s ease-in-out;
+  padding: 0.3rem;
 }
 
-.card-image > img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50%, 50%;
-}
-
-.preview:disabled {
-  display: none;
-}
-
-.card-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  padding: 0.5rem;
-}
-.caption {
-  font-size: 1.6vw;
-  overflow: hidden;
-}
-.author {
-  font-size: 1.2vw;
-  overflow: hidden;
+.back p:hover {
+  color: rgba(40, 40, 40, 1);
 }
 </style>
