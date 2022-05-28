@@ -146,7 +146,7 @@ export default {
 .grid {
   width: 100%;
   display: grid;
-  grid-gap: 3rem;
+  grid-gap: 2.5rem;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   grid-auto-flow: row dense;
@@ -163,11 +163,18 @@ h4 {
   padding-bottom: 1rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
+  .grid {
+      display: flex;
+      flex-direction: column;
+    }
 }
 @media only screen and (max-width: 768px) {
 }
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1000px) {
+  .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
 }
 @media only screen and (max-width: 1200px) {
 }

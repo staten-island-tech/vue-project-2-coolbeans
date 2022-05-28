@@ -75,10 +75,10 @@ export default {
   justify-content: center;
   padding: 0.5rem;
 }
-.caption,
+.title,
 .author {
   overflow: hidden;
-  padding-bottom: 0.3rem;
+  /* padding-bottom: 0.3rem; */
 }
 
 .card:hover img {
