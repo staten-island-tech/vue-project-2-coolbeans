@@ -1,6 +1,7 @@
 <template>
   <div class="user">
     <h2>Hello, {{ userName }}</h2>
+    <h4>You created no post!</h4>
     <!-- <h4>Your Posts</h4> -->
     <div class="grid"></div>
     <router-link to="/create">
@@ -12,8 +13,9 @@
     </router-link>
     <Card
       @card-click="openModal(post)"
-      v-for="(post, index) in posts"
-      :key="index"
+      v-for="(post, cardIndex) in posts"
+      :key="cardIndex"
+      :title="post.title"
       :location="post.location"
       :image="post.imageUrl"
       :author="post.author"
@@ -26,6 +28,7 @@
       v-show="isHidden"
       v-for="(tempS, index) in tempStore"
       :key="index"
+      :title="tempS.title"
       :location="tempS.location"
       :image="tempS.imageUrl"
       :author="tempS.author"
@@ -34,7 +37,7 @@
       :uuid="tempS.uuid"
     >
       <template v-slot:deleteBu
-        ><button class="button" @click="deletePost(tempS)">
+        ><button class="button" @click="deletePost(tempS, cardIndex)">
           delete
         </button></template
       >
@@ -56,6 +59,7 @@ export default {
   methods: {
     openModal(post) {
       const postname = {
+        title: post.title,
         location: post.location,
         imageUrl: post.imageUrl,
         author: post.author,
@@ -65,11 +69,14 @@ export default {
       };
       this.$store.dispatch("openModal", postname);
     },
-    deletePost(tempS) {
+    deletePost(tempS, cardIndex) {
       const onluUuid = tempS.uuid;
       this.$store.dispatch("deletePosttemp", onluUuid);
-      this.$router.push("/account");
       this.$store.dispatch("closeModal");
+      // tomor make sure where cut
+      // make link from store
+      // make edit
+      this.$store.dispatch("removeFromcreated", cardIndex);
     },
   },
   computed: {

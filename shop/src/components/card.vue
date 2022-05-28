@@ -1,20 +1,22 @@
 <template>
   <div class="card" @click="$emit('card-click')">
-      <div class="image">
-        <img :src="image" alt="image" />
-      </div>
-      <div class="container">
-        <h4 class="caption">{{ location }}</h4>
-        <!-- <p class="location">Location</p> -->
-        <p class="author">User</p>
-        <!-- <slot name="love"></slot> -->
-      </div>
+    <div class="image">
+      <img :src="image" alt="image" />
+    </div>
+    <div class="container">
+      <h3 class="title">{{ title }}</h3>
+      <h4 class="caption">{{ location }}</h4>
+      <!-- <p class="location">Location</p> -->
+      <p class="author">{{ author }}</p>
+      <slot name="love"></slot>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   props: {
+    title: String,
     location: String,
     image: String,
     author: String,
@@ -23,12 +25,12 @@ export default {
   },
   components: {},
   mounted() {
-//     const cards = document.querySelectorAll('.card');
-//     polaroids.forEach(item => {
-//     const randomRotation = Math.floor(Math.random() * (6 - -6 + 1) + -6);
-//     item.style.transform = `rotate(${randomRotation}deg)`
-// })
-  }
+    //     const cards = document.querySelectorAll('.card');
+    //     polaroids.forEach(item => {
+    //     const randomRotation = Math.floor(Math.random() * (6 - -6 + 1) + -6);
+    //     item.style.transform = `rotate(${randomRotation}deg)`
+    // })
+  },
 };
 </script>
 
@@ -62,7 +64,7 @@ export default {
   object-fit: cover;
   object-position: 50%, 50%;
   opacity: 0.8;
-  transition: opacity 0.2s ease-in-out
+  transition: opacity 0.2s ease-in-out;
 }
 
 .container {
@@ -73,7 +75,8 @@ export default {
   justify-content: center;
   padding: 0.5rem;
 }
-.caption, .author {
+.caption,
+.author {
   overflow: hidden;
   padding-bottom: 0.3rem;
 }
@@ -83,7 +86,7 @@ export default {
 }
 
 .card:hover {
- box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
 }
 
 /* .card {
@@ -153,5 +156,4 @@ img {
 .card:hover img {
   transform: scale(1.05);
 } */
-
 </style>

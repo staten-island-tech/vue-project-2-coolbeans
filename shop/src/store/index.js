@@ -93,6 +93,9 @@ const store = createStore({
     closeSign(state) {
       state.isSignup = false;
     },
+    removeFromcreated(state, payload) {
+      state.userCreated.splice(payload, 1);
+    },
   },
   actions: {
     async signup(context, { email, password, firstName, lastName }) {
@@ -129,10 +132,12 @@ const store = createStore({
     async createPost({ commit }, payload) {
       try {
         const post = {
+          title: payload.title,
           location: payload.location,
           imageUrl: payload.imageUrl,
           description: payload.description,
           postDate: payload.postDate,
+          author: payload.author,
           uuid: null,
           type: "post",
         };
@@ -157,11 +162,13 @@ const store = createStore({
     async addFavorite({ commit }, payload) {
       try {
         const post = {
+          title: payload.title,
           location: payload.location,
           imageUrl: payload.imageUrl,
           description: payload.description,
           postDate: payload.postDate,
           uuid: payload.uuid,
+          author: payload.author,
           dateAdded: reformatingDate(),
           type: "favorite",
         };
@@ -291,6 +298,9 @@ const store = createStore({
     },
     closeSign({ commit }) {
       commit("closeSign");
+    },
+    removeFromcreated({ commit }) {
+      commit("removeFromcreated");
     },
   },
   getters: {

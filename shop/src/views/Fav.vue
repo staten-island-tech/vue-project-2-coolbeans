@@ -7,6 +7,7 @@
         @card-click="openModal(post)"
         v-for="(post, index) in posts"
         :key="index"
+        :title="post.title"
         :location="post.location"
         :image="post.imageUrl"
         :author="post.author"
@@ -20,6 +21,7 @@
       v-show="isHidden"
       v-for="(tempS, index) in tempStore"
       :key="index"
+      :title="tempS.title"
       :location="tempS.location"
       :image="tempS.imageUrl"
       :author="tempS.author"
@@ -44,6 +46,7 @@ export default {
   methods: {
     openModal(post) {
       const exportname = {
+        title: post.title,
         location: post.location,
         imageUrl: post.imageUrl,
         author: post.author,

@@ -29,7 +29,6 @@
             placeholder="Location (optional)"
             class="form-field"
             v-model="location"
-            required
           />
         </div>
         <div class="description">
@@ -82,6 +81,9 @@ export default {
     isFormValid() {
       return this.title !== "" && this.imageUrl !== "";
     },
+    userName() {
+      return this.$store.state.user.displayName;
+    },
   },
   methods: {
     onCreatePost() {
@@ -91,12 +93,14 @@ export default {
       if (!this.isPicValid) {
         return;
       }
+      console.log(this.userName);
       const postData = {
         title: this.title,
         location: this.location,
         imageUrl: this.imageUrl,
         description: this.description,
         postDate: this.postDate,
+        author: this.userName,
       };
       this.$store.dispatch("createPost", postData);
       // just figure this out, no need to import useRouter anymore
@@ -113,6 +117,7 @@ export default {
       });
     },
   },
+
   setup() {},
   /*  async created() {
     const response = await fetch(
@@ -214,7 +219,7 @@ input {
   outline: none;
   color: #151515;
   border-bottom: 0.1rem solid #242424;
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: "Gloria Hallelujah", cursive;
 }
 
 ::placeholder {
@@ -240,12 +245,12 @@ button {
   font-size: 0.9rem;
   /* text-transform: uppercase; */
   transition: background-color 0.3s ease 0s;
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: "Gloria Hallelujah", cursive;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: rgba(35,35,35,1);
+  background-color: rgba(35, 35, 35, 1);
 }
 
 button:disabled {
@@ -313,6 +318,4 @@ button:disabled {
   font-size: 1.2vw;
   overflow: hidden;
 }
-
-
 </style>

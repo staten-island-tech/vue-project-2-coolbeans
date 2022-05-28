@@ -3,6 +3,7 @@
     <div class="background">
       <div class="content">
         <div class="container">
+          <h2>{{ title }}</h2>
           <h2 class="location">{{ location }}</h2>
           <img :src="image" alt="" class="image" />
           <h3 class="author">{{ author }}</h3>
@@ -30,6 +31,7 @@ import Button from "./Button.vue";
 export default {
   setup() {},
   props: {
+    title: String,
     location: String,
     image: String,
     author: String,

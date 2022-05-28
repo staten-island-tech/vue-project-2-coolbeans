@@ -12,12 +12,11 @@
         </template>
         <template class="pages" v-slot:page>
           <span>
-            <!-- <div class="fav">
+            <div class="fav">
               <RouterLink to="/favorites" class="page" @click="referSign">
-
                 <p>Likes</p>
               </RouterLink>
-            </div> -->
+            </div>
             <div class="acc">
               <RouterLink to="/account" class="page" @click="referSign">
                 <!-- <img src="./components/icons/user.svg" alt="Account" /> -->

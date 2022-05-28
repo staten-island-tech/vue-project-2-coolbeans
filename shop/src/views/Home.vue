@@ -6,6 +6,7 @@
       v-show="isHidden"
       v-for="(tempS, index) in tempStore"
       :key="index"
+      :title="tempS.title"
       :location="tempS.location"
       :image="tempS.imageUrl"
       :author="tempS.author"
@@ -19,6 +20,7 @@
         @card-click="openModal(post)"
         v-for="(post, index) in posts"
         :key="index"
+        :title="post.title"
         :location="post.location"
         :image="post.imageUrl"
         :author="post.author"
@@ -26,14 +28,11 @@
         :postDate="post.postDate"
         :uuid="post.uuid"
       >
-        <!-- <template v-slot:love>
+        <template v-slot:love>
           <div class="fav" @click="addTofav">
-            <img
-              src="../components/icons/love.png"
-              alt="favorite"
-            />
+            <img src="../components/icons/love.png" alt="favorite" />
           </div>
-        </template> -->
+        </template>
       </Card>
     </div>
   </div>
@@ -58,6 +57,7 @@ export default {
   methods: {
     openModal(post) {
       const postname = {
+        title: post.title,
         location: post.location,
         imageUrl: post.imageUrl,
         author: post.author,
@@ -69,6 +69,7 @@ export default {
     },
     addTofav(post) {
       const favData = {
+        title: post.title,
         location: post.location,
         imageUrl: post.imageUrl,
         author: post.author,
