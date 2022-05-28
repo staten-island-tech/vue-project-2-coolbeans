@@ -13,13 +13,16 @@
             required
           />
         </div>
+        <button class="useFile" :disabled="isPicValid">
+          Upload File Image
+        </button>
+        <h4>Or</h4>
         <div class="image">
           <input
             type="text"
             placeholder="Image (URL)"
             class="form-field"
             v-model="imageUrl"
-            required
           />
         </div>
         <div class="location">
@@ -85,6 +88,7 @@ export default {
       imageUrl: "",
       description: "",
       postDate: this.reformatingDate(),
+      notClicked: true,
     };
   },
   computed: {
@@ -98,7 +102,7 @@ export default {
       return this.title === "";
     },
     isFormValid() {
-      return this.title !== "" && this.imageUrl !== "";
+      return this.title !== ""; // this.imageUrl !== ""; come later for fixing
     },
     userName() {
       return this.$store.state.user.displayName;
