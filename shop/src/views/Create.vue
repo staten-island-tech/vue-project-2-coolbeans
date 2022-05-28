@@ -13,9 +13,16 @@
             required
           />
         </div>
-        <button class="useFile" :disabled="isPicValid">
+        <button class="useFile" @click="onFileup(), isUpfile()">
           Upload File Image
         </button>
+        <input
+          type="file"
+          class="inputfile"
+          ref="fileInput"
+          accept="image/*"
+          @change="onFilepick"
+        />
         <h4>Or</h4>
         <div class="image">
           <input
@@ -23,6 +30,7 @@
             placeholder="Image (URL)"
             class="form-field"
             v-model="imageUrl"
+            @keyup="isTexton"
           />
         </div>
         <div class="location">
@@ -32,6 +40,7 @@
             placeholder="Location (optional)"
             class="form-field"
             v-model="location"
+            required
           />
         </div>
         <div class="description">
@@ -40,6 +49,7 @@
             placeholder="Description (optional)"
             class="form-field"
             v-model="description"
+            required
           />
         </div>
         <div class="time">
@@ -59,7 +69,7 @@
     <div :disabled="!isFormValid" class="preview">
       <div class="card">
         <div class="card-image" v-show="isPicValid">
-          <img :src="imageUrl" alt="" />
+          <img :src="pickImage || imageUrl" alt="" />
         </div>
         <div class="card-noimage" v-show="!isPicValid">
           <h4>No Image</h4>
@@ -89,6 +99,8 @@ export default {
       description: "",
       postDate: this.reformatingDate(),
       notClicked: true,
+      imageFile: null,
+      pickImage: "",
     };
   },
   computed: {
@@ -96,13 +108,18 @@ export default {
       return this.$store.state.user.displayName;
     },
     isPicValid() {
-      return this.imageUrl !== "";
+      return this.imageUrl !== "" || this.pickImage !== "";
     },
     istitle() {
       return this.title === "";
     },
     isFormValid() {
-      return this.title !== ""; // this.imageUrl !== ""; come later for fixing
+      return (
+        this.title !== "" &&
+        this.description !== "" &&
+        this.location !== "" &&
+        (this.imageUrl !== "" || this.pickImage !== "")
+      );
     },
     userName() {
       return this.$store.state.user.displayName;
@@ -124,6 +141,8 @@ export default {
         description: this.description,
         postDate: this.postDate,
         author: this.userName,
+        image: this.pickImage,
+        imageFile: this.imageFile,
       };
       this.$store.dispatch("createPost", postData);
       // just figure this out, no need to import useRouter anymore
@@ -138,6 +157,32 @@ export default {
         // hour: "2-digit",
         // minute: "2-digit",
       });
+    },
+    onFileup() {
+      this.$refs.fileInput.click();
+    },
+    onFilepick(event) {
+      const files = event.target.files;
+      let filename = files[0].name;
+      if (filename.lastIndexOf(".") <= 0) {
+        return alert("Please add a valid file!");
+      }
+      const fileReader = new FileReader();
+      fileReader.addEventListener("load", () => {
+        this.pickImage = fileReader.result;
+      });
+      fileReader.readAsDataURL(files[0]);
+      this.imageFile = files[0];
+
+      this.imageUrl = "";
+    },
+    isTexton() {
+      this.pickImage = "";
+    },
+    isUpfile() {
+      if (this.pickImage !== "") {
+        this.imageUrl = "";
+      }
     },
   },
 
@@ -215,6 +260,10 @@ h3 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.inputfile {
+  display: none;
 }
 
 .title {
