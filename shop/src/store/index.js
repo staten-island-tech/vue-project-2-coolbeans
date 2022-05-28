@@ -1,7 +1,7 @@
 import { createStore } from "vuex";
 
 //firebase import
-import { auth, db } from "../firebase/config";
+import { auth, db, storage } from "../firebase/config";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -23,6 +23,7 @@ import {
   deleteDoc,
   onSnapshot,
 } from "firebase/firestore";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const reformatingDate = function () {
   const date = new Date();
@@ -58,7 +59,7 @@ const store = createStore({
       state.authIsReady = payload;
     },
     createPost(state, payload) {
-      // state.loadedPosts.push(payload);
+      //  state.loadedPosts.push(payload);
     },
     setLoadedPosts(state, payload) {
       state.loadedPosts = payload;
@@ -154,7 +155,35 @@ const store = createStore({
           uuid: docRef.id,
         });
 
-        commit("createPost", post);
+        const imageFile = payload.imageFile;
+        console.log(imageFile);
+
+        const fileN = await imageFile.name;
+        const ext = await fileN.slice(fileN.lastIndexOf("."));
+        const imagesRef = ref(storage, `postImages/${docId}.${ext}`);
+
+        await uploadBytes(imagesRef, imageFile).then((snapshot) => {
+          console.log("Uploaded a blob or file!");
+        });
+
+        await getDownloadURL(ref(imagesRef)).then((url) => {
+          updateDoc(theDoc, {
+            imageUrl: url,
+          });
+        });
+
+        const uidUser = this.state.user.uid;
+        const postQuery = query(
+          collection(db, "allUser", `${uidUser}`, "UserPosts", "posts", "post")
+        );
+        const snapLoad = [];
+        onSnapshot(postQuery, (querySnapshot) => {
+          querySnapshot.forEach((snap) => {
+            snap.data();
+            snapLoad.push(snap.data());
+          });
+          commit("setLoadedPosts", snapLoad);
+        });
       } catch (e) {
         console.error("Error adding document: ", e);
       }
@@ -318,7 +347,7 @@ const store = createStore({
     },
     userCreated(state) {
       return state.userCreated.sort((postA, postB) => {
-        return postA.postDate > postB.postDate;
+        return postA.perDate > postB.perDate;
       });
     },
     favorite(state) {

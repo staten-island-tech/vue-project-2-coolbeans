@@ -2,77 +2,85 @@
   <div class="container">
     <div class="content">
       <div class="create">
-      <h3>Create a Post</h3>
-      <form class="form" @submit.prevent="onCreatePost">
-        <button class="useFile" :disabled="isPicValid">
-          Upload File Image
-        </button>
-        <p>Or</p>
-        <div class="image">
+        <h3>Create a Post</h3>
+        <form class="form" @submit.prevent="onCreatePost">
+          <button class="useFile" @click="onFileup(), isUpfile()">
+            Upload Image File
+          </button>
           <input
-            type="text"
-            placeholder="Image URL"
-            class="form-field"
-            v-model="imageUrl"
+            type="file"
+            class="inputfile"
+            ref="fileInput"
+            accept="image/*"
+            @change="onFilepick"
           />
-        </div>
-        <div class="title">
-          <input
-            type="text"
-            placeholder="Title"
-            class="form-field"
-            maxlength="25"
-            v-model="title"
-            required
-          />
-        </div>
-        <div class="location">
-          <input
-            id="autocomplete"
-            type="text"
-            placeholder="Location"
-            class="form-field"
-            v-model="location"
-          />
-        </div>
-        <div class="description">
-          <input
-            type="text"
-            placeholder="Description"
-            class="form-field"
-            v-model="description"
-          />
-        </div>
-        <div class="time">
-          <p class="date">
-            {{ postDate }}
-          </p>
-        </div>
-        <!-- <button :disabled="!isFormValid" type="submit">Post</button> -->
-      </form>
-    </div>
-    <div v-show="isFormValid" class="preview">
-      <div class="card">
-        <div class="card-image" v-show="isPicValid">
-          <img :src="imageUrl" alt="" />
-        </div>
-        <div class="card-noimage" v-show="!isPicValid">
-          <h5>Add an Image</h5>
-        </div>
-        <div class="card-container">
-          <h4 class="card-title" v-show="istitle">Title</h4>
-          <h4 class="card-title">{{ title }}</h4>
-          <p class="card-author">{{ userName }}</p>
+          <h4>Or</h4>
+          <div class="image">
+            <input
+              type="text"
+              placeholder="Image URL"
+              class="form-field"
+              v-model="imageUrl"
+              @keyup="isTexton"
+            />
+          </div>
+          <div class="title">
+            <input
+              type="text"
+              placeholder="Title"
+              class="form-field"
+              maxlength="25"
+              v-model="title"
+              required
+            />
+          </div>
+          <div class="location">
+            <input
+              id="autocomplete"
+              type="text"
+              placeholder="Location"
+              class="form-field"
+              v-model="location"
+            />
+          </div>
+          <div class="description">
+            <input
+              type="text"
+              placeholder="Description"
+              class="form-field"
+              v-model="description"
+            />
+          </div>
+          <div class="time">
+            <p class="date">
+              {{ postDate }}
+            </p>
+          </div>
+          <!-- <button :disabled="!isFormValid" type="submit">Post</button> -->
+        </form>
+      </div>
+      <div v-show="isPicValid" class="preview">
+        <div class="card">
+          <div class="card-image" v-show="isPicValid">
+            <img :src="pickImage || imageUrl" alt="" />
+          </div>
+          <div class="card-noimage" v-show="!isPicValid">
+            <h5>Add an Image</h5>
+          </div>
+          <div class="card-container">
+            <h4 class="card-title" v-show="istitle">Title</h4>
+            <h4 class="card-title">{{ title }}</h4>
+            <p class="card-author">{{ userName }}</p>
+          </div>
         </div>
       </div>
     </div>
-    </div>
     <RouterLink to="/account">
-        <div class="back">
-          <p>&lt;--</p>
-          <p>Back</p>
-        </div>
-      </RouterLink>
+      <div class="back">
+        <p>&lt;--</p>
+        <p>Back</p>
+      </div>
+    </RouterLink>
     <button class="post" :disabled="!isFormValid" type="submit">Post</button>
   </div>
 </template>
@@ -92,6 +100,8 @@ export default {
       description: "",
       postDate: this.reformatingDate(),
       notClicked: true,
+      imageFile: null,
+      pickImage: "",
     };
   },
   computed: {
@@ -99,14 +109,18 @@ export default {
       return this.$store.state.user.displayName;
     },
     isPicValid() {
-      return this.imageUrl !== "";
+      return this.title !== "" || this.imageUrl !== "" || this.pickImage !== "";
     },
     istitle() {
       return this.title === "";
     },
     isFormValid() {
-      // return this.title !== "" || this.imageUrl !== "";
-      return this.title !== ""; // this.imageUrl !== ""; come later for fixing
+      return (
+        this.title !== "" &&
+        this.description !== "" &&
+        this.location !== "" &&
+        (this.imageUrl !== "" || this.pickImage !== "")
+      );
     },
     userName() {
       return this.$store.state.user.displayName;
@@ -128,6 +142,8 @@ export default {
         description: this.description,
         postDate: this.postDate,
         author: this.userName,
+        image: this.pickImage,
+        imageFile: this.imageFile,
       };
       this.$store.dispatch("createPost", postData);
       // just figure this out, no need to import useRouter anymore
@@ -142,6 +158,32 @@ export default {
         // hour: "2-digit",
         // minute: "2-digit",
       });
+    },
+    onFileup() {
+      this.$refs.fileInput.click();
+    },
+    onFilepick(event) {
+      const files = event.target.files;
+      let filename = files[0].name;
+      if (filename.lastIndexOf(".") <= 0) {
+        return alert("Please add a valid file!");
+      }
+      const fileReader = new FileReader();
+      fileReader.addEventListener("load", () => {
+        this.pickImage = fileReader.result;
+      });
+      fileReader.readAsDataURL(files[0]);
+      this.imageFile = files[0];
+
+      this.imageUrl = "";
+    },
+    isTexton() {
+      this.pickImage = "";
+    },
+    isUpfile() {
+      if (this.pickImage !== "") {
+        this.imageUrl = "";
+      }
     },
   },
 
@@ -224,6 +266,10 @@ h3 {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.inputfile {
+  display: none;
 }
 
 .title {
@@ -319,6 +365,7 @@ button:disabled {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 2rem;
   margin-left: 2rem;
 }
 
@@ -409,10 +456,11 @@ button:disabled {
     margin-top: 2rem;
   }
   .preview {
+    margin-top: 0.5rem;
     margin-left: 0;
     margin-bottom: 1.2rem;
   }
-  
+
   /* .back {
     right: 2rem;
     bottom: 1rem;
