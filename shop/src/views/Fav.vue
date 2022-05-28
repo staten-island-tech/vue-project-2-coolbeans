@@ -15,8 +15,8 @@
         :postDate="post.postDate"
         :uuid="post.uuid"
       >
-      <template v-slot:love>
-          <div class="fav" @click="addTofav(post)">
+        <template v-slot:love>
+          <div class="fav">
             <img src="../components/icons/love.png" alt="favorite" />
           </div>
         </template>
@@ -98,7 +98,6 @@ export default {
   grid-auto-flow: row dense;
   justify-items: center;
   overflow: visible;
-  
 }
 
 h2 {
