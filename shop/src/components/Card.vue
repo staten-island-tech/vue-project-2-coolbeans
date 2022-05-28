@@ -79,7 +79,7 @@ export default {
 .title,
 .author {
   overflow: hidden;
-  /* padding-bottom: 0.3rem; */
+  transform: translate(0, -25%);
 }
 
 .card:hover img {
