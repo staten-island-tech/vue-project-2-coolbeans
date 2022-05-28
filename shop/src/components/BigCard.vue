@@ -63,12 +63,12 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
-  position: fixed;
   top: 0;
   z-index: 9;
+  overflow-y: scroll;
 }
 .background {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -78,11 +78,14 @@ export default {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 .container {
+  /* margin-top: 2rem;
+  margin-bottom: 2rem;
+  height: 48rem; */
+  height: 95vh;
   width: auto;
-  height: 90vh;
   aspect-ratio: 4/5;
   background-color: #f5f4f4;
   display: flex;

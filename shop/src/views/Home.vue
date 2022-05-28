@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div :class="{ noscroll: isActive }" class="home">
     <h2>Explore</h2>
     <!-- <h4>Explore</h4> -->
     <Modal
@@ -161,6 +161,10 @@ h2 {
 h4 {
   color: #8a8a8a;
   padding-bottom: 1rem;
+}
+
+.noscroll {
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 650px) {
