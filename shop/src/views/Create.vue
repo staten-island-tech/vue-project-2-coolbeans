@@ -31,7 +31,6 @@
               class="form-field"
               maxlength="25"
               v-model="title"
-              required
             />
           </div>
           <div class="location">
