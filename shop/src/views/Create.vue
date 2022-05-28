@@ -53,28 +53,31 @@
           </div>
         </RouterLink>
     </div>
-    <!-- <div :disabled="!isFormValid" class="preview">
-      <Card
-        :title="post.title"
-        :location="post.location"
-        :image="imageUrl"
-        :author="post.author"
-      >
-      </Card>
-    </div> -->
+    <div :disabled="!isFormValid" class="preview">
+      <div class="card">
+        <div class="card-image">
+          <img :disabled="!isPicValid" :src="imageUrl" alt=""/>
+        </div>
+        <div class="card-container">
+          <h4 class="card-title">title</h4>
+          <p class="card-author">user</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import Card from "../components/Card.vue"
+// import Card from "../components/Card.vue"
 
 export default {
   component: {
-    Card
+    // Card
   },
   data() {
     return {
       title: "",
+      // author: this.userName(),
       location: "",
       imageUrl: "",
       description: "",
@@ -284,4 +287,56 @@ button:disabled {
 .back p:hover {
   color: rgba(40, 40, 40, 1);
 }
+
+.preview:disabled {
+  display: none;
+}
+
+.card {
+  background-color: #f5f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: auto;
+  height: 30rem;
+  aspect-ratio: 4/5;
+  grid-column-start: auto;
+  grid-row-start: auto;
+  position: relative;
+  padding: 1rem;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background-color: #151515;
+}
+
+.card-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50%, 50%;
+  overflow: hidden;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.card-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 0.5rem;
+}
+.card-title,
+.card-author {
+  overflow: hidden;
+  /* padding-bottom: 0.3rem; */
+}
+
 </style>
