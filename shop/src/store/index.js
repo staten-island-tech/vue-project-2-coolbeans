@@ -285,17 +285,7 @@ const store = createStore({
           `${ogiweg}`
         )
       );
-      await deleteFavodoc(
-        doc(
-          db,
-          "allUser",
-          `${uidUser}`,
-          "Userfavorites",
-          "favorites",
-          "favorite",
-          `${ogiweg}`
-        )
-      );
+
       const postQuery = query(
         collection(db, "allUser", `${uidUser}`, "UserPosts", "posts", "post")
       );
@@ -306,7 +296,6 @@ const store = createStore({
           snapLoad.push(snap.data());
         });
         commit("createdUserpost", snapLoad);
-        // commit("loadFavorite", snapLoad);
       });
       console.log("done");
     },
