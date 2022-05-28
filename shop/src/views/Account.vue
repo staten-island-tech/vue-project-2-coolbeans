@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <h2>Hello, {{ userName }}</h2>
-    <h4>You created no post!</h4>
+    <!-- <h4>You created no post!</h4> -->
     <!-- <h4>Your Posts</h4> -->
     <div class="grid">
       <Card
@@ -150,7 +150,24 @@ h4 {
   color: #8a8a8a;
   padding-bottom: 1rem;
 }
+.fav {
+  position: absolute;
+  bottom: 3.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+  width: auto;
+  height: 1.8rem;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  z-index: 6;
+}
 
+.fav > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50%, 50%;
+}
 .create {
   position: fixed;
   background-color: rgba(21, 21, 21, 1);

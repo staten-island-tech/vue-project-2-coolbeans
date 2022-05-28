@@ -8,7 +8,7 @@
       <!-- <h4 class="caption">{{ location }}</h4> -->
       <!-- <p class="location">Location</p> -->
       <p class="author">{{ author }}</p>
-      <slot name="love"></slot>
+      <!-- <slot name="love"></slot> -->
     </div>
   </div>
 </template>
@@ -24,11 +24,11 @@ export default {
     uuid: String,
   },
   components: {},
-  mounted() {
-      // const cards = document.querySelectorAll('.card');
-      // cards.forEach(item => {
-      // const randomRotation = Math.floor(Math.random() * (2 - -2 + 1) + -2);
-      // item.style.transform = `rotate(${randomRotation}deg)`})
+  created() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(item => {
+      const randomRotation = Math.floor(Math.random() * (2 - -2 + 1) + -2);
+      item.style.transform = `rotate(${randomRotation}deg)`})
   },
 };
 </script>
