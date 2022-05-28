@@ -406,7 +406,7 @@ button:disabled {
     flex-direction: column;
   }
   .create {
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
   .preview {
     margin-left: 0;
