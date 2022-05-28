@@ -409,7 +409,7 @@ button:disabled {
     margin-top: 2rem;
   }
   .preview {
-    margin-right: 2rem;
+    margin-left: 0;
     margin-bottom: 1.2rem;
   }
   
