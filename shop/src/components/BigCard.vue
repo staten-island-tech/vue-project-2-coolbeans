@@ -81,10 +81,10 @@ export default {
   justify-content: center;
 }
 .container {
-  /* margin-top: 2rem;
+  /* margin-top: 8rem;
   margin-bottom: 2rem;
   height: 48rem; */
-  height: 95vh;
+  height: 93vh;
   width: auto;
   aspect-ratio: 4/5;
   background-color: #f5f4f4;
@@ -164,5 +164,15 @@ export default {
 
 .close:hover {
   opacity: 1;
+}
+
+@media only screen and (max-width: 700px) {
+  .container {
+    /* max-width: 80vw;
+    max-height: 80vh; */
+    /* height: auto; */
+    height: 80vh;
+    max-width: 90vw;
+  }
 }
 </style>
