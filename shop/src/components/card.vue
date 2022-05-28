@@ -24,7 +24,7 @@ export default {
     uuid: String,
   },
   components: {},
-  created() {
+  mounted() {
       const cards = document.querySelectorAll('.card');
       cards.forEach(item => {
       const randomRotation = Math.floor(Math.random() * (2 - -2 + 1) + -2);
@@ -63,6 +63,7 @@ export default {
   height: 100%;
   object-fit: cover;
   object-position: 50%, 50%;
+  overflow: hidden;
   opacity: 0.8;
   transition: opacity 0.2s ease-in-out;
 }
@@ -88,72 +89,4 @@ export default {
 .card:hover {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
 }
-
-/* .card {
-  width: auto;
-  height: auto;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  box-sizing: border-box;
-  color: #fff;
-  grid-column-start: auto;
-  grid-row-start: auto;
-  cursor: zoom-in;
-  transition: box-shadow 0.3s ease-in-out;
-}
-img {
-  width: auto;
-  height: auto;
-  object-fit: cover;
-  object-position: 50% 50%;
-  z-index: 1;
-  transition: transform 0.25s ease-in-out;
-}
-.m {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.35);
-  z-index: 2;
-  display: none;
-  transition: 0.3s;
-}
-
-.location {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  top: 1rem;
-  left: 1rem;
-}
-.name {
-  padding-left: 0.3rem;
-  color: #fff;
-}
-.author {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  color: #fff;
-}
-
-.fav {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  cursor: pointer;
-}
-
-.card:hover .m {
-  opacity: 1;
-  display: block;
-}
-
-.card:hover img {
-  transform: scale(1.05);
-} */
 </style>

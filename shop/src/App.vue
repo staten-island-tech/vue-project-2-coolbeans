@@ -12,11 +12,11 @@
         </template>
         <template class="pages" v-slot:page>
           <span>
-            <div class="fav">
+            <!-- <div class="fav">
               <RouterLink to="/favorites" class="page" @click="referSign">
                 <p>Likes</p>
               </RouterLink>
-            </div>
+            </div> -->
             <div class="acc">
               <RouterLink to="/account" class="page" @click="referSign">
                 <!-- <img src="./components/icons/user.svg" alt="Account" /> -->
@@ -127,13 +127,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease-in-out;
+  transition: color 0.2s ease-in-out;
   cursor: pointer;
   z-index: 7;
 }
 .page:hover {
-  /* background-color: rgba(21, 21, 21, 0.15); */
   text-decoration: underline;
+  color: rgba(40, 40, 40, 1);
 }
 
 .logo-container {
@@ -143,11 +143,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
 .logo-container:hover {
-  /* background-color: rgba(21, 21, 21, 0.15); */
   text-decoration: underline;
+  color: rgba(40, 40, 40, 1);
 }
 
 a {
