@@ -13,7 +13,7 @@
       :description="tempS.description"
       :postDate="tempS.postDate"
       :uuid="tempS.uuid"
-    >
+      >s
     </Modal>
     <div class="grid">
       <Card
