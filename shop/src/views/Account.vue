@@ -3,7 +3,21 @@
     <h2>Hello, {{ userName }}</h2>
     <h4>You created no post!</h4>
     <!-- <h4>Your Posts</h4> -->
-    <div class="grid"></div>
+    <div class="grid">
+      <Card
+        @card-click="openModal(post)"
+        v-for="(post, cardIndex) in posts"
+        :key="cardIndex"
+        :title="post.title"
+        :location="post.location"
+        :image="post.imageUrl"
+        :author="post.author"
+        :description="post.description"
+        :postDate="post.postDate"
+        :uuid="post.uuid"
+      >
+      </Card>
+    </div>
     <router-link to="/create">
       <div class="create">
         <p class="plus">+</p>
@@ -11,19 +25,6 @@
         <p>Create</p>
       </div>
     </router-link>
-    <Card
-      @card-click="openModal(post)"
-      v-for="(post, cardIndex) in posts"
-      :key="cardIndex"
-      :title="post.title"
-      :location="post.location"
-      :image="post.imageUrl"
-      :author="post.author"
-      :description="post.description"
-      :postDate="post.postDate"
-      :uuid="post.uuid"
-    >
-    </Card>
     <Modal
       v-show="isHidden"
       v-for="(tempS, index) in tempStore"
