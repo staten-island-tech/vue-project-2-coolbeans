@@ -41,7 +41,6 @@
               placeholder="Location"
               class="form-field"
               v-model="location"
-              required
             />
           </div>
           <div class="description">
@@ -50,7 +49,6 @@
               placeholder="Description"
               class="form-field"
               v-model="description"
-              required
             />
           </div>
           <div class="time">
@@ -362,6 +360,7 @@ button:disabled {
 }
 
 .preview {
+  margin-top: 2rem;
   margin-left: 2rem;
 }
 
@@ -452,6 +451,7 @@ button:disabled {
     margin-top: 1rem;
   }
   .preview {
+    margin-top: 0.5rem;
     margin-left: 0;
     margin-bottom: 1.2rem;
   }
