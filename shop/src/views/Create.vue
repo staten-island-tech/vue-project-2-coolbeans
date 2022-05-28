@@ -413,6 +413,9 @@ button:disabled {
     margin-bottom: 1.2rem;
   }
   
+  .card {
+    margin: 0 1rem;
+  }
   /* .back {
     right: 2rem;
     bottom: 1rem;
