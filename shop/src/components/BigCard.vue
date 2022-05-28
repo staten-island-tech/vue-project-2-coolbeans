@@ -124,6 +124,8 @@ export default {
 
 .author h4, .location, .info h3, .description, .date p {
   overflow: hidden;
+  transform: translate(0, -25%);
+  padding-bottom: 0.2rem;
 }
 
 .info {
@@ -132,8 +134,8 @@ export default {
   justify-content: center;
   align-items: start;
   width: 100%;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
+  padding: 0.5rem;
+  /* padding-left: 0.5rem; */
 }
 
 .date {
@@ -171,7 +173,7 @@ export default {
     /* max-width: 80vw;
     max-height: 80vh; */
     /* height: auto; */
-    height: 80vh;
+    height: 75vh;
     max-width: 90vw;
   }
 }
