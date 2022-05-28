@@ -58,7 +58,7 @@
           <!-- <button :disabled="!isFormValid" type="submit">Post</button> -->
         </form>
       </div>
-      <div v-show="isPicValid" class="preview">
+      <div class="preview">
         <div class="card">
           <div class="card-image" v-show="isPicValid">
             <img :src="pickImage || imageUrl" alt="" />
