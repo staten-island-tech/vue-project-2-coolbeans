@@ -4,11 +4,11 @@
       <img :src="image" alt="image" />
     </div>
     <div class="container">
-      <h3 class="title">{{ title }}</h3>
+      <h4 class="title">{{ title }}</h4>
       <!-- <h4 class="caption">{{ location }}</h4> -->
       <!-- <p class="location">Location</p> -->
       <p class="author">{{ author }}</p>
-      <!-- <slot name="love"></slot> -->
+      <slot name="love"></slot>
     </div>
   </div>
 </template>
@@ -25,11 +25,10 @@ export default {
   },
   components: {},
   mounted() {
-    //     const cards = document.querySelectorAll('.card');
-    //     polaroids.forEach(item => {
-    //     const randomRotation = Math.floor(Math.random() * (6 - -6 + 1) + -6);
-    //     item.style.transform = `rotate(${randomRotation}deg)`
-    // })
+      // const cards = document.querySelectorAll('.card');
+      // cards.forEach(item => {
+      // const randomRotation = Math.floor(Math.random() * (2 - -2 + 1) + -2);
+      // item.style.transform = `rotate(${randomRotation}deg)`})
   },
 };
 </script>
@@ -48,6 +47,7 @@ export default {
   grid-row-start: auto;
   position: relative;
   padding: 1.2rem;
+  cursor: zoom-in;
 }
 
 .image {

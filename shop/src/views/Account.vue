@@ -16,6 +16,11 @@
       :postDate="post.postDate"
       :uuid="post.uuid"
     >
+      <template v-slot:love>
+          <div class="fav" @click="addTofav(post)">
+            <img src="../components/icons/love.png" alt="favorite" />
+          </div>
+        </template>
     </Card>
     </div>
     <router-link to="/create">
@@ -129,11 +134,12 @@ export default {
 .grid {
   width: 100%;
   display: grid;
-  grid-gap: 1.5rem;
-  /* grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr)); */
+  grid-gap: 3rem;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   grid-auto-flow: row dense;
+  justify-items: center;
+  overflow: visible;
 }
 
 h2 {

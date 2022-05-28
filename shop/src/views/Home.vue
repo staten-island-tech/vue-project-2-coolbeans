@@ -126,11 +126,11 @@ export default {
 
 .fav {
   position: absolute;
-  bottom: 11%;
-  right: 6%;
+  bottom: 3.5rem;
+  right: 1.5rem;
   cursor: pointer;
   width: auto;
-  height: 5%;
+  height: 1.8rem;
   aspect-ratio: 1/1;
   overflow: hidden;
   z-index: 6;
@@ -146,11 +146,12 @@ export default {
 .grid {
   width: 100%;
   display: grid;
-  grid-gap: 2rem;
+  grid-gap: 3rem;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   grid-auto-flow: row dense;
   justify-items: center;
+  overflow: visible;
 }
 
 h2 {
