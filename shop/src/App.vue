@@ -154,4 +154,10 @@ a {
   text-decoration: none;
   color: #151515;
 }
+
+/* @media only screen and (max-width: 800px) {
+  .page {
+    margin-left: 1rem;
+  }
+} */
 </style>

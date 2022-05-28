@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div :class="{ noscroll: isActive }" class="home">
     <h2>Explore</h2>
     <!-- <h4>Explore</h4> -->
     <Modal
@@ -163,13 +163,21 @@ h4 {
   padding-bottom: 1rem;
 }
 
+.noscroll {
+  overflow: hidden;
+}
+
 @media only screen and (max-width: 650px) {
   .grid {
+    padding: 0 1rem;
     display: flex;
     flex-direction: column;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 700px) {
+  .grid {
+    margin-bottom: 4rem;
+  }
 }
 @media only screen and (max-width: 1000px) {
   .grid {

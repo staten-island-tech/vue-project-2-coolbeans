@@ -1,86 +1,101 @@
 <template>
   <div class="container">
-    <div class="create">
-      <h3>Create a Post</h3>
-      <form class="form" @submit.prevent="onCreatePost">
-        <div class="title">
+    <div class="content">
+      <div class="create">
+        <h3>Create a Post</h3>
+        <form class="form" @submit.prevent="onCreatePost">
+          <button class="useFile" :disabled="isPicValid">
+            Upload File Image
+          </button>
+          <p>Or</p>
+          <div class="image">
+            <input
+              type="text"
+              placeholder="Image URL"
+              class="form-field"
+              v-model="imageUrl"
+            />
+          </div>
+          <div class="title">
+            <input
+              type="text"
+              placeholder="Title"
+              class="form-field"
+              maxlength="25"
+              v-model="title"
+              required
+            />
+          </div>
+          <button class="useFile" @click="onFileup(), isUpfile()">
+            Upload File Image
+          </button>
           <input
-            type="text"
-            placeholder="Title"
-            class="form-field"
-            maxlength="25"
-            v-model="title"
-            required
+            type="file"
+            class="inputfile"
+            ref="fileInput"
+            accept="image/*"
+            @change="onFilepick"
           />
-        </div>
-        <button class="useFile" @click="onFileup(), isUpfile()">
-          Upload File Image
-        </button>
-        <input
-          type="file"
-          class="inputfile"
-          ref="fileInput"
-          accept="image/*"
-          @change="onFilepick"
-        />
-        <h4>Or</h4>
-        <div class="image">
-          <input
-            type="text"
-            placeholder="Image (URL)"
-            class="form-field"
-            v-model="imageUrl"
-            @keyup="isTexton"
-          />
-        </div>
-        <div class="location">
-          <input
-            id="autocomplete"
-            type="text"
-            placeholder="Location (optional)"
-            class="form-field"
-            v-model="location"
-            required
-          />
-        </div>
-        <div class="description">
-          <input
-            type="text"
-            placeholder="Description (optional)"
-            class="form-field"
-            v-model="description"
-            required
-          />
-        </div>
-        <div class="time">
-          <p class="date">
-            {{ postDate }}
-          </p>
-        </div>
-        <button :disabled="!isFormValid" type="submit">Post</button>
-      </form>
-      <RouterLink to="/account">
-        <div class="back">
-          <p>&lt;--</p>
-          <p>Back</p>
-        </div>
-      </RouterLink>
-    </div>
-    <div :disabled="!isFormValid" class="preview">
-      <div class="card">
-        <div class="card-image" v-show="isPicValid">
-          <img :src="pickImage || imageUrl" alt="" />
-        </div>
-        <div class="card-noimage" v-show="!isPicValid">
-          <h4>No Image</h4>
-        </div>
-        <div class="card-container">
-          <h4 class="card-title" v-show="istitle">Title</h4>
-          <h4 class="card-title">{{ title }}</h4>
-          <p class="card-author">{{ userName }}</p>
+          <h4>Or</h4>
+          <div class="image">
+            <input
+              type="text"
+              placeholder="Image (URL)"
+              class="form-field"
+              v-model="imageUrl"
+              @keyup="isTexton"
+            />
+          </div>
+          <div class="location">
+            <input
+              id="autocomplete"
+              type="text"
+              placeholder="Location"
+              class="form-field"
+              v-model="location"
+              required
+            />
+          </div>
+          <div class="description">
+            <input
+              type="text"
+              placeholder="Description"
+              class="form-field"
+              v-model="description"
+              required
+            />
+          </div>
+          <div class="time">
+            <p class="date">
+              {{ postDate }}
+            </p>
+          </div>
+          <!-- <button :disabled="!isFormValid" type="submit">Post</button> -->
+        </form>
+      </div>
+      <div v-show="isFormValid" class="preview">
+        <div class="card">
+          <div class="card-image" v-show="isPicValid">
+            <img :src="pickImage || imageUrl" alt="" />
+          </div>
+          <div class="card-noimage" v-show="!isPicValid">
+            <h5>Add an Image</h5>
+          </div>
+          <div class="card-container">
+            <h4 class="card-title" v-show="istitle">Title</h4>
+            <h4 class="card-title">{{ title }}</h4>
+            <p class="card-author">{{ userName }}</p>
+          </div>
         </div>
       </div>
     </div>
+    <RouterLink to="/account">
+      <div class="back">
+        <p>&lt;--</p>
+        <p>Back</p>
+      </div>
+    </RouterLink>
+    <button class="post" :disabled="!isFormValid" type="submit">Post</button>
   </div>
 </template>
 
@@ -221,12 +236,18 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 100%;
   height: 100vh;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .create {
   position: relative;
@@ -237,7 +258,6 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-right: 2rem;
 }
 .form {
   display: flex;
@@ -331,6 +351,9 @@ button:disabled {
   opacity: 1;
 }
 
+.post {
+  margin-bottom: 3rem;
+}
 .back {
   position: fixed;
   bottom: 2rem;
@@ -350,8 +373,8 @@ button:disabled {
   color: rgba(40, 40, 40, 1);
 }
 
-.preview:disabled {
-  display: none;
+.preview {
+  margin-left: 2rem;
 }
 
 .card {
@@ -382,7 +405,14 @@ button:disabled {
   height: 100%;
   aspect-ratio: 1/1;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #151515;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-noimage h5 {
+  color: #f5f4f4;
 }
 
 .card-image > img {
@@ -407,5 +437,44 @@ button:disabled {
 .card-author {
   overflow: hidden;
   /* padding-bottom: 0.3rem; */
+}
+
+@media only screen and (max-width: 700px) {
+  .post {
+    margin-bottom: 6rem;
+  }
+  .back {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    bottom: auto;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .container {
+    flex-direction: column;
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+  .create {
+    margin-top: 1rem;
+  }
+  .preview {
+    margin-left: 0;
+    margin-bottom: 1.2rem;
+  }
+
+  /* .back {
+    right: 2rem;
+    bottom: 1rem;
+  } */
+}
+@media only screen and (max-width: 1000px) {
+}
+@media only screen and (max-width: 1200px) {
 }
 </style>

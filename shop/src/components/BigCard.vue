@@ -1,15 +1,23 @@
 <template>
-  <div class="card">
-    <div class="background">
-      <div class="content">
+  <div class="modal">
+    <div class="background" @click="closeModal"></div>
+      <div class="card">
         <div class="container">
-          <h2 class="location">{{ location }}</h2>
-          <h2>{{ title }}</h2>
-          <img :src="image" alt="" class="image" />
-          <h3 class="author">{{ author }}</h3>
-          <p class="description">{{ description }}</p>
-          <p class="date">{{ postDate }}</p>
-          <p>{{ uuid }}</p>
+          <div class="author">
+            <h4>{{ author }}</h4>
+            <p class="location">{{ location }}</p>
+          </div>
+          <div class="image">
+            <img :src="image" alt="" class="image" />
+          </div>
+          <div class="info">
+            <h3>{{ title }}</h3>
+            <p class="description">{{ description }}</p>
+          </div>
+          <div class="date">
+            <p>{{ postDate }}</p>
+          </div>
+          <slot name="deleteBtn" class="button"></slot>
         </div>
       </div>
       <!-- <img
@@ -21,8 +29,6 @@
       <div class="close" @click="closeModal">
         <p>X</p>
       </div>
-    </div>
-    <slot name="deleteBu" class="button"></slot>
   </div>
 </template>
 
@@ -50,54 +56,123 @@ export default {
 </script>
 
 <style scoped>
-.card {
+.modal {
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
   width: 100%;
   height: 100%;
-  position: fixed;
   top: 0;
   z-index: 9;
+  overflow-y: scroll;
 }
 .background {
+  position: fixed;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.content {
+.card {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 .container {
+  /* margin-top: 8rem;
+  margin-bottom: 2rem;
+  height: 48rem; */
+  height: 93vh;
+  width: auto;
+  aspect-ratio: 4/5;
+  background-color: #f5f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
   position: relative;
-  width: 82%;
-  height: 90%;
-  background-color: #fff;
+  padding: 1.2rem;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* background-color: #151515; */
+}
+
+.image > img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: 50%, 50%;
+  overflow: hidden;
+}
+
+.author {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  width: 100%;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
 }
 
+.author h4, .location, .info h3, .description, .date p {
+  overflow: hidden;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+.date p {
+  font-size: 0.8rem;
+}
 .close {
   position: absolute;
   top: 0;
   right: 1.2rem;
   cursor: pointer;
-}
-
-.image {
-  object-fit: cover;
-  height: 20rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .close p {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #f5f4f4;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+@media only screen and (max-width: 700px) {
+  .container {
+    /* max-width: 80vw;
+    max-height: 80vh; */
+    /* height: auto; */
+    height: 80vh;
+    max-width: 90vw;
+  }
 }
 </style>
