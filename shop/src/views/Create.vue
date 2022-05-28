@@ -414,7 +414,7 @@ button:disabled {
   }
   
   .card {
-    margin: 0 1rem;
+    margin: 0 2rem;
   }
   /* .back {
     right: 2rem;

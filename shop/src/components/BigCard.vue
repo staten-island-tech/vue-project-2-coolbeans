@@ -171,7 +171,7 @@ export default {
     /* max-width: 80vw;
     max-height: 80vh; */
     /* height: auto; */
-    height: 80vh;
+    height: 75vh;
     max-width: 90vw;
   }
 }
