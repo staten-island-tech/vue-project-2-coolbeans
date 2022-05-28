@@ -46,21 +46,25 @@
         </div>
         <button :disabled="!isFormValid" type="submit">Post</button>
       </form>
-        <RouterLink to="/account">
-          <div class="back">
-            <p>&lt;--</p>
-            <p>Back</p>
-          </div>
-        </RouterLink>
+      <RouterLink to="/account">
+        <div class="back">
+          <p>&lt;--</p>
+          <p>Back</p>
+        </div>
+      </RouterLink>
     </div>
     <div :disabled="!isFormValid" class="preview">
       <div class="card">
-        <div class="card-image">
-          <img :disabled="!isPicValid" :src="imageUrl" alt=""/>
+        <div class="card-image" v-show="isPicValid">
+          <img :src="imageUrl" alt="" />
+        </div>
+        <div class="card-noimage" v-show="!isPicValid">
+          <h4>No Image</h4>
         </div>
         <div class="card-container">
-          <h4 class="card-title">title</h4>
-          <p class="card-author">user</p>
+          <h4 class="card-title" v-show="istitle">Title</h4>
+          <h4 class="card-title">{{ title }}</h4>
+          <p class="card-author">{{ userName }}</p>
         </div>
       </div>
     </div>
@@ -77,7 +81,6 @@ export default {
   data() {
     return {
       title: "",
-      // author: this.userName(),
       location: "",
       imageUrl: "",
       description: "",
@@ -85,8 +88,14 @@ export default {
     };
   },
   computed: {
+    userName() {
+      return this.$store.state.user.displayName;
+    },
     isPicValid() {
       return this.imageUrl !== "";
+    },
+    istitle() {
+      return this.title === "";
     },
     isFormValid() {
       return this.title !== "" && this.imageUrl !== "";
@@ -315,6 +324,14 @@ button:disabled {
   background-color: #151515;
 }
 
+.card-noimage {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background-color: #fff;
+}
+
 .card-image > img {
   width: 100%;
   height: 100%;
@@ -338,5 +355,4 @@ button:disabled {
   overflow: hidden;
   /* padding-bottom: 0.3rem; */
 }
-
 </style>
