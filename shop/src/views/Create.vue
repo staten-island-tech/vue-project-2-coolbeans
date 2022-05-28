@@ -29,7 +29,7 @@
               type="text"
               placeholder="Title"
               class="form-field"
-              maxlength="25"
+              maxlength="20"
               v-model="title"
             />
           </div>
