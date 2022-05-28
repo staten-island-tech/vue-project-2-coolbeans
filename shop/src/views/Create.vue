@@ -11,7 +11,6 @@
               class="form-field"
               maxlength="25"
               v-model="title"
-              required
             />
           </div>
           <button class="useFile" @click="onFileup(), isUpfile()">
@@ -41,7 +40,6 @@
               placeholder="Location"
               class="form-field"
               v-model="location"
-              required
             />
           </div>
           <div class="description">
@@ -50,7 +48,6 @@
               placeholder="Description"
               class="form-field"
               v-model="description"
-              required
             />
           </div>
           <div class="time">
