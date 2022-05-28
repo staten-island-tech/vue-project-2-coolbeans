@@ -20,7 +20,7 @@
         <div class="image">
           <input
             type="text"
-            placeholder="Image (URL)"
+            placeholder="Image URL"
             class="form-field"
             v-model="imageUrl"
           />
@@ -29,7 +29,7 @@
           <input
             id="autocomplete"
             type="text"
-            placeholder="Location (optional)"
+            placeholder="Location"
             class="form-field"
             v-model="location"
           />
@@ -37,7 +37,7 @@
         <div class="description">
           <input
             type="text"
-            placeholder="Description (optional)"
+            placeholder="Description"
             class="form-field"
             v-model="description"
           />
@@ -102,7 +102,8 @@ export default {
       return this.title === "";
     },
     isFormValid() {
-      return this.title !== "" || this.imageUrl !== "";
+      // return this.title !== "" || this.imageUrl !== "";
+      return this.title !== ""; // this.imageUrl !== ""; come later for fixing
     },
     userName() {
       return this.$store.state.user.displayName;
