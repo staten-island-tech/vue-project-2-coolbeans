@@ -106,7 +106,6 @@ export default {
   height: 100%;
   padding: 0 4rem;
   padding-bottom: 2rem;
-
   /* @supports(display: grid) {
     display: block;
   } */
