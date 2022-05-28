@@ -15,6 +15,7 @@ import {
   getDocs,
   setDoc,
   getDoc,
+  updateDoc,
   doc,
   query,
   collectionGroup,
@@ -129,7 +130,7 @@ const store = createStore({
           imageUrl: payload.imageUrl,
           description: payload.description,
           postDate: payload.postDate,
-          uuid: payload.uuid,
+          uuid: null,
           type: "post",
         };
         const userPath = doc(db, `allUser/${this.state.user.uid}`);
@@ -137,6 +138,14 @@ const store = createStore({
         const docRef = await addDoc(collection(userPostPath, "post"), post);
 
         console.log("Document written with ID: ", docRef.id);
+
+        const docId = docRef.id;
+        console.log(docId);
+        const theDoc = doc(userPostPath, `post/${docId}`);
+        await updateDoc(theDoc, {
+          uuid: docRef.id,
+        });
+
         commit("createPost", post);
       } catch (e) {
         console.error("Error adding document: ", e);

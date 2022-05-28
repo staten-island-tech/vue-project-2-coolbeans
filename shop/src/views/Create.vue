@@ -78,7 +78,6 @@ export default {
         imageUrl: this.imageUrl,
         description: this.description,
         postDate: this.postDate,
-        uuid: Date.now().toString(),
       };
       this.$store.dispatch("createPost", postData);
       // just figure this out, no need to import useRouter anymore
