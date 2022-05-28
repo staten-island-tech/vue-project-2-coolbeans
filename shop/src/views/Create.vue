@@ -59,7 +59,7 @@
           <!-- <button :disabled="!isFormValid" type="submit">Post</button> -->
         </form>
       </div>
-      <div v-show="isPicValid" class="preview">
+      <div v-show="isPreviewValid" class="preview">
         <div class="card">
           <div class="card-image" v-show="isPicValid">
             <img :src="pickImage || imageUrl" alt="" />
@@ -116,6 +116,9 @@ export default {
       return this.$store.state.user.displayName;
     },
     isPicValid() {
+      return this.imageUrl !== "" || this.pickImage !== "";
+    },
+    isPreviewValid() {
       return this.title !== "" || this.imageUrl !== "" || this.pickImage !== "";
     },
     istitle() {
@@ -139,6 +142,9 @@ export default {
         return;
       }
       if (!this.isPicValid) {
+        return;
+      }
+      if (!this.isPreviewValid) {
         return;
       }
       console.log(this.userName);
