@@ -53,13 +53,13 @@
         </div>
       </RouterLink>
     </div>
-    <div :disabled="!isFormValid" class="preview">
+    <div v-show="isFormValid" class="preview">
       <div class="card">
         <div class="card-image" v-show="isPicValid">
           <img :src="imageUrl" alt="" />
         </div>
         <div class="card-noimage" v-show="!isPicValid">
-          <h4>No Image</h4>
+          <h5>Add an Image</h5>
         </div>
         <div class="card-container">
           <h4 class="card-title" v-show="istitle">Title</h4>
@@ -98,7 +98,7 @@ export default {
       return this.title === "";
     },
     isFormValid() {
-      return this.title !== "" && this.imageUrl !== "";
+      return this.title !== "" || this.imageUrl !== "";
     },
     userName() {
       return this.$store.state.user.displayName;
@@ -329,7 +329,14 @@ button:disabled {
   height: 100%;
   aspect-ratio: 1/1;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #151515;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-noimage h5 {
+  color: #f5f4f4;
 }
 
 .card-image > img {

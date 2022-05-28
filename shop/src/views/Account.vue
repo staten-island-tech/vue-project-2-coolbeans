@@ -42,11 +42,11 @@
       :postDate="tempS.postDate"
       :uuid="tempS.uuid"
     >
-      <template v-slot:deleteBu
-        ><button class="button" @click="deletePost(tempS)">
-          delete
-        </button></template
-      >
+      <template v-slot:deleteBtn>
+        <button class="button" @click="deletePost(tempS)">
+          Remove
+        </button>
+      </template>
     </Modal>
   </div>
 </template>
@@ -203,6 +203,20 @@ p {
 }
 .button {
   position: absolute;
-  width: 10rem;
+  bottom: 1rem;
+  right: 1.6rem;
+  background: none;
+  border: none;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 1rem;
+  color: red;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.button:hover {
+  text-decoration: underline;
+  opacity: 1;
 }
 </style>
