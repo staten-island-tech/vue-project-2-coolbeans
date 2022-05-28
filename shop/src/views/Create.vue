@@ -80,7 +80,14 @@
         <p>Back</p>
       </div>
     </RouterLink>
-    <button class="post" :disabled="!isFormValid" type="submit">Post</button>
+    <button
+      class="post"
+      :disabled="!isFormValid"
+      type="submit"
+      @click="onCreatePost"
+    >
+      Post
+    </button>
   </div>
 </template>
 
