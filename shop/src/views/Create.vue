@@ -14,7 +14,7 @@
             accept="image/*"
             @change="onFilepick"
           />
-          <h4>Or</h4>
+          <h5>Or</h5>
           <div class="image">
             <input
               type="text"
