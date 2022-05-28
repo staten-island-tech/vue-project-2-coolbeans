@@ -4,17 +4,8 @@
       <div class="create">
         <h3>Create a Post</h3>
         <form class="form" @submit.prevent="onCreatePost">
-          <div class="title">
-            <input
-              type="text"
-              placeholder="Title"
-              class="form-field"
-              maxlength="25"
-              v-model="title"
-            />
-          </div>
           <button class="useFile" @click="onFileup(), isUpfile()">
-            Upload File Image
+            Upload Image File
           </button>
           <input
             type="file"
@@ -27,10 +18,20 @@
           <div class="image">
             <input
               type="text"
-              placeholder="Image (URL)"
+              placeholder="Image URL"
               class="form-field"
               v-model="imageUrl"
               @keyup="isTexton"
+            />
+          </div>
+          <div class="title">
+            <input
+              type="text"
+              placeholder="Title"
+              class="form-field"
+              maxlength="25"
+              v-model="title"
+              required
             />
           </div>
           <div class="location">
@@ -58,7 +59,7 @@
           <!-- <button :disabled="!isFormValid" type="submit">Post</button> -->
         </form>
       </div>
-      <div class="preview">
+      <div v-show="isPicValid" class="preview">
         <div class="card">
           <div class="card-image" v-show="isPicValid">
             <img :src="pickImage || imageUrl" alt="" />
@@ -115,7 +116,7 @@ export default {
       return this.$store.state.user.displayName;
     },
     isPicValid() {
-      return this.imageUrl !== "" || this.pickImage !== "";
+      return this.title !== "" || this.imageUrl !== "" || this.pickImage !== "";
     },
     istitle() {
       return this.title === "";
@@ -366,6 +367,7 @@ button:disabled {
 }
 
 .preview {
+  margin-top: 2rem;
   margin-left: 2rem;
 }
 
@@ -456,6 +458,7 @@ button:disabled {
     margin-top: 1rem;
   }
   .preview {
+    margin-top: 0.5rem;
     margin-left: 0;
     margin-bottom: 1.2rem;
   }
