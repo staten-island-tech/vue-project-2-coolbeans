@@ -435,7 +435,7 @@ button:disabled {
 .card-title,
 .card-author {
   overflow: hidden;
-  /* padding-bottom: 0.3rem; */
+  padding-bottom: 0.2rem;
 }
 
 @media only screen and (max-width: 700px) {
