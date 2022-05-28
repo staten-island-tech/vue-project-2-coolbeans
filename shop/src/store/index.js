@@ -32,6 +32,7 @@ const reformatingDate = function () {
     year: "numeric",
     hour: "2-digit",
     minute: "2-digit",
+    second: "2-digit",
   });
 };
 
@@ -136,6 +137,7 @@ const store = createStore({
           description: payload.description,
           postDate: payload.postDate,
           author: payload.author,
+          perDate: reformatingDate(),
           uuid: null,
           type: "post",
         };
