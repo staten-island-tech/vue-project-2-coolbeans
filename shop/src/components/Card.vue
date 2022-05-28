@@ -8,7 +8,7 @@
       <!-- <h4 class="caption">{{ location }}</h4> -->
       <!-- <p class="location">Location</p> -->
       <p class="author">{{ author }}</p>
-      <slot name="love"></slot>
+      <!-- <slot name="love"></slot> -->
     </div>
   </div>
 </template>

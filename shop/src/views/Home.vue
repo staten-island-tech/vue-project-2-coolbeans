@@ -169,7 +169,6 @@ h4 {
 
 @media only screen and (max-width: 650px) {
   .grid {
-    padding: 0 1rem;
     display: flex;
     flex-direction: column;
   }
