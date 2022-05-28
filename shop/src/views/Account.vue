@@ -67,6 +67,8 @@ export default {
     deletePost(tempS) {
       const onluUuid = tempS.uuid;
       this.$store.dispatch("deletePosttemp", onluUuid);
+      this.$router.push("/account");
+      this.$store.dispatch("closeModal");
     },
   },
   computed: {

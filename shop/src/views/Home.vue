@@ -12,7 +12,8 @@
       :description="tempS.description"
       :postDate="tempS.postDate"
       :uuid="tempS.uuid"
-    />
+    >
+    </Modal>
     <div class="grid">
       <Card
         @card-click="openModal(post)"
@@ -126,7 +127,7 @@ export default {
 
 .fav {
   position: absolute;
-  top: 1rem;
+  top: 10rem;
   right: 1rem;
   cursor: pointer;
 }

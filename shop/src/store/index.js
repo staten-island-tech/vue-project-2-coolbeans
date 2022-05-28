@@ -45,6 +45,7 @@ const store = createStore({
     tempStore: [],
     favorite: [],
     userCreated: [],
+    loading: false,
   },
   mutations: {
     setUser(state, payload) {
@@ -55,11 +56,10 @@ const store = createStore({
       state.authIsReady = payload;
     },
     createPost(state, payload) {
-      state.loadedPosts.push(payload);
+      // state.loadedPosts.push(payload);
     },
     setLoadedPosts(state, payload) {
       state.loadedPosts = payload;
-      console.log(payload);
     },
     createdUserpost(state, payload) {
       state.userCreated = payload;
@@ -72,6 +72,9 @@ const store = createStore({
     },
     addFavorpost(state, payload) {
       state.favorite.push(payload);
+    },
+    setLoading(state, payload) {
+      state.loading = payload;
     },
     deletePosttemp() {
       console.log("you did it");
@@ -137,10 +140,10 @@ const store = createStore({
         const userPostPath = doc(userPath, "UserPosts/posts");
         const docRef = await addDoc(collection(userPostPath, "post"), post);
 
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
 
         const docId = docRef.id;
-        console.log(docId);
+        // console.log(docId);
         const theDoc = doc(userPostPath, `post/${docId}`);
         await updateDoc(theDoc, {
           uuid: docRef.id,
@@ -150,20 +153,6 @@ const store = createStore({
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-    },
-    async fetchPost() {
-      const userPath = doc(db, `allUser/${this.state.user.uid}`);
-      const userPostPath = doc(userPath, "UserPosts/posts");
-      let postSnapShot = await getDocs(userPostPath);
-      let posts = [];
-      postSnapShot.forEach((post) => {
-        let postData = post.data();
-        console.log(postData);
-        postData.id = post.id;
-        posts.push(cityData);
-      });
-      console.log(cities);
-      this.cities = cities;
     },
     async addFavorite({ commit }, payload) {
       try {
@@ -221,7 +210,7 @@ const store = createStore({
         const querySnapshot = await getDocs(thePost);
         const st = [];
         const allPublicpost = querySnapshot.forEach((snap) => {
-          console.log(snap.data());
+          //  console.log(snap.data());
           st.push(snap.data());
           snap.data();
         });
@@ -231,7 +220,7 @@ const store = createStore({
     },
     loadUsercreated({ commit }) {
       const userUid = this.state.user.uid;
-      console.log(userUid);
+      // console.log(userUid);
       async function queryForDocuments() {
         console.log("query");
         const thePost = query(
@@ -266,26 +255,33 @@ const store = createStore({
       };
       commit("openModal", popupPost);
     },
-    deletePosttemp({ commit }, payload) {
+    async deletePosttemp({ commit }, payload) {
       const ogiweg = payload;
       console.log(ogiweg);
       const uidUser = this.state.user.uid;
-      console.log(uidUser);
-      const postRef = collection(
-        db,
-        "allUser",
-        `${uidUser}`,
-        "UserPosts",
-        "posts",
-        "post"
+      await deleteDoc(
+        doc(
+          db,
+          "allUser",
+          `${uidUser}`,
+          "UserPosts",
+          "posts",
+          "post",
+          `${ogiweg}`
+        )
       );
-      const q = query(postRef, where("uuid", "==", `${ogiweg}`));
-      q.get().then(function (querySnapshot) {
-        querySnapshot.forEach(function (doc) {
-          doc.ref.delete();
-        });
-      });
-      // commit("deletePosttemp", payload);
+      await deleteDoc(
+        doc(
+          db,
+          "allUser",
+          `${uidUser}`,
+          "Userfavorites",
+          "favorites",
+          "favorite",
+          `${ogiweg}`
+        )
+      );
+      console.log("done");
     },
     closeModal({ commit }) {
       commit("closeModal");
