@@ -1,6 +1,6 @@
 <template>
-  <div class="fav">
-    <h2>Favorites</h2>
+  <div class="like">
+    <h2>Liked Posts</h2>
     <!-- <h4>Favorite Posts</h4> -->
     <div class="grid">
       <Card
@@ -15,6 +15,11 @@
         :postDate="post.postDate"
         :uuid="post.uuid"
       >
+      <template v-slot:love>
+          <div class="fav" @click="addTofav(post)">
+            <img src="../components/icons/love.png" alt="favorite" />
+          </div>
+        </template>
       </Card>
     </div>
     <Modal
@@ -72,7 +77,7 @@ export default {
 </script>
 
 <style scoped>
-.fav {
+.like {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -87,11 +92,13 @@ export default {
 .grid {
   width: 100%;
   display: grid;
-  grid-gap: 1.5rem;
-  /* grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr)); */
+  grid-gap: 3rem;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   grid-auto-flow: row dense;
+  justify-items: center;
+  overflow: visible;
+  
 }
 
 h2 {
@@ -101,5 +108,24 @@ h2 {
 h4 {
   color: #8a8a8a;
   padding-bottom: 1rem;
+}
+
+.fav {
+  position: absolute;
+  bottom: 3.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+  width: auto;
+  height: 1.8rem;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  z-index: 6;
+}
+
+.fav > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50%, 50%;
 }
 </style>

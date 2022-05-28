@@ -4,7 +4,7 @@
       <img :src="image" alt="image" />
     </div>
     <div class="container">
-      <h3 class="title">{{ title }}</h3>
+      <h4 class="title">{{ title }}</h4>
       <!-- <h4 class="caption">{{ location }}</h4> -->
       <!-- <p class="location">Location</p> -->
       <p class="author">{{ author }}</p>
@@ -24,12 +24,11 @@ export default {
     uuid: String,
   },
   components: {},
-  mounted() {
-    //     const cards = document.querySelectorAll('.card');
-    //     polaroids.forEach(item => {
-    //     const randomRotation = Math.floor(Math.random() * (6 - -6 + 1) + -6);
-    //     item.style.transform = `rotate(${randomRotation}deg)`
-    // })
+  created() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(item => {
+      const randomRotation = Math.floor(Math.random() * (2 - -2 + 1) + -2);
+      item.style.transform = `rotate(${randomRotation}deg)`})
   },
 };
 </script>
@@ -48,6 +47,7 @@ export default {
   grid-row-start: auto;
   position: relative;
   padding: 1.2rem;
+  cursor: zoom-in;
 }
 
 .image {
@@ -75,10 +75,10 @@ export default {
   justify-content: center;
   padding: 0.5rem;
 }
-.caption,
+.title,
 .author {
   overflow: hidden;
-  padding-bottom: 0.3rem;
+  /* padding-bottom: 0.3rem; */
 }
 
 .card:hover img {
