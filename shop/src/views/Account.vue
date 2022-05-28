@@ -1,7 +1,7 @@
 <template>
   <div class="user">
-    <h2>{{ userName }}</h2>
-    <!-- <h4>You created no post!</h4> -->
+    <h2>Hello, {{ userName }}</h2>
+    <h4>You created no post!</h4>
     <!-- <h4>Your Posts</h4> -->
     <div class="grid">
       <Card

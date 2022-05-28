@@ -323,7 +323,7 @@ const store = createStore({
   getters: {
     loadedPosts(state) {
       return state.loadedPosts.sort((postA, postB) => {
-        return postA.postDate > postB.postDate;
+        return postA.perDate > postB.perDate;
       });
     },
     userCreated(state) {
