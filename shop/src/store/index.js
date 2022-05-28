@@ -233,7 +233,8 @@ const store = createStore({
             "Userfavorites",
             "favorites",
             "favorite"
-          ) // can insert limit of post here
+          ),
+          orderBy("dateAdded") // can insert limit of post here
         );
         const querySnapshot = await getDocs(pleasPlease);
         const postload = [];
