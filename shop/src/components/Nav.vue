@@ -57,7 +57,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  /* height: 9rem; */
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,4 +79,16 @@ export default {
   background-position: center;
   background-size: cover;
 } */
+
+@media only screen and (max-width: 700px) {
+  .views {
+    position: fixed;
+    top: auto;
+    left: 0;
+    bottom: 0;
+    height: 4rem;
+    background-color: #f5f4f4;
+    justify-content: center;
+  }
+}
 </style>

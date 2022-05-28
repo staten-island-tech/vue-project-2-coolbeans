@@ -219,4 +219,29 @@ p {
   text-decoration: underline;
   opacity: 1;
 }
+
+@media only screen and (max-width: 650px) {
+  .grid {
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+@media only screen and (max-width: 700px) {
+  .create {
+    bottom: 5rem;
+    right: 1rem;
+  }
+  .grid {
+    margin-bottom: 4rem;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 1200px) {
+}
 </style>

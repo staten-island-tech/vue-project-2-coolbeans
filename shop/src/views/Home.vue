@@ -169,11 +169,15 @@ h4 {
 
 @media only screen and (max-width: 650px) {
   .grid {
+    padding: 0 1rem;
     display: flex;
     flex-direction: column;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 700px) {
+  .grid {
+    margin-bottom: 4rem;
+  }
 }
 @media only screen and (max-width: 1000px) {
   .grid {

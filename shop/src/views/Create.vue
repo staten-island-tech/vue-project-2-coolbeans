@@ -1,8 +1,21 @@
 <template>
   <div class="container">
-    <div class="create">
+    <div class="content">
+      <div class="create">
       <h3>Create a Post</h3>
       <form class="form" @submit.prevent="onCreatePost">
+        <button class="useFile" :disabled="isPicValid">
+          Upload File Image
+        </button>
+        <p>Or</p>
+        <div class="image">
+          <input
+            type="text"
+            placeholder="Image URL"
+            class="form-field"
+            v-model="imageUrl"
+          />
+        </div>
         <div class="title">
           <input
             type="text"
@@ -11,18 +24,6 @@
             maxlength="25"
             v-model="title"
             required
-          />
-        </div>
-        <button class="useFile" :disabled="isPicValid">
-          Upload File Image
-        </button>
-        <h4>Or</h4>
-        <div class="image">
-          <input
-            type="text"
-            placeholder="Image URL"
-            class="form-field"
-            v-model="imageUrl"
           />
         </div>
         <div class="location">
@@ -47,14 +48,8 @@
             {{ postDate }}
           </p>
         </div>
-        <button :disabled="!isFormValid" type="submit">Post</button>
+        <!-- <button :disabled="!isFormValid" type="submit">Post</button> -->
       </form>
-      <RouterLink to="/account">
-        <div class="back">
-          <p>&lt;--</p>
-          <p>Back</p>
-        </div>
-      </RouterLink>
     </div>
     <div v-show="isFormValid" class="preview">
       <div class="card">
@@ -71,6 +66,14 @@
         </div>
       </div>
     </div>
+    </div>
+    <RouterLink to="/account">
+        <div class="back">
+          <p>&lt;--</p>
+          <p>Back</p>
+        </div>
+      </RouterLink>
+    <button class="post" :disabled="!isFormValid" type="submit">Post</button>
   </div>
 </template>
 
@@ -177,12 +180,18 @@ export default {
 <style scoped>
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   width: 100%;
   height: 100vh;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .create {
   position: relative;
@@ -193,7 +202,6 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-right: 2rem;
 }
 .form {
   display: flex;
@@ -283,6 +291,9 @@ button:disabled {
   opacity: 1;
 }
 
+.post {
+  margin-bottom: 3rem;
+}
 .back {
   position: fixed;
   bottom: 2rem;
@@ -302,8 +313,9 @@ button:disabled {
   color: rgba(40, 40, 40, 1);
 }
 
-.preview:disabled {
-  display: none;
+
+.preview{
+  margin-left: 2rem;
 }
 
 .card {
@@ -366,5 +378,44 @@ button:disabled {
 .card-author {
   overflow: hidden;
   /* padding-bottom: 0.3rem; */
+}
+
+@media only screen and (max-width: 700px) {
+  .post {
+    margin-bottom: 6rem;
+  }
+  .back {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    bottom: auto;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .container {
+    flex-direction: column;
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+  .create {
+    margin-top: 1rem;
+  }
+  .preview {
+    margin-left: 0;
+    margin-bottom: 1.2rem;
+  }
+  
+  /* .back {
+    right: 2rem;
+    bottom: 1rem;
+  } */
+}
+@media only screen and (max-width: 1000px) {
+}
+@media only screen and (max-width: 1200px) {
 }
 </style>
