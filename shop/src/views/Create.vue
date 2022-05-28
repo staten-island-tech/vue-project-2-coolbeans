@@ -4,18 +4,6 @@
       <div class="create">
         <h3>Create a Post</h3>
         <form class="form" @submit.prevent="onCreatePost">
-          <button class="useFile" :disabled="isPicValid">
-            Upload File Image
-          </button>
-          <p>Or</p>
-          <div class="image">
-            <input
-              type="text"
-              placeholder="Image URL"
-              class="form-field"
-              v-model="imageUrl"
-            />
-          </div>
           <div class="title">
             <input
               type="text"
