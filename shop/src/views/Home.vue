@@ -29,7 +29,7 @@
         :uuid="post.uuid"
       >
         <template v-slot:love>
-          <div class="fav" @click="addTofav">
+          <div class="fav" @click="addTofav(post)">
             <img src="../components/icons/love.png" alt="favorite" />
           </div>
         </template>

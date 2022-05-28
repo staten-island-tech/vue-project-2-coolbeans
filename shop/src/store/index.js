@@ -21,6 +21,7 @@ import {
   collectionGroup,
   where,
   deleteDoc,
+  onSnapshot,
 } from "firebase/firestore";
 
 const reformatingDate = function () {
@@ -92,9 +93,6 @@ const store = createStore({
     },
     closeSign(state) {
       state.isSignup = false;
-    },
-    removeFromcreated(state, payload) {
-      state.userCreated.splice(payload, 1);
     },
   },
   actions: {
@@ -171,11 +169,20 @@ const store = createStore({
           author: payload.author,
           dateAdded: reformatingDate(),
           type: "favorite",
+          fuuid: null,
         };
         const userPath = doc(db, `allUser/${this.state.user.uid}`);
         const userPostPath = doc(userPath, "Userfavorites/favorites");
         const docRef = await addDoc(collection(userPostPath, "favorite"), post);
         console.log("Document written with ID: ", docRef.id);
+
+        const fdocRefid = docRef.id;
+        console.log(fdocRefid);
+        const favDoc = doc(userPostPath, `favorite/${fdocRefid}`);
+        await updateDoc(favDoc, {
+          fuuid: docRef.id,
+        });
+
         commit("addFavorpost", post);
       } catch (e) {
         console.error("Error adding document: ", e);
@@ -264,7 +271,6 @@ const store = createStore({
     },
     async deletePosttemp({ commit }, payload) {
       const ogiweg = payload;
-      console.log(ogiweg);
       const uidUser = this.state.user.uid;
       await deleteDoc(
         doc(
@@ -277,7 +283,7 @@ const store = createStore({
           `${ogiweg}`
         )
       );
-      await deleteDoc(
+      await deleteFavodoc(
         doc(
           db,
           "allUser",
@@ -288,6 +294,18 @@ const store = createStore({
           `${ogiweg}`
         )
       );
+      const postQuery = query(
+        collection(db, "allUser", `${uidUser}`, "UserPosts", "posts", "post")
+      );
+      const snapLoad = [];
+      onSnapshot(postQuery, (querySnapshot) => {
+        querySnapshot.forEach((snap) => {
+          snap.data();
+          snapLoad.push(snap.data());
+        });
+        commit("createdUserpost", snapLoad);
+        // commit("loadFavorite", snapLoad);
+      });
       console.log("done");
     },
     closeModal({ commit }) {
@@ -298,9 +316,6 @@ const store = createStore({
     },
     closeSign({ commit }) {
       commit("closeSign");
-    },
-    removeFromcreated({ commit }) {
-      commit("removeFromcreated");
     },
   },
   getters: {

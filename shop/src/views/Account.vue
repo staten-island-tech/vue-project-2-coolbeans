@@ -37,7 +37,7 @@
       :uuid="tempS.uuid"
     >
       <template v-slot:deleteBu
-        ><button class="button" @click="deletePost(tempS, cardIndex)">
+        ><button class="button" @click="deletePost(tempS)">
           delete
         </button></template
       >
@@ -76,7 +76,6 @@ export default {
       // tomor make sure where cut
       // make link from store
       // make edit
-      this.$store.dispatch("removeFromcreated", cardIndex);
     },
   },
   computed: {
