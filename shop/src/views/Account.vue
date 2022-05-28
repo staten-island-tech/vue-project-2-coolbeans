@@ -1,11 +1,12 @@
 <template>
   <div class="user">
     <h2>Hello, {{ userName }}</h2>
-    <h4>Your Posts</h4>
+    <!-- <h4>Your Posts</h4> -->
     <div class="grid"></div>
     <router-link to="/create">
       <div class="create">
-        <img class="plus" src="../components/icons/plus.svg" alt="plus" />
+        <p class="plus">+</p>
+        <!-- <img class="plus" src="../components/icons/plus.svg" alt="plus" /> -->
         <p>Create</p>
       </div>
     </router-link>
@@ -98,7 +99,6 @@ export default {
   width: 100%;
   height: 100%;
   padding: 0 4rem;
-  padding-top: 1rem;
   padding-bottom: 2rem;
 
   /* @supports(display: grid) {
@@ -156,19 +156,20 @@ h4 {
 }
 
 .plus {
+  font-size: 1.2rem;
   color: #fff;
-  padding-right: 0.3rem;
+  padding-right: 0.7rem;
 }
 p {
   font-size: 1.2rem;
   color: #fff;
   text-decoration: none;
-  padding-right: 0.3rem;
+  /* padding-right: 0.3rem; */
 }
 .create:hover {
   background-color: rgba(35, 35, 35, 1);
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  /* box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px; */
 }
 .button {
   position: absolute;
