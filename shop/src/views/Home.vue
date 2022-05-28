@@ -56,6 +56,7 @@ export default {
   },
   methods: {
     openModal(post) {
+      console.log(post.title);
       const postname = {
         title: post.title,
         location: post.location,
@@ -165,16 +166,16 @@ h4 {
 
 @media only screen and (max-width: 650px) {
   .grid {
-      display: flex;
-      flex-direction: column;
-    }
+    display: flex;
+    flex-direction: column;
+  }
 }
 @media only screen and (max-width: 768px) {
 }
 @media only screen and (max-width: 1000px) {
   .grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media only screen and (max-width: 1200px) {
 }

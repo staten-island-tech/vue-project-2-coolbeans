@@ -262,6 +262,7 @@ const store = createStore({
     },
     openModal({ commit }, payload) {
       const popupPost = {
+        title: payload.title,
         location: payload.location,
         imageUrl: payload.imageUrl,
         author: payload.author,
