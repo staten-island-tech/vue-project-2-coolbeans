@@ -409,13 +409,10 @@ button:disabled {
     margin-top: 2rem;
   }
   .preview {
-    margin-left: 0;
+    margin-right: 2rem;
     margin-bottom: 1.2rem;
   }
   
-  .card {
-    margin: 0 2rem;
-  }
   /* .back {
     right: 2rem;
     bottom: 1rem;
