@@ -14,7 +14,7 @@
             accept="image/*"
             @change="onFilepick"
           />
-          <h5>Or</h5>
+          <h6>Or</h6>
           <div class="image">
             <input
               type="text"
@@ -440,7 +440,7 @@ button:disabled {
 .card-title,
 .card-author {
   overflow: hidden;
-  padding-bottom: 0.2rem;
+  transform: translate(0, -25%);
 }
 
 @media only screen and (max-width: 700px) {

@@ -75,11 +75,12 @@ export default {
   align-items: start;
   justify-content: center;
   padding: 0.5rem;
+  overflow:hidden;
 }
 .title,
 .author {
-  overflow: hidden;
-  transform: translate(0, -25%);
+  overflow: visible;
+  /* transform: translate(0, -25%); */
 }
 
 .card:hover img {

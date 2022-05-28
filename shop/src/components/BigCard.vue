@@ -1,17 +1,20 @@
 <template>
   <div class="modal">
     <div class="background" @click="closeModal"></div>
-      <div class="card">
+      <div class="bigcard">
         <div class="container">
           <div class="author">
-            <h4>{{ author }}</h4>
-            <p class="location">{{ location }}</p>
+            <h5>{{ author }}</h5>
+            <div class="location">
+              <img src="../components/icons/location.png" alt="pin">
+              <p>{{ location }}</p>
+            </div>
           </div>
           <div class="image">
             <img :src="image" alt="" class="image" />
           </div>
           <div class="info">
-            <h3>{{ title }}</h3>
+            <h4>{{ title }}</h4>
             <p class="description">{{ description }}</p>
           </div>
           <div class="date">
@@ -73,7 +76,7 @@ export default {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.card {
+.bigcard {
   width: 100%;
   height: 100%;
   display: flex;
@@ -86,7 +89,7 @@ export default {
   height: 48rem; */
   height: 93vh;
   width: auto;
-  aspect-ratio: 4/5;
+  aspect-ratio: 2/3;
   background-color: #f5f4f4;
   display: flex;
   flex-direction: column;
@@ -120,12 +123,13 @@ export default {
   width: 100%;
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
+  overflow: hidden;
 }
 
-.author h4, .location, .info h3, .description, .date p {
-  overflow: hidden;
-  transform: translate(0, -25%);
-  padding-bottom: 0.2rem;
+.author h5, .info h4, .description, .date p {
+  overflow: visible;
+  /* transform: translate(0, -25%); */
+  /* padding-bottom: 0.2rem; */
 }
 
 .info {
@@ -135,6 +139,7 @@ export default {
   align-items: start;
   width: 100%;
   padding: 0.5rem;
+  overflow: hidden;
   /* padding-left: 0.5rem; */
 }
 
@@ -144,11 +149,29 @@ export default {
   justify-content: center;
   align-items: start;
   width: 100%;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
+  padding: 0.5rem;
+  padding-top: 1rem;
 }
 .date p {
   font-size: 0.8rem;
+}
+
+.location {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  overflow: visible;
+  transform: translate(0, -25%);
+
+}
+
+.location img {
+  width: auto;
+  height: 1rem;
+  margin-right: 0.3rem
+}
+.location p {
+  font-size: 1rem;
 }
 .close {
   position: absolute;
@@ -173,7 +196,7 @@ export default {
     /* max-width: 80vw;
     max-height: 80vh; */
     /* height: auto; */
-    height: 75vh;
+    height: 82vh;
     max-width: 90vw;
   }
 }

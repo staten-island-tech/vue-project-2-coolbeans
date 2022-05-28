@@ -203,7 +203,7 @@ p {
 }
 .button {
   position: absolute;
-  bottom: 1rem;
+  bottom: 1.2rem;
   right: 1.6rem;
   background: none;
   border: none;
