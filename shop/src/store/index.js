@@ -22,6 +22,7 @@ import {
   where,
   deleteDoc,
   onSnapshot,
+  orderBy,
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
@@ -49,6 +50,7 @@ const store = createStore({
     favorite: [],
     userCreated: [],
     loading: false,
+    fName: null,
   },
   mutations: {
     setUser(state, payload) {
@@ -232,7 +234,8 @@ const store = createStore({
             "Userfavorites",
             "favorites",
             "favorite"
-          ) // can insert limit of post here
+          ),
+          orderBy("dateAdded") // can insert limit of post here
         );
         const querySnapshot = await getDocs(pleasPlease);
         const postload = [];
@@ -248,7 +251,8 @@ const store = createStore({
     loadPost({ commit }) {
       async function queryForDocuments() {
         const thePost = query(
-          collectionGroup(db, "post")
+          collectionGroup(db, "post"),
+          orderBy("perDate")
           /* can insert limit of post here
            */
         );
@@ -341,14 +345,19 @@ const store = createStore({
   },
   getters: {
     loadedPosts(state) {
-      return state.loadedPosts.sort((postA, postB) => {
-        return postA.perDate > postB.perDate;
-      });
+      return state.loadedPosts
+
+        .sort((postA, postB) => {
+          return postA.perDate > postB.perDate;
+        })
+        .reverse();
     },
     userCreated(state) {
-      return state.userCreated.sort((postA, postB) => {
-        return postA.perDate > postB.perDate;
-      });
+      return state.userCreated
+        .sort((postA, postB) => {
+          return postA.perDate > postB.perDate;
+        })
+        .reverse();
     },
     favorite(state) {
       return state.favorite.sort((postA, postB) => {
