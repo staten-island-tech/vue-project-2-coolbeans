@@ -155,9 +155,13 @@ a {
   color: #151515;
 }
 
-/* @media only screen and (max-width: 800px) {
+@media only screen and (max-width: 700px) {
   .page {
-    margin-left: 1rem;
+    margin-left: 0;
+    margin: 0 1.5rem;
   }
-} */
+  .logo {
+    margin: 0 1.5rem;
+  }
+}
 </style>
