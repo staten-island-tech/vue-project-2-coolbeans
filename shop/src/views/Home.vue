@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ noscroll: isActive }" class="home">
+  <div class="home">
     <h2>Explore</h2>
     <!-- <h4>Explore</h4> -->
     <Modal

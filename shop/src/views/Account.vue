@@ -5,23 +5,23 @@
     <!-- <h4>Your Posts</h4> -->
     <div class="grid">
       <Card
-      @card-click="openModal(post)"
-      v-for="(post, cardIndex) in posts"
-      :key="cardIndex"
-      :title="post.title"
-      :location="post.location"
-      :image="post.imageUrl"
-      :author="post.author"
-      :description="post.description"
-      :postDate="post.postDate"
-      :uuid="post.uuid"
-    >
-      <template v-slot:love>
+        @card-click="openModal(post)"
+        v-for="(post, cardIndex) in posts"
+        :key="cardIndex"
+        :title="post.title"
+        :location="post.location"
+        :image="post.imageUrl"
+        :author="post.author"
+        :description="post.description"
+        :postDate="post.postDate"
+        :uuid="post.uuid"
+      >
+        <template v-slot:love>
           <div class="fav" @click="addTofav(post)">
             <img src="../components/icons/love.png" alt="favorite" />
           </div>
         </template>
-    </Card>
+      </Card>
     </div>
     <router-link to="/create">
       <div class="create">
@@ -43,9 +43,7 @@
       :uuid="tempS.uuid"
     >
       <template v-slot:deleteBtn>
-        <button class="button" @click="deletePost(tempS)">
-          Remove
-        </button>
+        <button class="button" @click="deletePost(tempS)">Remove</button>
       </template>
     </Modal>
   </div>
@@ -55,6 +53,9 @@
 import Card from "../components/Card.vue";
 import Modal from "../components/BigCard.vue";
 export default {
+  data() {
+    return {};
+  },
   components: {
     Card,
     Modal,
@@ -86,7 +87,7 @@ export default {
   },
   computed: {
     userName() {
-      return this.$store.state.user.displayName;
+      return this.$store.state.user.displayName.split(" ")[0];
     },
     posts() {
       return this.$store.getters.userCreated;
@@ -207,7 +208,7 @@ p {
   right: 1.6rem;
   background: none;
   border: none;
-  font-family: 'Gloria Hallelujah', cursive;
+  font-family: "Gloria Hallelujah", cursive;
   font-size: 1rem;
   color: red;
   cursor: pointer;
@@ -226,7 +227,6 @@ p {
     display: flex;
     flex-direction: column;
   }
-
 }
 @media only screen and (max-width: 700px) {
   .create {

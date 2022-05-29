@@ -50,6 +50,7 @@ const store = createStore({
     favorite: [],
     userCreated: [],
     loading: false,
+    fName: null,
   },
   mutations: {
     setUser(state, payload) {
