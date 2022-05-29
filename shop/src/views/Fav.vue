@@ -60,6 +60,7 @@ export default {
         uuid: post.uuid,
       };
       this.$store.dispatch("openModal", exportname);
+      document.documentElement.className = "modal-open ";
     },
   },
   computed: {

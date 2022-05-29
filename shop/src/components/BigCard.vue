@@ -1,6 +1,6 @@
 <template>
   <div class="modal">
-    <div class="background" @click="closeModal"></div>
+    <div class="background" @click="closeModal">
       <div class="card">
         <div class="container">
           <div class="author">
@@ -29,6 +29,7 @@
       <div class="close" @click="closeModal">
         <p>X</p>
       </div>
+    </div>
   </div>
 </template>
 
@@ -49,6 +50,7 @@ export default {
   methods: {
     closeModal: function () {
       this.$store.dispatch("closeModal");
+      document.documentElement.className = "";
     },
   },
   computed: {},
@@ -60,15 +62,19 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
   width: 100%;
   height: 100%;
+  position: fixed;
   top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 9;
   overflow-y: scroll;
 }
 .background {
   position: fixed;
+  overflow-x: auto;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -122,7 +128,11 @@ export default {
   padding-left: 0.5rem;
 }
 
-.author h4, .location, .info h3, .description, .date p {
+.author h4,
+.location,
+.info h3,
+.description,
+.date p {
   overflow: hidden;
   transform: translate(0, -25%);
   padding-bottom: 0.2rem;

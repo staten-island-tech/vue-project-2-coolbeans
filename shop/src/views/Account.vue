@@ -75,6 +75,7 @@ export default {
         uuid: post.uuid,
       };
       this.$store.dispatch("openModal", postname);
+      document.documentElement.className = "modal-open ";
     },
     deletePost(tempS, cardIndex) {
       const onluUuid = tempS.uuid;

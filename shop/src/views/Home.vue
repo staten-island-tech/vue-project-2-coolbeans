@@ -66,9 +66,12 @@ export default {
         postDate: post.postDate,
         uuid: post.uuid,
       };
+      document.documentElement.className = "modal-open ";
+
       this.$store.dispatch("openModal", postname);
     },
     addTofav(post) {
+      this.$store.dispatch("closeModal");
       const favData = {
         title: post.title,
         location: post.location,

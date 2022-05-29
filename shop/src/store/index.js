@@ -308,6 +308,7 @@ const store = createStore({
     async deletePosttemp({ commit }, payload) {
       const ogiweg = payload;
       const uidUser = this.state.user.uid;
+
       await deleteDoc(
         doc(
           db,
@@ -319,6 +320,28 @@ const store = createStore({
           `${ogiweg}`
         )
       );
+
+      const q = query(
+        collection(
+          db,
+          "allUser",
+          `${uidUser}`,
+          "Userfavorites",
+          "favorites",
+          "favorite"
+        ),
+        where("uuid", "==", uidUser)
+      );
+      console.log(q);
+
+      const querySnapshotcs = await getDocs(q);
+      console.log("start");
+      querySnapshotcs.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+      });
+
+      console.log("end");
 
       const postQuery = query(
         collection(db, "allUser", `${uidUser}`, "UserPosts", "posts", "post")
