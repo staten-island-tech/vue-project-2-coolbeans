@@ -155,7 +155,7 @@ a {
   color: #151515;
 }
 
-@media only screen and (max-width: 700px) {
+/* @media only screen and (max-width: 700px) {
   .page {
     margin-left: 0;
     margin: 0 1.5rem;
@@ -163,5 +163,5 @@ a {
   .logo {
     margin: 0 1.5rem;
   }
-}
+} */
 </style>

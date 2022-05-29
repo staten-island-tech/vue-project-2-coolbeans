@@ -89,6 +89,7 @@ export default {
     height: 4rem;
     background-color: #f5f4f4;
     justify-content: center;
+    padding: 1rem 3rem;
   }
 }
 </style>

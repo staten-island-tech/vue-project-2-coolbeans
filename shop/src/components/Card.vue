@@ -75,7 +75,7 @@ export default {
   align-items: start;
   justify-content: center;
   padding: 0.5rem;
-  overflow:hidden;
+  overflow: hidden;
 }
 .title,
 .author {
