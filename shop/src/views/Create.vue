@@ -115,7 +115,7 @@ export default {
       return this.$store.state.user.displayName;
     },
     isPicValid() {
-      return this.title !== "" || this.imageUrl !== "" || this.pickImage !== "";
+      return this.imageUrl !== "" || this.pickImage !== "";
     },
     istitle() {
       return this.title === "";
@@ -430,11 +430,12 @@ button:disabled {
   align-items: start;
   justify-content: center;
   padding: 0.5rem;
+  overflow: hidden;
 }
 .card-title,
 .card-author {
-  overflow: hidden;
-  transform: translate(0, -25%);
+  overflow: visible;
+  /* transform: translate(0, -25%); */
 }
 
 @media only screen and (max-width: 700px) {
