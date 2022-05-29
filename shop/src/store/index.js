@@ -61,7 +61,7 @@ const store = createStore({
       state.authIsReady = payload;
     },
     createPost(state, payload) {
-      //  state.loadedPosts.push(payload);
+      state.loadedPosts.push(payload);
     },
     setLoadedPosts(state, payload) {
       state.loadedPosts = payload;
@@ -175,16 +175,33 @@ const store = createStore({
         });
 
         const uidUser = this.state.user.uid;
+
+        /* const newestPost = doc(userPostPath, `post/${docId}`);
+        const pload = [];
+        function linstenTochange() {
+          onSnapshot(newestPost, (docSnapshop) => {
+            if (docSnapshop.exists()) {
+              console.log(JSON.stringify(docSnapshop.data));
+              // pload.push(docSnapshop.data);
+            }
+          });
+          commit("createPost", pload);
+        }
+        console.log(pload);
+        linstenTochange(); */
         const postQuery = query(
-          collection(db, "allUser", `${uidUser}`, "UserPosts", "posts", "post")
+          collection(db, "post"),
+          where("type", "==", "post")
         );
-        const snapLoad = [];
+        console.log(postQuery);
         onSnapshot(postQuery, (querySnapshot) => {
+          const snapLoad = [];
           querySnapshot.forEach((snap) => {
             snap.data();
             snapLoad.push(snap.data());
           });
-          commit("setLoadedPosts", snapLoad);
+          console.log(snapLoad);
+          //     commit("setLoadedPosts", snapLoad);
         });
       } catch (e) {
         console.error("Error adding document: ", e);
@@ -336,13 +353,12 @@ const store = createStore({
 
       const querySnapshotcs = await getDocs(q);
       console.log("start");
+      const load = [];
       querySnapshotcs.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, " => ", doc.data());
+        load.push(doc.data());
       });
 
-      console.log("end");
-
+      console.log(load);
       const postQuery = query(
         collection(db, "allUser", `${uidUser}`, "UserPosts", "posts", "post")
       );
