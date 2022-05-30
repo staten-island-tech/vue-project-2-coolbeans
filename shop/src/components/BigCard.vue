@@ -11,7 +11,10 @@
             <img :src="image" alt="" class="image" />
           </div>
           <div class="info">
-            <h3>{{ title }}</h3>
+            <div class="hori">
+              <h3 class="title">{{ title }}</h3>
+              <Heart class="heart" />
+            </div>
             <p class="description">{{ description }}</p>
           </div>
           <div class="date">
@@ -26,7 +29,6 @@
         alt="close"
         @click="closeModal"
       /> -->
-      <Heart class="heart" />
       <div class="close" @click="closeModal">
         <p>X</p>
       </div>
@@ -179,9 +181,17 @@ export default {
 .close:hover {
   opacity: 1;
 }
+.hori {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
 
+.title {
+  margin-right: auto;
+}
 .heart {
-  width: 10rem;
+  width: 2rem;
 }
 @media only screen and (max-width: 700px) {
   .container {
