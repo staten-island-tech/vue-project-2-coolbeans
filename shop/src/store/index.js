@@ -23,20 +23,9 @@ import {
   deleteDoc,
   onSnapshot,
   orderBy,
+  serverTimestamp,
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
-const reformatingDate = function () {
-  const date = new Date();
-  return date.toLocaleString(["en-US"], {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  });
-};
 
 const store = createStore({
   state: {
@@ -140,7 +129,7 @@ const store = createStore({
           description: payload.description,
           postDate: payload.postDate,
           author: payload.author,
-          perDate: reformatingDate(),
+          perDate: serverTimestamp(),
           uuid: null,
           type: "post",
         };
@@ -190,8 +179,8 @@ const store = createStore({
         console.log(pload);
         linstenTochange(); */
         const postQuery = query(
-          collection(db, "post"),
-          where("type", "==", "post")
+          collectionGroup(db, "post"),
+          orderBy("perDate")
         );
         console.log(postQuery);
         onSnapshot(postQuery, (querySnapshot) => {
@@ -201,7 +190,7 @@ const store = createStore({
             snapLoad.push(snap.data());
           });
           console.log(snapLoad);
-          //     commit("setLoadedPosts", snapLoad);
+          commit("setLoadedPosts", snapLoad);
         });
       } catch (e) {
         console.error("Error adding document: ", e);
@@ -217,7 +206,7 @@ const store = createStore({
           postDate: payload.postDate,
           uuid: payload.uuid,
           author: payload.author,
-          dateAdded: reformatingDate(),
+          dateAdded: serverTimestamp(),
           type: "favorite",
           fuuid: null,
         };

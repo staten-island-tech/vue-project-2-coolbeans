@@ -26,6 +26,7 @@
         alt="close"
         @click="closeModal"
       /> -->
+      <Heart class="heart" />
       <div class="close" @click="closeModal">
         <p>X</p>
       </div>
@@ -35,6 +36,7 @@
 
 <script>
 import Button from "./Button.vue";
+import Heart from "../components/heart.vue";
 export default {
   setup() {},
   props: {
@@ -46,7 +48,7 @@ export default {
     postDate: String,
     uuid: String,
   },
-  components: { Button },
+  components: { Button, Heart },
   methods: {
     closeModal: function () {
       this.$store.dispatch("closeModal");
@@ -178,6 +180,9 @@ export default {
   opacity: 1;
 }
 
+.heart {
+  width: 10rem;
+}
 @media only screen and (max-width: 700px) {
   .container {
     /* max-width: 80vw;
