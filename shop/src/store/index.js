@@ -204,11 +204,11 @@ const store = createStore({
           imageUrl: payload.imageUrl,
           description: payload.description,
           postDate: payload.postDate,
-          uuid: payload.uuid,
+          uuid: "",
           author: payload.author,
           dateAdded: serverTimestamp(),
           type: "favorite",
-          fuuid: null,
+          fuuid: "",
         };
         const userPath = doc(db, `allUser/${this.state.user.uid}`);
         const userPostPath = doc(userPath, "Userfavorites/favorites");
@@ -216,10 +216,14 @@ const store = createStore({
         console.log("Document written with ID: ", docRef.id);
 
         const fdocRefid = docRef.id;
+
         console.log(fdocRefid);
         const favDoc = doc(userPostPath, `favorite/${fdocRefid}`);
         await updateDoc(favDoc, {
           fuuid: docRef.id,
+        });
+        await updateDoc(favDoc, {
+          uuid: payload.uuid,
         });
 
         commit("addFavorpost", post);
@@ -241,7 +245,7 @@ const store = createStore({
             "favorites",
             "favorite"
           ),
-          orderBy("dateAdded") // can insert limit of post here
+          orderBy("dateAdded", "desc") // can insert limit of post here
         );
         const querySnapshot = await getDocs(pleasPlease);
         const postload = [];
@@ -328,26 +332,16 @@ const store = createStore({
       );
 
       const q = query(
-        collection(
-          db,
-          "allUser",
-          `${uidUser}`,
-          "Userfavorites",
-          "favorites",
-          "favorite"
-        ),
-        where("uuid", "==", uidUser)
+        collectionGroup(db, "favorite"),
+        where("uuid", "==", `${ogiweg}`)
       );
-      console.log(q);
 
-      const querySnapshotcs = await getDocs(q);
-      console.log("start");
-      const load = [];
-      querySnapshotcs.forEach((doc) => {
-        load.push(doc.data());
+      onSnapshot(q, (querySnapshot) => {
+        querySnapshot.forEach((snap) => {
+          console.log(snap.data().fuuid);
+        });
       });
 
-      console.log(load);
       const postQuery = query(
         collection(db, "allUser", `${uidUser}`, "UserPosts", "posts", "post")
       );
