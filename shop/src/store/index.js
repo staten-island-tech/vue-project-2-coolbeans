@@ -23,20 +23,9 @@ import {
   deleteDoc,
   onSnapshot,
   orderBy,
+  serverTimestamp,
 } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-
-const reformatingDate = function () {
-  const date = new Date();
-  return date.toLocaleString(["en-US"], {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-  });
-};
 
 const store = createStore({
   state: {
@@ -50,7 +39,6 @@ const store = createStore({
     favorite: [],
     userCreated: [],
     loading: false,
-    fName: null,
   },
   mutations: {
     setUser(state, payload) {
@@ -61,7 +49,7 @@ const store = createStore({
       state.authIsReady = payload;
     },
     createPost(state, payload) {
-      //  state.loadedPosts.push(payload);
+      state.loadedPosts.push(payload);
     },
     setLoadedPosts(state, payload) {
       state.loadedPosts = payload;
@@ -140,7 +128,7 @@ const store = createStore({
           description: payload.description,
           postDate: payload.postDate,
           author: payload.author,
-          perDate: reformatingDate(),
+          perDate: serverTimestamp(),
           uuid: null,
           type: "post",
         };
@@ -175,15 +163,32 @@ const store = createStore({
         });
 
         const uidUser = this.state.user.uid;
+
+        /* const newestPost = doc(userPostPath, `post/${docId}`);
+        const pload = [];
+        function linstenTochange() {
+          onSnapshot(newestPost, (docSnapshop) => {
+            if (docSnapshop.exists()) {
+              console.log(JSON.stringify(docSnapshop.data));
+              // pload.push(docSnapshop.data);
+            }
+          });
+          commit("createPost", pload);
+        }
+        console.log(pload);
+        linstenTochange(); */
         const postQuery = query(
-          collection(db, "allUser", `${uidUser}`, "UserPosts", "posts", "post")
+          collectionGroup(db, "post"),
+          orderBy("perDate")
         );
-        const snapLoad = [];
+        console.log(postQuery);
         onSnapshot(postQuery, (querySnapshot) => {
+          const snapLoad = [];
           querySnapshot.forEach((snap) => {
             snap.data();
             snapLoad.push(snap.data());
           });
+          console.log(snapLoad);
           commit("setLoadedPosts", snapLoad);
         });
       } catch (e) {
@@ -198,11 +203,11 @@ const store = createStore({
           imageUrl: payload.imageUrl,
           description: payload.description,
           postDate: payload.postDate,
-          uuid: payload.uuid,
+          uuid: "",
           author: payload.author,
-          dateAdded: reformatingDate(),
+          dateAdded: serverTimestamp(),
           type: "favorite",
-          fuuid: null,
+          fuuid: "",
         };
         const userPath = doc(db, `allUser/${this.state.user.uid}`);
         const userPostPath = doc(userPath, "Userfavorites/favorites");
@@ -210,10 +215,14 @@ const store = createStore({
         console.log("Document written with ID: ", docRef.id);
 
         const fdocRefid = docRef.id;
+
         console.log(fdocRefid);
         const favDoc = doc(userPostPath, `favorite/${fdocRefid}`);
         await updateDoc(favDoc, {
           fuuid: docRef.id,
+        });
+        await updateDoc(favDoc, {
+          uuid: payload.uuid,
         });
 
         commit("addFavorpost", post);
@@ -235,7 +244,7 @@ const store = createStore({
             "favorites",
             "favorite"
           ),
-          orderBy("dateAdded") // can insert limit of post here
+          orderBy("dateAdded", "desc") // can insert limit of post here
         );
         const querySnapshot = await getDocs(pleasPlease);
         const postload = [];
@@ -308,6 +317,7 @@ const store = createStore({
     async deletePosttemp({ commit }, payload) {
       const ogiweg = payload;
       const uidUser = this.state.user.uid;
+
       await deleteDoc(
         doc(
           db,
@@ -317,6 +327,34 @@ const store = createStore({
           "posts",
           "post",
           `${ogiweg}`
+        )
+      );
+
+      const q = query(
+        collectionGroup(db, "favorite"),
+        where("uuid", "==", `${ogiweg}`)
+      );
+
+      const fweoin = [];
+      onSnapshot(q, (querySnapshot) => {
+        const tempHold = [];
+        querySnapshot.forEach((snap) => {
+          console.log(snap.data());
+          tempHold.push(snap.data());
+        });
+        fweoin.push(tempHold);
+      });
+      console.log(fweoin);
+
+      await deleteDoc(
+        doc(
+          db,
+          "allUser",
+          `${uidUser}`,
+          "Userfavorites",
+          "favorites",
+          "favorite",
+          `${fweoin}`
         )
       );
 

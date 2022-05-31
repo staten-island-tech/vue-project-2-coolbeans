@@ -13,7 +13,7 @@
       :description="tempS.description"
       :postDate="tempS.postDate"
       :uuid="tempS.uuid"
-      >s
+    >
     </Modal>
     <div class="grid">
       <Card
@@ -30,7 +30,7 @@
       >
         <template v-slot:love>
           <div class="fav" @click="addTofav(post)">
-            <img src="../components/icons/love.png" alt="favorite" />
+            <Heart />
           </div>
         </template>
       </Card>
@@ -41,12 +41,13 @@
 <script>
 import Card from "../components/Card.vue";
 import Modal from "../components/BigCard.vue";
-
+import Heart from "../components/heart.vue";
 export default {
   setup() {},
   components: {
     Card,
     Modal,
+    Heart,
   },
   mounted() {
     this.$store.dispatch("loadPost");
@@ -66,9 +67,12 @@ export default {
         postDate: post.postDate,
         uuid: post.uuid,
       };
+      document.documentElement.className = "modal-open ";
+
       this.$store.dispatch("openModal", postname);
     },
     addTofav(post) {
+      this.$store.dispatch("closeModal");
       const favData = {
         title: post.title,
         location: post.location,
@@ -77,6 +81,7 @@ export default {
         description: post.description,
         postDate: post.postDate,
         uuid: post.uuid,
+        perDate: post.perDate,
       };
       this.$store.dispatch("addFavorite", favData);
     },

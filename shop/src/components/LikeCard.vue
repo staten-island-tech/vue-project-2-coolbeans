@@ -4,11 +4,8 @@
       <div class="card">
         <div class="container">
           <div class="author">
-            <h5>{{ author }}</h5>
-            <div class="location">
-              <img src="../components/icons/location.png" alt="pin" />
-              <p>{{ location }}</p>
-            </div>
+            <h4>{{ author }}</h4>
+            <p class="location">{{ location }}</p>
           </div>
           <div class="image">
             <img :src="image" alt="" class="image" />
@@ -16,7 +13,7 @@
           <div class="info">
             <div class="hori">
               <h3 class="title">{{ title }}</h3>
-              <Heart class="heart" />
+              <Heartpink class="heart" />
             </div>
             <p class="description">{{ description }}</p>
           </div>
@@ -41,7 +38,7 @@
 
 <script>
 import Button from "./Button.vue";
-import Heart from "../components/heart.vue";
+import Heartpink from "../components/Heartpink.vue";
 export default {
   setup() {},
   props: {
@@ -53,7 +50,7 @@ export default {
     postDate: String,
     uuid: String,
   },
-  components: { Button, Heart },
+  components: { Button, Heartpink },
   methods: {
     closeModal: function () {
       this.$store.dispatch("closeModal");
@@ -86,7 +83,7 @@ export default {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
 }
-.bigcard {
+.card {
   width: 100%;
   height: 100%;
   display: flex;
@@ -99,7 +96,7 @@ export default {
   height: 48rem; */
   height: 93vh;
   width: auto;
-  aspect-ratio: 2/3;
+  aspect-ratio: 4/5;
   background-color: #f5f4f4;
   display: flex;
   flex-direction: column;
@@ -133,7 +130,6 @@ export default {
   width: 100%;
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
-  overflow: hidden;
 }
 
 .author h4,
@@ -153,7 +149,6 @@ export default {
   align-items: start;
   width: 100%;
   padding: 0.5rem;
-  overflow: hidden;
   /* padding-left: 0.5rem; */
 }
 
@@ -163,28 +158,11 @@ export default {
   justify-content: center;
   align-items: start;
   width: 100%;
-  padding: 0.5rem;
-  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
 }
 .date p {
   font-size: 0.8rem;
-}
-
-.location {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  overflow: visible;
-  transform: translate(0, -25%);
-}
-
-.location img {
-  width: auto;
-  height: 1rem;
-  margin-right: 0.3rem;
-}
-.location p {
-  font-size: 1rem;
 }
 .close {
   position: absolute;
@@ -221,7 +199,7 @@ export default {
     max-height: 80vh; */
     /* height: auto; */
     height: 75vh;
-    max-width: 85vw;
+    max-width: 90vw;
   }
 }
 </style>
