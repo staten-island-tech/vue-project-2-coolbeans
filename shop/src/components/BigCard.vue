@@ -16,7 +16,9 @@
           <div class="info">
             <div class="hori">
               <h3 class="title">{{ title }}</h3>
-              <Heart class="heart" />
+              <div class="heart">
+                <slot name="love"></slot>
+              </div>
             </div>
             <p class="description">{{ description }}</p>
           </div>

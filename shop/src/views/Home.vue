@@ -14,6 +14,11 @@
       :postDate="tempS.postDate"
       :uuid="tempS.uuid"
     >
+      <template v-slot:love>
+        <div class="fav" @click="addTofav(post)">
+          <Heart />
+        </div>
+      </template>
     </Modal>
     <div class="grid">
       <Card
