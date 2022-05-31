@@ -17,7 +17,7 @@
       >
         <template v-slot:love>
           <div class="fav">
-            <img src="../components/icons/love.png" alt="favorite" />
+            <Heartpink />
           </div>
         </template>
       </Card>
@@ -39,11 +39,13 @@
 
 <script>
 import Card from "../components/Card.vue";
-import Modal from "../components/BigCard.vue";
+import Modal from "../components/LikeCard.vue";
+import Heartpink from "../components/Heartpink.vue";
 export default {
   components: {
     Card,
     Modal,
+    Heartpink,
   },
   mounted() {
     this.$store.dispatch("loadFavor");

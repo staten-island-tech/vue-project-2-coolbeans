@@ -13,7 +13,7 @@
       :description="tempS.description"
       :postDate="tempS.postDate"
       :uuid="tempS.uuid"
-      >s
+    >
     </Modal>
     <div class="grid">
       <Card
@@ -81,6 +81,7 @@ export default {
         description: post.description,
         postDate: post.postDate,
         uuid: post.uuid,
+        perDate: post.perDate,
       };
       this.$store.dispatch("addFavorite", favData);
     },

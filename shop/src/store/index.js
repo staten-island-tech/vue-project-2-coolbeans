@@ -39,7 +39,6 @@ const store = createStore({
     favorite: [],
     userCreated: [],
     loading: false,
-    fName: null,
   },
   mutations: {
     setUser(state, payload) {
@@ -336,11 +335,28 @@ const store = createStore({
         where("uuid", "==", `${ogiweg}`)
       );
 
+      const fweoin = [];
       onSnapshot(q, (querySnapshot) => {
+        const tempHold = [];
         querySnapshot.forEach((snap) => {
-          console.log(snap.data().fuuid);
+          console.log(snap.data());
+          tempHold.push(snap.data());
         });
+        fweoin.push(tempHold);
       });
+      console.log(fweoin);
+
+      await deleteDoc(
+        doc(
+          db,
+          "allUser",
+          `${uidUser}`,
+          "Userfavorites",
+          "favorites",
+          "favorite",
+          `${fweoin}`
+        )
+      );
 
       const postQuery = query(
         collection(db, "allUser", `${uidUser}`, "UserPosts", "posts", "post")
