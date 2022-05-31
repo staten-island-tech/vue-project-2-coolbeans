@@ -1,7 +1,7 @@
 <template>
   <div class="modal">
     <div class="background" @click="closeModal">
-      <div class="card">
+      <div class="bigcard">
         <div class="container">
           <div class="author">
             <h5>{{ author }}</h5>
