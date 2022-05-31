@@ -131,19 +131,18 @@ export default {
   justify-content: center;
   align-items: start;
   width: 100%;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
-  overflow: hidden;
+  padding: 0 0.5rem;
+  overflow: visible;
 }
 
 .author h4,
 .location,
-.info h3,
+.title,
 .description,
 .date p {
-  overflow: hidden;
-  transform: translate(0, -25%);
-  padding-bottom: 0.2rem;
+  overflow: visible;
+  /* transform: translate(0, -25%); */
+  /* padding-bottom: 0.2rem; */
 }
 
 .info {
@@ -152,8 +151,8 @@ export default {
   justify-content: center;
   align-items: start;
   width: 100%;
-  padding: 0.5rem;
-  overflow: hidden;
+  padding: 0 0.5rem;
+  overflow: visible;
   /* padding-left: 0.5rem; */
 }
 
@@ -206,12 +205,11 @@ export default {
 .hori {
   display: flex;
   width: 100%;
-  justify-content: end;
+  align-items: start;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
-.title {
-  margin-right: auto;
-}
 .heart {
   width: 2rem;
 }

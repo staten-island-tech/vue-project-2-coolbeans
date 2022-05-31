@@ -30,7 +30,7 @@ export default {
 
 <style scoped>
 .inner {
-  fill: #f75394;
+  fill: red;
 }
 .inner:hover {
   fill: black;

@@ -134,7 +134,7 @@ export default {
 
 .author h4,
 .location,
-.info h3,
+.title,
 .description,
 .date p {
   overflow: hidden;
@@ -184,12 +184,11 @@ export default {
 .hori {
   display: flex;
   width: 100%;
-  justify-content: end;
+  align-items: start;
+  justify-content: space-between;
+  overflow: hidden;
 }
 
-.title {
-  margin-right: auto;
-}
 .heart {
   width: 2rem;
 }
