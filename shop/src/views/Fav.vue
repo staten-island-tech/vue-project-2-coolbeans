@@ -33,13 +33,19 @@
       :description="tempS.description"
       :postDate="tempS.postDate"
       :uuid="tempS.uuid"
-    />
+    >
+      <template v-slot:love>
+        <div class="fav" @click="addTofav(post)">
+          <Heartpink />
+        </div>
+      </template>
+    </Modal>
   </div>
 </template>
 
 <script>
 import Card from "../components/Card.vue";
-import Modal from "../components/LikeCard.vue";
+import Modal from "../components/BigCard.vue";
 import Heartpink from "../components/Heartpink.vue";
 export default {
   components: {
