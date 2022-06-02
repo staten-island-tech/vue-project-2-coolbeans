@@ -3,7 +3,7 @@
     <form @submit.prevent="handleSubmit">
       <h3>Welcome back,</h3>
       <div class="email">
-        <label v-show="" for="email">Email</label>
+        <!-- <label for="email">Email</label> -->
         <input type="email" name="email" v-model="email" placeholder="Email" required />
       </div>
       <div class="pass">

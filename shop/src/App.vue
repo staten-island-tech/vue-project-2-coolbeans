@@ -46,13 +46,12 @@
       </Nav>
     </div>
     <div class="container">
-      <!-- <div class="form-container">
-        <Modal>
-          <template v-slot:form> <logIn/> </template>
-          <template v-slot:form2> <signUp/> </template>
-        </Modal>
-      </div> -->
-      <RouterView></RouterView>
+      <!-- <RouterView></RouterView> -->
+      <router-view v-slot="{Component}">
+        <transition name="up" mode="out-in">
+          <component :is="Component" :key="$route.path"></component>
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>
@@ -153,6 +152,17 @@ export default {
 a {
   text-decoration: none;
   color: #151515;
+}
+
+.up-enter-active, 
+.up-leave-active {
+  transition: opacity 0.5s, transform 0.5s
+}
+
+.up-enter-from,
+.up-leave-to {
+  opacity: 0;
+  transform: translateY(10%);
 }
 
 /* @media only screen and (max-width: 700px) {

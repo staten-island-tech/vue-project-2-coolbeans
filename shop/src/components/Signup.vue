@@ -5,22 +5,26 @@
       <div class="name">
         <!-- <label for="name">Name</label> -->
         <div class="name-field">
-          <input
-            class="first-name"
-            type="first-name"
-            name="first-name"
-            v-model="firstName"
-            placeholder="First Name"
-            required
-          />
-          <input
-            class="last-name"
-            type="last-name"
-            name="last-name"
-            v-model="lastName"
-            placeholder="Last Name"
-            required
-          />
+          <div class="first-name">
+            <!-- <label v-show="firstName" for="first-name">First Name</label> -->
+            <input
+              type="first-name"
+              name="first-name"
+              v-model="firstName"
+              placeholder="First Name"
+              required
+            />
+          </div>
+          <div class="last-name">
+            <!-- <label for="last-name">Last Name</label> -->
+            <input
+              type="last-name"
+              name="last-name"
+              v-model="lastName"
+              placeholder="Last Name"
+              required
+            />
+          </div>
         </div>
       </div>
       <div class="email">
@@ -49,6 +53,14 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 export default {
+  data() {
+    return {
+      // email: "",
+      // password: "",
+      // firstName: "",
+      // lastName: "",
+    }
+  },
   setup() {
     const email = ref("");
     const password = ref("");
@@ -86,11 +98,22 @@ export default {
       error,
     };
   },
-
+  computed: {
+    // firstName() {
+    //   return this.firstName !== ""
+    // },
+  },
   components: {
     Button,
   },
-  methods: {},
+  methods: {
+    // handleSubmit() {
+    //   if (!this.firstName) {
+    //     return;
+    //   }
+    // }
+  },
+  
 };
 </script>
 
@@ -152,11 +175,36 @@ input {
   align-items: center;
   justify-content: space-between;
 }
-.first-name {
+.first-name  {
   width: 49%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
-.last-name {
+.last-name  {
   width: 49%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.first-name input {
+  z-index: 2;
+}
+.last-name input {
+  z-index: 2;
+}
+
+.first-name label {
+  position: absolute;
+  font-family: 'Gloria Hallelujah', cursive;
+  padding: 0.7rem;
+  /* transform: translateX(-1); */
+}
+.last-name label {
+  position: absolute;
+  font-family: 'Gloria Hallelujah', cursive;
+  padding: 0.7rem;
 }
 
 p {
