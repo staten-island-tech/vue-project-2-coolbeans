@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="heart">
     <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
       <g
         transform="matrix(0.094474, 0, 0, -0.09599, 7.528245, 511.129211)"
@@ -35,4 +35,9 @@ export default {
 .inner:hover {
   fill: black;
 }
+
+/* .heart {
+  width: 100%;
+  height: 100%
+} */
 </style>

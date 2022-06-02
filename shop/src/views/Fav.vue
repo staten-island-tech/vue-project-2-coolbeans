@@ -119,14 +119,15 @@ h4 {
 }
 
 .fav {
-  position: absolute;
-  bottom: 3.5rem;
-  right: 1.5rem;
+  /* position: absolute;
+  bottom: 6rem;
+  right: 1.5rem; */
+  padding-top: 0.6rem;
   cursor: pointer;
   width: auto;
   height: 1.8rem;
   aspect-ratio: 1/1;
-  overflow: hidden;
+  overflow: visible;
   z-index: 6;
 }
 
@@ -137,13 +138,7 @@ h4 {
   object-position: 50%, 50%;
 }
 
-.hori {
-  display: flex;
-  width: 100%;
-  align-items: start;
-  justify-content: space-between;
-  overflow: hidden;
-}
+
 
 @media only screen and (max-width: 650px) {
   .grid {

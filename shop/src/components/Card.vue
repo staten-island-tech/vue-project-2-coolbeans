@@ -101,4 +101,8 @@ export default {
   justify-content: space-between;
   overflow: visible;
 }
+
+.love {
+  height: 100%;
+}
 </style>

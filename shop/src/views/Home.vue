@@ -178,6 +178,14 @@ h4 {
   overflow: hidden;
 }
 
+/* .hori {
+  display: flex;
+  width: 100%;
+  align-items: start;
+  justify-content: space-between;
+  overflow: visible;
+} */
+
 @media only screen and (max-width: 650px) {
   .grid {
     display: flex;

@@ -211,6 +211,10 @@ export default {
   overflow: visible;
 }
 
+.heart {
+  height: 100%;
+}
+
 @media only screen and (max-width: 700px) {
   .container {
     /* max-width: 80vw;
