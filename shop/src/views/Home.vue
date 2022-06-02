@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h2>Explore</h2>
+    <h1>Explore</h1>
     <!-- <h4>Explore</h4> -->
     <Modal
       v-show="isHidden"
@@ -135,14 +135,15 @@ export default {
 } */
 
 .fav {
-  position: absolute;
-  bottom: 3.5rem;
-  right: 1.5rem;
+  /* position: absolute;
+  bottom: 6rem;
+  right: 1.5rem; */
+  padding-top: 0.6rem;
   cursor: pointer;
   width: auto;
   height: 1.8rem;
   aspect-ratio: 1/1;
-  overflow: hidden;
+  overflow: visible;
   z-index: 6;
 }
 
@@ -164,7 +165,7 @@ export default {
   overflow: visible;
 }
 
-h2 {
+h1 {
   color: #151515;
   padding-bottom: 2rem;
 }

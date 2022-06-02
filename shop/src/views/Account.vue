@@ -1,6 +1,6 @@
 <template>
   <div class="user">
-    <h2>Hello, {{ userName }}</h2>
+    <h1>Hello, {{ userName }}</h1>
     <!-- <h4>You created no post!</h4> -->
     <!-- <h4>Your Posts</h4> -->
     <div class="grid">
@@ -144,7 +144,7 @@ export default {
   overflow: visible;
 }
 
-h2 {
+h1 {
   color: #151515;
   padding-bottom: 2rem;
 }

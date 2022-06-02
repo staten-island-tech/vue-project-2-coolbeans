@@ -1,6 +1,6 @@
 <template>
   <div class="like">
-    <h2>Liked Posts</h2>
+    <h1>Liked Posts</h1>
     <!-- <h4>Favorite Posts</h4> -->
     <div class="grid">
       <Card
@@ -109,7 +109,7 @@ export default {
   overflow: visible;
 }
 
-h2 {
+h1 {
   color: #151515;
   padding-bottom: 2rem;
 }
@@ -135,5 +135,32 @@ h4 {
   height: 100%;
   object-fit: cover;
   object-position: 50%, 50%;
+}
+
+.hori {
+  display: flex;
+  width: 100%;
+  align-items: start;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 650px) {
+  .grid {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .grid {
+    margin-bottom: 4rem;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media only screen and (max-width: 1200px) {
 }
 </style>

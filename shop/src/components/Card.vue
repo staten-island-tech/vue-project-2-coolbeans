@@ -4,12 +4,14 @@
       <img :src="image" alt="image" />
     </div>
     <div class="container">
-      <h4 class="title">{{ title }}</h4>
+      <div class="hori">
+        <h4 class="title">{{ title }}</h4>
+        <slot name="love" class="love"></slot>
+      </div>
       <!-- <h4 class="caption">{{ location }}</h4> -->
       <!-- <p class="location">Location</p> -->
       <p class="author">{{ author }}</p>
     </div>
-    <slot name="love" class="love"></slot>
   </div>
 </template>
 
@@ -90,5 +92,13 @@ export default {
 
 .card:hover {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+}
+
+.hori {
+  display: flex;
+  width: 100%;
+  align-items: start;
+  justify-content: space-between;
+  overflow: visible;
 }
 </style>

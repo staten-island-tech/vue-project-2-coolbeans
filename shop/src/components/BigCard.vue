@@ -1,6 +1,6 @@
 <template>
   <div class="modal">
-    <div class="background" @click="closeModal">
+    <div class="background" @click="closeModal"></div>
       <div class="bigcard">
         <div class="container">
           <div class="author">
@@ -37,7 +37,6 @@
       <div class="close" @click="closeModal">
         <p>X</p>
       </div>
-    </div>
   </div>
 </template>
 
@@ -209,12 +208,9 @@ export default {
   width: 100%;
   align-items: start;
   justify-content: space-between;
-  overflow: hidden;
+  overflow: visible;
 }
 
-.heart {
-  width: 2rem;
-}
 @media only screen and (max-width: 700px) {
   .container {
     /* max-width: 80vw;
