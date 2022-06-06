@@ -57,7 +57,7 @@
 <script>
 import Card from "../components/Card.vue";
 import Modal from "../components/BigCard.vue";
-import Heart from "../components/Heart.vue"
+import Heart from "../components/heart.vue"
 export default {
   data() {
     return {};
