@@ -119,7 +119,7 @@ export default {
 }
 
 .page {
-  margin-left: 2.5rem;
+  margin-left: 3rem;
   width: 5rem;
   height: 3rem;
   border-radius: 0.5rem;
@@ -156,7 +156,7 @@ a {
 
 .up-enter-active, 
 .up-leave-active {
-  transition: opacity 0.5s, transform 0.5s
+  transition: opacity 0.5s, transform 0.7s
 }
 
 .up-enter-from,
@@ -165,13 +165,19 @@ a {
   transform: translateY(10%);
 }
 
-/* @media only screen and (max-width: 700px) {
+@media only screen and (max-width: 900px) {
+  .page {
+    margin-left: 1rem;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .page {
+    margin-left: 2rem;
+  }
+}
+@media only screen and (max-width: 600px) {
   .page {
     margin-left: 0;
-    margin: 0 1.5rem;
   }
-  .logo {
-    margin: 0 1.5rem;
-  }
-} */
+}
 </style>

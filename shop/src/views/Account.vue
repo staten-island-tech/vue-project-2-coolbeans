@@ -18,7 +18,7 @@
       >
         <template v-slot:love>
           <div class="fav" @click="addTofav(post)">
-            <img src="../components/icons/love.png" alt="favorite" />
+            <Heart />
           </div>
         </template>
       </Card>
@@ -42,6 +42,11 @@
       :postDate="tempS.postDate"
       :uuid="tempS.uuid"
     >
+      <template v-slot:love>
+        <div class="fav" @click="addTofav(post)">
+          <Heart />
+        </div>
+      </template>
       <template v-slot:deleteBtn>
         <button class="button" @click="deletePost(tempS)">Remove</button>
       </template>
@@ -52,6 +57,7 @@
 <script>
 import Card from "../components/Card.vue";
 import Modal from "../components/BigCard.vue";
+import Heart from "../components/Heart.vue"
 export default {
   data() {
     return {};
@@ -59,6 +65,7 @@ export default {
   components: {
     Card,
     Modal,
+    Heart
   },
   mounted() {
     this.$store.dispatch("loadUsercreated");
@@ -107,11 +114,11 @@ export default {
 .user {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: 0 4rem;
   padding-bottom: 2rem;
 
@@ -153,14 +160,15 @@ h4 {
   padding-bottom: 1rem;
 }
 .fav {
-  position: absolute;
-  bottom: 3.5rem;
-  right: 1.5rem;
+  /* position: absolute;
+  bottom: 6rem;
+  right: 1.5rem; */
+  padding-top: 0.6rem;
   cursor: pointer;
   width: auto;
   height: 1.8rem;
   aspect-ratio: 1/1;
-  overflow: hidden;
+  overflow: visible;
   z-index: 6;
 }
 
@@ -172,10 +180,10 @@ h4 {
 }
 .create {
   position: fixed;
-  background-color: rgba(21, 21, 21, 1);
-  /* background-color: #73a5c9; */
   bottom: 2rem;
   right: 3rem;
+  background-color: rgba(21, 21, 21, 1);
+  /* background-color: #73a5c9; */
   height: 3rem;
   width: 8rem;
   border-radius: 1.5rem;

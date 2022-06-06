@@ -16,36 +16,40 @@
           />
           <h6>Or</h6>
           <div class="image">
+            <label for="image">Image URL</label>
             <input
               type="text"
-              placeholder="Image URL"
+              placeholder="url for losers"
               class="form-field"
               v-model="imageUrl"
               @keyup="isTexton"
             />
           </div>
           <div class="title">
+            <label for="title">Title</label>
             <input
               type="text"
-              placeholder="Title"
+              placeholder="a cool title"
               class="form-field"
               maxlength="20"
               v-model="title"
             />
           </div>
           <div class="location">
+            <label for="location">Location</label>
             <input
               id="autocomplete"
               type="text"
-              placeholder="Location"
+              placeholder="where??"
               class="form-field"
               v-model="location"
             />
           </div>
           <div class="description">
+            <label for="description">Description</label>
             <input
               type="text"
-              placeholder="Description"
+              placeholder="a good description"
               class="form-field"
               v-model="description"
             />
@@ -268,13 +272,17 @@ export default {
 h3 {
   color: #151515;
   text-align: center;
-  padding: 1rem;
+  padding-top: 1rem;
   z-index: 5;
+}
+h6 {
+  padding-bottom: 0.5rem;
 }
 
 .title,
 .location,
-.image {
+.image, 
+.description {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -286,13 +294,13 @@ h3 {
 }
 
 .title {
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 .location {
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 .image {
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 .description {
   padding: 0;
@@ -351,8 +359,9 @@ button:disabled {
 }
 
 .post {
-  margin-bottom: 3rem;
-}
+    margin-bottom: 2rem;
+  }
+
 .back {
   position: fixed;
   bottom: 2rem;
@@ -455,6 +464,9 @@ button:disabled {
     right: 2rem;
     bottom: auto;
   }
+  .post {
+    margin-bottom: 5rem;
+  }
 }
 @media only screen and (max-width: 800px) {
   .container {
@@ -474,6 +486,9 @@ button:disabled {
     margin-left: 0;
     margin-bottom: 1.2rem;
   }
+  /* .post {
+    margin-bottom: 5rem;
+  } */
 
   /* .back {
     right: 2rem;

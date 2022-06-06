@@ -42,7 +42,7 @@
 
 <script>
 import Button from "./Button.vue";
-import Heart from "../components/heart.vue";
+import Heart from "./Heart.vue";
 export default {
   setup() {},
   props: {

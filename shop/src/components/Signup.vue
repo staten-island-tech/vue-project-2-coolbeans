@@ -3,7 +3,7 @@
     <form @submit.prevent="handleSubmit">
       <h3>Join us,</h3>
       <div class="name">
-        <!-- <label for="name">Name</label> -->
+        <label for="name">Name</label>
         <div class="name-field">
           <div class="first-name">
             <!-- <label v-show="firstName" for="first-name">First Name</label> -->
@@ -11,7 +11,7 @@
               type="first-name"
               name="first-name"
               v-model="firstName"
-              placeholder="First Name"
+              placeholder="first"
               required
             />
           </div>
@@ -21,19 +21,19 @@
               type="last-name"
               name="last-name"
               v-model="lastName"
-              placeholder="Last Name"
+              placeholder="last"
               required
             />
           </div>
         </div>
       </div>
       <div class="email">
-        <!-- <label for="email">Email</label> -->
-        <input type="email" name="email" v-model="email" placeholder="Email" required />
+        <label for="email">Email</label>
+        <input type="email" name="email" v-model="email" placeholder="wow email" required />
       </div>
       <div class="pass">
-        <!-- <label for="password">Password</label> -->
-        <input type="password" name="password" v-model="password" placeholder="Password" required />
+        <label for="password">Password</label>
+        <input type="password" name="password" v-model="password" placeholder="a good password" required />
       </div>
       <div class="error" v-if="error">{{ error }}</div>
       <div class="btn">
