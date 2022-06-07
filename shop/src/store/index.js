@@ -258,6 +258,7 @@ const store = createStore({
       queryForDocuments();
     },
     loadPost({ commit }) {
+      commit("setLoading", true);
       async function queryForDocuments() {
         const thePost = query(
           collectionGroup(db, "post"),

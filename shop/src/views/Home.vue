@@ -2,6 +2,7 @@
   <div class="home">
     <h1>Explore</h1>
     <!-- <h4>Explore</h4> -->
+    <Loading v-if="ifLoading" />
     <Modal
       v-show="isHidden"
       v-for="(tempS, index) in tempStore"
@@ -47,12 +48,14 @@
 import Card from "../components/Card.vue";
 import Modal from "../components/BigCard.vue";
 import Heart from "../components/heart.vue";
+import Loading from "../components/Loading.vue";
 export default {
   setup() {},
   components: {
     Card,
     Modal,
     Heart,
+    Loading,
   },
   mounted() {
     this.$store.dispatch("loadPost");
@@ -100,6 +103,10 @@ export default {
     },
     tempStore() {
       return this.$store.state.tempStore;
+    },
+    ifLoading() {
+      console.log(this.$store.state.setLoading);
+      return this.$store.state.setLoading;
     },
   },
 };
