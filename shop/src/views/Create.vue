@@ -327,7 +327,7 @@ input {
 
 ::placeholder {
   color: #242424;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .date {
