@@ -8,6 +8,7 @@
             Upload Image File
           </button>
           <input
+            id="image"
             type="file"
             class="inputfile"
             ref="fileInput"
@@ -18,6 +19,7 @@
           <div class="image">
             <label for="image">Image URL</label>
             <input
+              id="image"  
               type="text"
               placeholder="url for losers"
               class="form-field"
@@ -28,6 +30,7 @@
           <div class="title">
             <label for="title">Title</label>
             <input
+              id="title"
               type="text"
               placeholder="a cool title"
               class="form-field"
@@ -38,7 +41,7 @@
           <div class="location">
             <label for="location">Location</label>
             <input
-              id="autocomplete"
+              id="location"
               type="text"
               placeholder="where??"
               class="form-field"
@@ -48,6 +51,7 @@
           <div class="description">
             <label for="description">Description</label>
             <input
+              id="description"
               type="text"
               placeholder="a good description"
               class="form-field"

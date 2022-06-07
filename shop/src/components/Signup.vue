@@ -8,6 +8,7 @@
           <div class="first-name">
             <!-- <label v-show="firstName" for="first-name">First Name</label> -->
             <input
+              id="name"
               type="first-name"
               name="first-name"
               v-model="firstName"
@@ -18,6 +19,7 @@
           <div class="last-name">
             <!-- <label for="last-name">Last Name</label> -->
             <input
+              id="name"
               type="last-name"
               name="last-name"
               v-model="lastName"
@@ -29,11 +31,11 @@
       </div>
       <div class="email">
         <label for="email">Email</label>
-        <input type="email" name="email" v-model="email" placeholder="wow email" required />
+        <input id="email" type="email" name="email" v-model="email" placeholder="wow email" required />
       </div>
       <div class="pass">
         <label for="password">Password</label>
-        <input type="password" name="password" v-model="password" placeholder="a good password" required />
+        <input id="password" type="password" name="password" v-model="password" placeholder="a good password" required />
       </div>
       <div class="error" v-if="error">{{ error }}</div>
       <div class="btn">
