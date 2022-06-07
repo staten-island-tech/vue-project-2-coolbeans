@@ -47,8 +47,7 @@
 <script>
 import Card from "../components/Card.vue";
 import Modal from "../components/BigCard.vue";
-import Heart from "../components/heart.vue";
-import Loading from "../components/Loading.vue";
+import Heart from "../components/Heart.vue";
 export default {
   setup() {},
   components: {
