@@ -327,6 +327,7 @@ input {
 
 ::placeholder {
   color: #242424;
+  opacity: 0.8;
 }
 
 .date {
@@ -353,13 +354,13 @@ button {
 }
 
 button:hover {
-  background-color: rgba(35, 35, 35, 1);
+  background-color: rgba(37, 37, 37, 1);
 }
 
 button:disabled {
   background-color: #404040;
   cursor: default;
-  opacity: 1;
+  opacity: 0.8;
 }
 
 .post {
