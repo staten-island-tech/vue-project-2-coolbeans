@@ -1,5 +1,6 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Grape+Nuts&family=Shadows+Into+Light&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
 
 :root {
   /* Colors */
@@ -53,4 +54,5 @@ p,
 li,
 label {
   font-family: 'Gloria Hallelujah', cursive;
+  /* font-family: 'Kumbh Sans', sans-serif; */
 }

@@ -2,7 +2,7 @@
   <div class="home">
     <h1>Explore</h1>
     <!-- <h4>Explore</h4> -->
-    <Loading v-if="ifLoading" />
+    <!-- <Loading v-if="ifLoading" /> -->
     <Modal
       v-show="isHidden"
       v-for="(tempS, index) in tempStore"
@@ -54,7 +54,7 @@ export default {
     Card,
     Modal,
     Heart,
-    Loading,
+    // Loading,
   },
   mounted() {
     this.$store.dispatch("loadPost");
